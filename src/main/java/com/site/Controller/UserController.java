@@ -25,12 +25,17 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping("/index01")
-	public String index() {
+	public String index01() {
 		return "/index01";
 	}
+
+	@RequestMapping("/index")
+	public String index() {
+		return "/index";
+	}
 	
-	@RequestMapping("/contact")
-	public String contact() {
-		return "/contact";
+	@RequestMapping("/login")
+	public String login() {
+		return "/login";
 	}
 }
