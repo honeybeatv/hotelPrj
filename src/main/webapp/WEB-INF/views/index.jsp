@@ -10,25 +10,25 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="/static/css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/static/css/flaticon.css">
+    <link rel="stylesheet" href="/static/css/icomoon.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
  	<script type="text/javascript">
   	 
   	</script>
@@ -36,11 +36,12 @@
   </head>
   <body>
 
-    <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
+    <%-- <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import> --%>
+    <%@ include file="/WEB-INF/views/include/nav.jsp" %>
     <!-- END nav -->
 
     <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url(images/bg_1.jpg);">
+      <div class="slider-item" style="background-image:url(/static/images/bg_1.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -54,7 +55,7 @@
         </div>
       </div>
 
-      <div class="slider-item" style="background-image:url(images/bg_2.jpg);">
+      <div class="slider-item" style="background-image:url(/static/images/bg_2.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -147,7 +148,7 @@
     <section class="ftco-section ftc-no-pb ftc-no-pt">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/bg_2.jpg);">
+					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(/static/images/bg_2.jpg);">
 						<a href="https://vimeo.com/45830194" class="icon popup-vimeo d-flex justify-content-center align-items-center">
 							<span class="icon-play"></span>
 						</a>
@@ -243,7 +244,7 @@
     		<div class="row">
     			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
     				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-1.jpg);">
+    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-1.jpg);">
     						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -258,7 +259,7 @@
     			</div>
     			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
     				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-2.jpg);">
+    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-2.jpg);">
     						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -273,7 +274,7 @@
     			</div>
     			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
     				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-3.jpg);">
+    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-3.jpg);">
     						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -288,7 +289,7 @@
     			</div>
     			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
     				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-4.jpg);">
+    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-4.jpg);">
     						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -303,7 +304,7 @@
     			</div>
     			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
     				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-5.jpg);">
+    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-5.jpg);">
     						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -318,7 +319,7 @@
     			</div>
     			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
     				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-6.jpg);">
+    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-6.jpg);">
     						<div class="icon d-flex justify-content-center align-items-center">
     							<span class="icon-search2"></span>
     						</div>
@@ -335,7 +336,7 @@
     	</div>
     </section>
 
-    <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_1.jpg);">
+    <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(/static/images/bg_1.jpg);">
     	<div class="container">
     		<div class="row justify-content-center">
     			<div class="col-md-10">
@@ -388,7 +389,7 @@
 		            <div class="carousel-testimony owl-carousel ftco-owl">
 		              <div class="item">
 		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+		                  <div class="user-img mb-4" style="background-image: url(/static/images/person_1.jpg)">
 		                    <span class="quote d-flex align-items-center justify-content-center">
 		                      <i class="icon-quote-left"></i>
 		                    </span>
@@ -402,7 +403,7 @@
 		              </div>
 		              <div class="item">
 		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(images/person_2.jpg)">
+		                  <div class="user-img mb-4" style="background-image: url(/static/images/person_2.jpg)">
 		                    <span class="quote d-flex align-items-center justify-content-center">
 		                      <i class="icon-quote-left"></i>
 		                    </span>
@@ -416,7 +417,7 @@
 		              </div>
 		              <div class="item">
 		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(images/person_3.jpg)">
+		                  <div class="user-img mb-4" style="background-image: url(/static/images/person_3.jpg)">
 		                    <span class="quote d-flex align-items-center justify-content-center">
 		                      <i class="icon-quote-left"></i>
 		                    </span>
@@ -430,7 +431,7 @@
 		              </div>
 		              <div class="item">
 		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+		                  <div class="user-img mb-4" style="background-image: url(/static/images/person_1.jpg)">
 		                    <span class="quote d-flex align-items-center justify-content-center">
 		                      <i class="icon-quote-left"></i>
 		                    </span>
@@ -444,7 +445,7 @@
 		              </div>
 		              <div class="item">
 		                <div class="testimony-wrap py-4 pb-5">
-		                  <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+		                  <div class="user-img mb-4" style="background-image: url(/static/images/person_1.jpg)">
 		                    <span class="quote d-flex align-items-center justify-content-center">
 		                      <i class="icon-quote-left"></i>
 		                    </span>
@@ -475,7 +476,7 @@
         <div class="row d-flex">
           <div class="col-md-3 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single" class="block-20" style="background-image: url('images/image_1.jpg');">
+              <a href="blog-single" class="block-20" style="background-image: url('/static/images/image_1.jpg');">
               </a>
               <div class="text mt-3 d-block">
                 <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
@@ -489,7 +490,7 @@
           </div>
           <div class="col-md-3 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single" class="block-20" style="background-image: url('images/image_2.jpg');">
+              <a href="blog-single" class="block-20" style="background-image: url('/static/images/image_2.jpg');">
               </a>
               <div class="text mt-3">
                 <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
@@ -503,7 +504,7 @@
           </div>
           <div class="col-md-3 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single" class="block-20" style="background-image: url('images/image_3.jpg');">
+              <a href="blog-single" class="block-20" style="background-image: url('/static/images/image_3.jpg');">
               </a>
               <div class="text mt-3">
                 <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
@@ -517,7 +518,7 @@
           </div>
           <div class="col-md-3 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single" class="block-20" style="background-image: url('images/image_4.jpg');">
+              <a href="blog-single" class="block-20" style="background-image: url('/static/images/image_4.jpg');">
               </a>
               <div class="text mt-3">
                 <h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
@@ -533,7 +534,8 @@
       </div>
     </section>
 
-  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+  <%-- <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import> --%>
+  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
     
   
 
@@ -541,23 +543,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/static/js/popper.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/jquery.easing.1.3.js"></script>
+  <script src="/static/js/jquery.waypoints.min.js"></script>
+  <script src="/static/js/jquery.stellar.min.js"></script>
+  <script src="/static/js/owl.carousel.min.js"></script>
+  <script src="/static/js/jquery.magnific-popup.min.js"></script>
+  <script src="/static/js/aos.js"></script>
+  <script src="/static/js/jquery.animateNumber.min.js"></script>
+  <script src="/static/js/bootstrap-datepicker.js"></script>
+  <script src="/static/js/jquery.timepicker.min.js"></script>
+  <script src="/static/js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+  <script src="/static/js/google-map.js"></script>
+  <script src="/static/js/main.js"></script>
     
   </body>
 </html>
