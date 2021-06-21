@@ -31,13 +31,16 @@ public class MainController {
 	
 	@RequestMapping("/advancedSearch")
 	public String advancedSearch(@RequestParam("inDate") String checkIn, @RequestParam("outDate") String checkout, @RequestParam("roomType") String roomType,
-						@RequestParam("personAdult") String adult, @RequestParam("personChild") String child,
-						@RequestParam("minPrice") int minPrice, @RequestParam("maxPrice") int maxPrice) {
+						@RequestParam("bedroom") String bedroom, @RequestParam("bed") String bed,
+						@RequestParam("minPrice") int minPrice, @RequestParam("maxPrice") int maxPrice, 
+						@RequestParam("pet") String pet, @RequestParam("smoke") String smoke) {
 		System.out.println(checkIn +" " + checkout);
 		System.out.println(roomType);
-		System.out.println(adult + " " + child);
+		System.out.println(smoke + " " + pet);
 		System.out.println(minPrice + ", " + maxPrice);
-		List<RoomVo> list = searchService.roomListAdvanced(checkIn, checkout, roomType, adult, child, minPrice, maxPrice);
+	
+		
+		//List<RoomVo> list = searchService.roomListAdvanced(checkIn, checkout, roomType, adult, child, minPrice, maxPrice);
 		
 		return "/rooms";
 	}

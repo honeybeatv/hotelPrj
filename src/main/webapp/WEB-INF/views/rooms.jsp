@@ -10,23 +10,23 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
 
-    <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/animate.css">
     
-    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="/static/css/aos.css">
+    <link rel="stylesheet" href="../static/css/aos.css">
 
-    <link rel="stylesheet" href="/static/css/ionicons.min.css">
+    <link rel="stylesheet" href="../static/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../static/css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="/static/css/flaticon.css">
-    <link rel="stylesheet" href="/static/css/icomoon.css">
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="../static/css/flaticon.css">
+    <link rel="stylesheet" href="../static/css/icomoon.css">
+    <link rel="stylesheet" href="..	/static/css/style.css">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
@@ -39,7 +39,7 @@
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('../images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
@@ -61,7 +61,7 @@
 		    		<div class="row">
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
-		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-1.jpg);">
+		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
 		    							<span class="icon-search2"></span>
 		    						</div>
@@ -189,62 +189,68 @@
 		    	</div>
 		    	<div class="col-lg-3 sidebar">
 	      		<div class="sidebar-wrap bg-light ftco-animate">
-	      			<h3 class="heading mb-4">Advanced Search</h3>
+	      			<h3 class="heading mb-4">상세조건 검색</h3>
 	      			<form action="/main/advancedSearch">
 	      				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" name="inDate" id="checkin_date" class="form-control checkin_date" placeholder="Check In Date">
+		                <input type="text" name="inDate" id="checkin_date" class="form-control checkin_date" placeholder="체크인 날짜">
 		              </div>
 		              <div class="form-group">
-		                <input type="text" name="outDate" id="checkin_date" class="form-control checkout_date" placeholder="Check Out Date">
+		                <input type="text" name="outDate" id="checkin_date" class="form-control checkout_date" placeholder="체크아웃 날짜">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="roomType" id="" class="form-control">
-	                    	<option value="">Room Type</option>
-	                    	<option value="suite">Suite</option>
-	                      <option value="family">Family Room</option>
-	                      <option value="deluxe">Deluxe Room</option>
-	                      <option value="classic">Classic Room</option>
-	                      <option value="superior">Superior Room</option>
-	                      <option value="luxury">Luxury Room</option>
+	                    	<option value="">숙소유형</option>
+	                    	<option value="apt">아파트</option>
+	                      <option value="house">주택</option>
+	                      <option value="walkup">공동주택</option>
+	                      <option value="hotel">호텔</option>
+	                      <option value="residence">레지던스</option>
+	                      <option value="hostel">호스텔</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="personAdult" id="" class="form-control">
-	                    	<option value="0">0 Adult</option>
-	                    	<option value="1">1 Adult</option>
-	                      <option value="2">2 Adult</option>
-	                      <option value="3">3 Adult</option>
-	                      <option value="4">4 Adult</option>
-	                      <option value="5">5 Adult</option>
-	                      <option value="6">6 Adult</option>
+	                    <select name="bedroom" id="" class="form-control">
+	                    	<option value="0">침실 0</option>
+	                    	<option value="1">침실 1</option>
+	                      <option value="2">침실 2</option>
+	                      <option value="3">침실 3</option>
+	                      <option value="4">침실 4</option>
+	                      <option value="5">침실 5</option>
+	                      <option value="6">침실 6</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="personChild" id="" class="form-control">
-	                    	<option value="0">0 Children</option>
-	                    	<option value="1">1 Children</option>
-	                      <option value="2">2 Children</option>
-	                      <option value="3">3 Children</option>
-	                      <option value="4">4 Children</option>
-	                      <option value="5">5 Children</option>
-	                      <option value="6">6 Children</option>
+	                    <select name="bed" id="" class="form-control">
+	                    	<option value="0">침대 0</option>
+	                    	<option value="1">침대 1</option>
+	                      <option value="2">침대 2</option>
+	                      <option value="3">침대 3</option>
+	                      <option value="4">침대 4</option>
+	                      <option value="5">침대 5</option>
+	                      <option value="6">침대 6</option>
 	                    </select>
 	                  </div>
 		              </div>
+		              
+		              <div class="form-group">
+		              <input type="checkbox" name="pet" value="pet"> 반려동물&emsp;
+		              <input type="checkbox" name="smoke" value="smoke"> 흡연실
+		              </div>
+		              
 		              <div class="form-group">
 		              	<div class="range-slider">
 		              		<span>
-										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>원	-
-										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>원
+										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>	-
+										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
 										  </span>
 										  <!-- <input value="1000" min="0" max="120000" step="500" type="range"/>
 										  <input value="50000" min="0" max="120000" step="500" type="range"/>
