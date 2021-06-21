@@ -8,13 +8,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoomVo {
-	private int Room_No;
+	private int RoomNo;
 	private String Rtype;
-	private String Rarea;
 	private String Rpeople;
 	private String Rinfo;
-	private String Rguide;
 	private String Rpicture;
 	private String Rlocation;
 	private String Rcity;
+	private int Rprice;
+	private int Rroom;
+	private int Rbed;
+	private String Rsmoke;
+	private String Rpet;
+	private String Raddress;
+	private String startday;
+	private String endday;
+	
 }

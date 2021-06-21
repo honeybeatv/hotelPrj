@@ -6,5 +6,5 @@ import com.site.vo.UserVo;
 
 @Mapper
 public interface UserMapper {
-
+	
 }
