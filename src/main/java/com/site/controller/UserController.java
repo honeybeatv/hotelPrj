@@ -29,9 +29,18 @@ public class UserController {
 		return "/index01";
 	}
 
-	
 	@RequestMapping("/login")
 	public String login() {
 		return "/login";
+	}
+	
+	@RequestMapping("/join")
+	public String join() {
+		return "/join";
+	}
+
+	@RequestMapping("/contact")
+	public String contact() {
+		return "/contact";
 	}
 }
