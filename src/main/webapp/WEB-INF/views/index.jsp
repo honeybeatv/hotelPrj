@@ -562,4 +562,21 @@
   <script src="/static/js/main.js"></script>
     
   </body>
+  <script>
+  	function test(){
+  		$.ajax({
+  			url:'/room/test2',
+  			dataType:'JSON',
+  			/* data: {name:'sks'}, */
+  			method:'GET',
+  			success: function(resp){
+  				console.log(resp);
+  			},
+  			error: function(){
+  				console.error(test);
+  			}
+  		})
+  	}
+  	
+  </script>
 </html>
