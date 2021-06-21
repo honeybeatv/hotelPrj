@@ -1,4 +1,4 @@
-package com.site.Controller;
+package com.site.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,10 +29,6 @@ public class UserController {
 		return "/index01";
 	}
 
-	@RequestMapping("/index")
-	public String index() {
-		return "/index";
-	}
 	
 	@RequestMapping("/login")
 	public String login() {

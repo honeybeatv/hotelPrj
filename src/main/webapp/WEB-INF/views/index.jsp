@@ -36,8 +36,8 @@
   </head>
   <body>
 
-    <%-- <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import> --%>
-    <%@ include file="/WEB-INF/views/include/nav.jsp" %>
+    <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
+   <%--  <%@ include file="/WEB-INF/views/include/nav.jsp" %> --%>
     <!-- END nav -->
 
     <section class="home-slider owl-carousel">
@@ -534,8 +534,8 @@
       </div>
     </section>
 
-  <%-- <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import> --%>
-  <%@ include file="/WEB-INF/views/include/footer.jsp" %>
+  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+<%--   <%@ include file="/WEB-INF/views/include/footer.jsp" %> --%>
     
   
 
