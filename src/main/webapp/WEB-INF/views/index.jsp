@@ -28,9 +28,33 @@
     <link rel="stylesheet" href="/static/css/icomoon.css">
     <link rel="stylesheet" href="/static/css/style.css">
     
-    <!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+    <!--<script  src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
  	<script type="text/javascript">
-  	 
+ 	function searchSubmit() {
+		var city = $("#city").val();
+		var startDate = $("#datepicker1").val();
+		var endDate = $("#datepicker2").val();
+		var people = $("#personnel").val();
+		if(city == ""){
+		alert("지역을 선택하세요");
+		return false;
+		}
+		else if (startDate == ""){
+			alert("체크인날짜를 입력하세요");
+			return false;
+		}
+		else if (endDate == ""){
+			alert("체크아웃날짜를 입력하세요")
+			return false;
+		}
+		else if (people == 0){
+			alert("인원수를 선택하세요")
+			return false;
+		}
+		else {
+			document.searchForm.submit();
+		}
+	}
   	</script>
   	
   </head>
@@ -74,58 +98,60 @@
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-12">
-    				<form action="#" class="booking-form">
+    				<form action="room/test" id="searchForm" name="searchForm" class="booking-form" method="post">
 	        		<div class="row">
-	        			<div class="col-md-3 d-flex">
-	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
-	        					<div class="wrap">
-				    					<label for="#">Check-in Date</label>
-				    					<input type="text" class="form-control checkin_date" placeholder="Check-in date">
-			    					</div>
-			    				</div>
-	        			</div>
-	        			<div class="col-md-3 d-flex">
-	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
-	        					<div class="wrap">
-				    					<label for="#">Check-out Date</label>
-				    					<input type="text" class="form-control checkout_date" placeholder="Check-out date">
-			    				</div>
-			    				</div>
-	        			</div>
 	        			<div class="col-md d-flex">
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
 	        					<div class="wrap">
-			      					<label for="#">Room</label>
+			      					<label for="#">지역</label>
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control">
-			                    	<option value="">Suite</option>
-			                      <option value="">Family Room</option>
-			                      <option value="">Deluxe Room</option>
-			                      <option value="">Classic Room</option>
-			                      <option value="">Superior Room</option>
-			                      <option value="">Luxury Room</option>
+			                    <select name="Rcity" id="city" class="form-control" style="cursor:pointer;">
+			                    	<option value="">지역</option>
+			                    	<option value="1">Suite</option>
+			                      <option value="2">Family Room</option>
+			                      <option value="3">Deluxe Room</option>
+			                      <option value="4">Classic Room</option>
+			                      <option value="5">Superior Room</option>
+			                      <option value="6">Luxury Room</option>
 			                    </select>
 			                  </div>
 				              </div>
 				            </div>
 		              </div>
 	        			</div>
+	        			<div class="col-md-3 d-flex">
+	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
+	        					<div class="wrap">
+				    					<label for="#">체크인 날짜</label>
+				    					<input type="text" class="form-control checkin_date" id="datepicker1" name="startDate" placeholder="체크인 날짜" style="cursor:pointer;" readonly>
+			    					</div>
+			    				</div>
+	        			</div>
+	        			<div class="col-md-3 d-flex">
+	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
+	        					<div class="wrap">
+				    					<label for="#">체크아웃 날짜</label>
+				    					<input type="text" class="form-control checkout_date" id="datepicker2" name="endDate" placeholder="체크아웃 날짜" style="cursor:pointer;" readonly>
+			    				</div>
+			    				</div>
+	        			</div>
 	        			<div class="col-md d-flex">
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
 	        					<div class="wrap">
-			      					<label for="#">Customer</label>
+			      					<label for="#">인원수</label>
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control">
-			                    	<option value="">1 Adult</option>
-			                      <option value="">2 Adult</option>
-			                      <option value="">3 Adult</option>
-			                      <option value="">4 Adult</option>
-			                      <option value="">5 Adult</option>
-			                      <option value="">6 Adult</option>
+			                    <select name="person" id="person" class="form-control" style="cursor:pointer;">
+				                      <option value="">인원수</option>
+				                      <option value="1">1명</option>
+				                      <option value="2">2명</option>
+				                      <option value="3">3명</option>
+				                      <option value="4">4명</option>
+				                      <option value="5">5명</option>
+				                      <option value="6">6명 이상</option>
 			                    </select>
 			                  </div>
 				              </div>
@@ -134,7 +160,7 @@
 	        			</div>
 	        			<div class="col-md d-flex">
 	        				<div class="form-group d-flex align-self-stretch">
-			              <input type="submit" value="찾기" class="btn btn-primary py-3 px-4 align-self-stretch">
+			              <input type="button"  onclick="searchSubmit()" value="찾기" class="btn btn-primary py-3 px-4 align-self-stretch">
 			            </div>
 	        			</div>
 	        		</div>

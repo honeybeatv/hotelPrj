@@ -10,23 +10,23 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
 
-    <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/animate.css">
+    <link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/animate.css">
     
-    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="/static/css/aos.css">
+    <link rel="stylesheet" href="../static/css/aos.css">
 
-    <link rel="stylesheet" href="/static/css/ionicons.min.css">
+    <link rel="stylesheet" href="../static/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../static/css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="/static/css/flaticon.css">
-    <link rel="stylesheet" href="/static/css/icomoon.css">
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="../static/css/flaticon.css">
+    <link rel="stylesheet" href="../static/css/icomoon.css">
+    <link rel="stylesheet" href="..	/static/css/style.css">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
@@ -39,7 +39,7 @@
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('../images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
@@ -61,7 +61,7 @@
 		    		<div class="row">
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
-		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-1.jpg);">
+		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
 		    							<span class="icon-search2"></span>
 		    						</div>
