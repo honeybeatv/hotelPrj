@@ -7,19 +7,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/room")
 public class RoomController {
 
-	@RequestMapping("/index")
-	public String index() {
-		return "/index";
-	}
+   @RequestMapping("/index")
+   public String index() {
+      return "/index";
+   }
 
-	@RequestMapping("/search")
-	public String search() {
-		return "/rooms";
-	}
+   @RequestMapping("/search")
+   public String search() {
+      return "/rooms";
+   }
 
-	@RequestMapping("/test")
-	public String test() {
-		return "/rooms";
-	}
+   @RequestMapping("/test")
+   public String test() {
+      return "/rooms";
+   }
+   @RequestMapping("/rooms-single")
+   public String rooms() {
+      return "/rooms-single";
+   }
+   
 
 }

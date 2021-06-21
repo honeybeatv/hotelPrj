@@ -45,7 +45,7 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>About</span></p>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">홈</a></span> <span>About</span></p>
 	            <h1 class="mb-4 bread">Rooms</h1>
             </div>
           </div>
@@ -67,16 +67,16 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Suite Room</a></h3>
-		    						<p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
+		    						<h3 class="mb-3"><a href="rooms-single">스위트 룸</a></h3>
+		    						<p><span class="price mr-2">80,000</span> <span class="per">원</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 3 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 1</li>
+		    							<li><span>최대인원:</span> 3명</li>
+		    							<li><span>방 크기:</span> 45 m2</li>
+		    							<li><span>전망:</span> 바다 view</li>
+		    							<li><span>침대:</span> 1</li>
 		    						</ul>
 		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+		    						<p class="pt-1"><a href="rooms-single" class="btn-custom">예약하기 <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -88,16 +88,16 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Family Room</a></h3>
-		    						<p><span class="price mr-2">$20.00</span> <span class="per">per night</span></p>
+		    						<h3 class="mb-3"><a href="rooms-single">패밀리 룸</a></h3>
+		    						<p><span class="price mr-2">120,000</span> <span class="per">원</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 3 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 1</li>
+		    							<li><span>최대인원:</span> 4명</li>
+		    							<li><span>방 크기:</span> 60 m2</li>
+		    							<li><span>전망:</span> 바다 view</li>
+		    							<li><span>침대:</span> 2</li>
 		    						</ul>
 		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+		    						<p class="pt-1"><a href="rooms-single" class="btn-custom">예약하기 <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -109,16 +109,16 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Deluxe Room</a></h3>
-		    						<p><span class="price mr-2">$150.00</span> <span class="per">per night</span></p>
+		    						<h3 class="mb-3"><a href="rooms-single">명품 룸</a></h3>
+		    						<p><span class="price mr-2">150,000</span> <span class="per">원</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 5 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 2</li>
+		    							<li><span>최대인원:</span> 6명</li>
+		    							<li><span>방 크기:</span> 80 m2</li>
+		    							<li><span>전망:</span> 바다 view</li>
+		    							<li><span>침대:</span> 3</li>
 		    						</ul>
 		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+		    						<p class="pt-1"><a href="rooms-single" class="btn-custom">에약하기 <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -130,16 +130,16 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Classic Room</a></h3>
-		    						<p><span class="price mr-2">$130.00</span> <span class="per">per night</span></p>
+		    						<h3 class="mb-3"><a href="rooms-single">클래식 룸</a></h3>
+		    						<p><span class="price mr-2">$180,000</span> <span class="per">원</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 5 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 2</li>
+		    							<li><span>최대인원:</span> 5명</li>
+		    							<li><span>방 크기:</span> 70 m2</li>
+		    							<li><span>전망:</span> 바다</li>
+		    							<li><span>침대:</span> 2</li>
 		    						</ul>
 		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+		    						<p class="pt-1"><a href="rooms-single" class="btn-custom">예약하기 <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -151,16 +151,16 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Superior Room</a></h3>
-		    						<p><span class="price mr-2">$300.00</span> <span class="per">per night</span></p>
+		    						<h3 class="mb-3"><a href="rooms-single">갤럭시 룸</a></h3>
+		    						<p><span class="price mr-2">250,000</span> <span class="per">원</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 6 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 3</li>
+		    							<li><span>최대인원:</span> 6명</li>
+		    							<li><span>방 크기:</span> 100 m2</li>
+		    							<li><span>전망:</span> 바다</li>
+		    							<li><span>침대:</span> 4</li>
 		    						</ul>
 		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+		    						<p class="pt-1"><a href="rooms-single" class="btn-custom">예약하기 <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -172,16 +172,16 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Luxury Room</a></h3>
-		    						<p><span class="price mr-2">$500.00</span> <span class="per">per night</span></p>
+		    						<h3 class="mb-3"><a href="rooms-single">럭셔리 룸</a></h3>
+		    						<p><span class="price mr-2">400,000</span> <span class="per">원</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 5 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 2</li>
+		    							<li><span>최대인원:</span> 8명</li>
+		    							<li><span>방 크기:</span> 130 m2</li>
+		    							<li><span>전망:</span> 바다</li>
+		    							<li><span>침대:</span> 6</li>
 		    						</ul>
 		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+		    						<p class="pt-1"><a href="rooms-single" class="btn-custom">예약하기 <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -193,22 +193,22 @@
 	      			<form action="#">
 	      				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="Check In Date">
+		                <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="체크인">
 		              </div>
 		              <div class="form-group">
-		                <input type="text" id="checkin_date" class="form-control checkout_date" placeholder="Check Out Date">
+		                <input type="text" id="checkin_date" class="form-control checkout_date" placeholder="체크아웃">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="" id="" class="form-control">
-	                    	<option value="">Room Type</option>
-	                    	<option value="">Suite</option>
-	                      <option value="">Family Room</option>
-	                      <option value="">Deluxe Room</option>
-	                      <option value="">Classic Room</option>
-	                      <option value="">Superior Room</option>
-	                      <option value="">Luxury Room</option>
+	                    	<option value="">방 유형</option>
+	                    	<option value="">스위트 룸</option>
+	                      <option value="">패밀리 룸</option>
+	                      <option value="">명품 룸</option>
+	                      <option value="">클래식 룸</option>
+	                      <option value="">갤럭시 룸</option>
+	                      <option value="">럭셔리 룸</option>
 	                    </select>
 	                  </div>
 		              </div>
@@ -216,7 +216,7 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="" id="" class="form-control">
-	                    	<option value="">0 Adult</option>
+	                    	<option value="">인원 수</option>
 	                    	<option value="">1 Adult</option>
 	                      <option value="">2 Adult</option>
 	                      <option value="">3 Adult</option>
@@ -226,28 +226,16 @@
 	                    </select>
 	                  </div>
 		              </div>
-		              <div class="form-group">
-		                <div class="select-wrap one-third">
-	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="" id="" class="form-control">
-	                    	<option value="">0 Children</option>
-	                    	<option value="">1 Children</option>
-	                      <option value="">2 Children</option>
-	                      <option value="">3 Children</option>
-	                      <option value="">4 Children</option>
-	                      <option value="">5 Children</option>
-	                      <option value="">6 Children</option>
-	                    </select>
-	                  </div>
+		              
 		              </div>
 		              <div class="form-group">
 		              	<div class="range-slider">
 		              		<span>
 										    <input type="number" value="25000" min="0" max="120000"/>	-
-										    <input type="number" value="50000" min="0" max="120000"/>
+										    <input type="number" value="50000" min="0" max="500000"/>
 										  </span>
 										  <input value="1000" min="0" max="120000" step="500" type="range"/>
-										  <input value="50000" min="0" max="120000" step="500" type="range"/>
+										  <input value="50000" min="0" max="500000" step="500" type="range"/>
 										  </svg>
 										</div>
 		              </div>

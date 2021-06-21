@@ -47,7 +47,7 @@
           <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-12 ftco-animate text-center">
           	<div class="text mb-5 pb-3">
-	            <h1 class="mb-3">Welcome To Deluxe</h1>
+	            <h1 class="mb-3">00000 에 오신것을 환영합니다!</h1>
 	            <h2>Hotels &amp; Resorts</h2>
             </div>
           </div>
@@ -61,7 +61,7 @@
           <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-12 ftco-animate text-center">
           	<div class="text mb-5 pb-3">
-	            <h1 class="mb-3">Enjoy A Luxury Experience</h1>
+	            <h1 class="mb-3">ㅇㄴㅁㅁ</h1>
 	            <h2>Join With Us</h2>
             </div>
           </div>
@@ -80,7 +80,7 @@
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
 	        					<div class="wrap">
 				    					<label for="#">Check-in Date</label>
-				    					<input type="text" class="form-control checkin_date" placeholder="Check-in date">
+				    					<input type="text" class="form-control checkin_date" placeholder="체크인">
 			    					</div>
 			    				</div>
 	        			</div>
@@ -88,24 +88,24 @@
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
 	        					<div class="wrap">
 				    					<label for="#">Check-out Date</label>
-				    					<input type="text" class="form-control checkout_date" placeholder="Check-out date">
+				    					<input type="text" class="form-control checkout_date" placeholder="체크아웃">
 			    				</div>
 			    				</div>
 	        			</div>
 	        			<div class="col-md d-flex">
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
 	        					<div class="wrap">
-			      					<label for="#">Room</label>
+			      					<label for="#">방</label>
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control">
-			                    	<option value="">Suite</option>
-			                      <option value="">Family Room</option>
-			                      <option value="">Deluxe Room</option>
-			                      <option value="">Classic Room</option>
-			                      <option value="">Superior Room</option>
-			                      <option value="">Luxury Room</option>
+			                    <select name="rooms-single" id="" class="form-control">
+			                    	<option value="">스위트</option>
+			                      <option value="">패밀리</option>
+			                      <option value="">디럭스</option>
+			                      <option value="">클래식</option>
+			                      <option value="">슈퍼리얼</option>
+			                      <option value="">럭셔리</option>
 			                    </select>
 			                  </div>
 				              </div>
@@ -115,17 +115,17 @@
 	        			<div class="col-md d-flex">
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
 	        					<div class="wrap">
-			      					<label for="#">Customer</label>
+			      					<label for="#">인원</label>
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 			                    <select name="" id="" class="form-control">
-			                    	<option value="">1 Adult</option>
-			                      <option value="">2 Adult</option>
-			                      <option value="">3 Adult</option>
-			                      <option value="">4 Adult</option>
-			                      <option value="">5 Adult</option>
-			                      <option value="">6 Adult</option>
+			                    	<option value="">1 명</option>
+			                      <option value="">2 명</option>
+			                      <option value="">3 명</option>
+			                      <option value="">4 명</option>
+			                      <option value="">5 명</option>
+			                      <option value="">6 명</option>
 			                    </select>
 			                  </div>
 				              </div>
@@ -156,7 +156,7 @@
 					<div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
 	          <div class="heading-section heading-section-wo-line pt-md-5 pl-md-5 mb-5">
 	          	<div class="ml-md-0">
-		          	<span class="subheading">Welcome to Deluxe Hotel</span>
+		          	<span class="subheading">00000에 오신것을 환영합니다.	</span>
 		            <h2 class="mb-4">Welcome To Our Hotel</h2>
 	            </div>
 	          </div>
@@ -562,7 +562,7 @@
   <script src="/static/js/main.js"></script>
     
   </body>
-  <script>
+ <!--  <script>
   	function test(){
   		$.ajax({
   			url:'/room/test2',
@@ -578,5 +578,5 @@
   		})
   	}
   	
-  </script>
+  </script> -->
 </html>
