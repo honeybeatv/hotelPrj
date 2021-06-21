@@ -190,65 +190,65 @@
 		    	<div class="col-lg-3 sidebar">
 	      		<div class="sidebar-wrap bg-light ftco-animate">
 	      			<h3 class="heading mb-4">Advanced Search</h3>
-	      			<form action="#">
+	      			<form action="/main/advancedSearch">
 	      				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="Check In Date">
+		                <input type="text" name="inDate" id="checkin_date" class="form-control checkin_date" placeholder="Check In Date">
 		              </div>
 		              <div class="form-group">
-		                <input type="text" id="checkin_date" class="form-control checkout_date" placeholder="Check Out Date">
+		                <input type="text" name="outDate" id="checkin_date" class="form-control checkout_date" placeholder="Check Out Date">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="" id="" class="form-control">
+	                    <select name="roomType" id="" class="form-control">
 	                    	<option value="">Room Type</option>
-	                    	<option value="">Suite</option>
-	                      <option value="">Family Room</option>
-	                      <option value="">Deluxe Room</option>
-	                      <option value="">Classic Room</option>
-	                      <option value="">Superior Room</option>
-	                      <option value="">Luxury Room</option>
+	                    	<option value="suite">Suite</option>
+	                      <option value="family">Family Room</option>
+	                      <option value="deluxe">Deluxe Room</option>
+	                      <option value="classic">Classic Room</option>
+	                      <option value="superior">Superior Room</option>
+	                      <option value="luxury">Luxury Room</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="" id="" class="form-control">
-	                    	<option value="">0 Adult</option>
-	                    	<option value="">1 Adult</option>
-	                      <option value="">2 Adult</option>
-	                      <option value="">3 Adult</option>
-	                      <option value="">4 Adult</option>
-	                      <option value="">5 Adult</option>
-	                      <option value="">6 Adult</option>
+	                    <select name="personAdult" id="" class="form-control">
+	                    	<option value="0">0 Adult</option>
+	                    	<option value="1">1 Adult</option>
+	                      <option value="2">2 Adult</option>
+	                      <option value="3">3 Adult</option>
+	                      <option value="4">4 Adult</option>
+	                      <option value="5">5 Adult</option>
+	                      <option value="6">6 Adult</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="" id="" class="form-control">
-	                    	<option value="">0 Children</option>
-	                    	<option value="">1 Children</option>
-	                      <option value="">2 Children</option>
-	                      <option value="">3 Children</option>
-	                      <option value="">4 Children</option>
-	                      <option value="">5 Children</option>
-	                      <option value="">6 Children</option>
+	                    <select name="personChild" id="" class="form-control">
+	                    	<option value="0">0 Children</option>
+	                    	<option value="1">1 Children</option>
+	                      <option value="2">2 Children</option>
+	                      <option value="3">3 Children</option>
+	                      <option value="4">4 Children</option>
+	                      <option value="5">5 Children</option>
+	                      <option value="6">6 Children</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              <div class="form-group">
 		              	<div class="range-slider">
 		              		<span>
-										    <input type="number" value="25000" min="0" max="120000"/>	-
-										    <input type="number" value="50000" min="0" max="120000"/>
+										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>원	-
+										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>원
 										  </span>
-										  <input value="1000" min="0" max="120000" step="500" type="range"/>
+										  <!-- <input value="1000" min="0" max="120000" step="500" type="range"/>
 										  <input value="50000" min="0" max="120000" step="500" type="range"/>
-										  </svg>
+										  </svg> -->
 										</div>
 		              </div>
 		              <div class="form-group">
