@@ -30,7 +30,11 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
-  	 
+	  	 $(function (){
+	  		 $('#goto_main').click(function(){
+	  			 location.href = '../user/UserInfoView?userid='aa\'\';
+	  		 });
+	  	 });
   	</script>
   	
   </head>
@@ -44,14 +48,15 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>mypage</span></p>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>mypage</span></p>
 	            <h1 class="mb-4 bread">Mypage</h1>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+	
+	<c:import url="/WEB-INF/views/includes/mypageCategory.jsp"></c:import>
 
     <section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
@@ -93,7 +98,7 @@
 				</div>
 				
 				<button type="submit" class="btn btn-primary py-3 px-5">수정</button>
-				<button type="button" onclick="javascript:location.href='/main/index" class="btn btn-primary py-3 px-5" value="1">취소</button>
+				<button type="button" id="goto_main" class="btn btn-primary py-3 px-5">취소</button>
             </form>
           </div>
     </section>
