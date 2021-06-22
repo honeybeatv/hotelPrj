@@ -22,9 +22,6 @@
 	  	   	   uemail=#{uemail}
 	  	 WHERE userno=#{userno}
   	</update>
-  	
-  	
-  	
 
   	<!-- 로그인 userid,upw 검색 -->
   	<select id="selectLogin" resultType="com.site.vo.UserVo">

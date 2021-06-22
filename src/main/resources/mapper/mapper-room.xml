@@ -16,8 +16,23 @@
   		<!-- 전체 room 정보 가져오기 -->
    <select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
    		select * from room
+	</select>
+
+  
+  <!-- <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  RoomVo 모든 게시물을 전달
+<mapper namespace="com.site.mapper.RoomMapper">
+	전체 room 정보 가져오기
+   <select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
+   		select * from room
    </select>
    
+</mapper> -->
   	  	<!-- 상세 조건 검색 -->
   	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
 		<![CDATA[
@@ -41,9 +56,6 @@
 			</if>
 			<if test="pet!=null or pet!=''">
 			AND ro.rpet = #{pet}
-			</if>
-			<if test="(minPrice!=null or minPrice!='') AND (maxPrice!=null or maxPrice!='')">
-			AND #{minPrice}<![CDATA[<]]>ro.rprice AND ro.rprice<![CDATA[<]]>#{maxPrice}
 			</if>
   	</select>
   

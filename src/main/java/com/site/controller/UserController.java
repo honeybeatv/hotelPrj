@@ -127,6 +127,7 @@ public class UserController {
 	public String UserInfoModifyDo(UserVo userVo) {
 		userService.UserInfoModifyDo(userVo);
 		
+
 		System.out.println("# mypage category_Informaton UserInfoModifyDo userid : " + userVo.getUserid() + " #");
 		
 		return "redirect:/user/UserInfoView?userno="+ userVo.getUserno();

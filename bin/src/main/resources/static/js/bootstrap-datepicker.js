@@ -1396,6 +1396,7 @@
 		daysOfWeekDisabled: [],
 		endDate: Infinity,
 		forceParse: true,
+		format: 'mm/dd/yyyy',
 		keyboardNavigation: true,
 		language: 'en',
 		minViewMode: 0,
@@ -1403,12 +1404,15 @@
 		multidateSeparator: ',',
 		orientation: "auto",
 		rtl: false,
-		startDate: 0,
+		startDate: -Infinity,
 		startView: 0,
 		todayBtn: false,
 		todayHighlight: false,
 		weekStart: 0
+<<<<<<< HEAD
 		
+=======
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 	};
 	var locale_opts = $.fn.datepicker.locale_opts = [
 		'format',
@@ -1418,13 +1422,14 @@
 	$.fn.datepicker.Constructor = Datepicker;
 	var dates = $.fn.datepicker.dates = {
 		en: {
-			days: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"],
-			daysShort: ["일", "월", "화", "수", "목", "금", "토", "일"],
-			daysMin: ["일", "월", "화", "수", "목", "금", "토", "일"],
-			months: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-			monthsShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-
-			}
+			days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+			daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+			daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+			months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+			today: "Today",
+			clear: "Clear"
+		}
 	};
 
 	var DPGlobal = {

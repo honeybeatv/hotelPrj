@@ -101,7 +101,10 @@
 					<td>${roomVo.roomNo}</td>
 					<td>${roomVo.rtype}</td>
 					<td>${roomVo.rpeople}</td>
+<<<<<<< HEAD
+=======
 					<td>${roomVo.rinfo}</td>
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 					<td>${roomVo.rpicture}</td>
 					<td>${roomVo.rcity}</td>
 					<td>${roomVo.rprice}</td>
