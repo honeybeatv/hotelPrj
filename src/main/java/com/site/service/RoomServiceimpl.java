@@ -42,7 +42,7 @@ public class RoomServiceimpl implements RoomService {
 	//room 리스트 페이지 호출
 	@Override
 	public List<RoomVo> roomsListAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<RoomVo> roomlist = roomMapper.selectroomsListAll();
+		return roomlist;
 	}
 }
