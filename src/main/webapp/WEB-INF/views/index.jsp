@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="/static/css/icomoon.css">
     <link rel="stylesheet" href="/static/css/style.css">
     
-    <!--<script  src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
+    <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
  	<script type="text/javascript">
  	function searchSubmit() {
 		var city = $("#city").val();
@@ -50,6 +50,9 @@
 		else if (people == 0){
 			alert("인원수를 선택하세요")
 			return false;
+		}
+		else if (startDate > endDate) {
+			alert("날짜를 확인하세요")
 		}
 		else {
 			document.searchForm.submit();
@@ -279,7 +282,7 @@
     						<h3 class="mb-3"><a href="rooms">Suite Room</a></h3>
     						<p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
     						<hr>
-    						<p class="pt-1"><a href="room-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+    						<p class="pt-1"><a href="rooms-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
     					</div>
     				</div>
     			</div>
@@ -581,6 +584,7 @@
   <script src="/static/js/aos.js"></script>
   <script src="/static/js/jquery.animateNumber.min.js"></script>
   <script src="/static/js/bootstrap-datepicker.js"></script>
+  <script src="/static/js/bootstrap-datepicker.ko.js"></script>
   <script src="/static/js/jquery.timepicker.min.js"></script>
   <script src="/static/js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
