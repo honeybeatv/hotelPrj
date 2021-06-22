@@ -28,7 +28,7 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public String login() {
-		System.out.println("user login");
+		System.out.println("user login page");
 		return "/user/login";
 	}
 	@RequestMapping(value="/login_check")
@@ -59,7 +59,7 @@ public class UserController {
 	
 	@RequestMapping("/join")
 	public String join() {
-		System.out.println("user join");
+		System.out.println("user join page");
 		return "/user/join";
 	}
 	@RequestMapping ("/join_check")
@@ -83,7 +83,7 @@ public class UserController {
 
 	@RequestMapping("/mypage")
 	public String mypage() {
-		System.out.println("user mypage");
+		System.out.println("user mypage category");
 		return "/user/mypage";
 	}
 
@@ -92,7 +92,7 @@ public class UserController {
 		UserVo userVo = userService.UserInfoView(userno);
 		model.addAttribute(userVo);
 		
-		System.out.println("UserInfoView userid : " + userVo.getUserid());
+		System.out.println("mypage UserInfoView userid : " + userVo.getUserid());
 		
 		return "/user/UserInfoView";
 	}
@@ -102,7 +102,7 @@ public class UserController {
 		UserVo userVo = userService.UserInfoModify(userno);
 		model.addAttribute(userVo);
 		
-		System.out.println("UserInfoModify userid : " + userVo.getUserid());
+		System.out.println("mypage UserInfoModify userid : " + userVo.getUserid());
 		
 		return "/user/UserInfoModify";
 	}
@@ -110,10 +110,9 @@ public class UserController {
 	@RequestMapping("/UserInfoModifyDo") // 회원 기본정보 수정페이지 실행
 	public String UserInfoModifyDo(UserVo userVo) {
 		userService.UserInfoModifyDo(userVo);
-		System.out.println("UserInfoModifyDo userid : " + userVo.getUserid());
 		
-//		userVo = userService.UserInfoView(userVo.getUserid());
-//		return "redirect:/mypageView?name="+userVo.getName();
+		System.out.println("mypage UserInfoModifyDo userid : " + userVo.getUserid());
+		
 		return "redirect:/user/UserInfoView?userno="+ userVo.getUserno();
 	}
 }
