@@ -120,6 +120,9 @@ public class UserController {
 	public String UserInfoModifyDo(UserVo userVo) {
 		userService.UserInfoModifyDo(userVo);
 		
+//		userVo = userService.UserInfoView(userVo.getUserid());
+//		return "redirect:/mypageView?name="+userVo.getName();
+//		return "redirect:/user/UserInfoView?userno="+ userVo.getUser_no();
 		System.out.println("mypage UserInfoModifyDo userid : " + userVo.getUserid());
 		
 		return "redirect:/user/UserInfoView?userno="+ userVo.getUserno();

@@ -10,27 +10,27 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
 
-    <link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/animate.css">
+    <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
     
-    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../static/css/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../static/css/aos.css">
+    <link rel="stylesheet" href="/static/css/aos.css">
 
-    <link rel="stylesheet" href="../static/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../static/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="../static/css/flaticon.css">
-    <link rel="stylesheet" href="../static/css/icomoon.css">
-    <link rel="stylesheet" href="..	/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/flaticon.css">
+    <link rel="stylesheet" href="/static/css/icomoon.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
-
+  	 
   	</script>
   	
   </head>
@@ -39,25 +39,27 @@
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('../images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>About</span></p>
-	            <h1 class="mb-4 bread">111</h1>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">홈</a></span> <span>About</span></p>
+	            <h1 class="mb-4 bread">Rooms</h1>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
     <section class="ftco-section bg-light">
     	<div class="container">
     		<div class="row">
 	        <div class="col-lg-9">
 		    		<div class="row">
-		    			<c:forEach var="list" items="${list }" > 
+		    		<c:forEach var="list" items="${list }">
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
 		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
@@ -66,16 +68,18 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
+		    						<h3 class="mb-3"><a href="rooms-single">스위트 룸</a></h3>
+		    						<p><span class="price mr-2">80,000</span> <span class="per">원</span></p>
 		    						<h3 class="mb-3"><a href="rooms-single">${list.roomNo }</a></h3>
 		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 3 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 1</li>
+		    							<li><span>최대인원:</span> 3명</li>
+		    							<li><span>방 크기:</span> 45 m2</li>
+		    							<li><span>전망:</span> 바다 view</li>
+		    							<li><span>침대:</span> 1</li>
 		    						</ul>
 		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+		    						<p class="pt-1"><a href="rooms-single" class="btn-custom">예약하기 <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -88,14 +92,24 @@
 	      			<form action="/advancedSearch">
 	      				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" name="inDate" value="${start }" id="checkin_date" class="form-control checkin_date" placeholder="체크인 날짜">
+		                <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="체크인">
+		                <input type="text" name="inDate" id="checkin_date" class="form-control checkin_date" placeholder="체크인 날짜">
 		              </div>
 		              <div class="form-group">
-		                <input type="text" name="outDate" value="${end }" id="checkin_date" class="form-control checkout_date" placeholder="체크아웃 날짜">
+		                <input type="text" id="checkin_date" class="form-control checkout_date" placeholder="체크아웃">
+		                <input type="text" name="outDate" id="checkin_date" class="form-control checkout_date" placeholder="체크아웃 날짜">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+	                    <select name="" id="" class="form-control">
+	                    	<option value="">방 유형</option>
+	                    	<option value="">스위트 룸</option>
+	                      <option value="">패밀리 룸</option>
+	                      <option value="">명품 룸</option>
+	                      <option value="">클래식 룸</option>
+	                      <option value="">갤럭시 룸</option>
+	                      <option value="">럭셔리 룸</option>
 	                    <select name="roomType" id="" class="form-control">
 	                    	<option value="">숙소유형</option>
 	                    	<option value="apt">아파트</option>
@@ -110,6 +124,14 @@
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+	                    <select name="" id="" class="form-control">
+	                    	<option value="">인원 수</option>
+	                    	<option value="">1 Adult</option>
+	                      <option value="">2 Adult</option>
+	                      <option value="">3 Adult</option>
+	                      <option value="">4 Adult</option>
+	                      <option value="">5 Adult</option>
+	                      <option value="">6 Adult</option>
 	                    <select name="bedroom" id="" class="form-control">
 	                    	<option value="0">침실 0</option>
 	                    	<option value="1">침실 1</option>
@@ -121,6 +143,7 @@
 	                    </select>
 	                  </div>
 		              </div>
+		              
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -144,9 +167,14 @@
 		              <div class="form-group">
 		              	<div class="range-slider">
 		              		<span>
+										    <input type="number" value="25000" min="0" max="120000"/>	-
+										    <input type="number" value="50000" min="0" max="500000"/>
 										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>	-
 										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
 										  </span>
+										  <input value="1000" min="0" max="120000" step="500" type="range"/>
+										  <input value="50000" min="0" max="500000" step="500" type="range"/>
+										  </svg>
 										  <!-- <input value="1000" min="0" max="120000" step="500" type="range"/>
 										  <input value="50000" min="0" max="120000" step="500" type="range"/>
 										  </svg> -->
