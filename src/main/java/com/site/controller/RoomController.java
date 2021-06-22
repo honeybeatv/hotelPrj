@@ -1,5 +1,6 @@
 package com.site.controller;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
 
@@ -20,8 +21,6 @@ public class RoomController {
 	@Autowired
 	RoomService roomService;
 	
-	
-
    @RequestMapping("/index")
    public String index() {
       return "/index";
@@ -51,7 +50,7 @@ public class RoomController {
 		return "/roomsList";
    }
 
-
+   //index페이지에서 검색
 	@RequestMapping("/search")
 	public String test(@RequestParam("startDate") String start,@RequestParam("endDate") String end,RoomVo vo,Model model) throws ParseException {
 		System.out.println(vo);
@@ -60,7 +59,7 @@ public class RoomController {
 		int startday = Integer.parseInt(start1);
 		int endday = Integer.parseInt(end1);
 		System.out.println(startday+","+endday);
-		List<RoomVo> list = roomService.getlist(startday,endday);
+		List<RoomVo> list = roomService.getlist(startday,endday,vo.getRcity(),vo.getRpeople());
 		System.out.println(list);
 		model.addAttribute("list",list);
 		model.addAttribute("start",start);
