@@ -91,14 +91,14 @@
 			<!-- 내용부분 시작 -->
 			<c:forEach var="roomVo" items="${roomsList }">
 				<tr>
-					<td><span class="table-notice">${roomVo.roomno }</span></td>
+					<td><span class="table-notice">${roomVo.roomNo }</span></td>
 					<td class="table-title">
-						<!-- content_view?번호를 전달 --> <a href="view?bno=${roomVo.roomno }">
-							<c:forEach begin="1" end="${roomVo.roomno}">
+						<!-- content_view?번호를 전달 --> <a href="view?bno=${roomVo.roomNo }">
+							<c:forEach begin="1" end="${roomVo.roomNo}">
 							</c:forEach>
 					</a>
 					</td>
-					<td>${roomVo.roomno}</td>
+					<td>${roomVo.roomNo}</td>
 					<td>${roomVo.rtype}</td>
 					<td>${roomVo.rpeople}</td>
 					<td>${roomVo.rpicture}</td>

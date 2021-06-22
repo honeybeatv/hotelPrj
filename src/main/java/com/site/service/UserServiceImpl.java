@@ -10,5 +10,26 @@ import com.site.vo.UserVo;
 
 @Service
 public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	UserMapper userMapper;
+
+	@Override // 회원 기본정보 페이지 호출
+	public UserVo UserInfoView(int userno) {
+		UserVo userVo = userMapper.selectUserInfo(userno);
+		return userVo;
+	}
+
+	@Override // 회원 기본정보 수정페이지 호출
+	public UserVo UserInfoModify(int userno) {
+		UserVo userVo = userMapper.selectUserInfo(userno);
+		return userVo;
+	}
+
+	@Override // 회원 기본정보 수정페이지 실행
+	public void UserInfoModifyDo(UserVo userVo) {
+		userMapper.updateUserInfoModifyDo(userVo);
+	}
+
 
 }
