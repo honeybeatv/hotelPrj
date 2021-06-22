@@ -30,6 +30,16 @@ public class UserServiceImpl implements UserService {
 	public void UserInfoModifyDo(UserVo userVo) {
 		userMapper.updateUserInfoModifyDo(userVo);
 	}
+	
+	
+	@Override //로그인 확인
+	public UserVo login(UserVo userVo) {
+		return userMapper.selectLogin(userVo);
+	}
+	@Override //회원가입
+	public int join(UserVo userVo) {
+		return userMapper.join_check(userVo);
+	}
 
 
 }
