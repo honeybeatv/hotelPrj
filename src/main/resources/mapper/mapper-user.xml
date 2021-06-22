@@ -5,6 +5,7 @@
   
   <mapper namespace="com.site.mapper.UserMapper">
   	
+  
 	<!-- 회원 기본정보 호출 -->
   	<select id="selectUserInfo" resultType="com.site.vo.UserVo">
   		SELECT * FROM user1 WHERE userno=7

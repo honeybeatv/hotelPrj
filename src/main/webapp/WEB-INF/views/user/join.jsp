@@ -98,7 +98,7 @@ $(document).ready(function(){
 	 			 success:function(data){
 	 				 alert(data.msg);
 	 				 if(data.flag=="success"){
-	 				    location.href="./index01";
+	 				    location.href="/index";
 	 				 }else{
 	 					 $("#userpw").val("");//공백처리
 	 					return false;
