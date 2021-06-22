@@ -35,4 +35,11 @@ public class RoomServiceImpl implements RoomService {
 		List<RoomVo> roomlist = mapper.selectroomsListAll();
 		return roomlist;
 	}
+
+	@Override
+	public List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String roomType, String bedroom, String bed,
+			int minPrice, int maxPrice, String pet, String smoke) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

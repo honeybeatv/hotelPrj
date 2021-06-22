@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RoomVo {
 	
+
 	private int roomNo;
 	private String rtype;
 	private String rpeople;

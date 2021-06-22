@@ -28,19 +28,67 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public String login() {
-		System.out.println("user login");
+		System.out.println("user login page");
 		return "/user/login";
+	}
+	
+	@RequestMapping(value="/login_check")
+	@ResponseBody
+	public Map<String,Object> login_check(UserVo userVo,HttpServletRequest request,Model model) {
+		
+		Map<String,Object> map=new HashMap<String, Object>();
+		UserVo uVo = userService.login(userVo); //전체리스트 가져오기
+		map.put("uVo",uVo);
+		if(uVo==null) {
+			map.put("flag", "fail");
+			map.put("msg", "아이디와 패스워드가 일치하지 않습니다.");
+			
+			System.out.println("user login fail");
+		}else {
+			map.put("flag", "success");
+			map.put("msg", "로그인 성공!");
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("flag","success");
+			session.setAttribute("session_userid", uVo.getUserid());
+			session.setAttribute("session_userno", uVo.getUserno());
+			session.setAttribute("session_uemail", uVo.getUemail());
+			
+			System.out.println("user login success : " + session.getAttribute("session_userid"));
+		}
+		return map;
 	}
 	
 	@RequestMapping("/join")
 	public String join() {
-		System.out.println("user join");
+		System.out.println("user join page");
 		return "/user/join";
+	}
+	@RequestMapping ("/join_check")
+	@ResponseBody
+	public Map<String,Object> join_check(UserVo userVo,HttpServletRequest request,Model model) {
+		
+		Map<String,Object> map=new HashMap<String, Object>();
+		int count = userService.join(userVo); //회원가입 데이터입력 저장
+		
+		
+		if(count==0) {
+			map.put("flag", "fail");
+			map.put("msg", "회원가입 실패.");
+			
+			System.out.println("user join fail");
+		}else {
+			map.put("flag", "success");
+			map.put("msg", "회원가입 성공!");
+			
+			System.out.println("user join success");
+		}
+		return map;
 	}
 
 	@RequestMapping("/mypage")
 	public String mypage() {
-		System.out.println("user mypage");
+		System.out.println("user mypage category");
 		return "/user/mypage";
 	}
 
@@ -49,7 +97,7 @@ public class UserController {
 		UserVo userVo = userService.UserInfoView(userno);
 		model.addAttribute(userVo);
 		
-		System.out.println("UserInfoView userid : " + userVo.getUserid());
+		System.out.println("mypage UserInfoView userid : " + userVo.getUserid());
 		
 		return "/user/UserInfoView";
 	}
@@ -59,7 +107,7 @@ public class UserController {
 		UserVo userVo = userService.UserInfoModify(userno);
 		model.addAttribute(userVo);
 		
-		System.out.println("UserInfoModify userid : " + userVo.getUserid());
+		System.out.println("mypage UserInfoModify userid : " + userVo.getUserid());
 		
 		return "/user/UserInfoModify";
 	}
@@ -67,10 +115,12 @@ public class UserController {
 	@RequestMapping("/UserInfoModifyDo") // 회원 기본정보 수정페이지 실행
 	public String UserInfoModifyDo(UserVo userVo) {
 		userService.UserInfoModifyDo(userVo);
-		System.out.println("UserInfoModifyDo userid : " + userVo.getUserid());
 		
 //		userVo = userService.UserInfoView(userVo.getUserid());
 //		return "redirect:/mypageView?name="+userVo.getName();
-		return "redirect:/user/UserInfoView?userno="+ userVo.getUser_no();
+//		return "redirect:/user/UserInfoView?userno="+ userVo.getUser_no();
+		System.out.println("mypage UserInfoModifyDo userid : " + userVo.getUserid());
+		
+		return "redirect:/user/UserInfoView?userno="+ userVo.getUserno();
 	}
 }

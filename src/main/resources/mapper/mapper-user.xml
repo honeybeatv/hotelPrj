@@ -4,11 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.site.mapper.UserMapper">
+  	
   
-  	<select id="selectLogin" resultType="com.site.vo.UserVo">
-  		SELECT * FROM user1 WHERE userid = #{userid} AND userpw = #{userpw}
-  	</select>
-	
 	<!-- 회원 기본정보 호출 -->
   	<select id="selectUserInfo" resultType="com.site.vo.UserVo">
   		SELECT * FROM user1 WHERE userno=7
@@ -26,6 +23,15 @@
 	  	 WHERE userno=7
   	</update>
 
+  	<!-- 로그인 userid,upw 검색 -->
+  	<select id="selectLogin" resultType="com.site.vo.UserVo">
+  		select * from user1 where userid=#{userid} and userpw=#{userpw} 
+  	</select>
   	
+  	<!-- 회원가입 -->
+	<insert id="join_check">
+	    insert into user1 values(#{name},#{userid},
+	    #{userpw},USER1_SEQ.nextval,#{uphone},0,#{uemail})
+	</insert>
   
   </mapper>

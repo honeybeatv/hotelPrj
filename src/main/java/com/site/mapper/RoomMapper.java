@@ -13,6 +13,13 @@ public interface RoomMapper {
 	List<RoomVo> getlist(String start, String end);
 
 	List<RoomVo> selectroomsListAll();
+	List getStartday();
+
+	List getEndday();
+
+	//상세조건검색
+	List<RoomVo> selectAdvancedRoomList(String checkIn, String checkOut, String roomType, String bedroom, String bed,
+			int minPrice, int maxPrice, String pet, String smoke);
 	
 
 }

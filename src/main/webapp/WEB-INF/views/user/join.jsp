@@ -1,0 +1,217 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Join Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/animate.css">
+    
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="/static/css/aos.css">
+
+    <link rel="stylesheet" href="/static/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="/static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/static/css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="/static/css/flaticon.css">
+    <link rel="stylesheet" href="/static/css/icomoon.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+ 	<script type="text/javascript">
+  	 
+  	</script>
+  	
+  	<script type="text/javascript">
+	
+$(document).ready(function(){
+	$("#joinBtn").click(function(){
+		
+        // 태크.val() : 태그에 입력된 값
+        // 태크.val("값") : 태그의 값을 변경 
+        var userid = $("#userid").val();
+        var userpw = $("#userpw").val();
+        
+        var uemail = $("#uemail").val();
+        var name = $("#name").val();
+        var uphone = $("#uphone").val();
+        
+        
+        if(name == ""){
+            alert("이름을 입력하세요.");
+            $("#name").focus(); // 입력포커스 이동
+            return; // 함수 종료
+        }
+        if(userid == ""){
+            alert("아이디를 입력하세요.");
+            $("#userid").focus(); // 입력포커스 이동
+            return; // 함수 종료
+        }
+        if(userpw == ""){
+            alert("비밀번호를 입력하세요.");
+            $("#userpw").focus();
+            return;
+        }
+       /*  if(userPw != $('#mbpw_re').val()){
+        	alert("두 비밀번호가 다릅니다")
+        	return;
+        } */
+        if(uemail == ""){
+            alert("이메일을 입력하세요.");
+            $("#uemail").focus();
+            return;
+        }
+        if(uphone == ""){
+            alert("전화번호를 입력하세요.");
+            $("#uphone").focus();
+            return;
+        }
+        
+        join_check()
+       
+        
+    });
+	
+	function join_check(){
+	 	   $.ajax({
+	 			 url:'./join_check',
+	 			 type:'post',
+	 			 data:{
+	 				 "userid":$("#userid").val(),
+	 				 "userpw":$("#userpw").val(),
+	 				 "uemail":$("#uemail").val(),
+	 	        	 "name":$("#name").val(),
+	 	        	 "uphone":$("#uphone").val(),
+	 	        	 
+	 			 },
+	 			 success:function(data){
+	 				 alert(data.msg);
+	 				 if(data.flag=="success"){
+	 				    location.href="/index";
+	 				 }else{
+	 					 $("#userpw").val("");//공백처리
+	 					return false;
+	 				 }
+	 			 },
+	 			 error:function(){
+	 				 alert("에러");
+	 			 }
+	 		  });
+	    }
+	
+	
+});
+</script>
+  	
+  	
+  </head>
+  <body>
+
+   <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
+
+    <div class="hero-wrap" style="background-image: url('/static/images/bg_1.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>join</span></p>
+	            <h1 class="mb-4 bread">Join</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <section class="ftco-section contact-section bg-light" align="center">
+		<div  class="col-6" style="display:inline-block;" >
+            <form action="join_check" method="post" class="bg-white p-5 " width="100%">
+				
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" style="width:100%;" id="name" name="name">
+					</div>
+				</div>
+				
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label" style="font-weight:bolder;">아이디</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid">
+					</div>
+					<div class="col-sm-3"><a href='#'>중복확인 </a></div>
+				</div>
+				
+				<div class="form-inline form-group">
+					<label for="userpw" class="col-sm-2 control-label" style="font-weight:bolder;">비밀번호</label>
+					<div class="col-sm-7">
+						<input type="password" class="form-control" style="width:100%;" id="userpw" name="userpw">
+					</div>
+				</div>
+				
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">이메일</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" style="width:100%;" id="uemail" name="uemail">
+					</div>
+					<div class="col-sm-3">ex)ya63kr@nate.com</div>
+				</div>
+				
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">핸드폰 번호</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" style="width:100%;" id="uphone" name="uphone">
+					</div>
+					<div class="col-sm-3">ex) -없이 작성하세요</div>
+				</div>
+
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">닉네임</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" style="width:100%;" id="" name="">
+					</div>
+					<div class="col-sm-3">ex)19920913</div>
+				</div>
+				
+				<input type="button" value="회원가입" id="joinBtn" class="btn btn-primary py-3 px-5">
+            </form>
+          </div>
+    </section>
+
+    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+    
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/static/js/popper.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/jquery.easing.1.3.js"></script>
+  <script src="/static/js/jquery.waypoints.min.js"></script>
+  <script src="/static/js/jquery.stellar.min.js"></script>
+  <script src="/static/js/owl.carousel.min.js"></script>
+  <script src="/static/js/jquery.magnific-popup.min.js"></script>
+  <script src="/static/js/aos.js"></script>
+  <script src="/static/js/jquery.animateNumber.min.js"></script>
+  <script src="/static/js/bootstrap-datepicker.js"></script>
+  <script src="/static/js/jquery.timepicker.min.js"></script>
+  <script src="/static/js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="/static/js/google-map.js"></script>
+  <script src="/static/js/main.js"></script>
+    
+  </body>
+</html>
