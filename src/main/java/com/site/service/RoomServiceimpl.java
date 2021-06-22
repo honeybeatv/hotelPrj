@@ -19,14 +19,21 @@ import com.site.vo.RoomVo;
 public class RoomServiceimpl implements RoomService {
 	
 	@Autowired
-	RoomMapper mapper;
+	RoomMapper roomMapper;
 
 
 	@Override
 	public List<RoomVo> getlist(int startday, int endday) throws ParseException {
 		String start = Integer.toString(startday);
 		String end = Integer.toString(endday);
-		List<RoomVo> vo = mapper.getlist(start,end);
+		List<RoomVo> vo = roomMapper.getlist(start,end);
 		return vo;
+	}
+
+
+	@Override
+	public List<RoomVo> roomsListAll() {
+		List<RoomVo> roomlist = roomMapper.selectroomsListAll();
+		return roomlist;
 	}
 }

@@ -1,6 +1,5 @@
 package com.site.controller;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
 
@@ -17,14 +16,41 @@ import com.site.vo.RoomVo;
 @RequestMapping("/room")
 public class RoomController {
 	
-
 	@Autowired
-	RoomService service;
+	RoomService roomService;
 	
-	@RequestMapping("/index")
-	public String index() {
-		return "/index";
-	}
+	
+
+   @RequestMapping("/index")
+   public String index() {
+      return "/index";
+   }
+
+
+   @RequestMapping("/rooms")
+   public String test() {
+      return "/rooms";
+   }
+   
+   @RequestMapping("/rooms-single")
+   public String rooms() {
+      return "/rooms-single";
+   }
+   
+   @RequestMapping("/roomsadd")
+   public String roomsadd() {
+      return "/roomsadd";
+   }
+   
+   @RequestMapping("/roomsList") //room 리스트 페이지 호출
+	public String roomsList(Model model) {
+		
+		List<RoomVo> roomsList = roomService.roomsListAll();
+		model.addAttribute("roomsList", roomsList);
+		
+		System.out.println("roomsList" + roomsList);
+		return "/roomsList";
+}
 
 	@RequestMapping("/search")
 	public String search(RoomVo vo) {
@@ -40,10 +66,10 @@ public class RoomController {
 		int startday = Integer.parseInt(start1);
 		int endday = Integer.parseInt(end1);
 		System.out.println(startday+","+endday);
-		List<RoomVo> temp = service.getlist(startday,endday);
+		List<RoomVo> temp = roomService.getlist(startday,endday);
 		System.out.println(temp);
 		model.addAttribute("temp",temp);
 		return "/rooms";
 	}
-
 }
+

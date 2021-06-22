@@ -7,6 +7,12 @@
   
   	<select id="getlist" parameterType="String" resultType="com.site.vo.RoomVo">
 	select distinct a.* from room a,reserve b where not in TO_DATE(#{start},'YYYYMMDD') between b.startday and b.endday and not in TO_DATE(#{end},'YYYYMMDD') between b.startday and b.endday
-  	</select>
+  	</select><!--   RoomVo 모든 게시물을 전달 -->
+  	
 
+	<!-- 전체 room 정보 가져오기 -->
+   <select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
+   		select * from room
+   </select>
+	
   </mapper>
