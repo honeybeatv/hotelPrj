@@ -28,9 +28,36 @@
     <link rel="stylesheet" href="/static/css/icomoon.css">
     <link rel="stylesheet" href="/static/css/style.css">
     
-    <!-- <script  src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+    <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
  	<script type="text/javascript">
-  	 
+ 	function searchSubmit() {
+		var city = $("#rcity").val();
+		var startDate = $("#datepicker1").val();
+		var endDate = $("#datepicker2").val();
+		var people = $("#rpeople").val();
+		if(city == ""){
+		alert("지역을 선택하세요");
+		return false;
+		}
+		else if (startDate == ""){
+			alert("체크인날짜를 입력하세요");
+			return false;
+		}
+		else if (endDate == ""){
+			alert("체크아웃날짜를 입력하세요")
+			return false;
+		}
+		else if (people == 0){
+			alert("인원수를 선택하세요")
+			return false;
+		}
+		else if (startDate > endDate) {
+			alert("날짜를 확인하세요")
+		}
+		else {
+			document.searchForm.submit();
+		}
+	}
   	</script>
   	
   </head>
@@ -47,7 +74,7 @@
           <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-12 ftco-animate text-center">
           	<div class="text mb-5 pb-3">
-	            <h1 class="mb-3">00000 에 오신것을 환영합니다!</h1>
+	            <h1 class="mb-3">Welcome To Deluxe</h1>
 	            <h2>Hotels &amp; Resorts</h2>
             </div>
           </div>
@@ -61,7 +88,7 @@
           <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-12 ftco-animate text-center">
           	<div class="text mb-5 pb-3">
-	            <h1 class="mb-3">ㅇㄴㅁㅁ</h1>
+	            <h1 class="mb-3">Enjoy A Luxury Experience</h1>
 	            <h2>Join With Us</h2>
             </div>
           </div>
@@ -74,58 +101,61 @@
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-12">
-    				<form action="#" class="booking-form">
+    				<form action="search" id="searchForm" name="searchForm" class="booking-form" method="post">
 	        		<div class="row">
-	        			<div class="col-md-3 d-flex">
-	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
-	        					<div class="wrap">
-				    					<label for="#">Check-in Date</label>
-				    					<input type="text" class="form-control checkin_date" placeholder="체크인">
-			    					</div>
-			    				</div>
-	        			</div>
-	        			<div class="col-md-3 d-flex">
-	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
-	        					<div class="wrap">
-				    					<label for="#">Check-out Date</label>
-				    					<input type="text" class="form-control checkout_date" placeholder="체크아웃">
-			    				</div>
-			    				</div>
-	        			</div>
 	        			<div class="col-md d-flex">
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
 	        					<div class="wrap">
-			      					<label for="#">방</label>
+			      					<label for="#">지역</label>
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="rooms-single" id="" class="form-control">
-			                    	<option value="">스위트</option>
-			                      <option value="">패밀리</option>
-			                      <option value="">디럭스</option>
-			                      <option value="">클래식</option>
-			                      <option value="">슈퍼리얼</option>
-			                      <option value="">럭셔리</option>
+			                    <select name="rcity" id="city" class="form-control" style="cursor:pointer;">
+			                    	<option value="">지역</option>
+			                    	<option value="서울">서울</option>
+			                      <option value="경기">경기</option>
+			                      <option value="인천">인천</option>
+			                      <option value="강원">강원</option>
+			                      <option value="대전">대전</option>
+			                      <option value="부산">부산</option>
+			                      <option value="제주">제주</option>
 			                    </select>
 			                  </div>
 				              </div>
 				            </div>
 		              </div>
 	        			</div>
+	        			<div class="col-md-3 d-flex">
+	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
+	        					<div class="wrap">
+				    					<label for="#">체크인 날짜</label>
+				    					<input type="text" class="form-control checkin_date" id="datepicker1" name="startDate" placeholder="체크인 날짜" style="cursor:pointer;" readonly>
+			    					</div>
+			    				</div>
+	        			</div>
+	        			<div class="col-md-3 d-flex">
+	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
+	        					<div class="wrap">
+				    					<label for="#">체크아웃 날짜</label>
+				    					<input type="text" class="form-control checkout_date" id="datepicker2" name="endDate" placeholder="체크아웃 날짜" style="cursor:pointer;" readonly>
+			    				</div>
+			    				</div>
+	        			</div>
 	        			<div class="col-md d-flex">
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
 	        					<div class="wrap">
-			      					<label for="#">인원</label>
+			      					<label for="#">인원수</label>
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="" id="" class="form-control">
-			                    	<option value="">1 명</option>
-			                      <option value="">2 명</option>
-			                      <option value="">3 명</option>
-			                      <option value="">4 명</option>
-			                      <option value="">5 명</option>
-			                      <option value="">6 명</option>
+			                    <select name="rpeople" id="rpeople" class="form-control" style="cursor:pointer;">
+				                      <option value="">인원수</option>
+				                      <option value="1">1명</option>
+				                      <option value="2">2명</option>
+				                      <option value="3">3명</option>
+				                      <option value="4">4명</option>
+				                      <option value="5">5명</option>
+				                      <option value="6">6명 이상</option>
 			                    </select>
 			                  </div>
 				              </div>
@@ -134,7 +164,7 @@
 	        			</div>
 	        			<div class="col-md d-flex">
 	        				<div class="form-group d-flex align-self-stretch">
-			              <input type="submit" value="찾기" class="btn btn-primary py-3 px-4 align-self-stretch">
+			              <input type="button"  onclick="searchSubmit()" value="찾기" class="btn btn-primary py-3 px-4 align-self-stretch">
 			            </div>
 	        			</div>
 	        		</div>
@@ -156,7 +186,7 @@
 					<div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
 	          <div class="heading-section heading-section-wo-line pt-md-5 pl-md-5 mb-5">
 	          	<div class="ml-md-0">
-		          	<span class="subheading">00000에 오신것을 환영합니다.	</span>
+		          	<span class="subheading">Welcome to Deluxe Hotel</span>
 		            <h2 class="mb-4">Welcome To Our Hotel</h2>
 	            </div>
 	          </div>
@@ -253,7 +283,7 @@
     						<h3 class="mb-3"><a href="rooms">Suite Room</a></h3>
     						<p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
     						<hr>
-    						<p class="pt-1"><a href="room-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+    						<p class="pt-1"><a href="rooms-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
     					</div>
     				</div>
     			</div>
@@ -555,6 +585,7 @@
   <script src="/static/js/aos.js"></script>
   <script src="/static/js/jquery.animateNumber.min.js"></script>
   <script src="/static/js/bootstrap-datepicker.js"></script>
+  <script src="/static/js/bootstrap-datepicker.ko.js"></script>
   <script src="/static/js/jquery.timepicker.min.js"></script>
   <script src="/static/js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
@@ -562,21 +593,4 @@
   <script src="/static/js/main.js"></script>
     
   </body>
- <!--  <script>
-  	function test(){
-  		$.ajax({
-  			url:'/room/test2',
-  			dataType:'JSON',
-  			/* data: {name:'sks'}, */
-  			method:'GET',
-  			success: function(resp){
-  				console.log(resp);
-  			},
-  			error: function(){
-  				console.error(test);
-  			}
-  		})
-  	}
-  	
-  </script> -->
 </html>

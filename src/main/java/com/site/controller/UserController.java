@@ -43,16 +43,20 @@ public class UserController {
 			map.put("flag", "fail");
 			map.put("msg", "아이디와 패스워드가 일치하지 않습니다.");
 			
+			HttpSession session = request.getSession();
+			session.setAttribute("session_flag","fail");
+			
 			System.out.println("user login fail");
 		}else {
 			map.put("flag", "success");
 			map.put("msg", "로그인 성공!");
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("flag","success");
-			session.setAttribute("session_userid", uVo.getUserid());
-			session.setAttribute("session_userno", uVo.getUserno());
+			session.setAttribute("session_flag","success");	//nav.jsp 에서 로그인 확인용
+			session.setAttribute("session_userid", uVo.getUserid());	//로그인 확인 및 환영문구 이용
+			session.setAttribute("session_userno", uVo.getUserno());	//정보호출용
 			session.setAttribute("session_uemail", uVo.getUemail());
+			session.setAttribute("session_uadmin", uVo.getUadmin());	//회원,관리자 확인용
 			
 			System.out.println("user login success : " + session.getAttribute("session_userid"));
 		}

@@ -1,6 +1,6 @@
-
 package com.site.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -10,16 +10,16 @@ import com.site.vo.RoomVo;
 @Mapper
 public interface RoomMapper {
 
-	List<RoomVo> getlist(String start, String end);
+	//index에서 검색
+	List<RoomVo> getlist(String start, String end, String city, String people);
 
-	List<RoomVo> selectroomsListAll();
-	List getStartday();
-
-	List getEndday();
-
-	//상세조건검색
+	//상세조건 검색
 	List<RoomVo> selectAdvancedRoomList(String checkIn, String checkOut, String roomType, String bedroom, String bed,
 			int minPrice, int maxPrice, String pet, String smoke);
-	
+
+	//room 리스트 페이지 호출
+	List<RoomVo> selectroomsListAll();
 
 }
+
+
