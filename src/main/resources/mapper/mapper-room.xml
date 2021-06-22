@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.site.mapper.RoomMapper">
-  	<select id="getlist" parameterType="String" resultType="com.site.vo.RoomVo">
-	
-
+  
+  <!-- index에서 검색시 -->
+  	<select id="getlist" resultType="com.site.vo.RoomVo">
 	select distinct * from room  where roomno in (
     select roomno day from reserve where
     not TO_DATE(#{start},'YYYYMMDD') between startday and endday 
@@ -42,7 +42,9 @@
 			<if test="pet!=null or pet!=''">
 			AND ro.rpet = #{pet}
 			</if>
-		
+			<if test="(minPrice!=null or minPrice!='') AND (maxPrice!=null or maxPrice!='')">
+			AND #{minPrice}<![CDATA[<]]>ro.rprice AND ro.rprice<![CDATA[<]]>#{maxPrice}
+			</if>
   	</select>
   
   </mapper>
