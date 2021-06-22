@@ -44,7 +44,7 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>mypage</span></p>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../index">Home</a></span> <span>mypage</span></p>
 	            <h1 class="mb-4 bread">Mypage</h1>
             </div>
           </div>
@@ -52,10 +52,12 @@
       </div>
     </div>
 
+	<c:import url="/WEB-INF/views/includes/mypageCategory.jsp"></c:import>
 
-    <section class="ftco-section contact-section bg-light" align="center">
+	<section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
             <form action="UserInfoModify" class="bg-white p-5 " width="100%">
+			<input type="hidden" id="userno" name="userno" value="${userVo.userno}" >            
             
             	<div class="form-inline form-group">
 					<label for="name" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>

@@ -15,14 +15,14 @@ public class UserServiceImpl implements UserService {
 	UserMapper userMapper;
 
 	@Override // 회원 기본정보 페이지 호출
-	public UserVo UserInfoView(String userid) {
-		UserVo userVo = userMapper.selectUserInfo(userid);
+	public UserVo UserInfoView(int userno) {
+		UserVo userVo = userMapper.selectUserInfo(userno);
 		return userVo;
 	}
 
 	@Override // 회원 기본정보 수정페이지 호출
-	public UserVo UserInfoModify(String userid) {
-		UserVo userVo = userMapper.selectUserInfo(userid);
+	public UserVo UserInfoModify(int userno) {
+		UserVo userVo = userMapper.selectUserInfo(userno);
 		return userVo;
 	}
 

@@ -38,9 +38,15 @@ public class UserController {
 		return "/user/join";
 	}
 
+	@RequestMapping("/mypage")
+	public String mypage() {
+		System.out.println("user mypage");
+		return "/user/mypage";
+	}
+
 	@RequestMapping("/UserInfoView")	// 회원 기본정보 페이지 호출
-	public String UserInfoView(Model model, @RequestParam("userid") String userid) {
-		UserVo userVo = userService.UserInfoView(userid);
+	public String UserInfoView(Model model, @RequestParam("userno") int userno) {
+		UserVo userVo = userService.UserInfoView(userno);
 		model.addAttribute(userVo);
 		
 		System.out.println("UserInfoView userid : " + userVo.getUserid());
@@ -49,8 +55,8 @@ public class UserController {
 	}
 
 	@RequestMapping("/UserInfoModify") // 회원 기본정보 수정페이지 호출
-	public String mypageModify(Model model, @RequestParam("userid") String userid) {
-		UserVo userVo = userService.UserInfoModify(userid);
+	public String mypageModify(Model model, @RequestParam("userno") int userno) {
+		UserVo userVo = userService.UserInfoModify(userno);
 		model.addAttribute(userVo);
 		
 		System.out.println("UserInfoModify userid : " + userVo.getUserid());
@@ -65,6 +71,6 @@ public class UserController {
 		
 //		userVo = userService.UserInfoView(userVo.getUserid());
 //		return "redirect:/mypageView?name="+userVo.getName();
-		return "redirect:/user/UserInfoView?userid="+ userVo.getUserid();
+		return "redirect:/user/UserInfoView?userno="+ userVo.getUserno();
 	}
 }
