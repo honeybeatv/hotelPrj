@@ -13,7 +13,6 @@ import com.site.service.RoomService;
 import com.site.vo.RoomVo;
 
 @Controller
-@RequestMapping("/room")
 public class RoomController {
 	
 	@Autowired
@@ -25,7 +24,6 @@ public class RoomController {
    public String index() {
       return "/index";
    }
-
 
    @RequestMapping("/rooms")
    public String test() {
@@ -53,12 +51,6 @@ public class RoomController {
 }
 
 	@RequestMapping("/search")
-	public String search(RoomVo vo) {
-		System.out.println(vo);
-		return "/rooms";
-	}
-
-	@RequestMapping("/test")
 	public String test(@RequestParam("startDate") String start,@RequestParam("endDate") String end,RoomVo vo,Model model) throws ParseException {
 		System.out.println(vo);
 		String start1 = start.replaceAll("/", "");
@@ -66,9 +58,9 @@ public class RoomController {
 		int startday = Integer.parseInt(start1);
 		int endday = Integer.parseInt(end1);
 		System.out.println(startday+","+endday);
-		List<RoomVo> temp = roomService.getlist(startday,endday);
-		System.out.println(temp);
-		model.addAttribute("temp",temp);
+		List<RoomVo> list = roomService.getlist(startday,endday);
+		System.out.println(list);
+		model.addAttribute("list",list);
 		return "/rooms";
 	}
 }

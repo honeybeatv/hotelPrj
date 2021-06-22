@@ -6,9 +6,16 @@
   <mapper namespace="com.site.mapper.RoomMapper">
   
   	<select id="getlist" parameterType="String" resultType="com.site.vo.RoomVo">
+<<<<<<< HEAD
 	select distinct a.* from room a,reserve b where not in TO_DATE(#{start},'YYYYMMDD') between b.startday and b.endday and not in TO_DATE(#{end},'YYYYMMDD') between b.startday and b.endday
   	</select><!--   RoomVo 모든 게시물을 전달 -->
   	
+=======
+	select distinct a.* from room a , reserve b where a.roomno = b.roomno and
+	not TO_DATE (#{start},'YYYYMMDD') between b.startday and b.endday 
+	and not TO_DATE(#{end},'YYYYMMDD') between b.startday and b.endday
+  	</select>
+>>>>>>> refs/remotes/origin/master
 
 	<!-- 전체 room 정보 가져오기 -->
    <select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
