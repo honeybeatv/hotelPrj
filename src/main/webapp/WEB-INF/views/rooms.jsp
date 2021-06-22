@@ -190,7 +190,7 @@
 		    	<div class="col-lg-3 sidebar">
 	      		<div class="sidebar-wrap bg-light ftco-animate">
 	      			<h3 class="heading mb-4">상세조건 검색</h3>
-	      			<form action="/main/advancedSearch">
+	      			<form action="/advancedSearch">
 	      				<div class="fields">
 		              <div class="form-group">
 		                <input type="text" name="inDate" id="checkin_date" class="form-control checkin_date" placeholder="체크인 날짜">
@@ -242,8 +242,8 @@
 		              </div>
 		              
 		              <div class="form-group">
-		              <input type="checkbox" name="pet" value="pet"> 반려동물&emsp;
-		              <input type="checkbox" name="smoke" value="smoke"> 흡연실
+		              <input type="checkbox" name="smoke" value="smoke"> 흡연실&emsp;
+		              <input type="checkbox" name="pet" value="pet"> 반려동물
 		              </div>
 		              
 		              <div class="form-group">

@@ -10,5 +10,22 @@
 	not TO_DATE (#{start},'YYYYMMDD') between b.startday and b.endday 
 	and not TO_DATE(#{end},'YYYYMMDD') between b.startday and b.endday
   	</select>
+  	
+  	<!-- 상세 조건 검색 -->
+  	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
+		<![CDATA[
+		SELECT distinct ro.* FROM reserve re, room ro
+			WHERE re.roomno = ro.roomno
+			AND NOT TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday AND NOT TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday
+			AND ro.rtype=#{roomType}
+			AND ro.rpeople >= 0
+			AND ro.rroom >= #{bedroom}
+			AND ro.rbed >= #{bed}
+			AND ro.rsmoke = #{smoke}
+			AND ro.rpet = #{pet}
+			AND #{minPrice}<ro.rprice AND ro.rprice<#{maxPrice}
+  		]]>
+  	</select>
+  
 
   </mapper>

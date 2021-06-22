@@ -29,4 +29,13 @@ public class RoomServiceimpl implements RoomService {
 		List<RoomVo> vo = mapper.getlist(start,end);
 		return vo;
 	}
+
+
+	//상세 조건 검색
+	@Override
+	public List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String roomType, String bedroom, String bed,
+			int minPrice, int maxPrice, String pet, String smoke) {
+		List<RoomVo> list = mapper.selectAdvancedRoomList(checkIn, checkOut, roomType, bedroom, bed, minPrice, maxPrice, pet, smoke);
+		return list;
+	}
 }
