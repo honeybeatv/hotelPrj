@@ -5,12 +5,19 @@
   
   <mapper namespace="com.site.mapper.RoomMapper">
   	<select id="getlist" parameterType="String" resultType="com.site.vo.RoomVo">
+	
+
 	select distinct * from room  where roomno in (
     select roomno day from reserve where
     not TO_DATE(#{start},'YYYYMMDD') between startday and endday 
 	and not TO_DATE(#{end},'YYYYMMDD') between startday and endday) 
   	</select>
   	
+  		<!-- 전체 room 정보 가져오기 -->
+   <select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
+   		select * from room
+   </select>
+   
   	  	<!-- 상세 조건 검색 -->
   	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
 		<![CDATA[
@@ -35,9 +42,7 @@
 			<if test="pet!=null or pet!=''">
 			AND ro.rpet = #{pet}
 			</if>
-			<if test="minPrice!=null or minPrice=''">
-			AND #{minPrice}<ro.rprice AND ro.rprice<#{maxPrice}
-			</if>
+		
   	</select>
   
   </mapper>

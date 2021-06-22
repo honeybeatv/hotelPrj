@@ -19,23 +19,31 @@ import com.site.vo.RoomVo;
 public class RoomServiceimpl implements RoomService {
 	
 	@Autowired
-	RoomMapper mapper;
-
+	RoomMapper roomMapper;
+	
+	@Override
+	public List<RoomVo> roomsListAll() {
+		List<RoomVo> roomlist = roomMapper.selectroomsListAll();
+		return roomlist;
+	}
 
 	@Override
 	public List<RoomVo> getlist(int startday, int endday) throws ParseException {
 		String start = Integer.toString(startday);
 		String end = Integer.toString(endday);
-		List<RoomVo> vo = mapper.getlist(start,end);
+		List<RoomVo> vo = roomMapper.getlist(start,end);
 		return vo;
 	}
+
+	
 
 
 	//상세 조건 검색
 	@Override
 	public List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String roomType, String bedroom, String bed,
 			int minPrice, int maxPrice, String pet, String smoke) {
-		List<RoomVo> list = mapper.selectAdvancedRoomList(checkIn, checkOut, roomType, bedroom, bed, minPrice, maxPrice, pet, smoke);
+		List<RoomVo> list = roomMapper.selectAdvancedRoomList(checkIn, checkOut, roomType, bedroom, bed, minPrice, maxPrice, pet, smoke);
 		return list;
+
 	}
 }

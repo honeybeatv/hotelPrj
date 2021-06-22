@@ -1,6 +1,5 @@
 package com.site.controller;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
 
@@ -15,12 +14,43 @@ import com.site.service.RoomService;
 import com.site.vo.RoomVo;
 
 @Controller
+@RequestMapping("/room")
 public class RoomController {
 	
-
 	@Autowired
-	RoomService service;
+	RoomService roomService;
 	
+	
+
+   @RequestMapping("/index")
+   public String index() {
+      return "/index";
+   }
+
+   @RequestMapping("/rooms")
+   public String test() {
+      return "/rooms";
+   }
+   
+   @RequestMapping("/rooms-single")
+   public String rooms() {
+      return "/rooms-single";
+   }
+   
+   @RequestMapping("/roomsadd")
+   public String roomsadd() {
+      return "/roomsadd";
+   }
+   @RequestMapping("/roomsList") //room 리스트 페이지 호출
+	public String roomsList(Model model) {
+		
+		List<RoomVo> roomsList = roomService.roomsListAll();
+		model.addAttribute("roomsList", roomsList);
+		
+		System.out.println("roomsList" + roomsList);
+		return "/roomsList";
+   }
+
 
 	@RequestMapping("/search")
 	public String test(@RequestParam("startDate") String start,@RequestParam("endDate") String end,RoomVo vo,Model model) throws ParseException {
@@ -30,7 +60,7 @@ public class RoomController {
 		int startday = Integer.parseInt(start1);
 		int endday = Integer.parseInt(end1);
 		System.out.println(startday+","+endday);
-		List<RoomVo> list = service.getlist(startday,endday);
+		List<RoomVo> list = roomService.getlist(startday,endday);
 		System.out.println(list);
 		model.addAttribute("list",list);
 		model.addAttribute("start",start);
@@ -52,9 +82,9 @@ public class RoomController {
 		String checkIn = inDate.replaceAll("/", "");
 		String checkOut = outDate.replaceAll("/", "");
 		
-		List<RoomVo> list = service.roomListAdvanced(checkIn, checkOut, roomType, bedroom, bed, minPrice, maxPrice, pet, smoke);
+		List<RoomVo> list = roomService.roomListAdvanced(checkIn, checkOut, roomType, bedroom, bed, minPrice, maxPrice, pet, smoke);
 		
 		return "/rooms";
 	}
-
 }
+

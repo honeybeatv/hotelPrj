@@ -11,6 +11,7 @@ import com.site.service.UserService;
 import com.site.vo.RoomVo;
 
 @Controller
+@RequestMapping("/main")
 public class MainController {
 	
 	@RequestMapping("/index")

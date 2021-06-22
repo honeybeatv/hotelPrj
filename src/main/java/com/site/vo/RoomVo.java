@@ -21,5 +21,6 @@ public class RoomVo {
 	private String rsmoke;
 	private String rpet;
 	private String raddress;
+
 	
 }
