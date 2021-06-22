@@ -22,11 +22,13 @@ public class RoomServiceimpl implements RoomService {
 	RoomMapper mapper;
 
 
+
 	@Override
-	public List<RoomVo> getlist(int startday, int endday) throws ParseException {
+	public List<RoomVo> getlist(int startday, int endday, String rcity, String rpeople) throws ParseException {
+		// TODO Auto-generated method stub
 		String start = Integer.toString(startday);
 		String end = Integer.toString(endday);
-		List<RoomVo> vo = mapper.getlist(start,end);
+		List<RoomVo> vo = mapper.getlist(start,end,rcity,rpeople);
 		return vo;
 	}
 }

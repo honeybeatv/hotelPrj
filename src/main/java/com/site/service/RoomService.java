@@ -8,7 +8,8 @@ import com.site.vo.RoomVo;
 
 public interface RoomService {
 
-	List<RoomVo> getlist(int startday, int endday) throws ParseException;
+	List<RoomVo> getlist(int startday, int endday, String rcity, String string) throws ParseException;
 	
 
 }
+

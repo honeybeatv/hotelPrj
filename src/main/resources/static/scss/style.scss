@@ -913,7 +913,7 @@ h1, h2, h3, h4, h5,
 			z-index: -1;
 		}
 		h3{
-			width: calc(100% - 80px;);
+			width: calc(100% - 80px);
 			font-size: 24px;
 			span{
 				padding-right: 20px;
@@ -928,7 +928,7 @@ h1, h2, h3, h4, h5,
 			background: $white;
 		}
 	}
-}
+
 
 
 //INSTAGRAM
@@ -2305,4 +2305,5 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px;
   }
+}
 }

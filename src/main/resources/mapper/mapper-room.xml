@@ -4,10 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.site.mapper.RoomMapper">
-  	<select id="getlist" parameterType="String" resultType="com.site.vo.RoomVo">
+  	<select id="getlist" resultType="com.site.vo.RoomVo">
 	select distinct * from room  where roomno in (
     select roomno day from reserve where
     not TO_DATE(#{start},'YYYYMMDD') between startday and endday 
 	and not TO_DATE(#{end},'YYYYMMDD') between startday and endday) 
+	and rpeople >= #{people}
+	and rcity = #{city}
   	</select>
   </mapper>

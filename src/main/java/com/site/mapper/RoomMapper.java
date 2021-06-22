@@ -10,7 +10,7 @@ import com.site.vo.RoomVo;
 @Mapper
 public interface RoomMapper {
 
-	List<RoomVo> getlist(String start, String end);
+	List<RoomVo> getlist(String start, String end, String city, String people);
 
 	List getStartday();
 

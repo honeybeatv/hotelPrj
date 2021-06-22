@@ -29,7 +29,7 @@ public class RoomController {
 		int startday = Integer.parseInt(start1);
 		int endday = Integer.parseInt(end1);
 		System.out.println(startday+","+endday);
-		List<RoomVo> list = service.getlist(startday,endday);
+		List<RoomVo> list = service.getlist(startday,endday,vo.getRcity(),vo.getRpeople());
 		System.out.println(list);
 		model.addAttribute("list",list);
 		model.addAttribute("start",start);
