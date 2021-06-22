@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
 				<c:when test="${session_flag==null || session_flag=='fail' }">
 					<div class="collapse navbar-collapse" id="ftco-nav">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item"><a href="../index" class="nav-link">Home</a></li>
+							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
 							<li class="nav-item"><a href="/user/login" class="nav-link">Login</a></li>
 							<li class="nav-item"><a href="rooms" class="nav-link">Rooms</a></li>
 							<li class="nav-item"><a href="restaurant" class="nav-link">Restaurant</a></li>
@@ -31,28 +32,27 @@
 					</div>
 				</c:when>
 
-				<!-- 로그인 후 : 일반사용자-->
-				<c:when test="${session_flag=='success' && session_uadmin=='0'}">
+ 				<c:when test="${session_flag=='success' && session_uadmin=='0'}">
 					<div class="collapse navbar-collapse" id="ftco-nav">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
 							<li class="nav-item"><a href="/user/mypage" class="nav-link">Mypage</a></li>
-							<li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
+							<li class="nav-item"><a href="/user/logout" class="nav-link">Logout</a></li>
 							<li class="nav-item"><a href="rooms" class="nav-link">Rooms</a></li>
 							<li class="nav-item"><a href="restaurant" class="nav-link">Restaurant</a></li>
 							<li class="nav-item"><a href="about" class="nav-link">About</a></li>
 							<li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
 							<li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
+							<label style="color: white;">${session_userid} 회원님 접속을 환영합니다.</label>
 						</ul>
-						<h3>${session_userid} 회원님 접속을 환영합니다.</h3>
 					</div>
 				</c:when>
 
-				<!-- 로그인 후 : 관리자-->
-				<c:when test="${session_flag=='success' && session_uadmin=='1'}">
+				
+ 				<c:when test="${session_flag=='success' && session_uadmin=='1'}">
 					<div class="collapse navbar-collapse" id="ftco-nav">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item"><a href="index" class="nav-link">Home</a></li>
+							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
 							<li class="nav-item"><a href="/user/mypage" class="nav-link">Administration</a></li>
 							<li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>
 							<li class="nav-item"><a href="rooms" class="nav-link">Rooms</a></li>

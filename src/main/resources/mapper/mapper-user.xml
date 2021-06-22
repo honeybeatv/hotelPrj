@@ -8,7 +8,7 @@
   
 	<!-- 회원 기본정보 호출 -->
   	<select id="selectUserInfo" resultType="com.site.vo.UserVo">
-  		SELECT * FROM user1 WHERE userno=7
+  		SELECT * FROM user1 WHERE userno=#{userno}
   	</select>
   	
   	<!-- 회원 기본정보 수정 -->
@@ -20,7 +20,7 @@
 	  	   	   uphone=#{uphone}	, 
 	  	   	   uadmin=#{uadmin}	, 
 	  	   	   uemail=#{uemail}
-	  	 WHERE userno=7
+	  	 WHERE userno=#{userno}
   	</update>
   	
   	
