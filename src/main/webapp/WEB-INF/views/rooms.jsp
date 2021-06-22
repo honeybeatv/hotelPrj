@@ -52,13 +52,12 @@
         </div>
       </div>
     </div>
-
-
     <section class="ftco-section bg-light">
     	<div class="container">
     		<div class="row">
 	        <div class="col-lg-9">
 		    		<div class="row">
+		    			<c:forEach var="list" items="${list }" > 
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
 		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
@@ -67,7 +66,7 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Suite Room</a></h3>
+		    						<h3 class="mb-3"><a href="rooms-single">${list.roomNo }</a></h3>
 		    						<p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
 		    						<ul class="list">
 		    							<li><span>Max:</span> 3 Persons</li>
@@ -80,6 +79,7 @@
 		    					</div>
 		    				</div>
 		    			</div>
+		    			 </c:forEach>
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
 		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-2.jpg);">

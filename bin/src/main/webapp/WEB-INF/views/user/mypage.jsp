@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login Page</title>
+    <title>MyPage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -33,84 +33,6 @@
   	 
   	</script>
   	
-  	<script>
-$(document).ready(function(){
-   $("#userpw, #userid").keypress(function(e) { 
-       if (e.keyCode == 13){
-          var userId = $("#userid").val();
-           var userPw = $("#userpw").val();
-           if(userId == ""){
-               alert("아이디를 입력하세요.");
-               $("#userid").focus(); // 입력포커스 이동
-               return; // 함수 종료
-           }
-           if(userPw == ""){
-               alert("비밀번호를 입력하세요.");
-               $("#userpw").focus();
-               return;
-           }
-           // 폼 내부의 데이터를 전송할 주소
-           document.form1.action="./index01"
-           // 제출
-           document.form1.submit();
-
-       }   
-   });
-   
-   $("#loginBtn").click(function(){
-       // 태크.val() : 태그에 입력된 값
-       // 태크.val("값") : 태그의 값을 변경 
-       var userId = $("#userid").val();
-       var userPw = $("#userpw").val();
-       if(userId == ""){
-           alert("아이디를 입력하세요.");
-           $("#userid").focus(); // 입력포커스 이동
-           return; // 함수 종료
-       }
-       if(userPw == ""){
-           alert("비밀번호를 입력하세요.");
-           $("#userpw").focus();
-           return;
-       }
-       
-       login_check()
-       
-       
-   });
-    
-    function login_check(){
- 	   $.ajax({
- 			 url:'./login_check',
- 			 type:'post',
- 			 data:{
- 				 "userid":$("#userid").val(),
- 				 "userpw":$("#userpw").val()
- 			 },
- 			 success:function(data){
- 				 alert(data.msg);
- 				 if(data.flag=="success"){
- 				    location.href="./index01";
- 				 }else{
- 					 $("#userid").val(""); //공백처리 
- 					 $("#userpw").val("");
- 					return false;
- 				 }
- 			 },
- 			 error:function(){
- 				 alert("에러");
- 			 }
- 		  });
-    }
-    
-});
-
-function onEnterSubmit(){
-	//alert("ok");
-}
-
-</script>
-  	
-  	
   </head>
   <body>
 
@@ -122,32 +44,17 @@ function onEnterSubmit(){
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>login</span></p>
-	            <h1 class="mb-4 bread">Login</h1>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../index">Home</a></span> <span>mypage</span></p>
+	            <h1 class="mb-4 bread">Mypage</h1>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+	<c:import url="/WEB-INF/views/includes/mypageCategory.jsp"></c:import>
 
-    <section class="ftco-section contact-section bg-light" align="center">
-          <div class="col-4  d-inline-flex" >
-          
-            <form method="post" name="form1" action="login_check" class="bg-white p-5 contact-form">
-              <div class="form-group">
-                <input type="text" class="form-control" name="userid" id="userid" placeholder="아이디">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" name="userpw" id="userpw" placeholder="비밀번호" onkeydown='javascript:onEnterSubmit()'>
-              </div>
-              <div class="form-group">
-                <input type="button" value="로그인" id="loginBtn" class="btn btn-primary py-3 px-5">
-              </div>
-              <p class="message">ID가 없으신가요? <a href="join">회원가입</a></p>
-            </form>
-          </div>
-    </section>
+	<section class="ftco-section contact-section bg-light" align="center"> </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
     

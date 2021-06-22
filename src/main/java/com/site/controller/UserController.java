@@ -31,11 +31,54 @@ public class UserController {
 		System.out.println("user login");
 		return "/user/login";
 	}
+	@RequestMapping(value="/login_check")
+	@ResponseBody
+	public Map<String,Object> login_check(UserVo userVo,HttpServletRequest request,Model model) {
+		
+		Map<String,Object> map=new HashMap<String, Object>();
+		UserVo uVo = userService.login(userVo); //전체리스트 가져오기
+		map.put("uVo",uVo);
+		if(uVo==null) {
+			map.put("flag", "fail");
+			map.put("msg", "아이디와 패스워드가 일치하지 않습니다.");
+		}else {
+			map.put("flag", "success");
+			map.put("msg", "로그인 성공!");
+			HttpSession session = request.getSession();
+			session.setAttribute("flag","success");
+			session.setAttribute("name", uVo.getName());
+			session.setAttribute("userid", uVo.getUserid());
+			session.setAttribute("userpw", uVo.getUserpw());
+			session.setAttribute("userno", uVo.getUserno());
+			session.setAttribute("uemail", uVo.getUemail());
+			session.setAttribute("uphone", uVo.getUphone());
+			session.setAttribute("uadmin", uVo.getUadmin());
+		}
+		return map;
+	}
 	
 	@RequestMapping("/join")
 	public String join() {
 		System.out.println("user join");
 		return "/user/join";
+	}
+	@RequestMapping ("/join_check")
+	@ResponseBody
+	public Map<String,Object> join_check(UserVo userVo,HttpServletRequest request,Model model) {
+		
+		Map<String,Object> map=new HashMap<String, Object>();
+		int count = userService.join(userVo); //회원가입 데이터입력 저장
+		
+		
+		if(count==0) {
+			map.put("flag", "fail");
+			map.put("msg", "회원가입 실패.");
+		}else {
+			map.put("flag", "success");
+			map.put("msg", "회원가입 성공!");
+			
+		}
+		return map;
 	}
 
 	@RequestMapping("/mypage")
