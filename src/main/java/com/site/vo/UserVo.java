@@ -13,7 +13,7 @@ public class UserVo {
 	private String userid;
 	private String uemail;
 	private String userpw;
-	private int user_no;
+	private int userno;
 	private String uphone;
 	private int uadmin ;
 }

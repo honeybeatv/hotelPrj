@@ -10,7 +10,7 @@ public interface UserMapper {
 
 
 	// 회원 기본정보 호출
-	UserVo selectUserInfo(String userid);
+	UserVo selectUserInfo(int userno);
 	// 회원 기본정보 수정
 	void updateUserInfoModifyDo(UserVo userVo);
 
