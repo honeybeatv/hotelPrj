@@ -88,10 +88,10 @@
 	      			<form action="/advancedSearch">
 	      				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" name="inDate" id="checkin_date" class="form-control checkin_date" placeholder="체크인 날짜">
+		                <input type="text" name="inDate" value="${start }" id="checkin_date" class="form-control checkin_date" placeholder="체크인 날짜">
 		              </div>
 		              <div class="form-group">
-		                <input type="text" name="outDate" id="checkin_date" class="form-control checkout_date" placeholder="체크아웃 날짜">
+		                <input type="text" name="outDate" value="${end }" id="checkin_date" class="form-control checkout_date" placeholder="체크아웃 날짜">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
