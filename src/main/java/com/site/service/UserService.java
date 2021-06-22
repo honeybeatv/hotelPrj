@@ -12,6 +12,12 @@ public interface UserService {
 	UserVo UserInfoModify(int userno);
 	// 회원 기본정보 수정페이지 실행
 	void UserInfoModifyDo(UserVo userVo);
+	
+	
+	// 로그인
+	UserVo login(UserVo userVo);
+	// 회원가입
+	int join(UserVo userVo);
 
 
 }

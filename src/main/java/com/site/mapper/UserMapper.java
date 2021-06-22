@@ -13,5 +13,11 @@ public interface UserMapper {
 	UserVo selectUserInfo(int userno);
 	// 회원 기본정보 수정
 	void updateUserInfoModifyDo(UserVo userVo);
+	
+	
+	// 로그인
+	UserVo selectLogin(UserVo userVo);
+	// 회원가입
+	int join_check(UserVo userVo);
 
 }
