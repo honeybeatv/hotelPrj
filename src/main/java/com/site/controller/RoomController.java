@@ -32,6 +32,8 @@ public class RoomController {
 		List<RoomVo> list = service.getlist(startday,endday);
 		System.out.println(list);
 		model.addAttribute("list",list);
+		model.addAttribute("start",start);
+		model.addAttribute("end",end);
 		return "/rooms";
 	}
 

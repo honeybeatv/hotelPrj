@@ -13,7 +13,6 @@ public class RoomVo {
 	private String Rpeople;
 	private String Rinfo;
 	private String Rpicture;
-	private String Rlocation;
 	private String Rcity;
 	private int Rprice;
 	private int Rroom;
