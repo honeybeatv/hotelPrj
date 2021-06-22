@@ -9,18 +9,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RoomVo {
 
-	private int RoomNo;
-	private String Rtype;
-	private String Rpeople;
-	private String Rinfo;
-	private String Rpicture;
-	private String Rlocation;
-	private String Rcity;
-	private int Rprice;
-	private int Rroom;
-	private int Rbed;
-	private String Rsmoke;
-	private String Rpet;
-	private String Raddress;
+	private int roomNo;
+	private String rtype;
+	private String rpeople;
+	private String rinfo;
+	private String rpicture;
+	private String rcity;
+	private int rprice;
+	private int rroom;
+	private int rbed;
+	private String rsmoke;
+	private String rpet;
+	private String raddress;
 	
 }

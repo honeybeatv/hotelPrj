@@ -67,7 +67,7 @@
 		    					</a>
 		    					<div class="text p-3 text-center">
 		    						<h3 class="mb-3"><a href="rooms-single">${list.roomNo }</a></h3>
-		    						<p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
+		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
 		    							<li><span>Max:</span> 3 Persons</li>
 		    							<li><span>Size:</span> 45 m2</li>
@@ -80,111 +80,6 @@
 		    				</div>
 		    			</div>
 		    			 </c:forEach>
-		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-		    				<div class="room">
-		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-2.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Family Room</a></h3>
-		    						<p><span class="price mr-2">$20.00</span> <span class="per">per night</span></p>
-		    						<ul class="list">
-		    							<li><span>Max:</span> 3 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 1</li>
-		    						</ul>
-		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-		    				<div class="room">
-		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-3.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Deluxe Room</a></h3>
-		    						<p><span class="price mr-2">$150.00</span> <span class="per">per night</span></p>
-		    						<ul class="list">
-		    							<li><span>Max:</span> 5 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 2</li>
-		    						</ul>
-		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-		    				<div class="room">
-		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-4.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Classic Room</a></h3>
-		    						<p><span class="price mr-2">$130.00</span> <span class="per">per night</span></p>
-		    						<ul class="list">
-		    							<li><span>Max:</span> 5 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 2</li>
-		    						</ul>
-		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-		    				<div class="room">
-		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-5.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Superior Room</a></h3>
-		    						<p><span class="price mr-2">$300.00</span> <span class="per">per night</span></p>
-		    						<ul class="list">
-		    							<li><span>Max:</span> 6 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 3</li>
-		    						</ul>
-		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-		    				<div class="room">
-		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/room-6.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">Luxury Room</a></h3>
-		    						<p><span class="price mr-2">$500.00</span> <span class="per">per night</span></p>
-		    						<ul class="list">
-		    							<li><span>Max:</span> 5 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 2</li>
-		    						</ul>
-		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
-		    					</div>
-		    				</div>
-		    			</div>
 		    		</div>
 		    	</div>
 		    	<div class="col-lg-3 sidebar">

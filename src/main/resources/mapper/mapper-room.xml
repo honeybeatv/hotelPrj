@@ -4,28 +4,40 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.site.mapper.RoomMapper">
-  
   	<select id="getlist" parameterType="String" resultType="com.site.vo.RoomVo">
-	select distinct a.* from room a , reserve b where a.roomno = b.roomno and
-	not TO_DATE (#{start},'YYYYMMDD') between b.startday and b.endday 
-	and not TO_DATE(#{end},'YYYYMMDD') between b.startday and b.endday
+	select distinct * from room  where roomno in (
+    select roomno day from reserve where
+    not TO_DATE(#{start},'YYYYMMDD') between startday and endday 
+	and not TO_DATE(#{end},'YYYYMMDD') between startday and endday) 
   	</select>
   	
-  	<!-- 상세 조건 검색 -->
+  	  	<!-- 상세 조건 검색 -->
   	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
 		<![CDATA[
 		SELECT distinct ro.* FROM reserve re, room ro
 			WHERE re.roomno = ro.roomno
 			AND NOT TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday AND NOT TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday
-			AND ro.rtype=#{roomType}
 			AND ro.rpeople >= 0
-			AND ro.rroom >= #{bedroom}
-			AND ro.rbed >= #{bed}
-			AND ro.rsmoke = #{smoke}
-			AND ro.rpet = #{pet}
-			AND #{minPrice}<ro.rprice AND ro.rprice<#{maxPrice}
   		]]>
+			<!-- AND ro.rcity= -->
+			<if test="roomType!=null or roomType!=''">
+			AND ro.rtype=#{roomType}
+			</if>
+			<if test="bedroom!=null or bedroom=''">
+			AND ro.rroom >= #{bedroom}
+			</if>
+			<if test="bed!=null or bed!=''">
+			AND ro.rbed >= #{bed}
+			</if>
+			<if test="smoke!=null or smoke!=''">
+			AND ro.rsmoke = #{smoke}
+			</if>
+			<if test="pet!=null or pet!=''">
+			AND ro.rpet = #{pet}
+			</if>
+			<if test="minPrice!=null or minPrice=''">
+			AND #{minPrice}<ro.rprice AND ro.rprice<#{maxPrice}
+			</if>
   	</select>
   
-
   </mapper>

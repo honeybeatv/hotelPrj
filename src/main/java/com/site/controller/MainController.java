@@ -17,9 +17,5 @@ public class MainController {
 	public String index() {
 		return "/index";
 	}
-		@RequestMapping("/rooms-single")
-		public String test() {
-			return "/rooms-single";
-	}
 
 }
