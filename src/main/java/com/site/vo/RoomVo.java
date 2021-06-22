@@ -21,7 +21,5 @@ public class RoomVo {
 	private String Rsmoke;
 	private String Rpet;
 	private String Raddress;
-	private String startday;
-	private String endday;
 	
 }

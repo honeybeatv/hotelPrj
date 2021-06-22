@@ -101,7 +101,7 @@
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-12">
-    				<form action="room/test" id="searchForm" name="searchForm" class="booking-form" method="post">
+    				<form action="search" id="searchForm" name="searchForm" class="booking-form" method="post">
 	        		<div class="row">
 	        			<div class="col-md d-flex">
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
@@ -112,12 +112,13 @@
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 			                    <select name="Rcity" id="city" class="form-control" style="cursor:pointer;">
 			                    	<option value="">지역</option>
-			                    	<option value="1">Suite</option>
-			                      <option value="2">Family Room</option>
-			                      <option value="3">Deluxe Room</option>
-			                      <option value="4">Classic Room</option>
-			                      <option value="5">Superior Room</option>
-			                      <option value="6">Luxury Room</option>
+			                    	<option value="서울">서울</option>
+			                      <option value="경기">경기</option>
+			                      <option value="인천">인천</option>
+			                      <option value="강원">강원</option>
+			                      <option value="대전">대전</option>
+			                      <option value="부산">부산</option>
+			                      <option value="제주">제주</option>
 			                    </select>
 			                  </div>
 				              </div>
