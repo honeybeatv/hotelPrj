@@ -1396,7 +1396,6 @@
 		daysOfWeekDisabled: [],
 		endDate: Infinity,
 		forceParse: true,
-		dateFormat: 'yyyy/mm/dd',
 		keyboardNavigation: true,
 		language: 'en',
 		minViewMode: 0,
@@ -1409,33 +1408,7 @@
 		todayBtn: false,
 		todayHighlight: false,
 		weekStart: 0,
-		minDate: 0,
-		maxDate: "+1M"
-		
-	};
-	$.fn.datepicker.defaults = {
-		autoclose: false,
-		beforeShowDay: $.noop,
-		calendarWeeks: false,
-		clearBtn: false,
-		daysOfWeekDisabled: [],
-		endDate: Infinity,
-		forceParse: true,
-		dateFormat: 'yyyy/mm/dd',
-		keyboardNavigation: true,
-		language: 'en',
-		minViewMode: 0,
-		multidate: false,
-		multidateSeparator: ',',
-		orientation: "auto",
-		rtl: false,
-		startDate: 0,
-		startView: 0,
-		todayBtn: false,
-		todayHighlight: false,
-		weekStart: 0,
-		minDate: 0,
-		maxDate: "+1M"
+		minDate: 0
 		
 	};
 	var locale_opts = $.fn.datepicker.locale_opts = [
@@ -1450,10 +1423,9 @@
 			daysShort: ["일", "월", "화", "수", "목", "금", "토", "일"],
 			daysMin: ["일", "월", "화", "수", "목", "금", "토", "일"],
 			months: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-			monthsShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-			today: "Today",
-			clear: "Clear"
-		}
+			monthsShort: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+
+			}
 	};
 
 	var DPGlobal = {

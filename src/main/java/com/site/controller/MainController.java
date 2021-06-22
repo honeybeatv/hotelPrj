@@ -12,7 +12,6 @@ import com.site.service.UserService;
 import com.site.vo.RoomVo;
 
 @Controller
-@RequestMapping("/main")
 public class MainController {
 
 	@Autowired
@@ -22,6 +21,10 @@ public class MainController {
 	@RequestMapping("/index")
 	public String index() {
 		return "/index";
+	}
+		@RequestMapping("/rooms-single")
+		public String test() {
+			return "/rooms-single";
 	}
 
 	@RequestMapping("/search")

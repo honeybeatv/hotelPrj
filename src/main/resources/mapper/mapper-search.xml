@@ -6,7 +6,7 @@
   <mapper namespace="com.site.mapper.SearchMapper">
   
   	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
-  		SELECT * FROM user1 WHERE userid = #{userid} AND userpw = #{userpw}
+  		select distinct a.* from room a,reserve b where not in TO_DATE(#{start},'YYYYMMDD') between b.startday and b.endday and not in TO_DATE(#{end},'YYYYMMDD') between b.startday and b.endday
   	</select>
   
   </mapper>
