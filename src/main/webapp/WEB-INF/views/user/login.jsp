@@ -50,7 +50,7 @@ $(document).ready(function(){
                return;
            }
            // 폼 내부의 데이터를 전송할 주소
-           document.form1.action="../main/index"
+           document.form1.action="/index"
            // 제출
            document.form1.submit();
 
@@ -89,7 +89,7 @@ $(document).ready(function(){
  			 success:function(data){
  				 alert(data.msg);
  				 if(data.flag=="success"){
- 				    location.href="../main/index";
+ 				    location.href="/index";
  				 }else{
  					 $("#userid").val(""); //공백처리 
  					 $("#userpw").val("");
@@ -122,7 +122,7 @@ function onEnterSubmit(){
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>login</span></p>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>login</span></p>
 	            <h1 class="mb-4 bread">Login</h1>
             </div>
           </div>

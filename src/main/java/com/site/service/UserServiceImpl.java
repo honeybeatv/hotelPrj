@@ -40,6 +40,10 @@ public class UserServiceImpl implements UserService {
 	public int join(UserVo userVo) {
 		return userMapper.join_check(userVo);
 	}
+	@Override //아이디 중복체크
+	public int id_check(String userid) {
+		return userMapper.id_check(userid);
+	}
 
 
 }

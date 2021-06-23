@@ -19,5 +19,7 @@ public interface UserMapper {
 	UserVo selectLogin(UserVo userVo);
 	// 회원가입
 	int join_check(UserVo userVo);
+	// 아이디 중복체크
+	int id_check(String userid);
 
 }
