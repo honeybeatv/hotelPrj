@@ -33,8 +33,8 @@
 
      </script>
      
-  </head>
-  <body>
+  	</head>
+  	<body>
 
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->
@@ -58,7 +58,7 @@
            <div class="col-lg-9">
                 <div class="row">
                 
-                   <c:forEach var="list" items="${list }" > 
+                  <c:forEach var="list" items="${list }" > 
                    <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                       <div class="room">
                          <a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
