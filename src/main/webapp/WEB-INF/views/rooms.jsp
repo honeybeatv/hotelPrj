@@ -33,8 +33,8 @@
 
      </script>
      
-  </head>
-  <body>
+  	</head>
+  	<body>
 
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->

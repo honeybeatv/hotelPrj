@@ -181,6 +181,7 @@
           </div>
         </div>    		
     		<div class="row">
+    		<c:forEach var="list" items="${list }">
     			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
     				<div class="room">
     					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-1.jpg);">
@@ -189,13 +190,14 @@
     						</div>
     					</a>
     					<div class="text p-3 text-center">
-    						<h3 class="mb-3"><a href="rooms">Suite Room</a></h3>
-    						<p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
+    						<h3 class="mb-3"><a href="rooms">${list.roomNo }</a></h3>
+    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
     						<hr>
     						<p class="pt-1"><a href="rooms-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
     					</div>
     				</div>
     			</div>
+    			</c:forEach>
     			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
     				<div class="room">
     					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-2.jpg);">

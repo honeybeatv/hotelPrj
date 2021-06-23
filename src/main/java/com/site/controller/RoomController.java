@@ -64,6 +64,7 @@ public class RoomController {
 		model.addAttribute("list",list);
 		model.addAttribute("start",start);
 		model.addAttribute("end",end);
+		model.addAttribute("vo", vo);
 		return "/rooms";
 	}
 	
