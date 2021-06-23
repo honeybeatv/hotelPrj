@@ -30,7 +30,7 @@ public class UserController {
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		System.out.println("# user logout #");
+		System.out.println("# user logout success #");
 		return "redirect:/main/index";
 	}
 
@@ -107,7 +107,7 @@ public class UserController {
 	@RequestMapping("/userInfoView")	// 회원 기본정보 페이지 호출
 	public String UserInfoView(Model model, @RequestParam("userno") int userno) {
 		UserVo userVo = userService.UserInfoView(userno);
-		model.addAttribute(userVo);
+		model.addAttribute("userVo", userVo);
 		
 		System.out.println("# mypage category_Informaton UserInfoView userid : " + userVo.getUserid() + " #");
 		
@@ -117,7 +117,7 @@ public class UserController {
 	@RequestMapping("/userInfoModify") // 회원 기본정보 수정페이지 호출
 	public String mypageModify(Model model, @RequestParam("userno") int userno) {
 		UserVo userVo = userService.UserInfoModify(userno);
-		model.addAttribute(userVo);
+		model.addAttribute("userVo", userVo);
 		
 		System.out.println("# mypage category_Informaton userInfoModify userid : " + userVo.getUserid() + " #");
 		
@@ -128,7 +128,7 @@ public class UserController {
 	public String userInfoModifyDo(UserVo userVo) {
 		userService.UserInfoModifyDo(userVo);
 		
-		System.out.println("# mypage category_Informaton userInfoModifyyDo userid : " + userVo.getUserid() + " #");
+		System.out.println("# mypage category_Informaton userInfoModifyDo userid : " + userVo.getUserid() + " #");
 		
 		return "redirect:/user/userInfoView?userno="+ userVo.getUserno();
 	}

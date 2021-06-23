@@ -37,7 +37,7 @@
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
 							<li class="nav-item"><a href="/user/login" class="nav-link">Login</a></li>
-							<li class="nav-item"><a href="rooms" class="nav-link">Rooms</a></li>
+							<li class="nav-item"><a href="/user/join" class="nav-link">Join</a></li>
 <!-- 	사용안하는것 같아서		<li class="nav-item"><a href="restaurant" class="nav-link">Restaurant</a></li>
 		주석처리 했어요			<li class="nav-item"><a href="about" class="nav-link">About</a></li>
 							<li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
@@ -51,7 +51,6 @@
 							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
 							<li class="nav-item"><a href="/user/mypage" class="nav-link">Mypage</a></li>
 							<li class="nav-item"><a href="/user/logout" class="nav-link">Logout</a></li>
-							<li class="nav-item"><a href="rooms" class="nav-link">Rooms</a></li>
 <!-- 						<li class="nav-item"><a href="restaurant" class="nav-link">Restaurant</a></li>
 							<li class="nav-item"><a href="about" class="nav-link">About</a></li>
 							<li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
@@ -66,7 +65,6 @@
 							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
 							<li class="nav-item"><a href="/admin/administration" class="nav-link">Administration</a></li>
 							<li class="nav-item"><a href="/admin/logout" class="nav-link">Logout</a></li>
-							<li class="nav-item"><a href="rooms" class="nav-link">Rooms</a></li>
 <!-- 						<li class="nav-item"><a href="restaurant" class="nav-link">Restaurant</a></li>
 							<li class="nav-item"><a href="about" class="nav-link">About</a></li>
 							<li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>

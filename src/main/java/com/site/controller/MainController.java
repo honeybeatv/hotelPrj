@@ -21,7 +21,7 @@ public class MainController {
 	public String index(Model model) {
 		List<RoomVo> list = roomService.roomsListAll();
 		model.addAttribute("list", list);
-		return "/index";
+		return "index";
 	}
 
 }
