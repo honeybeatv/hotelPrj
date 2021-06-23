@@ -52,7 +52,7 @@
       </div>
     </div>
 
-	<c:import url="/WEB-INF/views/user/mypageCategory.jsp"></c:import>
+	<c:import url="/WEB-INF/views/admin/administrationCategory.jsp"></c:import>
 
 	<section class="ftco-section contact-section bg-light" align="center"> </section>
 

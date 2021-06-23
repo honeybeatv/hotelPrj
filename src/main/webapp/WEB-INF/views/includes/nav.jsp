@@ -64,8 +64,8 @@
 					<div class="collapse navbar-collapse" id="ftco-nav">
 						<ul class="navbar-nav ml-auto">
 							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
-							<li class="nav-item"><a href="/user/adminpage" class="nav-link">Administration</a></li>
-							<li class="nav-item"><a href="/user/logout" class="nav-link">Logout</a></li>
+							<li class="nav-item"><a href="/admin/administration" class="nav-link">Administration</a></li>
+							<li class="nav-item"><a href="/admin/logout" class="nav-link">Logout</a></li>
 							<li class="nav-item"><a href="rooms" class="nav-link">Rooms</a></li>
 <!-- 						<li class="nav-item"><a href="restaurant" class="nav-link">Restaurant</a></li>
 							<li class="nav-item"><a href="about" class="nav-link">About</a></li>
