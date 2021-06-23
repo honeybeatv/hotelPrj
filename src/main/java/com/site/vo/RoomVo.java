@@ -11,6 +11,7 @@ public class RoomVo {
 	
 
 	private int roomNo;
+	private String rname;
 	private String rtype;
 	private String rpeople;
 	private String rinfo;
