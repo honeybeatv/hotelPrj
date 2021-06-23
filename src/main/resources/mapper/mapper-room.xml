@@ -46,25 +46,30 @@
 			AND NOT TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday AND NOT TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday
 			AND ro.rpeople >= #{rpeople}
 			AND ro.rcity=#{rcity}
+			AND ro.rroom >= #{rroom}
+			AND ro.rbed >= #{rbed}
+			AND ro.rsmoke = #{rsmoke, jdbcType=VARCHAR}
+			AND ro.rpet = #{rpet, jdbcType=VARCHAR}
+			AND #{minPrice}<=ro.rprice AND ro.rprice<=#{maxPrice}
   		]]>
-			<if test="rtype!=null or rtype!=''">
-				<![CDATA[ AND ro.rtype=#{rtype} ]]>
+			<!--<if test="rtype!=null or rtype!=''">
+			<![CDATA[ AND ro.rtype=#{rtype} ]]>
 			</if>
-			<if test="rroom!=null or rroom=''">
+			 <if test="rroom!=null or rroom=''">
 			 <![CDATA[ AND ro.rroom >= #{rroom} ]]>
 			</if>
 			<if test="rbed!=null or rbed!=''">
 			<![CDATA[ AND ro.rbed >= #{rbed} ]]>
 			</if>
-			<if test="rsmoke!=null or rsmoke!='x'">
-			<![CDATA[  AND ro.rsmoke = #{rsmoke} ]]>
+			<if test="rsmoke!=null or rsmoke!=''">
+			<![CDATA[ AND ro.rsmoke = #{rsmoke, jdbcType=VARCHAR} ]]>
 			</if>
-			<if test="rpet!=null or rpet!='x'">
-			<![CDATA[  AND ro.rpet = #{rpet} ]]>
+			<if test="rpet!=null or rpet!=''">
+			<![CDATA[ AND ro.rpet = #{rpet, jdbcType=VARCHAR} ]]>
 			</if>
 			<if test="(minPrice!=null or minPrice!='') and (maxPrice!=null or maxPrice!='')">
 			<![CDATA[ AND #{minPrice}<=ro.rprice AND ro.rprice<=#{maxPrice} ]]>
-			</if>
+			</if> -->
   	</select>
 
   </mapper>

@@ -11,7 +11,7 @@ import com.site.vo.RoomVo;
 public interface RoomMapper {
 
 	//index에서 검색
-	List<RoomVo> getlist(String start, String end, String city, String people);
+	List<RoomVo> getlist(String start, String end, String city, int people);
 
 	//상세조건 검색
 	List<RoomVo> selectAdvancedRoomList(String checkIn, String checkOut, String rtype, int rroom, int rbed,

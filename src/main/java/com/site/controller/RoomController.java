@@ -86,7 +86,8 @@ public class RoomController {
 						@RequestParam("rtype") @Nullable String rtype, @RequestParam("rroom") @Nullable int rroom,
 						@RequestParam("rbed") @Nullable int rbed,
 						@RequestParam("minPrice") @Nullable int minPrice, @RequestParam("maxPrice") @Nullable int maxPrice, 
-						@RequestParam(value = "rpet", defaultValue = "x") @Nullable String rpet, @RequestParam(value= "rsmoke", defaultValue = "x") @Nullable String rsmoke,
+						//@RequestParam(value = "rpet", defaultValue = "x") @Nullable String rpet, @RequestParam(value= "rsmoke", defaultValue = "x") @Nullable String rsmoke,
+						@RequestParam("rpet") @Nullable String rpet, @RequestParam("rsmoke") @Nullable String rsmoke,
 						@RequestParam("rcity") @Nullable String rcity, @RequestParam("rpeople") @Nullable int rpeople, Model model  
 						) {
 		String checkIn = inDate.replaceAll("/", "");
@@ -95,15 +96,16 @@ public class RoomController {
 		System.out.println(checkIn +" " + checkOut);
 		System.out.println(rcity + rroom);
 		System.out.println(rpeople);
-		System.out.println("흡연 : "+ rsmoke + " " + "동물 : "+ rpet+"end");
+		System.out.println("흡연 : "+ rsmoke + " " + "동물 : "+ rpet+" end");
 		System.out.println(minPrice + ", " + maxPrice);
-	
 		
 		List<RoomVo> list = roomService.roomListAdvanced(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
 		
+		System.out.println(list.get(0).getRinfo());
+		
 		model.addAttribute(list);
-		model.addAttribute("start",checkIn);
-		model.addAttribute("end",checkOut);
+		model.addAttribute("start",inDate);
+		model.addAttribute("end",outDate);
 		return "/rooms";
 	}
 }
