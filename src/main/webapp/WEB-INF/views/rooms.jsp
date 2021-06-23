@@ -26,7 +26,7 @@
 
     <link rel="stylesheet" href="../static/css/flaticon.css">
     <link rel="stylesheet" href="../static/css/icomoon.css">
-    <link rel="stylesheet" href="..   /static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
