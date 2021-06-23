@@ -18,7 +18,7 @@ import com.site.vo.RoomVo;
 @Service
 public class RoomServiceimpl implements RoomService {
    
-   @Autowired
+@Autowired
    RoomMapper roomMapper;
 
    //index페이지에서 검색
@@ -32,12 +32,13 @@ public class RoomServiceimpl implements RoomService {
 
    //상세 조건 검색
    @Override
-   public List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String roomType, String bedroom, String bed,
-         int minPrice, int maxPrice, String pet, String smoke) {
-      List<RoomVo> list = roomMapper.selectAdvancedRoomList(checkIn, checkOut, roomType, bedroom, bed, minPrice, maxPrice, pet, smoke);
-      return list;
-
+   public List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
+		   int maxPrice, String rpet, String rsmoke, String rcity, int rpeople) {
+	   
+	   List<RoomVo> list = roomMapper.selectAdvancedRoomList(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
+	   return list;
    }
+
 
    //room 리스트 페이지 호출
    @Override
@@ -45,4 +46,10 @@ public class RoomServiceimpl implements RoomService {
       List<RoomVo> roomlist = roomMapper.selectroomsListAll();
       return roomlist;
    }
+
+   //rooms 숙소 등록
+	@Override
+	public void roomsAddDo(RoomVo roomVo) {
+		roomMapper.insertRoomsAddDo(roomVo);
+	}
 }

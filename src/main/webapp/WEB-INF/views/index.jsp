@@ -106,7 +106,8 @@ ul{
     	<div class="container">
     		<div class="row">
     			<div class="col-lg-12">
-    				<form action="room/search" id="searchForm" name="searchForm" class="booking-form" method="post">
+
+    				<form action="../../room/search" id="searchForm" name="searchForm" class="booking-form" method="post">
 	        		<div class="row">
 	        			<div class="col-md d-flex">
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
@@ -182,7 +183,7 @@ ul{
     	<div class="container">
 				<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2 class="mb-4">추천 숙소</h2>
+            <h2 class="mb-4">전체 숙소</h2>
           </div>
         </div>    		
     		<div class="row">
@@ -191,10 +192,12 @@ ul{
     				<div class="room">
     					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-1.jpg);">
     						<div class="icon d-flex justify-content-center align-items-center">
+    						
     							<span class="icon-search2"></span>
     						</div>
     					</a>
     					<div class="text p-3 text-center">
+    					<h3 class="mb-3"><a href="rooms">${list.rname }</a></h3>
     						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
     						<ul>
     						<li>방 종류 : ${list.rtype }</li>
@@ -207,81 +210,6 @@ ul{
     				</div>
     			</div>
     			</c:forEach>
-    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-    				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-2.jpg);">
-    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-    					</a>
-    					<div class="text p-3 text-center">
-    						<h3 class="mb-3"><a href="rooms">Family Room</a></h3>
-    						<p><span class="price mr-2">$20.00</span> <span class="per">per night</span></p>
-    						<hr>
-    						<p class="pt-1"><a href="room-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-    				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-3.jpg);">
-    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-    					</a>
-    					<div class="text p-3 text-center">
-    						<h3 class="mb-3"><a href="rooms">Deluxe Room</a></h3>
-    						<p><span class="price mr-2">$150.00</span> <span class="per">per night</span></p>
-    						<hr>
-    						<p class="pt-1"><a href="room-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-    				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-4.jpg);">
-    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-    					</a>
-    					<div class="text p-3 text-center">
-    						<h3 class="mb-3"><a href="rooms">Classic Room</a></h3>
-    						<p><span class="price mr-2">$130.00</span> <span class="per">per night</span></p>
-    						<hr>
-    						<p class="pt-1"><a href="room-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-    				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-5.jpg);">
-    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-    					</a>
-    					<div class="text p-3 text-center">
-    						<h3 class="mb-3"><a href="rooms">Superior Room</a></h3>
-    						<p><span class="price mr-2">$300.00</span> <span class="per">per night</span></p>
-    						<hr>
-    						<p class="pt-1"><a href="room-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    					</div>
-    				</div>
-    			</div>
-    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-    				<div class="room">
-    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-6.jpg);">
-    						<div class="icon d-flex justify-content-center align-items-center">
-    							<span class="icon-search2"></span>
-    						</div>
-    					</a>
-    					<div class="text p-3 text-center">
-    						<h3 class="mb-3"><a href="rooms">Luxury Room</a></h3>
-    						<p><span class="price mr-2">$500.00</span> <span class="per">per night</span></p>
-    						<hr>
-    						<p class="pt-1"><a href="room-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-    					</div>
-    				</div>
-    			</div>
     		</div>
     	</div>
     </section>

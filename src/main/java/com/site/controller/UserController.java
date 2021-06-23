@@ -97,6 +97,24 @@ public class UserController {
 		}
 		return map;
 	}
+	@RequestMapping ("/id_check")
+	@ResponseBody
+	public Map<String,Object> id_check(UserVo userVo,HttpServletRequest request) {
+		System.out.println("userid ="+request.getParameter("userid"));
+		Map<String,Object> map=new HashMap<String, Object>();
+		int count = userService.id_check(request.getParameter("userid")); //회원가입 데이터입력 저장
+		
+		
+		if(count==0) {
+			map.put("flag", "success");
+			map.put("data", "0"); //db존제하지 않으니 가입 가능
+		}else {
+			map.put("flag", "fail");
+			map.put("data", "1"); //db존제 해  가입 불가능
+			
+		}
+		return map;
+	}
 
 	@RequestMapping("/mypage")
 	public String mypage() {

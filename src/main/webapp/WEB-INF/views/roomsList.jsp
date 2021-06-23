@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<title>숙소 리스트 </title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>게시판</title>
+
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
 
+  
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
 	rel="stylesheet">
@@ -40,31 +43,58 @@
 <script type="text/javascript">
 	
 </script>
+ 
 
 </head>
 <body>
 	<section>
-		<h1>숙소 리스트 	${map.listCount }</h1>
+			<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
-		<!-- <div class="wrapper">
-			<form action="./list" name="search" method="post">
-				<select name="category" id="category">
-					<option value="all">전체</option>
-					<option value="btitle">제목</option>
-					<option value="bcontent">내용</option>
-				</select>
-
-				<div class="title">
-					<input type="text" size="16" name="search" id="search">
+	<div class="hero-wrap"
+		style="background-image: url('/static/images/bg_1.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+				<div
+					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+					<div class="text">
+						<p class="breadcrumbs mb-2">
+							<span class="mr-2"><a href="index">Home</a></span> <span>숙소 리스트</span>
+						</p>
+						<h1 class="mb-4 bread">숙소 리스트</h1>
+					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+	<section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row">
+	        <div class="col-lg-9">
+		    		<div class="row">
+		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
+		    				<div class="room">
+		    					<a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3 text-center">
+		    						<h3 class="mb-3"><a href="rooms-single.html"> </a></h3>
+		    						<p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
+		    						<ul class="roomsList">
+		    							<li><span>${roomVo.roomno }</span> 방번호</li>
+		    							<li><span>Size:</span> 45 m2</li>
+		    							<li><span>View:</span> Sea View</li>
+		    							<li><span>Bed:</span> 1</li>
+		    						</ul>
+		    						<hr>
+		    						<p class="pt-1"><a href="room-single.html" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+		    					</div>
+		    				</div>
+		    			</div>
 
-				<button type="submit">
-					<i class="fas fa-search"></i>
-				</button>
-			</form>
-		</div> -->
-
-		<table>
 
 			<colgroup>
 				<col width="10%">
@@ -93,7 +123,6 @@
 				<tr>
 					<td><span class="table-notice">${roomVo.roomNo }</span></td>
 					<td class="table-title">
-						<!-- content_view?번호를 전달 --> <a href="view?bno=${roomVo.roomNo }">
 							<c:forEach begin="1" end="${roomVo.roomNo}">
 							</c:forEach>
 					</a>
@@ -101,10 +130,7 @@
 					<td>${roomVo.roomNo}</td>
 					<td>${roomVo.rtype}</td>
 					<td>${roomVo.rpeople}</td>
-<<<<<<< HEAD
-=======
 					<td>${roomVo.rinfo}</td>
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 					<td>${roomVo.rpicture}</td>
 					<td>${roomVo.rcity}</td>
 					<td>${roomVo.rprice}</td>
@@ -115,6 +141,9 @@
 					<td>${roomVo.raddress}</td>
 				</tr>
 			</c:forEach>
+                    
+
+  
 			<!-- 내용부분 끝 -->
 		</table>
 		<!-- loader -->
@@ -125,8 +154,10 @@
 			<circle class="path" cx="24" cy="24" r="22" fill="none"
 					stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 		</div>
+		
 		 <a href="roomsadd"><div class="write">등록</div></a>
 		 
+		  <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		<script src="/static/js/jquery.min.js"></script>
 		<script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
 		<script src="/static/js/popper.min.js"></script>

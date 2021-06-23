@@ -18,6 +18,8 @@ public interface UserService {
 	UserVo login(UserVo userVo);
 	// 회원가입
 	int join(UserVo userVo);
+	// 아이디 중복체크
+	int id_check(String parameter);
 
 
 }

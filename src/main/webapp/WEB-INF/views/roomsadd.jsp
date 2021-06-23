@@ -4,7 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>숙소등록 Page</title>
+<c:if test="${session_flag==null || session_flag=='fail' }">
+	<script type="text/javascript">
+		alert("로그인을 하셔야 글쓰기가 가능합니다.")
+	</script>
+	<c:redirect url="../user/login" />
+</c:if>
+<title>숙소 등록</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -82,8 +88,7 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방타입</label>
 					<div class="col-sm-7">
-						<input type="password" class="form-control" style="width: 100%;"
-							id="" name=""> <select name="room">
+						<select name="room">
 							<option value="all">집전체</option>
 							<option value="individual">개인실</option>
 							<option value="hotel">호텔</option>
@@ -115,10 +120,12 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">사진</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+						<input type="file" class="" style="width: 100%;" id="file"
+							name="file">
 					</div>
+					
 					<!-- 		<div class="col-sm-3">ex) -없이 작성하세요</div> -->
+					
 				</div>
 
 				<div class="form-inline form-group">
@@ -178,7 +185,9 @@
 					</div>
 				</div>
 
-				<input type="submit" value="등록" class="btn btn-primary py-3 px-5">
+				<button type="submit" value="등록" class="btn btn-primary py-3 px-5">등록</button>
+				<button type="submit" value="취소" class="btn btn-primary py-3 px-5 onclick="javascript:location.href='/room/rooms'">취소</button>
+				
 			</form>
 		</div>
 	</section>
