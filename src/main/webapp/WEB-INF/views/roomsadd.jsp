@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<c:if test="${session_flag==null || session_flag=='fail' }">
+<%-- <c:if test="${session_flag==null || session_flag=='fail' }">
 	<script type="text/javascript">
 		alert("로그인을 하셔야 글쓰기가 가능합니다.")
 	</script>
 	<c:redirect url="../user/login" />
-</c:if>
+</c:if> --%>
 <title>숙소 등록</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -72,23 +72,25 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-6" style="display: inline-block;">
-			<form action="#" class="bg-white p-5 " width="100%">
+			<form action="roomsWriteDo" class="bg-white p-5 " width="100%">
 
+				
+				
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방번호</label>
+						style="font-weight: bolder;">방이름</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;"
-							id="userid" name="userid">
+							id="userid" name="rname">
 					</div>
 				
 				</div>
-
+				
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방타입</label>
 					<div class="col-sm-7">
-						<select name="room">
+						<select name="rtype">
 							<option value="all">집전체</option>
 							<option value="individual">개인실</option>
 							<option value="hotel">호텔</option>
@@ -102,7 +104,7 @@
 						style="font-weight: bolder;">인원수</label>
 					<div class="col-sm-7">
 						<input type="password" class="form-control" style="width: 100%;"
-							id="" name="">
+							id="" name="rpeople">
 					</div>
 				</div>
 
@@ -111,7 +113,7 @@
 						style="font-weight: bolder;">방정보</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="rinfo">
 					</div>
 					<!-- <div class="col-sm-3">ex)ya63kr@nate.com</div> -->
 				</div>
@@ -121,7 +123,7 @@
 						style="font-weight: bolder;">사진</label>
 					<div class="col-sm-7">
 						<input type="file" class="" style="width: 100%;" id="file"
-							name="file">
+							name="rpicture">
 					</div>
 					
 					<!-- 		<div class="col-sm-3">ex) -없이 작성하세요</div> -->
@@ -133,7 +135,7 @@
 						style="font-weight: bolder;">도시</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="rcity">
 					</div>
 				</div>
 				<div class="form-inline form-group">
@@ -141,7 +143,7 @@
 						style="font-weight: bolder;">가격</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="rprice">
 					</div>
 				</div>
 				<div class="form-inline form-group">
@@ -149,7 +151,7 @@
 						style="font-weight: bolder;">침실수<label>
 							<div class="col-sm-7">
 								<input type="text" class="form-control" style="width: 100%;"
-									id="" name="">
+									id="" name="rroom">
 							</div>
 				</div>
 				<div class="form-inline form-group">
@@ -157,7 +159,7 @@
 						style="font-weight: bolder;">침대수</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="rbed">
 					</div>
 				</div>
 				<div class="form-inline form-group">
@@ -165,7 +167,7 @@
 						style="font-weight: bolder;">흡연가능여부</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="rsmoke">
 					</div>
 				</div>
 				<div class="form-inline form-group">
@@ -173,7 +175,7 @@
 						style="font-weight: bolder;">애완동물 가능여부</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="rpet">
 					</div>
 				</div>
 				<div class="form-inline form-group">
@@ -181,7 +183,7 @@
 						style="font-weight: bolder;">주소</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="raddress">
 					</div>
 				</div>
 

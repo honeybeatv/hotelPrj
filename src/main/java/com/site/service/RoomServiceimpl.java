@@ -46,8 +46,11 @@ public class RoomServiceimpl implements RoomService {
       return roomlist;
    }
 
-@Override
-public void roomsAddDo(RoomVo roomVo) {
-	roomMapper.insertRoomsAddDo(roomVo);
-}
+	@Override
+	public void roomsWriteDo(RoomVo roomVo) {
+		roomMapper.insertRoomsWriteDo(roomVo);
+		
+	}
+
+
 }
