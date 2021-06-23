@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.service.AdminService;
+import com.site.vo.UserVo;
 
 @Controller
 @RequestMapping("/admin")
@@ -29,7 +30,7 @@ public class AdminController {
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		System.out.println("# admin logout #");
+		System.out.println("# admin logout success #");
 		return "redirect:/main/index";
 	}
 	
@@ -37,6 +38,35 @@ public class AdminController {
 	public String mypage() {
 		System.out.println("# admin administration category #");
 		return "/admin/administration";
+	}
+	
+	@RequestMapping("/userInfoView")	// 회원 기본정보 페이지 호출
+	public String UserInfoView(Model model, @RequestParam("userno") int userno) {
+		UserVo userVo = adminService.AdminInfoView(userno);
+		model.addAttribute(userVo);
+		
+		System.out.println("# administration category_Informaton UserInfoView userid : " + userVo.getUserid() + " #");
+		
+		return "/user/userInfoView";
+	}
+
+	@RequestMapping("/userInfoModify") // 회원 기본정보 수정페이지 호출
+	public String mypageModify(Model model, @RequestParam("userno") int userno) {
+		UserVo userVo = adminService.AdminInfoModify(userno);
+		model.addAttribute(userVo);
+		
+		System.out.println("# administration category_Informaton userInfoModify userid : " + userVo.getUserid() + " #");
+		
+		return "/user/userInfoModify";
+	}
+
+	@RequestMapping("/adminInfoModifyDo") // 회원 기본정보 수정페이지 실행
+	public String userInfoModifyDo(UserVo userVo) {
+		adminService.AdminInfoModifyDo(userVo);
+		
+		System.out.println("# administration category_Informaton userInfoModifyyDo userid : " + userVo.getUserid() + " #");
+		
+		return "redirect:/admin/adminInfoView?userno="+ userVo.getUserno();
 	}
 
 }
