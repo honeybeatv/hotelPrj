@@ -31,10 +31,10 @@
     <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
  	<script type="text/javascript">
  	function searchSubmit() {
-		var city = $("#city").val();
+		var city = $("#rcity").val();
 		var startDate = $("#datepicker1").val();
 		var endDate = $("#datepicker2").val();
-		var people = $("#personnel").val();
+		var people = $("#rpeople").val();
 		if(city == ""){
 		alert("지역을 선택하세요");
 		return false;
@@ -110,7 +110,7 @@
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="Rcity" id="city" class="form-control" style="cursor:pointer;">
+			                    <select name="rcity" id="city" class="form-control" style="cursor:pointer;">
 			                    	<option value="">지역</option>
 			                    	<option value="서울">서울</option>
 			                      <option value="경기">경기</option>
@@ -148,7 +148,7 @@
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="person" id="person" class="form-control" style="cursor:pointer;">
+			                    <select name="rpeople" id="rpeople" class="form-control" style="cursor:pointer;">
 				                      <option value="">인원수</option>
 				                      <option value="1">1명</option>
 				                      <option value="2">2명</option>

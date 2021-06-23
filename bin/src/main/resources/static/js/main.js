@@ -343,8 +343,8 @@
   $('.checkin_date, .checkout_date').datepicker({
 	  format: 'yyyy/mm/dd',
 	  autoclose: true,
-	  minDate: 0
-
+	  minDate: 0,
+	  maxDate: "+1M"
 	});
 
 

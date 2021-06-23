@@ -50,7 +50,7 @@ $(document).ready(function(){
                return;
            }
            // 폼 내부의 데이터를 전송할 주소
-           document.form1.action="/index"
+           document.form1.action="../main/index"
            // 제출
            document.form1.submit();
 
@@ -89,7 +89,7 @@ $(document).ready(function(){
  			 success:function(data){
  				 alert(data.msg);
  				 if(data.flag=="success"){
- 				    location.href="/index";
+ 				    location.href="../main/index";
  				 }else{
  					 $("#userid").val(""); //공백처리 
  					 $("#userpw").val("");
