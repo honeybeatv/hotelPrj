@@ -1,5 +1,6 @@
 package com.site.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.site.mapper.UserMapper;
+import com.site.vo.ReserveVo;
+import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
 @Service
@@ -44,12 +47,14 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override // 회원 예약정보 페이지 호출
-	public List<UserVo> userReservationView(int userno) {
-		List<UserVo> list = userMapper.selectUserReservationList(userno);
-		return list;
+	public Map<String, Object> userReservationViewList(int userno) {
+		Map<String, Object> uRVMap = new HashMap<String, Object>();
+		
+//		List<RoomVo> uReservationRoomList =  userMapper.selectUserReservationRoomList(userno);
+		List<ReserveVo> uReservationReserveList =  userMapper.selectUserReservationReserveList(userno);
+		uRVMap.put("uReservationReserveList", uReservationReserveList);
+		
+		return uRVMap;
 	}
 	
-	
-
-
 }

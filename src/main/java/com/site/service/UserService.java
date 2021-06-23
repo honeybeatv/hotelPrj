@@ -22,7 +22,7 @@ public interface UserService {
 	void userInfoModifyDo(UserVo userVo);
 	
 	// 회원 예약정보 페이지 호출
-	List<UserVo> userReservationView(int userno);
+	Map<String, Object> userReservationViewList(int userno);
 
 
 }

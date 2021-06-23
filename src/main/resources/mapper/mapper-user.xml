@@ -39,21 +39,16 @@
   	</update>
   	
   	<!-- 회원 기본정보 호출 -->
-  	<select id="selectUserReservationList" resultType="com.site.vo.UserVo">
-  		SELECT user1.userno      , 
-		       reserve.roomno    , 
-		       reserve.re_no     ,
-		       room.rname        , 
-		       room.raddress     , 
-		       reserve.startday  , 
-		       reserve.endday 
-		       
-		  FROM user1 user1, reserve reserve, room room
-		  
-		 WHERE user1.userno = #{reserve.userno} 
-		   and reserve.roomno = #{room.roomno}
-		   
-	  ORDER BY reserve.re_no asc
+  	<select id="selectUserReservationReserveList" resultType="com.site.vo.ReserveVo">
+		<![CDATA[
+			SELECT *
+			FROM reserve
+			WHERE userno = (
+							SELECT userno
+							FROM user1
+							where userno=#{userno})
+
+		]]>
   	</select>
 
   </mapper>

@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.site.service.UserService;
+import com.site.vo.ReserveVo;
+import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
 @Mapper
@@ -23,6 +25,6 @@ public interface UserMapper {
 	void updateUserInfoModifyDo(UserVo userVo);
 	
 	// 회원 예약정보 호출
-	List<UserVo> selectUserReservationList(int userno);
+	List<ReserveVo> selectUserReservationReserveList(int userno);
 
 }

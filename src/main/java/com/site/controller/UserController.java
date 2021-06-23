@@ -153,11 +153,17 @@ public class UserController {
 	}
 	
 	@RequestMapping("/userReservationView")	// 회원 예약정보 페이지 호출
-	public String userReservationView(Model model, UserVo userVo, @RequestParam("userno") int userno) {
-		List<UserVo> list = userService.userReservationView(userno);
-		model.addAttribute("list", list);
+	public String userReservationView(Model model, @RequestParam("userno") int userno) {
+		UserVo userVo = userService.userInfoView(userno);
 		
+		Map<String, Object> uRVMap = null;
+		uRVMap = userService.userReservationViewList(userno);
+		
+		System.out.println(uRVMap.get("uReservationReserveList"));
 		System.out.println("# mypage category_Reservation userReservationView userid : " + userVo.getUserid() + " #");
+		
+//		model.addAttribute("uRVMap", uRVMap);
+
 		
 		return "/user/userReservationView";
 	}
