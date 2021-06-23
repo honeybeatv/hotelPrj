@@ -25,10 +25,17 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "/index";
+	}
 
 	@RequestMapping("/login")
 	public String login() {
-		System.out.println("user login page");
+		System.out.println("# user login page #");
 		return "/user/login";
 	}
 	
@@ -46,7 +53,7 @@ public class UserController {
 			HttpSession session = request.getSession();
 			session.setAttribute("session_flag","fail");
 			
-			System.out.println("user login fail");
+			System.out.println("# user login fail #");
 		}else {
 			map.put("flag", "success");
 			map.put("msg", "로그인 성공!");
@@ -58,7 +65,7 @@ public class UserController {
 			session.setAttribute("session_uemail", uVo.getUemail());
 			session.setAttribute("session_uadmin", uVo.getUadmin());	//회원,관리자 확인용
 			
-			System.out.println("user login success : " + session.getAttribute("session_userid"));
+			System.out.println("# user login success session_userid : " + session.getAttribute("session_userid") + " #");
 		}
 		return map;
 	}
@@ -80,19 +87,19 @@ public class UserController {
 			map.put("flag", "fail");
 			map.put("msg", "회원가입 실패.");
 			
-			System.out.println("user join fail");
+			System.out.println("# user join fail #");
 		}else {
 			map.put("flag", "success");
 			map.put("msg", "회원가입 성공!");
 			
-			System.out.println("user join success");
+			System.out.println("# user join success #");
 		}
 		return map;
 	}
 
 	@RequestMapping("/mypage")
 	public String mypage() {
-		System.out.println("user mypage category");
+		System.out.println("# user mypage category #");
 		return "/user/mypage";
 	}
 
@@ -101,7 +108,7 @@ public class UserController {
 		UserVo userVo = userService.UserInfoView(userno);
 		model.addAttribute(userVo);
 		
-		System.out.println("mypage UserInfoView userid : " + userVo.getUserid());
+		System.out.println("# mypage category_Informaton UserInfoView userid : " + userVo.getUserid() + " #");
 		
 		return "/user/UserInfoView";
 	}
@@ -111,7 +118,7 @@ public class UserController {
 		UserVo userVo = userService.UserInfoModify(userno);
 		model.addAttribute(userVo);
 		
-		System.out.println("mypage UserInfoModify userid : " + userVo.getUserid());
+		System.out.println("# mypage category_Informaton UserInfoModify userid : " + userVo.getUserid() + " #");
 		
 		return "/user/UserInfoModify";
 	}
@@ -120,10 +127,8 @@ public class UserController {
 	public String UserInfoModifyDo(UserVo userVo) {
 		userService.UserInfoModifyDo(userVo);
 		
-//		userVo = userService.UserInfoView(userVo.getUserid());
-//		return "redirect:/mypageView?name="+userVo.getName();
-//		return "redirect:/user/UserInfoView?userno="+ userVo.getUser_no();
-		System.out.println("mypage UserInfoModifyDo userid : " + userVo.getUserid());
+
+		System.out.println("# mypage category_Informaton UserInfoModifyDo userid : " + userVo.getUserid() + " #");
 		
 		return "redirect:/user/UserInfoView?userno="+ userVo.getUserno();
 	}
