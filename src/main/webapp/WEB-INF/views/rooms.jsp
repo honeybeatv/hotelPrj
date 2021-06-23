@@ -85,18 +85,20 @@
 		    	<div class="col-lg-3 sidebar">
 	      		<div class="sidebar-wrap bg-light ftco-animate">
 	      			<h3 class="heading mb-4">상세조건 검색</h3>
-	      			<form action="/advancedSearch" method="post">
+	      			<form action="../room/advancedSearch" method="post">
+	      			<input type="hidden" name="rcity" value="${vo.rcity }">
+	      			<input type="hidden" name="rpeople" value="${vo.rpeople }">
 	      				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" id="inDate" value="${start }" class="form-control checkin_date" placeholder="Check In Date">
+		                <input type="text" name="inDate" id="checkin_date" value="${start }" class="form-control checkin_date" placeholder="Check In Date">
 		              </div>
 		              <div class="form-group">
-		                <input type="text" id="outDate" value="${end }" class="form-control checkout_date" placeholder="Check Out Date">
+		                <input type="text" name="outDate" id="checkin_date" value="${end }" class="form-control checkout_date" placeholder="Check Out Date">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="roomType" id="" class="form-control">
+	                    <select name="rtype" id="" class="form-control">
 	                    	<option value="">숙소유형</option>
 	                    	<option value="apt">아파트</option>
 	                      <option value="house">주택</option>
@@ -110,7 +112,7 @@
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="bedroom" id="" class="form-control">
+	                    <select name="rroom" id="" class="form-control">
 	                    	<option value="0">침실 0</option>
 	                    	<option value="1">침실 1</option>
 	                      <option value="2">침실 2</option>
@@ -124,7 +126,7 @@
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="bed" id="" class="form-control">
+	                    <select name="rbed" id="" class="form-control">
 	                    	<option value="0">침대 0</option>
 	                    	<option value="1">침대 1</option>
 	                      <option value="2">침대 2</option>
@@ -137,15 +139,15 @@
 		              </div>
 		              
 		               <div class="form-group">
-		              <input type="checkbox" name="smoke" value="smoke"> 흡연실&emsp;
-		              <input type="checkbox" name="pet" value="pet"> 반려동물
+		              <input type="checkbox" name="rsmoke" value="smoke" > 흡연실&emsp;
+		              <input type="checkbox" name="rpet" value="pet"> 반려동물
 		              </div>
 		              
 		              <div class="form-group">
 		              	<div class="range-slider">
 		              		<span>
-										    <input type="number" value="25000" min="0" max="120000"/>	-
-										    <input type="number" value="50000" min="0" max="120000"/>
+										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>	-
+										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
 										  </span>
 										  <!-- <input value="1000" min="0" max="120000" step="500" type="range"/>
 										  <input value="50000" min="0" max="120000" step="500" type="range"/>

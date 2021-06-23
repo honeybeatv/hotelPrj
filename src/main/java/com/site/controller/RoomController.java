@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -70,20 +71,28 @@ public class RoomController {
 	
 	//상세 조건 검색
 	@RequestMapping("/advancedSearch")
-	public String advancedSearch(@RequestParam("inDate") @Nullable String inDate, @RequestParam("outDate") @Nullable String outDate, @RequestParam("roomType") @Nullable String roomType,
-						@RequestParam("bedroom") @Nullable String bedroom, @RequestParam("bed") @Nullable String bed,
+	public String advancedSearch(@RequestParam("inDate") @Nullable String inDate, @RequestParam("outDate") @Nullable String outDate,
+						@RequestParam("rtype") @Nullable String rtype, @RequestParam("rroom") @Nullable int rroom,
+						@RequestParam("rbed") @Nullable int rbed,
 						@RequestParam("minPrice") @Nullable int minPrice, @RequestParam("maxPrice") @Nullable int maxPrice, 
-						@RequestParam("pet") @Nullable String pet, @RequestParam("smoke") @Nullable String smoke) {
-		System.out.println(inDate +" " + outDate);
-		System.out.println(roomType);
-		System.out.println(smoke + " " + pet);
-		System.out.println(minPrice + ", " + maxPrice);
-	
+						@RequestParam(value = "rpet", defaultValue = "x") @Nullable String rpet, @RequestParam(value= "rsmoke", defaultValue = "x") @Nullable String rsmoke,
+						@RequestParam("rcity") @Nullable String rcity, @RequestParam("rpeople") @Nullable int rpeople, Model model  
+						) {
 		String checkIn = inDate.replaceAll("/", "");
 		String checkOut = outDate.replaceAll("/", "");
 		
-		List<RoomVo> list = roomService.roomListAdvanced(checkIn, checkOut, roomType, bedroom, bed, minPrice, maxPrice, pet, smoke);
+		System.out.println(checkIn +" " + checkOut);
+		System.out.println(rcity + rroom);
+		System.out.println(rpeople);
+		System.out.println("흡연 : "+ rsmoke + " " + "동물 : "+ rpet+"end");
+		System.out.println(minPrice + ", " + maxPrice);
+	
 		
+		List<RoomVo> list = roomService.roomListAdvanced(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
+		
+		model.addAttribute(list);
+		model.addAttribute("start",checkIn);
+		model.addAttribute("end",checkOut);
 		return "/rooms";
 	}
 }

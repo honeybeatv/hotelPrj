@@ -102,7 +102,7 @@
     		<div class="row">
     			<div class="col-lg-12">
 
-    				<form action="room/search" id="searchForm" name="searchForm" class="booking-form" method="post">
+    				<form action="../../room/search" id="searchForm" name="searchForm" class="booking-form" method="post">
 	        		<div class="row">
 	        			<div class="col-md d-flex">
 	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
