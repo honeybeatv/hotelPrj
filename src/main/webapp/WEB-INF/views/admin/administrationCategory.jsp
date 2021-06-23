@@ -8,7 +8,7 @@
 <body>
 	<div class="col-12 d-inline-flex" pading="2px">
 		<div class="col-md-2"></div>
-		<li class="nav-item"><a href="javascript:location.href='./UserInfoView?userno='+${session_userno}" class="nav-link">Information</a></li>
+		<li class="nav-item"><a href="javascript:location.href='./adminInfoView?userno='+${session_userno}" class="nav-link">Information</a></li>
 		<div class="col-md-2"></div>
 		<li class="nav-item"><a href="javascript:location.href='./user'" class="nav-link">Users</a></li>
 		<div class="col-md-2"></div>

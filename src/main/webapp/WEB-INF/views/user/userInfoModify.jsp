@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Join Page</title>
+    <title>MyPage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -30,90 +30,22 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
-  	 
+// 	  	 function goto_UserInfoView(userno){
+// 	  		 if(confirm("수정을 취소하시겠습니까?")){
+// 	  			location.href = "./UserInfoView?userid="+${userVo.userno};
+// 	  		 }else{
+// 	  			 return false;
+// 	  		 };
+// 	  	 }
+	  	 
+	  	 $(function(){
+	  		 $('#goto_userInfoView').click(function(){
+ 	  			 //location.href = "./UserInfoView?userid="+${userVo.userno};
+ 	  			 history.back();
+	  		 });
+	  	 });
+	  	 
   	</script>
-  	
-  	<script type="text/javascript">
-	
-$(document).ready(function(){
-	$("#joinBtn").click(function(){
-		
-        // 태크.val() : 태그에 입력된 값
-        // 태크.val("값") : 태그의 값을 변경 
-        var userid = $("#userid").val();
-        var userpw = $("#userpw").val();
-        
-        var uemail = $("#uemail").val();
-        var name = $("#name").val();
-        var uphone = $("#uphone").val();
-        
-        
-        if(name == ""){
-            alert("이름을 입력하세요.");
-            $("#name").focus(); // 입력포커스 이동
-            return; // 함수 종료
-        }
-        if(userid == ""){
-            alert("아이디를 입력하세요.");
-            $("#userid").focus(); // 입력포커스 이동
-            return; // 함수 종료
-        }
-        if(userpw == ""){
-            alert("비밀번호를 입력하세요.");
-            $("#userpw").focus();
-            return;
-        }
-       /*  if(userPw != $('#mbpw_re').val()){
-        	alert("두 비밀번호가 다릅니다")
-        	return;
-        } */
-        if(uemail == ""){
-            alert("이메일을 입력하세요.");
-            $("#uemail").focus();
-            return;
-        }
-        if(uphone == ""){
-            alert("전화번호를 입력하세요.");
-            $("#uphone").focus();
-            return;
-        }
-        
-        join_check()
-       
-        
-    });
-	
-	function join_check(){
-	 	   $.ajax({
-	 			 url:'./join_check',
-	 			 type:'post',
-	 			 data:{
-	 				 "userid":$("#userid").val(),
-	 				 "userpw":$("#userpw").val(),
-	 				 "uemail":$("#uemail").val(),
-	 	        	 "name":$("#name").val(),
-	 	        	 "uphone":$("#uphone").val(),
-	 	        	 
-	 			 },
-	 			 success:function(data){
-	 				 alert(data.msg);
-	 				 if(data.flag=="success"){
-	 				    location.href="/index";
-	 				 }else{
-	 					 $("#userpw").val("");//공백처리
-	 					return false;
-	 				 }
-	 			 },
-	 			 error:function(){
-	 				 alert("에러");
-	 			 }
-	 		  });
-	    }
-	
-	
-});
-</script>
-  	
   	
   </head>
   <body>
@@ -126,66 +58,58 @@ $(document).ready(function(){
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>join</span></p>
-	            <h1 class="mb-4 bread">Join</h1>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>mypage</span></p>
+	            <h1 class="mb-4 bread">Mypage</h1>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
+    
+	<c:import url="/WEB-INF/views/user/mypageCategory.jsp"></c:import>
+	
     <section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
-            <form action="join_check" method="post" class="bg-white p-5 " width="100%">
-				
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width:100%;" id="name" name="name">
+            <form action="userInfoModifyDo" class="bg-white p-5 " method="post" width="100%">
+            	<input type="hidden" id="userno" name="userno" value="${userVo.userno}" >
+            	 
+            	<div class="form-inline form-group">
+					<label for="name" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" style="width:100%;" id="name" name="name" value="${userVo.name}" >
 					</div>
 				</div>
 				
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label" style="font-weight:bolder;">아이디</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid">
+					<div class="col-sm-10">
+						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid" value="${userVo.userid}" >
 					</div>
-					<div class="col-sm-3"><a href='#'>중복확인 </a></div>
+				</div>
+				
+				<div class="form-inline form-group">
+					<label for="uemail" class="col-sm-2 control-label" style="font-weight:bolder;">이메일</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" style="width:100%; font-weight:bolder;" id="uemail" name="uemail" value="${userVo.uemail}" readonly>
+					</div>
 				</div>
 				
 				<div class="form-inline form-group">
 					<label for="userpw" class="col-sm-2 control-label" style="font-weight:bolder;">비밀번호</label>
-					<div class="col-sm-7">
-						<input type="password" class="form-control" style="width:100%;" id="userpw" name="userpw">
+					<div class="col-sm-10">
+						<input type="text" class="form-control" style="width:100%;" id="userpw" name="userpw" value="${userVo.userpw}">
 					</div>
 				</div>
 				
 				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">이메일</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width:100%;" id="uemail" name="uemail">
+					<label for="uphone" class="col-sm-2 control-label" style="font-weight:bolder;">핸드폰 번호</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" style="width:100%;" id="uphone" name="uphone" value="${userVo.uphone}" >
 					</div>
-					<div class="col-sm-3">ex)ya63kr@nate.com</div>
 				</div>
 				
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">핸드폰 번호</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width:100%;" id="uphone" name="uphone">
-					</div>
-					<div class="col-sm-3">ex) -없이 작성하세요</div>
-				</div>
-
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">닉네임</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width:100%;" id="" name="">
-					</div>
-					<div class="col-sm-3">ex)19920913</div>
-				</div>
-				
-				<input type="button" value="회원가입" id="joinBtn" class="btn btn-primary py-3 px-5">
+				<button type="submit" class="btn btn-primary py-3 px-5">수정</button>
+				<button type="button" id="goto_userInfoView" class="btn btn-primary py-3 px-5">취소</button>
             </form>
           </div>
     </section>
