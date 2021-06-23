@@ -18,7 +18,7 @@ import com.site.vo.RoomVo;
 @Service
 public class RoomServiceimpl implements RoomService {
    
-   @Autowired
+@Autowired
    RoomMapper roomMapper;
 
    //index페이지에서 검색
@@ -45,4 +45,9 @@ public class RoomServiceimpl implements RoomService {
       List<RoomVo> roomlist = roomMapper.selectroomsListAll();
       return roomlist;
    }
+
+@Override
+public void roomsAddDo(RoomVo roomVo) {
+	roomMapper.insertRoomsAddDo(roomVo);
+}
 }

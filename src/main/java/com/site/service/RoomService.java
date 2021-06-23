@@ -18,5 +18,8 @@ public interface RoomService {
 	//room 리스트 페이지 호출
 	List<RoomVo> roomsListAll();
 	
+	//rooms 숙소 등록
+	void roomsAddDo(RoomVo roomVo);
+	
 
 }

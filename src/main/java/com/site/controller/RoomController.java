@@ -36,10 +36,7 @@ public class RoomController {
       return "/rooms-single";
    }
    
-   @RequestMapping("/roomsadd")
-   public String roomsadd() {
-      return "/roomsadd";
-   }
+
    @RequestMapping("/roomsList") //room 리스트 페이지 호출
 	public String roomsList(Model model) {
 		
@@ -49,6 +46,20 @@ public class RoomController {
 		System.out.println("roomsList" + roomsList);
 		return "/roomsList";
    }
+   
+   @RequestMapping("/roomsadd") // roomsadd페이지 호출
+	public String roomsadd() {
+		return "/roomsadd";
+	}
+	
+	@RequestMapping("/roomsaddDo") //쓰기저장 호출
+	public String roomsaddDo(RoomVo roomVo) {
+		//작성자,제목,내용
+		System.out.println("test : "+roomVo.getRoomNo());
+		roomService.roomsAddDo(roomVo);
+		
+		return "rooms";
+	}
 
    //index페이지에서 검색
 	@RequestMapping("/search")

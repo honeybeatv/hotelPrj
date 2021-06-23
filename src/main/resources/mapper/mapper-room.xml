@@ -17,6 +17,11 @@
    <select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
    		 select * from room order by roomno desc
 	</select>
+	
+	<!-- 글쓰기 저장 -->
+	<insert id="insertRoomsAddDo">
+	  INSERT INTO ROOM VALUES('', '', '', '', '', '', 0, 0, 0, '', '', '');
+	</insert>
 
   
   <!-- <?xml version="1.0" encoding="UTF-8"?>
