@@ -40,33 +40,34 @@ public class AdminController {
 		return "/admin/administration";
 	}
 	
-	@RequestMapping("/userInfoView")	// 회원 기본정보 페이지 호출
+	@RequestMapping("/adminInfoView")	// 관리자 기본정보 페이지 호출
 	public String UserInfoView(Model model, @RequestParam("userno") int userno) {
-		UserVo userVo = adminService.AdminInfoView(userno);
-		model.addAttribute(userVo);
+		UserVo adminVo = adminService.AdminInfoView(userno);
+		model.addAttribute("adminVo", adminVo);
 		
-		System.out.println("# administration category_Informaton UserInfoView userid : " + userVo.getUserid() + " #");
+		System.out.println("# administration category_Informaton adminInfoView userid : " + adminVo.getUserid() + " #");
+		System.out.println(adminVo);
 		
-		return "/user/userInfoView";
+		return "/admin/adminInfoView";
 	}
 
-	@RequestMapping("/userInfoModify") // 회원 기본정보 수정페이지 호출
+	@RequestMapping("/adminInfoModify") // 관리자 기본정보 수정페이지 호출
 	public String mypageModify(Model model, @RequestParam("userno") int userno) {
-		UserVo userVo = adminService.AdminInfoModify(userno);
-		model.addAttribute(userVo);
+		UserVo adminVo = adminService.AdminInfoModify(userno);
+		model.addAttribute("adminVo", adminVo);
 		
-		System.out.println("# administration category_Informaton userInfoModify userid : " + userVo.getUserid() + " #");
+		System.out.println("# administration category_Informaton adminInfoModify userid : " + adminVo.getUserid() + " #");
 		
-		return "/user/userInfoModify";
+		return "/admin/adminInfoModify";
 	}
 
-	@RequestMapping("/adminInfoModifyDo") // 회원 기본정보 수정페이지 실행
-	public String userInfoModifyDo(UserVo userVo) {
-		adminService.AdminInfoModifyDo(userVo);
+	@RequestMapping("/adminInfoModifyDo") // 관리자 기본정보 수정페이지 실행
+	public String adminInfoModifyDo(UserVo adminVo) {
+		adminService.AdminInfoModifyDo(adminVo);
 		
-		System.out.println("# administration category_Informaton userInfoModifyyDo userid : " + userVo.getUserid() + " #");
+		System.out.println("# administration category_Informaton adminInfoModifyDo userid : " + adminVo.getUserid() + " #");
 		
-		return "redirect:/admin/adminInfoView?userno="+ userVo.getUserno();
+		return "redirect:/admin/adminInfoView?userno="+ adminVo.getUserno();
 	}
 
 }
