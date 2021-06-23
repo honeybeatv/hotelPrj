@@ -12,8 +12,8 @@ public interface RoomService {
 	List<RoomVo> getlist(int startday, int endday, String rcity, String string) throws ParseException;
 
 	//상세 조건 검색
-	List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String roomType, String bedroom, String bed,
-			int minPrice, int maxPrice, String pet, String smoke);
+	List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
+			int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
 
 	//room 리스트 페이지 호출
 	List<RoomVo> roomsListAll();

@@ -53,151 +53,151 @@
       </div>
     </div>
     <section class="ftco-section bg-light">
-       <div class="container">
-          <div class="row">
-           <div class="col-lg-9">
-                <div class="row">
-                
-                  <c:forEach var="list" items="${list }" > 
-                   <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-                      <div class="room">
-                         <a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                               <span class="icon-search2"></span>
-                            </div>
-                         </a>
-                         <div class="text p-3 text-center">
-                            <h3 class="mb-3"><a href="rooms-single">${list.roomNo }</a></h3>
-                            <p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
-                            <ul class="list">
-                               <li><span>Max:</span> 3 Persons</li>
-                               <li><span>Size:</span> 45 m2</li>
-                               <li><span>View:</span> Sea View</li>
-                               <li><span>Bed:</span> 1</li>
-                            </ul>
-                            <hr>
-                            <p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
-                         </div>
-                      </div>
-                   </div>
-                    </c:forEach>
-                    
-                </div>
-             </div>
-             <div class="col-lg-3 sidebar">
-               <div class="sidebar-wrap bg-light ftco-animate">
-                  <h3 class="heading mb-4">상세조건 검색</h3>
-                  <form action="/advancedSearch">
-                     <div class="fields">
-                    <div class="form-group">
-                      <input type="text" name="inDate" id="checkin_date" class="form-control checkin_date" placeholder="체크인 날짜">
-                    </div>
-                    <div class="form-group">
-                      <input type="text" name="outDate" id="checkin_date" class="form-control checkout_date" placeholder="체크아웃 날짜">
-                    </div>
-                    <div class="form-group">
-                      <div class="select-wrap one-third">
-                       <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                       <select name="roomType" id="" class="form-control">
-                          <option value="">숙소유형</option>
-                          <option value="apt">아파트</option>
-                         <option value="house">주택</option>
-                         <option value="walkup">공동주택</option>
-                         <option value="hotel">호텔</option>
-                         <option value="residence">레지던스</option>
-                         <option value="hostel">호스텔</option>
-                       </select>
-                     </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="select-wrap one-third">
-                       <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                       <select name="bedroom" id="" class="form-control">
-                          <option value="0">침실 0</option>
-                          <option value="1">침실 1</option>
-                         <option value="2">침실 2</option>
-                         <option value="3">침실 3</option>
-                         <option value="4">침실 4</option>
-                         <option value="5">침실 5</option>
-                         <option value="6">침실 6</option>
-                       </select>
-                     </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="select-wrap one-third">
-                       <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                       <select name="bed" id="" class="form-control">
-                          <option value="0">침대 0</option>
-                          <option value="1">침대 1</option>
-                         <option value="2">침대 2</option>
-                         <option value="3">침대 3</option>
-                         <option value="4">침대 4</option>
-                         <option value="5">침대 5</option>
-                         <option value="6">침대 6</option>
-                       </select>
-                     </div>
-                    </div>
-                    
-                    <div class="form-group">
-                    <input type="checkbox" name="smoke" value="smoke"> 흡연실&emsp;
-                    <input type="checkbox" name="pet" value="pet"> 반려동물
-                    </div>
-                    
-                    <div class="form-group">
-                       <div class="range-slider">
-                          <span>
-                                  <input type="number" name="minPrice" value="25000" min="0" max="120000"/>   -
-                                  <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
-                                </span>
-                                <!-- <input value="1000" min="0" max="120000" step="500" type="range"/>
-                                <input value="50000" min="0" max="120000" step="500" type="range"/>
-                                </svg> -->
-                              </div>
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-                    </div>
-                  </div>
-               </form>
-               </div>
-               <div class="sidebar-wrap bg-light ftco-animate">
-                  <h3 class="heading mb-4">Star Rating</h3>
-                  <form method="post" class="star-rating">
-                       <div class="form-check">
-                           <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                           <label class="form-check-label" for="exampleCheck1">
-                              <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
-                           </label>
-                       </div>
-                       <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
-                        </label>
-                       </div>
-                       <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                           <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-                       </label>
-                       </div>
-                       <div class="form-check">
-                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                           <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-                        </label>
-                       </div>
-                       <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                           <p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-                         </label>
-                       </div>
-                     </form>
-               </div>
-           </div>
-          </div>
-       </div>
+    	<div class="container">
+    		<div class="row">
+	        <div class="col-lg-9">
+		    		<div class="row">
+		    			<c:forEach var="list" items="${list }" > 
+		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
+		    				<div class="room">
+		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3 text-center">
+		    						<h3 class="mb-3"><a href="rooms-single">${list.roomNo }</a></h3>
+		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
+		    						<ul class="list">
+		    							<li><span>Max:</span> 3 Persons</li>
+		    							<li><span>Size:</span> 45 m2</li>
+		    							<li><span>View:</span> Sea View</li>
+		    							<li><span>Bed:</span> 1</li>
+		    						</ul>
+		    						<hr>
+		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+		    					</div>
+		    				</div>
+		    			</div>
+		    			 </c:forEach>
+		    		</div>
+		    	</div>
+		    	<div class="col-lg-3 sidebar">
+	      		<div class="sidebar-wrap bg-light ftco-animate">
+	      			<h3 class="heading mb-4">상세조건 검색</h3>
+	      			<form action="../room/advancedSearch" method="post">
+	      			<input type="hidden" name="rcity" value="${vo.rcity }">
+	      			<input type="hidden" name="rpeople" value="${vo.rpeople }">
+	      				<div class="fields">
+		              <div class="form-group">
+		                <input type="text" name="inDate" id="checkin_date" value="${start }" class="form-control checkin_date" placeholder="Check In Date">
+		              </div>
+		              <div class="form-group">
+		                <input type="text" name="outDate" id="checkin_date" value="${end }" class="form-control checkout_date" placeholder="Check Out Date">
+		              </div>
+		              <div class="form-group">
+		                <div class="select-wrap one-third">
+	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+	                    <select name="rtype" id="" class="form-control">
+	                    	<option value="">숙소유형</option>
+	                    	<option value="apt">아파트</option>
+	                      <option value="house">주택</option>
+	                      <option value="walkup">공동주택</option>
+	                      <option value="hotel">호텔</option>
+	                      <option value="residence">레지던스</option>
+	                      <option value="hostel">호스텔</option>
+	                    </select>
+	                  </div>
+		              </div>
+		              <div class="form-group">
+		                <div class="select-wrap one-third">
+	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+	                    <select name="rroom" id="" class="form-control">
+	                    	<option value="0">침실 0</option>
+	                    	<option value="1">침실 1</option>
+	                      <option value="2">침실 2</option>
+	                      <option value="3">침실 3</option>
+	                      <option value="4">침실 4</option>
+	                      <option value="5">침실 5</option>
+	                      <option value="6">침실 6</option>
+	                    </select>
+	                  </div>
+		              </div>
+		              <div class="form-group">
+		                <div class="select-wrap one-third">
+	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+	                    <select name="rbed" id="" class="form-control">
+	                    	<option value="0">침대 0</option>
+	                    	<option value="1">침대 1</option>
+	                      <option value="2">침대 2</option>
+	                      <option value="3">침대 3</option>
+	                      <option value="4">침대 4</option>
+	                      <option value="5">침대 5</option>
+	                      <option value="6">침대 6</option>
+	                    </select>
+	                  </div>
+		              </div>
+		              
+		               <div class="form-group">
+		              <input type="checkbox" name="rsmoke" value="smoke" > 흡연실&emsp;
+		              <input type="checkbox" name="rpet" value="pet"> 반려동물
+		              </div>
+		              
+		              <div class="form-group">
+		              	<div class="range-slider">
+		              		<span>
+										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>	-
+										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
+										  </span>
+										  <!-- <input value="1000" min="0" max="120000" step="500" type="range"/>
+										  <input value="50000" min="0" max="120000" step="500" type="range"/>
+										  </svg> -->
+										</div>
+		              </div>
+		              <div class="form-group">
+		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+		              </div>
+		            </div>
+	            </form>
+	      		</div>
+	      		<div class="sidebar-wrap bg-light ftco-animate">
+	      			<h3 class="heading mb-4">Star Rating</h3>
+	      			<form method="post" class="star-rating">
+							  <div class="form-check">
+									<input type="checkbox" class="form-check-input" id="exampleCheck1">
+									<label class="form-check-label" for="exampleCheck1">
+										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
+									</label>
+							  </div>
+							  <div class="form-check">
+						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						     </label>
+							  </div>
+							  <div class="form-check">
+							    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+							    </label>
+							  </div>
+							</form>
+	      		</div>
+	        </div>
+		    </div>
+    	</div>
     </section>
 
 

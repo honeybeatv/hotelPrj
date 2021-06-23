@@ -19,7 +19,7 @@
 	</select>
 	
  	<!-- 글쓰기 저장 -->
-	<insert id="insertRoomsWriteDo">
+	<insert id="insertRoomsWriteDo" >
 	  INSERT INTO ROOM VALUES
 	  (room_seq.nextval, #{rname}, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet},#{raddress})
 	</insert>
@@ -31,24 +31,27 @@
 		SELECT distinct ro.* FROM reserve re, room ro
 			WHERE re.roomno = ro.roomno
 			AND NOT TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday AND NOT TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday
-			AND ro.rpeople >= 0
+			AND ro.rpeople >= #{rpeople}
+			AND ro.rcity=#{rcity}
   		]]>
-			<!-- AND ro.rcity= -->
-			<if test="roomType!=null or roomType!=''">
-			AND ro.rtype=#{roomType}
+			<if test="rtype!=null or rtype!=''">
+				<![CDATA[ AND ro.rtype=#{rtype} ]]>
 			</if>
-			<if test="bedroom!=null or bedroom=''">
-			AND ro.rroom >= #{bedroom}
+			<if test="rroom!=null or rroom=''">
+			 <![CDATA[ AND ro.rroom >= #{rroom} ]]>
 			</if>
-			<if test="bed!=null or bed!=''">
-			AND ro.rbed >= #{bed}
+			<if test="rbed!=null or rbed!=''">
+			<![CDATA[ AND ro.rbed >= #{rbed} ]]>
 			</if>
-			<if test="smoke!=null or smoke!=''">
-			AND ro.rsmoke = #{smoke}
+			<if test="rsmoke!=null or rsmoke!='x'">
+			<![CDATA[  AND ro.rsmoke = #{rsmoke} ]]>
 			</if>
-			<if test="pet!=null or pet!=''">
-			AND ro.rpet = #{pet}
+			<if test="rpet!=null or rpet!='x'">
+			<![CDATA[  AND ro.rpet = #{rpet} ]]>
+			</if>
+			<if test="(minPrice!=null or minPrice!='') and (maxPrice!=null or maxPrice!='')">
+			<![CDATA[ AND #{minPrice}<=ro.rprice AND ro.rprice<=#{maxPrice} ]]>
 			</if>
   	</select>
-  
+
   </mapper>

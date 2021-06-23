@@ -33,5 +33,10 @@
 	    insert into user1 values(#{name},#{userid},
 	    #{userpw},USER1_SEQ.nextval,#{uphone},0,#{uemail})
 	</insert>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="id_check" parameterType="String" resultType="int">
+	    select count(*) from user1 where userid=#{userid}
+	</select>
   
   </mapper>
