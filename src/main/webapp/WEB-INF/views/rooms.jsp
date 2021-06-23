@@ -29,11 +29,12 @@
     <link rel="stylesheet" href="../static/css/style.css">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
- 	<script type="text/javascript">
-  	</script>
-  	
-  </head>
-  <body>
+    <script type="text/javascript">
+
+     </script>
+     
+  	</head>
+  	<body>
 
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->
@@ -43,9 +44,9 @@
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
-          	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>About</span></p>
-	            <h1 class="mb-4 bread">111</h1>
+             <div class="text">
+               <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>About</span></p>
+               <h1 class="mb-4 bread">111</h1>
             </div>
           </div>
         </div>
@@ -87,10 +88,10 @@
 	      			<form action="/advancedSearch" method="post">
 	      				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" id="checkin_date" value="${start }" class="form-control checkin_date" placeholder="Check In Date">
+		                <input type="text" id="inDate" value="${start }" class="form-control checkin_date" placeholder="Check In Date">
 		              </div>
 		              <div class="form-group">
-		                <input type="text" id="checkin_date" value="${end }" class="form-control checkout_date" placeholder="Check Out Date">
+		                <input type="text" id="outDate" value="${end }" class="form-control checkout_date" placeholder="Check Out Date">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
