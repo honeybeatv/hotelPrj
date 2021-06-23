@@ -20,8 +20,8 @@ public interface RoomMapper {
 	//room 리스트 페이지 호출
 	List<RoomVo> selectroomsListAll();
 
-
-
+	//글쓰기
+	void insertRoomsAddDo(RoomVo roomVo);
 }
 
 
