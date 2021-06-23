@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<title>숙소 리스트 </title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>게시판</title>
+
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
 
+  
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
 	rel="stylesheet">
@@ -40,29 +43,31 @@
 <script type="text/javascript">
 	
 </script>
+ 
 
 </head>
 <body>
 	<section>
-		<h1>숙소 리스트 	${map.listCount }</h1>
+			<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
-		<!-- <div class="wrapper">
-			<form action="./list" name="search" method="post">
-				<select name="category" id="category">
-					<option value="all">전체</option>
-					<option value="btitle">제목</option>
-					<option value="bcontent">내용</option>
-				</select>
-
-				<div class="title">
-					<input type="text" size="16" name="search" id="search">
+	<div class="hero-wrap"
+		style="background-image: url('/static/images/bg_1.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+				<div
+					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+					<div class="text">
+						<p class="breadcrumbs mb-2">
+							<span class="mr-2"><a href="index">Home</a></span> <span>숙소 리스트</span>
+						</p>
+						<h1 class="mb-4 bread">숙소 리스트</h1>
+					</div>
 				</div>
-
-				<button type="submit">
-					<i class="fas fa-search"></i>
-				</button>
-			</form>
-		</div> -->
+			</div>
+		</div>
+	</div>
 
 		<table>
 
@@ -93,7 +98,6 @@
 				<tr>
 					<td><span class="table-notice">${roomVo.roomNo }</span></td>
 					<td class="table-title">
-						<!-- content_view?번호를 전달 --> <a href="view?bno=${roomVo.roomNo }">
 							<c:forEach begin="1" end="${roomVo.roomNo}">
 							</c:forEach>
 					</a>
@@ -101,10 +105,7 @@
 					<td>${roomVo.roomNo}</td>
 					<td>${roomVo.rtype}</td>
 					<td>${roomVo.rpeople}</td>
-<<<<<<< HEAD
-=======
 					<td>${roomVo.rinfo}</td>
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 					<td>${roomVo.rpicture}</td>
 					<td>${roomVo.rcity}</td>
 					<td>${roomVo.rprice}</td>
@@ -125,6 +126,7 @@
 			<circle class="path" cx="24" cy="24" r="22" fill="none"
 					stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 		</div>
+		
 		 <a href="roomsadd"><div class="write">등록</div></a>
 		 
 		<script src="/static/js/jquery.min.js"></script>
