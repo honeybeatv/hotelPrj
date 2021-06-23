@@ -41,7 +41,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminInfoView")	// 관리자 기본정보 페이지 호출
-	public String UserInfoView(Model model, @RequestParam("userno") int userno) {
+	public String userInfoView(Model model, @RequestParam("userno") int userno) {
 		UserVo adminVo = adminService.AdminInfoView(userno);
 		model.addAttribute("adminVo", adminVo);
 		
