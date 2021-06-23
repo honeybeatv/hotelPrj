@@ -30,7 +30,8 @@ public class UserController {
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		return "/index";
+		System.out.println("# user logout #");
+		return "redirect:/main/index";
 	}
 
 	@RequestMapping("/login")
@@ -44,13 +45,14 @@ public class UserController {
 	public Map<String,Object> login_check(UserVo userVo,HttpServletRequest request,Model model) {
 		
 		Map<String,Object> map=new HashMap<String, Object>();
+		HttpSession session = request.getSession();
 		UserVo uVo = userService.login(userVo); //전체리스트 가져오기
+		
 		map.put("uVo",uVo);
 		if(uVo==null) {
 			map.put("flag", "fail");
 			map.put("msg", "아이디와 패스워드가 일치하지 않습니다.");
 			
-			HttpSession session = request.getSession();
 			session.setAttribute("session_flag","fail");
 			
 			System.out.println("# user login fail #");
@@ -58,7 +60,6 @@ public class UserController {
 			map.put("flag", "success");
 			map.put("msg", "로그인 성공!");
 			
-			HttpSession session = request.getSession();
 			session.setAttribute("session_flag","success");	//nav.jsp 에서 로그인 확인용
 			session.setAttribute("session_userid", uVo.getUserid());	//로그인 확인 및 환영문구 이용
 			session.setAttribute("session_userno", uVo.getUserno());	//정보호출용
@@ -103,33 +104,32 @@ public class UserController {
 		return "/user/mypage";
 	}
 
-	@RequestMapping("/UserInfoView")	// 회원 기본정보 페이지 호출
+	@RequestMapping("/userInfoView")	// 회원 기본정보 페이지 호출
 	public String UserInfoView(Model model, @RequestParam("userno") int userno) {
 		UserVo userVo = userService.UserInfoView(userno);
 		model.addAttribute(userVo);
 		
 		System.out.println("# mypage category_Informaton UserInfoView userid : " + userVo.getUserid() + " #");
 		
-		return "/user/UserInfoView";
+		return "/user/userInfoView";
 	}
 
-	@RequestMapping("/UserInfoModify") // 회원 기본정보 수정페이지 호출
+	@RequestMapping("/userInfoModify") // 회원 기본정보 수정페이지 호출
 	public String mypageModify(Model model, @RequestParam("userno") int userno) {
 		UserVo userVo = userService.UserInfoModify(userno);
 		model.addAttribute(userVo);
 		
-		System.out.println("# mypage category_Informaton UserInfoModify userid : " + userVo.getUserid() + " #");
+		System.out.println("# mypage category_Informaton userInfoModify userid : " + userVo.getUserid() + " #");
 		
-		return "/user/UserInfoModify";
+		return "/user/userInfoModify";
 	}
 
-	@RequestMapping("/UserInfoModifyDo") // 회원 기본정보 수정페이지 실행
-	public String UserInfoModifyDo(UserVo userVo) {
+	@RequestMapping("/userInfoModifyDo") // 회원 기본정보 수정페이지 실행
+	public String userInfoModifyDo(UserVo userVo) {
 		userService.UserInfoModifyDo(userVo);
 		
-
-		System.out.println("# mypage category_Informaton UserInfoModifyDo userid : " + userVo.getUserid() + " #");
+		System.out.println("# mypage category_Informaton userInfoModifyyDo userid : " + userVo.getUserid() + " #");
 		
-		return "redirect:/user/UserInfoView?userno="+ userVo.getUserno();
+		return "redirect:/user/userInfoView?userno="+ userVo.getUserno();
 	}
 }
