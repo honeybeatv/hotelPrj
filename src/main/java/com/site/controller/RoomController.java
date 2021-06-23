@@ -38,7 +38,7 @@ public class RoomController {
    
 
    
-   @RequestMapping("/roomsWrite") //쓰기페이지 호출
+   @RequestMapping("/roomsadd") //쓰기페이지 호출
 	public String roomsWrite() {
 		return "/roomsadd";
 	}
