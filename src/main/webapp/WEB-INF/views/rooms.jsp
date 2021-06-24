@@ -39,13 +39,12 @@
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('../images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
-             <div class="text">
-               <h1 class="mb-4 bread">111</h1>
+             <div class="text">>
             </div>
           </div>
         </div>
@@ -68,13 +67,10 @@
 		    						<h3 class="mb-3"><a href="rooms-single">${list.roomNo }</a></h3>
 		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 3 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 1</li>
+		    							<li><span>권장인원:</span> ${list.rpeople }</li>
+		    							<li><span>위치:</span> ${list.raddress }</li>
+		    							<li><span>침대갯수:</span> ${list.rbed	 }</li>
 		    						</ul>
-		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -98,7 +94,7 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rtype" id="" class="form-control">
-	                    	<option value="">숙소유형</option>
+	                    	<!-- <option value="">숙소유형</option> -->
 	                    	<option value="apt">아파트</option>
 	                      <option value="house">주택</option>
 	                      <option value="walkup">공동주택</option>
@@ -112,13 +108,13 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rroom" id="" class="form-control">
-	                    	<option value="0">침실 0</option>
 	                    	<option value="1">침실 1</option>
 	                      <option value="2">침실 2</option>
 	                      <option value="3">침실 3</option>
 	                      <option value="4">침실 4</option>
 	                      <option value="5">침실 5</option>
 	                      <option value="6">침실 6</option>
+	                    	<option value="7">침실 7 이상</option>
 	                    </select>
 	                  </div>
 		              </div>
@@ -126,27 +122,27 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rbed" id="" class="form-control">
-	                    	<option value="0">침대 0</option>
 	                    	<option value="1">침대 1</option>
 	                      <option value="2">침대 2</option>
 	                      <option value="3">침대 3</option>
 	                      <option value="4">침대 4</option>
 	                      <option value="5">침대 5</option>
 	                      <option value="6">침대 6</option>
+	                    	<option value="7">침대 7 이상</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              
 		               <div class="form-group">
-		              <input type="checkbox" name="rsmoke" value="smoke" > 흡연실&emsp;
+		              <input type="checkbox" name="rsmoke" value="smoke"> 흡연실&emsp;
 		              <input type="checkbox" name="rpet" value="pet"> 반려동물
 		              </div>
 		              
 		              <div class="form-group">
 		              	<div class="range-slider">
 		              		<span>
-										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>	-
-										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
+										    <input type="number" name="minPrice" value="25000" min="0" max="120000" style="width: 78px"/>원	-
+										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>원
 										  </span>
 										  <!-- <input value="1000" min="0" max="120000" step="500" type="range"/>
 										  <input value="50000" min="0" max="120000" step="500" type="range"/>
