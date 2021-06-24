@@ -23,7 +23,9 @@
   
 	<!-- 회원 기본정보 호출 -->
   	<select id="selectUserInfoList" resultType="com.site.vo.UserVo">
-  		SELECT * FROM user1 WHERE userno=#{userno}
+  		SELECT * 
+  		  FROM user1 
+  		 WHERE userno=#{userno}
   	</select>
   	
   	<!-- 회원 기본정보 수정 -->
@@ -49,6 +51,13 @@
 							where userno=#{userno})
 
 		]]>
+  	</select>
+  	
+  	<!-- 회원 호스팅정보 호출 -->
+  	<select id="selectUserHostingList" resultType="com.site.vo.RoomVo">
+  		SELECT * 
+  		  FROM room 
+  		 WHERE userno=#{userno}
   	</select>
 
   </mapper>
