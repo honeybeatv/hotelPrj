@@ -39,13 +39,12 @@
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('../images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
-             <div class="text">
-               <h1 class="mb-4 bread">111</h1>
+             <div class="text">>
             </div>
           </div>
         </div>
@@ -68,13 +67,10 @@
 		    						<h3 class="mb-3"><a href="rooms-single">${list.roomNo }</a></h3>
 		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 3 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 1</li>
+		    							<li><span>권장인원:</span> ${list.rpeople }</li>
+		    							<li><span>위치:</span> ${list.raddress }</li>
+		    							<li><span>침대갯수:</span> ${list.rbed	 }</li>
 		    						</ul>
-		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
