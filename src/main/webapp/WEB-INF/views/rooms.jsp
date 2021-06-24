@@ -81,8 +81,8 @@
 	      		<div class="sidebar-wrap bg-light ftco-animate">
 	      			<h3 class="heading mb-4">상세조건 검색</h3>
 	      			<form action="../room/advancedSearch" method="post">
-	      			<input type="hidden" name="rcity" value="${list.rcity }">
-	      			<input type="hidden" name="rpeople" value="${list.rpeople }">
+	      			<input type="hidden" name="rcity" value="${rcity }">
+	      			<input type="hidden" name="rpeople" value="${rpeople }">
 	      				<div class="fields">
 		              <div class="form-group">
 		                <input type="text" name="inDate" id="checkin_date" value="${start }" class="form-control checkin_date" placeholder="Check In Date">
@@ -121,7 +121,7 @@
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="rbed" id="" class="form-control">
+	                    <select name="rbed" id="" class="form-control" >
 	                    	<option value="0">침대 0</option>
 	                    	<option value="1">침대 1</option>
 	                      <option value="2">침대 2</option>
