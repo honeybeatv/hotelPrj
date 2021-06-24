@@ -54,7 +54,7 @@
   	</select>
   	
   	<!-- 회원 호스팅정보 호출 -->
-  	<select id="selectUserHostingViewList" resultType="com.site.vo.RoomVo">
+  	<select id="selectUserHostingEditList" resultType="com.site.vo.RoomVo">
   		SELECT * 
   		  FROM room 
   		 WHERE userno=#{userno}

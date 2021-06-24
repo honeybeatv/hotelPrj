@@ -26,6 +26,6 @@ public interface UserService {
 	Map<String, Object> userReservationViewList(int userno);
 	
 	// 회원 호스팅 페이지 호출
-	Map<String, Object> userHostingView(int userno);
+	Map<String, Object> userHostingEditList(int userno);
 
 }

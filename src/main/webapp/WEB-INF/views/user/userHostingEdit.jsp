@@ -45,7 +45,7 @@
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
 	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>mypage</span></p>
-	            <h1 class="mb-4 bread">Information</h1>
+	            <h1 class="mb-4 bread">Hosting</h1>
             </div>
           </div>
         </div>
@@ -58,27 +58,29 @@
 		<div  class="col-12" style="display:inline-block;" >
             <form class="bg-white p-2 " width="100%">
 				<table width="100%" >
-
+				
 					<tr>
-						<th>숙소이름</th>
-						<th>지역</th>
-						<th>종류</th>
-						<th>수용 가능 인원</th>
-						<th>가격</th>
-						<th>침대갯수</th>
-						<th>방갯수</th>
-						<th>흡연가능 여부</th>
-						<th>동물가능 여부</th>
-						<th>주소</th>
+						<th width="10%">숙소이름</th>
+						<th width="5%">지역</th>
+						<th width="6%">종류</th>
+						<th width="5%">수용 가능 인원</th>
+						<th width="6%">가격</th>
+						<th width="4%">침대갯수</th>
+						<th width="4%">방갯수</th>
+						<th width="6%">흡연가능 여부</th>
+						<th width="6%">동물가능 여부</th>
+						<th width="40%">주소</th>
+						<th width="3%">   </th>
+						<th width="3%">   </th>
 					</tr>
 
 					<tr height="1" bgcolor="#8f784b ">
 						<td colspan="12"></td>
 					</tr>
 
-					<c:forEach var="roomVo" items="${userHostingViewMap.userHostingViewList }">
+					<c:forEach var="roomVo" items="${userHostingEditMap.userHostingEditList }">
+						<input type="hidden" id="roomNo" name="roomNo" value="${roomVo.roomNo}" >  
 						<tr>
-						
 							<td>
 								<a href="*숙소링크*bno=${roomVo.roomNo}">${roomVo.rname}</a>
 							</td>
@@ -91,9 +93,10 @@
 							<td>${roomVo.rsmoke}</td>		
 							<td>${roomVo.rpet}</td>		
 							<td>${roomVo.raddress}</td>		
+							<td><button type="button" onclick="location.href='./userHostingModify?roomNo='+${roomVo.roomNo}">수정</button></td>		
+							<td><button type="button" onclick="location.href='./userHostingDelete'+${roomVo.roomNo}">삭제</button></td>		
 						</tr>
 					</c:forEach>
-
 
 				</table>
             </form>
