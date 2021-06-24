@@ -72,7 +72,9 @@ public class RoomController {
 		model.addAttribute("list",list);
 		model.addAttribute("start",start);
 		model.addAttribute("end",end);
-		model.addAttribute("vo", vo);
+		model.addAttribute("rcity",vo.getRcity());		
+		model.addAttribute("rpeople", vo.getRpeople());
+		
 		return "/rooms";
 	}
 	
@@ -102,6 +104,8 @@ public class RoomController {
 		model.addAttribute("list", list);
 		model.addAttribute("start",inDate);
 		model.addAttribute("end",outDate);
+		model.addAttribute("rpeople", rpeople);
+		model.addAttribute("rcity", rcity);
 		return "rooms";
 	}
 }
