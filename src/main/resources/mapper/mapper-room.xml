@@ -38,10 +38,7 @@
    </select>
    
 </mapper> -->
-  	  	<!-- 상세 조건 검색 -->
-  	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
-		<![CDATA[
-		SELECT distinct ro.* FROM reserve re, room ro
+<!-- 		SELECT distinct ro.* FROM reserve re, room ro
 			WHERE re.roomno = ro.roomno
 			AND NOT TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday AND NOT TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday
 			AND ro.rpeople >= #{rpeople}
@@ -49,26 +46,24 @@
 			AND ro.rroom >= #{rroom}
 			AND ro.rbed >= #{rbed}
 			AND ro.rpet = #{rpet}
-			AND #{minPrice}<=ro.rprice AND ro.rprice<=#{maxPrice}
+			AND ro.rsmoke = #{rsmoke}
+			AND #{minPrice}<=ro.rprice AND ro.rprice<=#{maxPrice} -->
+  	  	<!-- 상세 조건 검색 -->
+  	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
+		<![CDATA[
+			SELECT * FROM room 
+	    		WHERE roomno NOT IN(SELECT distinct ro.roomno FROM reserve re, room ro
+					WHERE re.roomno = ro.roomno
+	            	AND (TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+	            	AND (TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+	   			AND rcity = #{rcity}
+	   			AND rroom >= #{rroom}
+	    		AND rbed >= #{rbed}
+	    		AND rpet = #{rpet}
+	    		AND rsmoke = #{rsmoke}
+	    		AND #{minPrice}<=rprice AND rprice<=#{maxPrice}
   		]]>
-			<!--<if test="rtype!=null or rtype!=''">
-			<![CDATA[ AND ro.rtype=#{rtype} ]]>
-			</if>
-			 <if test="rroom!=null or rroom=''">
-			 <![CDATA[ AND ro.rroom >= #{rroom} ]]>
-			</if>
-			<if test="rbed!=null or rbed!=''">
-			<![CDATA[ AND ro.rbed >= #{rbed} ]]>
-			</if>
-			<if test="rsmoke!=null or rsmoke!=''">
-			<![CDATA[ AND ro.rsmoke = #{rsmoke, jdbcType=VARCHAR} ]]>
-			</if>
-			<if test="rpet!=null or rpet!=''">
-			<![CDATA[ AND ro.rpet = #{rpet, jdbcType=VARCHAR} ]]>
-			</if>
-			<if test="(minPrice!=null or minPrice!='') and (maxPrice!=null or maxPrice!='')">
-			<![CDATA[ AND #{minPrice}<=ro.rprice AND ro.rprice<=#{maxPrice} ]]>
-			</if> -->
+	
   	</select>
 
   </mapper>

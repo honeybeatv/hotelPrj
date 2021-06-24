@@ -34,7 +34,7 @@ public class RoomServiceimpl implements RoomService {
    @Override
    public List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
 		   int maxPrice, String rpet, String rsmoke, String rcity, int rpeople) {
-	   
+	   System.out.println("service "+ rcity);
 	   List<RoomVo> list = roomMapper.selectAdvancedRoomList(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
 	   System.out.println("service searchAdvanced " + list);
 	   return list;

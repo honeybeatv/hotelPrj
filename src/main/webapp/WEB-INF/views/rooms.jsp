@@ -98,7 +98,7 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rtype" id="" class="form-control">
-	                    	<option value="">숙소유형</option>
+	                    	<!-- <option value="">숙소유형</option> -->
 	                    	<option value="apt">아파트</option>
 	                      <option value="house">주택</option>
 	                      <option value="walkup">공동주택</option>
@@ -112,13 +112,13 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rroom" id="" class="form-control">
-	                    	<option value="0">침실 0</option>
 	                    	<option value="1">침실 1</option>
 	                      <option value="2">침실 2</option>
 	                      <option value="3">침실 3</option>
 	                      <option value="4">침실 4</option>
 	                      <option value="5">침실 5</option>
 	                      <option value="6">침실 6</option>
+	                    	<option value="7">침실 7 이상</option>
 	                    </select>
 	                  </div>
 		              </div>
@@ -126,25 +126,20 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rbed" id="" class="form-control">
-	                    	<option value="0">침대 0</option>
 	                    	<option value="1">침대 1</option>
 	                      <option value="2">침대 2</option>
 	                      <option value="3">침대 3</option>
 	                      <option value="4">침대 4</option>
 	                      <option value="5">침대 5</option>
 	                      <option value="6">침대 6</option>
+	                    	<option value="7">침대 7 이상</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              
 		               <div class="form-group">
-		              <input type="radio" name="rsmoke" value="nonSmoke" checked="checked"> 금연실&emsp;
-		              <input type="radio" name="rsmoke" value="smoke"> 흡연실&emsp;<br>
-		              <input type="radio" name="rpet" value="noPet" checked="checked"> 동물 비동반&emsp;
-		              <input type="radio" name="rpet" value="pet"> 동물 동반&emsp;
-		             
-		              <!-- <input type="checkbox" name="rsmoke" value="smoke"> 흡연실&emsp;
-		              <input type="checkbox" name="rpet" value="pet"> 반려동물 -->
+		              <input type="checkbox" name="rsmoke" value="smoke"> 흡연실&emsp;
+		              <input type="checkbox" name="rpet" value="pet"> 반려동물
 		              </div>
 		              
 		              <div class="form-group">
