@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.site.service.RoomService;
 import com.site.vo.RoomVo;
+import com.site.vo.UserVo;
 
 @Controller
 @RequestMapping("/room")
@@ -22,10 +23,16 @@ public class RoomController {
 	@Autowired
 	RoomService roomService;
 
-   @RequestMapping("/rooms")
-   public String test() {
-      return "/rooms";
+	
+
+	
+   @RequestMapping("/index")
+   public String index() {
+      return "/index";
    }
+
+
+
    
    @RequestMapping("/rooms-single")
    public String rooms() {
@@ -45,9 +52,9 @@ public class RoomController {
 
 	@RequestMapping("/roomsWriteDo") //쓰기저장 호출
 	public String roomsWriteDo(RoomVo roomVo) {
-		System.out.println("test : "+ roomVo.getRname());
-		
+		System.out.println("1");
 		roomService.roomsWriteDo(roomVo);
+		System.out.println("2");
 		
 		return "/roomsadd";
 	}
@@ -96,7 +103,7 @@ public class RoomController {
 		model.addAttribute("list", list);
 		model.addAttribute("start",inDate);
 		model.addAttribute("end",outDate);
-		return "/rooms";
+		return "rooms";
 	}
 }
 
