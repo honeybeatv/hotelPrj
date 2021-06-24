@@ -94,13 +94,13 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rtype" id="" class="form-control">
-	                    	<!-- <option value="">숙소유형</option> -->
 	                    	<option value="apt">아파트</option>
-	                      <option value="house">주택</option>
-	                      <option value="walkup">공동주택</option>
-	                      <option value="hotel">호텔</option>
-	                      <option value="residence">레지던스</option>
-	                      <option value="hostel">호스텔</option>
+		                     <option value="house">주택</option>
+		                     <option value="walkup">공동주택</option>
+		                     <option value="hotel">호텔</option>
+		                     <option value="residence">레지던스</option>
+		                     <option value="hostel">호스텔</option>
+	                    	<option value="etc">기타</option>
 	                    </select>
 	                  </div>
 		              </div>
@@ -109,11 +109,11 @@
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rroom" id="" class="form-control">
 	                    	<option value="1">침실 1</option>
-	                      <option value="2">침실 2</option>
-	                      <option value="3">침실 3</option>
-	                      <option value="4">침실 4</option>
-	                      <option value="5">침실 5</option>
-	                      <option value="6">침실 6</option>
+		                    <option value="2">침실 2</option>
+		                    <option value="3">침실 3</option>
+		                    <option value="4">침실 4</option>
+		                    <option value="5">침실 5</option>
+		                    <option value="6">침실 6</option>
 	                    	<option value="7">침실 7 이상</option>
 	                    </select>
 	                  </div>
@@ -123,11 +123,11 @@
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rbed" id="" class="form-control">
 	                    	<option value="1">침대 1</option>
-	                      <option value="2">침대 2</option>
-	                      <option value="3">침대 3</option>
-	                      <option value="4">침대 4</option>
-	                      <option value="5">침대 5</option>
-	                      <option value="6">침대 6</option>
+	                      	<option value="2">침대 2</option>
+	                      	<option value="3">침대 3</option>
+	                      	<option value="4">침대 4</option>
+	                      	<option value="5">침대 5</option>
+	                      	<option value="6">침대 6</option>
 	                    	<option value="7">침대 7 이상</option>
 	                    </select>
 	                  </div>
@@ -192,6 +192,23 @@
 	      		</div>
 	        </div>
 		    </div>
+		    
+		    <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
     	</div>
     </section>
 
