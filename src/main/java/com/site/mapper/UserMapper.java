@@ -28,6 +28,6 @@ public interface UserMapper {
 	List<ReserveVo> selectUserReservationReserveList(int userno);
 	
 	// 회원 호스팅 정보 호출
-	RoomVo selectUserHostingList(int userno);
+	List<RoomVo> selectUserHostingViewList(int userno);
 
 }

@@ -171,8 +171,12 @@ public class UserController {
 */	
 	@RequestMapping("/userHostingView")	// 회원 호스팅 페이지 호출
 	public String userHostingView(Model model, @RequestParam("userno") int userno) {
-		RoomVo roomVo = userService.userHostingView(userno);
-		System.out.println("# mypage category_Informaton userHostingView userno : " + roomVo.getRoomNo() + " #");
+		System.out.println("1");
+		Map<String, Object> userHostingViewMap = userService.userHostingView(userno);
+		System.out.println("2");
+		model.addAttribute("userHostingViewMap", userHostingViewMap);
+		System.out.println("3");
+		System.out.println("# mypage category_Informaton userHostingView  : " + userHostingViewMap + " #");
 		
 		return "/user/userHostingView";
 	}
