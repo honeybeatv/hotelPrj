@@ -4,12 +4,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%-- <c:if test="${session_flag==null || session_flag=='fail' }">
+
+ <c:if test="${session_flag==null || session_flag=='fail' }">
 	<script type="text/javascript">
 		alert("로그인을 하셔야 글쓰기가 가능합니다.")
 	</script>
 	<c:redirect url="../user/login" />
-</c:if> --%>
+</c:if>
+
 <title>숙소 등록</title>
 <meta charset="utf-8">
 <meta name="viewport"
