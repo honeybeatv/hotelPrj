@@ -3,6 +3,7 @@ package com.site.service;
 import java.util.List;
 import java.util.Map;
 
+import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
 public interface UserService {
@@ -23,6 +24,8 @@ public interface UserService {
 	
 	// 회원 예약정보 페이지 호출
 	Map<String, Object> userReservationViewList(int userno);
-
+	
+	// 회원 호스팅 페이지 호출
+	Map<String, Object> userHostingView(int userno);
 
 }

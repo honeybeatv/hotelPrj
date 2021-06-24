@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoomVo {
-	
-
 	private int roomNo;
 	private String rtype;
 	private int rpeople;
@@ -23,6 +21,5 @@ public class RoomVo {
 	private String rpet;
 	private String raddress;
 	private String rname;
-
-	
+	private int userno;
 }

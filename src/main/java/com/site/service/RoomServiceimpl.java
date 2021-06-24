@@ -47,10 +47,14 @@ public class RoomServiceimpl implements RoomService {
       List<RoomVo> roomlist = roomMapper.selectroomsListAll();
       return roomlist;
    }
-
+   
    //rooms 숙소 등록
 	@Override
-	public void roomsAddDo(RoomVo roomVo) {
-		roomMapper.insertRoomsAddDo(roomVo);
+	public void roomsWriteDo(RoomVo roomVo) {
+		roomMapper.insertRoomsWriteDo(roomVo);
+		
 	}
+
+
+   
 }
