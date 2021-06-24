@@ -153,7 +153,7 @@ $(document).ready(function(){
 						$("#joinBtn").attr("disabled", true);
 						
 				} else 	{
-						var idPattern = /^[a-zA-Z0-9]{3,10}$/;
+						var idPattern = /^[a-zA-Z0-9]{4,10}$/;
 						if(userid == ""){
 							$('#id_check').text('아이디를 입력해주세요 :)');
 							$('#id_check').css('color', 'red');
