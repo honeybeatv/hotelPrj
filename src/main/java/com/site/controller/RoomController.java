@@ -22,10 +22,6 @@ public class RoomController {
 	@Autowired
 	RoomService roomService;
 
-   @RequestMapping("/rooms")
-   public String test() {
-      return "/rooms";
-   }
    
    @RequestMapping("/rooms-single")
    public String rooms() {
@@ -66,13 +62,15 @@ public class RoomController {
 		model.addAttribute("list",list);
 		model.addAttribute("start",start);
 		model.addAttribute("end",end);
-		model.addAttribute("vo", vo);
+		model.addAttribute("rcity",vo.getRcity());		
+		model.addAttribute("rpeople", vo.getRpeople());
+		
 		return "/rooms";
 	}
 	
 	//상세 조건 검색
 	@RequestMapping("/advancedSearch")
-	public String advancedSearch(@RequestParam("inDate") String inDate, @RequestParam("outDate") String outDate,
+	public String advancedSearch(@RequestParam(value="page", defaultValue = "1")int page, @RequestParam("inDate") String inDate, @RequestParam("outDate") String outDate,
 						@RequestParam("rtype") String rtype, @RequestParam("rroom") int rroom,
 						@RequestParam("rbed") int rbed,
 						@RequestParam("minPrice") int minPrice, @RequestParam("maxPrice") int maxPrice, 
@@ -94,7 +92,9 @@ public class RoomController {
 		model.addAttribute("list", list);
 		model.addAttribute("start",inDate);
 		model.addAttribute("end",outDate);
-		return "/rooms";
+		model.addAttribute("rpeople", rpeople);
+		model.addAttribute("rcity", rcity);
+		return "rooms";
 	}
 }
 
