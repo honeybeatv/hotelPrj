@@ -52,7 +52,7 @@
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
 	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>administration</span></p>
-	            <h1 class="mb-4 bread">Administration</h1>
+	            <h1 class="mb-4 bread">Information</h1>
             </div>
           </div>
         </div>
