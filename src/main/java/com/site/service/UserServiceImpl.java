@@ -56,5 +56,17 @@ public class UserServiceImpl implements UserService {
 		
 		return uRVMap;
 	}
+
+	@Override // 회원 호스팅 페이지 호출
+	public Map<String, Object> userHostingView(int userno) {
+		Map<String, Object> userHostingViewMap = new HashMap<String, Object>();
+		
+		List<RoomVo> userHostingViewList = userMapper.selectUserHostingViewList(userno);
+		userHostingViewMap.put("userHostingViewList", userHostingViewList);
+
+		return userHostingViewMap;
+	}
+	
+	
 	
 }

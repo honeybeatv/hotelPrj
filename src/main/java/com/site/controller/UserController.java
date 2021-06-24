@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.service.UserService;
+import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
 @Controller
@@ -152,7 +153,7 @@ public class UserController {
 		return "redirect:/user/userInfoView?userno="+ userVo.getUserno();
 	}
 	
-	@RequestMapping("/userReservationView")	// 회원 예약정보 페이지 호출
+/*	@RequestMapping("/userReservationView")	// 회원 예약정보 페이지 호출
 	public String userReservationView(Model model, @RequestParam("userno") int userno) {
 		UserVo userVo = userService.userInfoView(userno);
 		
@@ -166,5 +167,17 @@ public class UserController {
 
 		
 		return "/user/userReservationView";
+	}
+*/	
+	@RequestMapping("/userHostingView")	// 회원 호스팅 페이지 호출
+	public String userHostingView(Model model, @RequestParam("userno") int userno) {
+		System.out.println("1");
+		Map<String, Object> userHostingViewMap = userService.userHostingView(userno);
+		System.out.println("2");
+		model.addAttribute("userHostingViewMap", userHostingViewMap);
+		System.out.println("3");
+		System.out.println("# mypage category_Informaton userHostingView  : " + userHostingViewMap + " #");
+		
+		return "/user/userHostingView";
 	}
 }

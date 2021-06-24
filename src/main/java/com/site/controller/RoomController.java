@@ -32,29 +32,24 @@ public class RoomController {
       return "/rooms-single";
    }
    
+   @RequestMapping("/roomsList") //쓰기페이지 호출
+  	public String roomsList() {
+  		return "/roomsList";
+  	}
 
-   @RequestMapping("/roomsList") //room 리스트 페이지 호출
-	public String roomsList(Model model) {
-		
-		List<RoomVo> roomsList = roomService.roomsListAll();
-		model.addAttribute("roomsList", roomsList);
-		
-		System.out.println("roomsList" + roomsList);
-		return "/roomsList";
-   }
    
-   @RequestMapping("/roomsadd") // roomsadd페이지 호출
-	public String roomsadd() {
+   @RequestMapping("/roomsadd") //쓰기페이지 호출
+	public String roomsWrite() {
 		return "/roomsadd";
 	}
-	
-	@RequestMapping("/roomsaddDo") //쓰기저장 호출
-	public String roomsaddDo(RoomVo roomVo) {
-		//작성자,제목,내용
-		System.out.println("test : "+roomVo.getRoomNo());
-		roomService.roomsAddDo(roomVo);
+
+	@RequestMapping("/roomsWriteDo") //쓰기저장 호출
+	public String roomsWriteDo(RoomVo roomVo) {
+		System.out.println("test : "+ roomVo.getRname());
 		
-		return "rooms";
+		roomService.roomsWriteDo(roomVo);
+		
+		return "/roomsadd";
 	}
 
    //index페이지에서 검색

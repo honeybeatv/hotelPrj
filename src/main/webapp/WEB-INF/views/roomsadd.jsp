@@ -4,12 +4,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<c:if test="${session_flag==null || session_flag=='fail' }">
+
+ <c:if test="${session_flag==null || session_flag=='fail' }">
 	<script type="text/javascript">
 		alert("로그인을 하셔야 글쓰기가 가능합니다.")
 	</script>
 	<c:redirect url="../user/login" />
 </c:if>
+
 <title>숙소 등록</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -71,24 +73,26 @@
 
 
 	<section class="ftco-section contact-section bg-light" align="center">
-		<div class="col-6" style="display: inline-block;">
-			<form action="#" class="bg-white p-5 " width="100%">
+		<div class="col-10" style="display: inline-block;">
+			<form action="roomsWriteDo" class="bg-white p-5 " width="100%">
 
+				
+				
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방번호</label>
+						style="font-weight: bolder;">방이름</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;"
-							id="userid" name="userid">
+							id="userid" name="rname">
 					</div>
 				
 				</div>
-
+				
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방타입</label>
 					<div class="col-sm-7">
-						<select name="room">
+						<select name="rtype">
 							<option value="all">집전체</option>
 							<option value="individual">개인실</option>
 							<option value="hotel">호텔</option>
@@ -101,8 +105,13 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">인원수</label>
 					<div class="col-sm-7">
-						<input type="password" class="form-control" style="width: 100%;"
-							id="" name="">
+						<select name="rpeople">
+							<option value="1"selected>1명</option>
+							<option value="">2명</option>
+							<option value="">3명</option>
+							<option value="">4명</option>
+							<option value="">5명 이상</option>
+						</select>
 					</div>
 				</div>
 
@@ -111,9 +120,8 @@
 						style="font-weight: bolder;">방정보</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="rinfo">
 					</div>
-					<!-- <div class="col-sm-3">ex)ya63kr@nate.com</div> -->
 				</div>
 
 				<div class="form-inline form-group">
@@ -121,10 +129,9 @@
 						style="font-weight: bolder;">사진</label>
 					<div class="col-sm-7">
 						<input type="file" class="" style="width: 100%;" id="file"
-							name="file">
+							name="rpicture">
 					</div>
 					
-					<!-- 		<div class="col-sm-3">ex) -없이 작성하세요</div> -->
 					
 				</div>
 
@@ -132,56 +139,65 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">도시</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+						<select name="rcity">
+							<option value="seoul"selected>서울</option>
+							<option value="incheon">인천</option>
+							<option value="sejong">세종</option>
+							<option value="daejeon">대전</option>
+							<option value="daegu">대구</option>
+							<option value="ulsan">울산</option>
+							<option value="busan">부산</option>
+							<option value="Gwangju">광주</option>
+							<option value="jeju">제주</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">가격</label>
+						style="font-weight: bolder;">1박 가격</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="rprice">
 					</div>
 				</div>
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">침실수<label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" style="width: 100%;"
-									id="" name="">
-							</div>
+						style="font-weight: bolder;">침실수</label>
+					<div class="col-sm-7">
+						<select name="rroom">
+							<option value="1"selected>1Room</option>
+							<option value="2">2Room</option>
+							<option value="3">3Room</option>
+							<option value="4">4Room</option>
+							<option value="5">5Room 이상</option>
+						</select>
+					</div>
 				</div>
-				<div class="form-inline form-group">
+					<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">침대수</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+						<select name="rbed">
+							<option value="1"selected>1Bed</option>
+							<option value="2">2Bed</option>
+							<option value="3">3Bed</option>
+							<option value="4">4Bed</option>
+							<option value="5">5Bed 이상</option>
+						</select>
 					</div>
 				</div>
+				
+				<div class="form-group">
+		              <input type="checkbox" name="rsmoke" value="smoke"> 흡연실 
+		              <input type="checkbox" name="rpet" value="pet"> 반려동물
+		              </div>
+		              
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">흡연가능여부</label>
+						style="font-weight: bolder;">상세 주소</label>
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
-					</div>
-				</div>
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">애완동물 가능여부</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
-					</div>
-				</div>
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">주소</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+							name="raddress">
 					</div>
 				</div>
 
