@@ -19,7 +19,7 @@ public interface RoomService {
 	List<RoomVo> roomsListAll();
 	
 	//rooms 숙소 등록
-	void roomsAddDo(RoomVo roomVo);
+	void roomsWriteDo(RoomVo roomVo);
 	
 
 }
