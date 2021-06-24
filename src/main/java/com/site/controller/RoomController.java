@@ -22,11 +22,6 @@ public class RoomController {
 	@Autowired
 	RoomService roomService;
 	
-   @RequestMapping("/index")
-   public String index() {
-      return "/index";
-   }
-
    @RequestMapping("/rooms")
    public String test() {
       return "/rooms";
@@ -37,7 +32,7 @@ public class RoomController {
       return "/rooms-single";
    }
    
-   @RequestMapping("/roomsList") //쓰기페이지 호출
+   @RequestMapping("/roomsList") 
   	public String roomsList() {
   		return "/roomsList";
   	}
@@ -101,5 +96,6 @@ public class RoomController {
 		model.addAttribute("end",checkOut);
 		return "/rooms";
 	}
+	
 }
 
