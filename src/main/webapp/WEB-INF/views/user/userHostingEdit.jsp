@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/static/css/animate.css">
     
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/owl.tdeme.default.min.css">
     <link rel="stylesheet" href="/static/css/magnific-popup.css">
 
     <link rel="stylesheet" href="/static/css/aos.css">
@@ -75,18 +75,18 @@
 				<table width="100%" >
 				
 					<tr>
-						<th width="10%">숙소이름</th>
-						<th width="5%">지역</th>
-						<th width="6%">종류</th>
-						<th width="5%">수용 가능 인원</th>
-						<th width="6%">가격</th>
-						<th width="4%">침대갯수</th>
-						<th width="4%">방갯수</th>
-						<th width="6%">흡연가능 여부</th>
-						<th width="6%">동물가능 여부</th>
-						<th width="40%">주소</th>
-						<th width="3%">   </th>
-						<th width="3%">   </th>
+						<td width="10%">숙소이름</td>
+						<td width="5%">지역</td>
+						<td width="6%">종류</td>
+						<td width="6%">수용 가능 인원</td>
+						<td width="6%">가격</td>
+						<td width="4%">침대갯수</td>
+						<td width="4%">방갯수</td>
+						<td width="6%">흡연가능 여부</td>
+						<td width="6%">동물가능 여부</td>
+						<td width="40%">주소</td>
+						<td width="3%">   </td>
+						<td width="3%"><button type="button" class=" btn-light" onclick="">숙소추가</button></td>
 					</tr>
 
 					<tr height="1" bgcolor="#8f784b ">
@@ -125,8 +125,8 @@
   <!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
-	  	<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-	  	<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+	  	<circle class="patd-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+	  	<circle class="patd" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
   		</svg>
     </div>
     
