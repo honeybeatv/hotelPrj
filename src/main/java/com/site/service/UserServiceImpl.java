@@ -57,4 +57,11 @@ public class UserServiceImpl implements UserService {
 		return uRVMap;
 	}
 	
+	
+	@Override // 회원 호스팅 페이지 호출
+	public RoomVo userHostingView(int userno) {
+		RoomVo roomVo = userMapper.selectUserHostingList(userno);
+		return roomVo;
+	}
+	
 }

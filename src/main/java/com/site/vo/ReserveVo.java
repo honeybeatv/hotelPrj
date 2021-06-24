@@ -18,5 +18,4 @@ public class ReserveVo {
 	private Timestamp startday;
 	private Timestamp endday;
 	private int userno;
-	
 }
