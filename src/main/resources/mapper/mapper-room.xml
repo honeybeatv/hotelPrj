@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="com.site.mapper.RoomMapper">
-  
-  <!-- index에서 검색시 -->
-  	<select id="getlist" resultType="com.site.vo.RoomVo">
-<![CDATA[
-	select distinct * from room  where roomno in (
-    select roomno day from reserve where
-    not TO_DATE(#{start},'YYYYMMDD') between startday and endday 
-	and not TO_DATE(#{end},'YYYYMMDD') between startday and endday) 
-	and rcity = #{city}
-	and rpeople >= #{people}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.site.mapper.RoomMapper">
+
+	<!-- index에서 검색시 -->
+	<select id="getlist" resultType="com.site.vo.RoomVo">
+		<![CDATA[
+			SELECT * FROM room 
+   				WHERE roomno NOT IN(SELECT distinct ro.roomno 
+			    FROM reserve re RIGHT JOIN room ro
+				ON re.roomno = ro.roomno
+			    WHERE (TO_DATE(#{start}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+			    AND (TO_DATE(#{end}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+				and rcity = #{city}
+				and rpeople >= #{people}
 	]]>
-  	</select>
-  	
-  		<!-- 전체 room 정보 가져오기 -->
-   <select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
+	</select>
+
+	<!-- 전체 room 정보 가져오기 -->
+	<select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
    		 select * from room order by roomNo desc
 	</select>
-	
- 	<!-- 글쓰기 저장 -->
-	<insert id="insertRoomsWriteDo" >
+
+	<!-- 글쓰기 저장 -->
+	<insert id="insertRoomsWriteDo">
 	  INSERT INTO ROOM VALUES
 	  (room_seq.nextval, #{rname}, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet},#{raddress})
 	</insert>
 
-  	  	<!-- 상세 조건 검색 -->
-  	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
+	<!-- 상세 조건 검색 -->
+	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
 		<![CDATA[
 	    		SELECT * FROM room 
    					WHERE roomno NOT IN(SELECT distinct ro.roomno 
@@ -46,7 +46,7 @@
 				    AND rsmoke = #{rsmoke}
 				    AND #{minPrice}<=rprice AND rprice<=#{maxPrice}
   		]]>
-	
-  	</select>
 
-  </mapper>
+	</select>
+
+</mapper>

@@ -22,10 +22,6 @@ public class RoomController {
 	@Autowired
 	RoomService roomService;
 
-   @RequestMapping("/rooms")
-   public String test() {
-      return "/rooms";
-   }
    
    @RequestMapping("/rooms-single")
    public String rooms() {
@@ -96,7 +92,7 @@ public class RoomController {
 		model.addAttribute("list", list);
 		model.addAttribute("start",inDate);
 		model.addAttribute("end",outDate);
-		return "/rooms";
+		return "rooms";
 	}
 }
 
