@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RoomVo {
 	private int roomNo;
-	private String rname;
 	private String rtype;
-	private String rpeople;
+	private int rpeople;
 	private String rinfo;
 	private String rpicture;
 	private String rcity;
@@ -21,5 +20,6 @@ public class RoomVo {
 	private String rsmoke;
 	private String rpet;
 	private String raddress;
+	private String rname;
 	private int userno;
 }

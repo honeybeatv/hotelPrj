@@ -9,7 +9,7 @@ import com.site.vo.RoomVo;
 public interface RoomService {
 	
 	//index에서 검색
-	List<RoomVo> getlist(int startday, int endday, String rcity, String string) throws ParseException;
+	List<RoomVo> getlist(int startday, int endday, String rcity, int rpeople) throws ParseException;
 
 	//상세 조건 검색
 	List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,

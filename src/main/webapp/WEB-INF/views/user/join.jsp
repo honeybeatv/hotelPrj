@@ -125,7 +125,7 @@ $(document).ready(function(){
 	 			 success:function(data){
 	 				 alert(data.msg);
 	 				 if(data.flag=="success"){
-	 				    location.href="/index";
+	 				    location.href="../main/index";
 	 				 }else{
 	 					 $("#userpw").val("");//공백처리
 	 					return false;
@@ -141,7 +141,7 @@ $(document).ready(function(){
 		// id = "id_reg" / name = "userId"
 		var userid = $('#userid').val();
 		$.ajax({
-			url : '${pageContext.request.contextPath}/id_check?userid='+ userid,
+			url : '${pageContext.request.contextPath}./id_check?userid='+ userid,
 			type : 'get',
 			success : function(data) {
 				console.log("1 = 중복o / 0 = 중복x : "+ data.data);							
@@ -153,7 +153,7 @@ $(document).ready(function(){
 						$("#joinBtn").attr("disabled", true);
 						
 				} else 	{
-						var idPattern = /^[a-zA-Z0-9]{3,10}$/;
+						var idPattern = /^[a-zA-Z0-9]{4,10}$/;
 						if(userid == ""){
 							$('#id_check').text('아이디를 입력해주세요 :)');
 							$('#id_check').css('color', 'red');

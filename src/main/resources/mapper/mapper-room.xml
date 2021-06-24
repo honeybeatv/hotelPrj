@@ -1,61 +1,53 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="com.site.mapper.RoomMapper">
-  
-  <!-- index에서 검색시 -->
-  	<select id="getlist" resultType="com.site.vo.RoomVo">
-<![CDATA[
-	select distinct * from room  where roomno in (
-    select roomno day from reserve where
-    not TO_DATE(#{start},'YYYYMMDD') between startday and endday 
-	and not TO_DATE(#{end},'YYYYMMDD') between startday and endday) 
-	and rcity = #{city}
-	and rpeople >= #{people}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.site.mapper.RoomMapper">
+
+	<!-- index에서 검색시 -->
+	<select id="getlist" resultType="com.site.vo.RoomVo">
+		<![CDATA[
+			SELECT * FROM room 
+   				WHERE roomno NOT IN(SELECT distinct ro.roomno 
+			    FROM reserve re RIGHT JOIN room ro
+				ON re.roomno = ro.roomno
+			    WHERE (TO_DATE(#{start}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+			    AND (TO_DATE(#{end}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+				and rcity = #{city}
+				and rpeople >= #{people}
 	]]>
-  	</select>
-  	
-  		<!-- 전체 room 정보 가져오기 -->
-   <select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
+	</select>
+
+	<!-- 전체 room 정보 가져오기 -->
+	<select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
    		 select * from room order by roomNo desc
 	</select>
-	
- 	<!-- 글쓰기 저장 -->
-	<insert id="insertRoomsWriteDo" >
+
+	<!-- 글쓰기 저장 -->
+	<insert id="insertRoomsWriteDo">
 	  INSERT INTO ROOM VALUES
-	  (room_seq.nextval, #{rname}, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet},#{raddress})
+	  (seq_room.nextval, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet}, #{raddress}, #{rname}, #{userno})
+	  
 	</insert>
 
-
-  	  	<!-- 상세 조건 검색 -->
-  	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
+	<!-- 상세 조건 검색 -->
+	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
 		<![CDATA[
-		SELECT distinct ro.* FROM reserve re, room ro
-			WHERE re.roomno = ro.roomno
-			AND NOT TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday AND NOT TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday
-			AND ro.rpeople >= #{rpeople}
-			AND ro.rcity=#{rcity}
+	    		SELECT * FROM room 
+   					WHERE roomno NOT IN(SELECT distinct ro.roomno 
+			            FROM reserve re RIGHT JOIN room ro
+						ON re.roomno = ro.roomno
+			            WHERE (TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+			            AND (TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+				    AND rcity = #{rcity}
+				    AND rpeople >= #{rpeople}
+				    AND rtype = #{rtype}
+				    AND rroom >= #{rroom}
+				    AND rbed >= #{rbed}
+				    AND rpet = #{rpet}
+				    AND rsmoke = #{rsmoke}
+				    AND #{minPrice}<=rprice AND rprice<=#{maxPrice}
   		]]>
-			<if test="rtype!=null or rtype!=''">
-				<![CDATA[ AND ro.rtype=#{rtype} ]]>
-			</if>
-			<if test="rroom!=null or rroom=''">
-			 <![CDATA[ AND ro.rroom >= #{rroom} ]]>
-			</if>
-			<if test="rbed!=null or rbed!=''">
-			<![CDATA[ AND ro.rbed >= #{rbed} ]]>
-			</if>
-			<if test="rsmoke!=null or rsmoke!='x'">
-			<![CDATA[  AND ro.rsmoke = #{rsmoke} ]]>
-			</if>
-			<if test="rpet!=null or rpet!='x'">
-			<![CDATA[  AND ro.rpet = #{rpet} ]]>
-			</if>
-			<if test="(minPrice!=null or minPrice!='') and (maxPrice!=null or maxPrice!='')">
-			<![CDATA[ AND #{minPrice}<=ro.rprice AND ro.rprice<=#{maxPrice} ]]>
-			</if>
-  	</select>
 
-  </mapper>
+	</select>
+
+</mapper>

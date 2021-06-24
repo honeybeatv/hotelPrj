@@ -64,7 +64,7 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">${list.roomNo }</a></h3>
+		    						<h3 class="mb-3"><a href="rooms-single">${list.rname }</a></h3>
 		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
 		    							<li><span>권장인원:</span> ${list.rpeople }</li>
@@ -81,8 +81,8 @@
 	      		<div class="sidebar-wrap bg-light ftco-animate">
 	      			<h3 class="heading mb-4">상세조건 검색</h3>
 	      			<form action="../room/advancedSearch" method="post">
-	      			<input type="hidden" name="rcity" value="${vo.rcity }">
-	      			<input type="hidden" name="rpeople" value="${vo.rpeople }">
+	      			<input type="hidden" name="rcity" value="${list.rcity }">
+	      			<input type="hidden" name="rpeople" value="${list.rpeople }">
 	      				<div class="fields">
 		              <div class="form-group">
 		                <input type="text" name="inDate" id="checkin_date" value="${start }" class="form-control checkin_date" placeholder="Check In Date">

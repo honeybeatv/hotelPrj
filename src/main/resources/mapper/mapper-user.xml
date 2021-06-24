@@ -13,7 +13,7 @@
   	<!-- 회원가입 -->
 	<insert id="join_check">
 	    insert into user1 values(#{name},#{userid},
-	    #{userpw},USER1_SEQ.nextval,#{uphone},0,#{uemail})
+	    #{userpw},SEQ_USER.nextval,#{uphone},0,#{uemail})
 	</insert>
 	
 	<!-- 아이디 중복체크 -->
