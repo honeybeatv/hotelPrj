@@ -21,11 +21,6 @@ public class RoomController {
 	
 	@Autowired
 	RoomService roomService;
-	
-   @RequestMapping("/index")
-   public String index() {
-      return "/index";
-   }
 
    @RequestMapping("/rooms")
    public String test() {
