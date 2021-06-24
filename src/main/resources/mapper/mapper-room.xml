@@ -31,17 +31,20 @@
   	  	<!-- 상세 조건 검색 -->
   	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
 		<![CDATA[
-			SELECT * FROM room 
-	    		WHERE roomno NOT IN(SELECT distinct ro.roomno FROM reserve re, room ro
-					WHERE re.roomno = ro.roomno
-	            	AND (TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
-	            	AND (TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
-	   			AND rcity = #{rcity}
-	   			AND rroom >= #{rroom}
-	    		AND rbed >= #{rbed}
-	    		AND rpet = #{rpet}
-	    		AND rsmoke = #{rsmoke}
-	    		AND #{minPrice}<=rprice AND rprice<=#{maxPrice}
+	    		SELECT * FROM room 
+   					WHERE roomno NOT IN(SELECT distinct ro.roomno 
+			            FROM reserve re RIGHT JOIN room ro
+						ON re.roomno = ro.roomno
+			            WHERE (TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+			            AND (TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+				    AND rcity = #{rcity}
+				    AND rpeople >= #{rpeople}
+				    AND rtype = #{rtype}
+				    AND rroom >= #{rroom}
+				    AND rbed >= #{rbed}
+				    AND rpet = #{rpet}
+				    AND rsmoke = #{rsmoke}
+				    AND #{minPrice}<=rprice AND rprice<=#{maxPrice}
   		]]>
 	
   	</select>

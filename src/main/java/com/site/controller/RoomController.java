@@ -85,7 +85,7 @@ public class RoomController {
 		
 		System.out.println(checkIn +" " + checkOut);
 		System.out.println(rcity + rroom);
-		System.out.println(rpeople);
+		System.out.println(rtype + " " + rpeople);
 		System.out.println("흡연 : "+ rsmoke + " " + "동물 : "+ rpet+" end");
 		System.out.println(minPrice + ", " + maxPrice);
 		
