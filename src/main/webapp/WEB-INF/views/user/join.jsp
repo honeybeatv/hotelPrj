@@ -278,7 +278,7 @@ $(document).ready(function(){
 					<div class="col-sm-3">ex)19920913</div>
 				</div>
 				
-				<input type="button" value="회원가입" id="joinBtn" class="btn btn-primary py-3 px-5">
+				<input type="button" value="회원가입" id="joinBtn" class="btn btn-primary py-3 px-5" >
             </form>
           </div>
     </section>
