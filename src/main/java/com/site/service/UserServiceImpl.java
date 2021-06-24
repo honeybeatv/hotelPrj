@@ -66,6 +66,25 @@ public class UserServiceImpl implements UserService {
 
 		return userHostingEditMap;
 	}
+	@Override // 회원 호스팅 상품 삭제
+	public Map<String, Object> userHostingDelete(RoomVo roomVo) {
+		Map<String, Object> uHostingdeleteMap = new HashMap<String, Object>();
+		
+		int resultDelete = userMapper.deleteUserHostingDeleteList(roomVo);
+		int resultNum = userMapper.selectUserHostingDeleteCount(roomVo);
+		
+		String msg = "";
+		if(resultNum == 0) {
+			msg = "상품 삭제를 성공하였습니다.";
+		}else {
+			msg = "상품 삭제를 실패하였습니다.";
+		}
+		
+		uHostingdeleteMap.put("userHostingDeleteList", resultDelete);
+		uHostingdeleteMap.put("msg", msg);
+		
+		return uHostingdeleteMap;
+	}
 	
 	
 }

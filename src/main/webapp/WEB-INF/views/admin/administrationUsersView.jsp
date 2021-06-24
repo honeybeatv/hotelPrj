@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MyPage</title>
+    <title>Administration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -31,45 +31,6 @@
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
  	
- 		// 수정버튼 눌렀을 때 수정가능하게 칸 변화
-		function ajax_updateFromUserHostingModify(roomNo, rcity, rtype, rpeople, rprice, rbed, rroom, rsmoke, rpet, raddress){
-			alert("Hosting Modify Form ajax 실행 : " + roomNo);
-			var sourceCode ="";
-			sourceCode += "<td>"+rname+"</td>";
-			sourceCode += "<td>"+rcity+"</td>";
-			sourceCode += "<td>"+rtype+"</td>";
-			sourceCode += "<td>"+rpeople+"</td>";
-			sourceCode += "<td>"+rprice+"</td>";
-			sourceCode += "<td>"+rbed+"</td>";
-			sourceCode += "<td>"+rroom+"</td>";
-			sourceCode += "<td>"+rsmoke+"</td>";
-			sourceCode += "<td>"+rpet+"</td>";
-			sourceCode += "<td>"+raddress+"</td>";
-			sourceCode += "<td><button type=\"button\" class=\" btn-light\" onclick=\"ajax_userHostingModifyDo("+roomNo+")\">수정</button></td>";
-			sourceCode += "<td><button type=\"button\" class=\"btn-light\" onclick=\"ajax_userHostingModifyCancel("+roomNo+","+rcity+","+rtype+","+rpeople+","+rprice+","+rbed+","+rroom+","+rsmoke+","+rpet+","+raddress+")\">취소</button></td>";
-			$('#'+roomNo).html(sourceCode);
- 		}
- 		
- 		// 호스팅 상품 삭제
- 		function ajax_userHostingDelete(roomNo){
- 			if(confirm("상품을 삭제하시겠습니까?")){
- 				  $.ajax({
- 						 url:'./userHostingDelete',     
- 						 type:'post',
- 						 data:{
- 							 "roomNo":roomNo
- 						 },
- 						 success:function(data){
- 							 alert(data.msg);
- 							 var html="";
- 							 $('#'+roomNo).remove();
- 						 },
- 						 error:function(){
- 							 alert("에러");
- 						 }
- 				  });
- 			  }else{ return false; }
- 		}
   	</script>
   	
   </head>
@@ -83,15 +44,15 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>mypage</span></p>
-	            <h1 class="mb-4 bread">Hosting</h1>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>Administration</span></p>
+	            <h1 class="mb-4 bread"></h1>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-	<c:import url="/WEB-INF/views/user/mypageCategory.jsp"></c:import>
+	<c:import url="/WEB-INF/views/admin/administrationCategory.jsp"></c:import>
 
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
@@ -110,7 +71,7 @@
 						<td width="6%">동물가능 여부</td>
 						<td width="40%">주소</td>
 						<td width="3%">   </td>
-						<td width="3%"><button type="button" class=" btn-light" onclick="">숙소추가</button></td>
+						<td width="3%">	  </td>
 					</tr>
 
 					<tr height="1" bgcolor="#8f784b ">
@@ -131,11 +92,6 @@
 							<td>${roomVo.rsmoke}</td>		
 							<td>${roomVo.rpet}</td>		
 							<td>${roomVo.raddress}</td>		
-							<td><button type="button" class=" btn-light"
-										onclick="ajax_updateFromUserHostingModify('${roomVo.roomNo}', '${roomVo.rcity}', '${roomVo.rtype}', '${roomVo.rpeople}',							
-																		'${roomVo.rprice}', '${roomVo.rbed}', '${roomVo.rroom}', '${roomVo.rsmoke}', 
-																		'${roomVo.rpet}', '${roomVo.raddress}')">수정</button></td>		
-							<td><button type="button" class=" btn-light" onclick="ajax_userHostingDelete('${roomVo.roomNo}')">삭제</button></td>		
 						</tr>
 					</c:forEach>
 
