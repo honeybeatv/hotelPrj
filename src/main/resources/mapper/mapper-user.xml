@@ -5,24 +5,6 @@
   
   <mapper namespace="com.site.mapper.UserMapper">
   	
-  
-	<!-- 회원 기본정보 호출 -->
-  	<select id="selectUserInfo" resultType="com.site.vo.UserVo">
-  		SELECT * FROM user1 WHERE userno=#{userno}
-  	</select>
-  	
-  	<!-- 회원 기본정보 수정 -->
-  	<update id="updateUserInfoModifyDo">
-	  	UPDATE user1 
-	  	   SET name=#{name}		, 
-	  	   	   userid=#{userid}	, 
-	  	   	   userpw=#{userpw}	, 
-	  	   	   uphone=#{uphone}	, 
-	  	   	   uadmin=#{uadmin}	, 
-	  	   	   uemail=#{uemail}
-	  	 WHERE userno=#{userno}
-  	</update>
-
   	<!-- 로그인 userid,upw 검색 -->
   	<select id="selectLogin" resultType="com.site.vo.UserVo">
   		select * from user1 where userid=#{userid} and userpw=#{userpw} 
@@ -39,4 +21,34 @@
 	    select count(*) from user1 where userid=#{userid}
 	</select>
   
+	<!-- 회원 기본정보 호출 -->
+  	<select id="selectUserInfoList" resultType="com.site.vo.UserVo">
+  		SELECT * FROM user1 WHERE userno=#{userno}
+  	</select>
+  	
+  	<!-- 회원 기본정보 수정 -->
+  	<update id="updateUserInfoModifyDo">
+	  	UPDATE user1 
+	  	   SET name=#{name}		, 
+	  	   	   userid=#{userid}	, 
+	  	   	   userpw=#{userpw}	, 
+	  	   	   uphone=#{uphone}	, 
+	  	   	   uadmin=#{uadmin}	, 
+	  	   	   uemail=#{uemail}
+	  	 WHERE userno=#{userno}
+  	</update>
+  	
+  	<!-- 회원 기본정보 호출 -->
+  	<select id="selectUserReservationReserveList" resultType="com.site.vo.ReserveVo">
+		<![CDATA[
+			SELECT *
+			FROM reserve
+			WHERE userno = (
+							SELECT userno
+							FROM user1
+							where userno=#{userno})
+
+		]]>
+  	</select>
+
   </mapper>

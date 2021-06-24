@@ -1,6 +1,7 @@
 package com.site.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -123,18 +124,18 @@ public class UserController {
 	}
 
 	@RequestMapping("/userInfoView")	// 회원 기본정보 페이지 호출
-	public String UserInfoView(Model model, @RequestParam("userno") int userno) {
-		UserVo userVo = userService.UserInfoView(userno);
+	public String userInfoView(Model model, @RequestParam("userno") int userno) {
+		UserVo userVo = userService.userInfoView(userno);
 		model.addAttribute("userVo", userVo);
 		
-		System.out.println("# mypage category_Informaton UserInfoView userid : " + userVo.getUserid() + " #");
+		System.out.println("# mypage category_Informaton userInfoView userid : " + userVo.getUserid() + " #");
 		
 		return "/user/userInfoView";
 	}
 
 	@RequestMapping("/userInfoModify") // 회원 기본정보 수정페이지 호출
 	public String mypageModify(Model model, @RequestParam("userno") int userno) {
-		UserVo userVo = userService.UserInfoModify(userno);
+		UserVo userVo = userService.userInfoModify(userno);
 		model.addAttribute("userVo", userVo);
 		
 		System.out.println("# mypage category_Informaton userInfoModify userid : " + userVo.getUserid() + " #");
@@ -144,10 +145,26 @@ public class UserController {
 
 	@RequestMapping("/userInfoModifyDo") // 회원 기본정보 수정페이지 실행
 	public String userInfoModifyDo(UserVo userVo) {
-		userService.UserInfoModifyDo(userVo);
+		userService.userInfoModifyDo(userVo);
 		
 		System.out.println("# mypage category_Informaton userInfoModifyDo userid : " + userVo.getUserid() + " #");
 		
 		return "redirect:/user/userInfoView?userno="+ userVo.getUserno();
+	}
+	
+	@RequestMapping("/userReservationView")	// 회원 예약정보 페이지 호출
+	public String userReservationView(Model model, @RequestParam("userno") int userno) {
+		UserVo userVo = userService.userInfoView(userno);
+		
+		Map<String, Object> uRVMap = null;
+		uRVMap = userService.userReservationViewList(userno);
+		
+		System.out.println(uRVMap.get("uReservationReserveList"));
+		System.out.println("# mypage category_Reservation userReservationView userid : " + userVo.getUserid() + " #");
+		
+//		model.addAttribute("uRVMap", uRVMap);
+
+		
+		return "/user/userReservationView";
 	}
 }
