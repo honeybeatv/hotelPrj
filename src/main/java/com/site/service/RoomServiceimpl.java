@@ -23,7 +23,7 @@ public class RoomServiceimpl implements RoomService {
 
    //index페이지에서 검색
    @Override
-   public List<RoomVo> getlist(int startday, int endday, String rcity, String rpeople) throws ParseException {
+   public List<RoomVo> getlist(int startday, int endday, String rcity, int rpeople) throws ParseException {
       String start = Integer.toString(startday);
       String end = Integer.toString(endday);
       List<RoomVo> vo = roomMapper.getlist(start,end,rcity,rpeople);
@@ -34,8 +34,9 @@ public class RoomServiceimpl implements RoomService {
    @Override
    public List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
 		   int maxPrice, String rpet, String rsmoke, String rcity, int rpeople) {
-	   
+	   System.out.println("service "+ rcity);
 	   List<RoomVo> list = roomMapper.selectAdvancedRoomList(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
+	   System.out.println("service searchAdvanced " + list);
 	   return list;
    }
 
