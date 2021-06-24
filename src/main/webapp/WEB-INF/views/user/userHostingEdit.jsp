@@ -30,7 +30,22 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
-  	 
+		function ajax_userHostingModifyFrom(roomNo, rcity, rtype, rpeople, rprice, rbed, rroom, rsmoke, rpet, raddress){
+			alert("hosting 수정 form ajax 실행" + roomNo);
+			var sourceCode ="";
+			html = sourceCode + "<td><a href=\"*숙소링크*bno="+roomNo+\">" + rname+"</a></td>";
+			html = sourceCode + "<td>"+rcity+"</td>";
+			html = sourceCode + "<td>"+rtype+"</td>";
+			html = sourceCode + "<td>"+rpeople+"</td>";
+			html = sourceCode + "<td>"+rprice+"</td>";
+			html = sourceCode + "<td>"+rbed+"</td>";
+			html = sourceCode + "<td>"+rroom+"</td>";
+			html = sourceCode + "<td>"+rsmoke+"</td>";
+			html = sourceCode + "<td>"+rpet+"</td>";
+			html = sourceCode + "<td>"+raddress+"</td>";
+			html = sourceCode + "<td><button type=\"button\" class=\"btn-light\" onclick=\"ajax_userHostingModifyFrom("+roomNo+","+rcity+","+rtype+","+rpeople+","+rprice+","+rbed+","+rroom+","+rsmoke+","+rpet+","+raddress+")\">	수정	</button></td>";
+			html = sourceCode + "<td><button type=\"button\" class=\" btn-light\" onclick=\"ajax_userHostingDelete("+roomNo+")\">삭제</button></td>";
+		}
   	</script>
   	
   </head>
@@ -79,8 +94,7 @@
 					</tr>
 
 					<c:forEach var="roomVo" items="${userHostingEditMap.userHostingEditList }">
-						<input type="hidden" id="roomNo" name="roomNo" value="${roomVo.roomNo}" >  
-						<tr>
+						<tr id="${roomVo.roomNo}">
 							<td>
 								<a href="*숙소링크*bno=${roomVo.roomNo}">${roomVo.rname}</a>
 							</td>
@@ -93,8 +107,11 @@
 							<td>${roomVo.rsmoke}</td>		
 							<td>${roomVo.rpet}</td>		
 							<td>${roomVo.raddress}</td>		
-							<td><button type="button" onclick="location.href='./userHostingModify?roomNo='+${roomVo.roomNo}">수정</button></td>		
-							<td><button type="button" onclick="location.href='./userHostingDelete'+${roomVo.roomNo}">삭제</button></td>		
+							<td><button type="button" class=" btn-light"
+										onclick="ajax_userHostingModifyFrom('${roomVo.roomNo}', '${roomVo.rcity}', '${roomVo.rtype}', '${roomVo.rpeople}',							
+																		'${roomVo.rprice}', '${roomVo.rbed}', '${roomVo.rroom}', '${roomVo.rsmoke}', 
+																		'${roomVo.rpet}', '${roomVo.raddress}')">수정</button></td>		
+							<td><button type="button" class=" btn-light" onclick="ajax_userHostingDelete('${roomVo.roomNo}')">삭제</button></td>		
 						</tr>
 					</c:forEach>
 
