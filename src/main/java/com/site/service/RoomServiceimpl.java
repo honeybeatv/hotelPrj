@@ -36,6 +36,7 @@ public class RoomServiceimpl implements RoomService {
 		   int maxPrice, String rpet, String rsmoke, String rcity, int rpeople) {
 	   
 	   List<RoomVo> list = roomMapper.selectAdvancedRoomList(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
+	   System.out.println("service searchAdvanced " + list);
 	   return list;
    }
 

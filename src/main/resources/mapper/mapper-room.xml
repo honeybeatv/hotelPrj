@@ -48,8 +48,7 @@
 			AND ro.rcity=#{rcity}
 			AND ro.rroom >= #{rroom}
 			AND ro.rbed >= #{rbed}
-			AND ro.rsmoke = #{rsmoke, jdbcType=VARCHAR}
-			AND ro.rpet = #{rpet, jdbcType=VARCHAR}
+			AND ro.rpet = #{rpet}
 			AND #{minPrice}<=ro.rprice AND ro.rprice<=#{maxPrice}
   		]]>
 			<!--<if test="rtype!=null or rtype!=''">

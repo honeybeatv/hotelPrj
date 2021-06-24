@@ -139,15 +139,20 @@
 		              </div>
 		              
 		               <div class="form-group">
-		              <input type="checkbox" name="rsmoke" value="smoke" > 흡연실&emsp;
-		              <input type="checkbox" name="rpet" value="pet"> 반려동물
+		              <input type="radio" name="rsmoke" value="nonSmoke" checked="checked"> 금연실&emsp;
+		              <input type="radio" name="rsmoke" value="smoke"> 흡연실&emsp;<br>
+		              <input type="radio" name="rpet" value="noPet" checked="checked"> 동물 비동반&emsp;
+		              <input type="radio" name="rpet" value="pet"> 동물 동반&emsp;
+		             
+		              <!-- <input type="checkbox" name="rsmoke" value="smoke"> 흡연실&emsp;
+		              <input type="checkbox" name="rpet" value="pet"> 반려동물 -->
 		              </div>
 		              
 		              <div class="form-group">
 		              	<div class="range-slider">
 		              		<span>
-										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>	-
-										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
+										    <input type="number" name="minPrice" value="25000" min="0" max="120000" style="width: 78px"/>원	-
+										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>원
 										  </span>
 										  <!-- <input value="1000" min="0" max="120000" step="500" type="range"/>
 										  <input value="50000" min="0" max="120000" step="500" type="range"/>
