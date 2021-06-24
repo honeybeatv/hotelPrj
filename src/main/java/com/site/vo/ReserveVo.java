@@ -11,6 +11,7 @@ import oracle.sql.TIMESTAMP;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReserveVo {
+	
 	private int re_no;
 	private int roomno;
 	private String status;
