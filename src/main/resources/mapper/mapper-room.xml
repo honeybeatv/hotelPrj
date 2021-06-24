@@ -21,7 +21,7 @@
  	<!-- 글쓰기 저장 -->
 	<insert id="insertRoomsWriteDo" >
 	  INSERT INTO ROOM VALUES
-	  (room_seq.nextval, #{rname}, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet},#{raddress})
+	  (room_seq.nextval, #{rname}, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet},#{raddress},#{ruserno})
 	</insert>
 
 
