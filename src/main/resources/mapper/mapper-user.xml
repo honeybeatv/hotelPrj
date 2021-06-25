@@ -40,7 +40,7 @@
 	  	 WHERE userno=#{userno}
   	</update>
   	
-  	<!-- 회원 기본정보 호출 -->
+  	<!-- 회원 예약정보 호출 -->
   	<select id="selectUserReservationReserveList" resultType="com.site.vo.ReserveVo">
 		<![CDATA[
 			SELECT *
@@ -53,24 +53,44 @@
 		]]>
   	</select>
   	
-  	<!-- 회원 호스팅정보 호출 -->
-  	<select id="selectUserHostingEditList" resultType="com.site.vo.RoomVo">
+  	<!-- 회원 호스팅 상품정보 호출 -->
+  	<select id="selectUserHostingViewList" resultType="com.site.vo.RoomVo">
   		SELECT * 
   		  FROM room 
   		 WHERE userno=#{userno}
+  	  ORDER BY roomno asc
+
   	</select>
+  	
+  	<!-- 회원 호스팅 상품정보 수정 실행 -->
+  	<update id="updateUserHostingModifDo" >
+  		<![CDATA[
+		  	UPDATE room 
+		  	   SET rname=#{rname}		, 
+		  	   	   rcity=#{rcity}		, 
+		  	   	   rtype=#{rtype}		, 
+		  	   	   rpeople=#{rpeople}	, 
+		  	   	   rprice=#{rprice}		, 
+		  	   	   rbed=#{rbed}			,
+		  	   	   rroom=#{rroom}		,
+		  	   	   rsmoke=#{rsmoke}		,
+		  	   	   rpet=#{rpet}			,
+		  	   	   raddress=#{raddress}
+		  	 WHERE roomno=#{roomNo}
+	  	 ]]>
+  	</update>
   	
   	<!-- 회원 호스팅 상품 삭제 -->
   	<delete id="deleteUserHostingDeleteList">
   		DELETE room 
-  		 WHERE roomNo=#{roomNo}
+  		 WHERE roomno=#{roomNo}
   	</delete>
   	
   	<!-- 회원 호스팅 상품 삭제 결과확인용 -->
   	<select id="selectUserHostingDeleteCount" resultType="int">
 		SELECT count(*) 
 		  FROM room 
-		 WHERE roomNo=#{roomNo}  	
+		 WHERE roomno=#{roomNo}  	
   	</select>
 
   </mapper>

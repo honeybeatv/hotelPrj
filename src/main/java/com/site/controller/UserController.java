@@ -168,16 +168,35 @@ public class UserController {
 		return "/user/userReservationView";
 	}
 */	
-	@RequestMapping("/userHostingEdit")	// 회원 호스팅 페이지 호출
-	public String userHostingEdit(Model model, @RequestParam("userno") int userno) {
-		Map<String, Object> userHostingEditMap = userService.userHostingEditList(userno);
-		model.addAttribute("userHostingEditMap", userHostingEditMap);
+	@RequestMapping("/userHostingView")	// 회원 호스팅 상품 페이지 호출
+	public String userHostingView(Model model, @RequestParam("userno") int userno) {
+		Map<String, Object> userHostingViewMap = userService.userHostingViewList(userno);
+		model.addAttribute("userHostingViewMap", userHostingViewMap);
 		
 		System.out.println("# mypage category_Hosting ListAll #");
 		
-		return "/user/userHostingEdit";
+		return "/user/userHostingView";
 	}
-	
+
+	@RequestMapping("/userHostingModify") // 회원 호스팅 상품 수정페이지 호출
+	public String userHostingModify(Model model, @RequestParam("userno") int userno, @RequestParam("roomNo") int roomNo) {
+		Map<String, Object> userHostingModifyMap = userService.userHostingModifyList(userno, roomNo);
+		model.addAttribute("userHostingModifyMap", userHostingModifyMap);
+		
+		System.out.println("# mypage category_Hosting Modify #");
+		
+		return "/user/userHostingModify";
+	}
+
+	@RequestMapping("/userHostingModifyDo") // 회원 호스팅 상품 수정페이지 실행
+	public String userHostingModifyDo(RoomVo roomVo) {
+		userService.userHostingModifDo(roomVo);
+		
+		System.out.println("# mypage category_Hosting ModifyDo #");
+		
+		return "redirect:/user/userHostingView?userno="+ roomVo.getUserno();
+	}
+
 	@RequestMapping("/userHostingDelete") // 회원 호스팅 상품 삭제
 	@ResponseBody
 	public Map<String, Object> userHostingDelete(RoomVo roomVo){

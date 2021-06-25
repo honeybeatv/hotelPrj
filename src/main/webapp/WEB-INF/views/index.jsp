@@ -113,7 +113,7 @@ ul{
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="rcity" id="city" class="form-control" style="cursor:pointer;">
+			                    <select name="rcity" id="rcity" class="form-control" style="cursor:pointer;">
 									<option value="" selected>지역</option>
 									<option value="서울">서울</option>
 									<option value="인천">인천</option>
