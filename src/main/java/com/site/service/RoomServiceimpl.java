@@ -62,7 +62,12 @@ public class RoomServiceimpl implements RoomService {
 //		int userNo = userVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 
 		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 이게 6이 뽑혀야하는데 0이나오네?
 //		roomVo.setUserno(userNo);			// 받아온 userNo를 roomVo의 userNo에 대입?
-		
+		if( roomVo.getRsmoke()==null) {
+			roomVo.setRsmoke("nosmoke");
+		}
+		if( roomVo.getRpet()==null) {
+			roomVo.setRpet("nopet");
+		}
 		System.out.println("userNo ==> " + userNo);
 		
 		System.out.println("roomVo ==> " + roomVo);	//

@@ -59,6 +59,7 @@
   		  FROM room 
   		 WHERE userno=#{userno}
   	  ORDER BY roomno asc
+
   	</select>
   	
   	<!-- 회원 호스팅 상품정보 수정 실행 -->

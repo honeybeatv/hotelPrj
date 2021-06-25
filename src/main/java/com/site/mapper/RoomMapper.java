@@ -21,7 +21,7 @@ public interface RoomMapper {
 	List<RoomVo> selectroomsListAll();
 
 	//글쓰기
-	RoomVo insertRoomsWriteDo(RoomVo roomVo);
+	void insertRoomsWriteDo(RoomVo roomVo);
 
 }
 
