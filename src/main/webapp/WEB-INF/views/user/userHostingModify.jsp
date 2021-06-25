@@ -30,46 +30,11 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
- 	
- 		// 수정버튼 눌렀을 때 수정가능하게 칸 변화
-		function ajax_updateFromUserHostingModify(roomNo, rcity, rtype, rpeople, rprice, rbed, rroom, rsmoke, rpet, raddress){
-			alert("Hosting Modify Form ajax 실행 : " + roomNo);
-			var sourceCode ="";
-			sourceCode += "<td>"+rname+"</td>";
-			sourceCode += "<td>"+rcity+"</td>";
-			sourceCode += "<td>"+rtype+"</td>";
-			sourceCode += "<td>"+rpeople+"</td>";
-			sourceCode += "<td>"+rprice+"</td>";
-			sourceCode += "<td>"+rbed+"</td>";
-			sourceCode += "<td>"+rroom+"</td>";
-			sourceCode += "<td>"+rsmoke+"</td>";
-			sourceCode += "<td>"+rpet+"</td>";
-			sourceCode += "<td>"+raddress+"</td>";
-			sourceCode += "<td><button type=\"button\" class=\" btn-light\" onclick=\"ajax_userHostingModifyDo("+roomNo+")\">수정</button></td>";
-			sourceCode += "<td><button type=\"button\" class=\"btn-light\" onclick=\"ajax_userHostingModifyCancel("+roomNo+","+rcity+","+rtype+","+rpeople+","+rprice+","+rbed+","+rroom+","+rsmoke+","+rpet+","+raddress+")\">취소</button></td>";
-			$('#'+roomNo).html(sourceCode);
- 		}
- 		
- 		// 호스팅 상품 삭제
- 		function ajax_userHostingDelete(roomNo){
- 			if(confirm("상품을 삭제하시겠습니까?")){
- 				  $.ajax({
- 						 url:'./userHostingDelete',     
- 						 type:'post',
- 						 data:{
- 							 "roomNo":roomNo
- 						 },
- 						 success:function(data){
- 							 alert(data.msg);
- 							 var html="";
- 							 $('#'+roomNo).remove();
- 						 },
- 						 error:function(){
- 							 alert("에러");
- 						 }
- 				  });
- 			  }else{ return false; }
- 		}
+		$(function(){
+  		 	$('#goto_userHostingView').click(function(){
+	  			history.back();
+  		 	});
+  	 	});
   	</script>
   	
   </head>
@@ -95,7 +60,8 @@
 
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
-            <form class="bg-white p-2 " width="100%">
+			
+            <form action="userHostingModifyDo" class="bg-white p-2 " width="100%">
 				<table width="100%" >
 				
 					<tr>
@@ -117,28 +83,44 @@
 						<td colspan="12"></td>
 					</tr>
 
-					<c:forEach var="roomVo" items="${userHostingEditMap.userHostingEditList }">
-						<tr id="${roomVo.roomNo}">
-							<td>
-								<a href="*숙소링크*bno=${roomVo.roomNo}">${roomVo.rname}</a>
-							</td>
-							<td>${roomVo.rcity}</td>							
-							<td>${roomVo.rtype}</td>							
-							<td>${roomVo.rpeople}</td>							
-							<td>${roomVo.rprice}</td>							
-							<td>${roomVo.rbed}</td>		
-							<td>${roomVo.rroom}</td>		
-							<td>${roomVo.rsmoke}</td>		
-							<td>${roomVo.rpet}</td>		
-							<td>${roomVo.raddress}</td>		
-							<td><button type="button" class=" btn-light"
-										onclick="ajax_updateFromUserHostingModify('${roomVo.roomNo}', '${roomVo.rcity}', '${roomVo.rtype}', '${roomVo.rpeople}',							
-																		'${roomVo.rprice}', '${roomVo.rbed}', '${roomVo.rroom}', '${roomVo.rsmoke}', 
-																		'${roomVo.rpet}', '${roomVo.raddress}')">수정</button></td>		
-							<td><button type="button" class=" btn-light" onclick="ajax_userHostingDelete('${roomVo.roomNo}')">삭제</button></td>		
-						</tr>
+					<c:forEach var="roomVo" items="${userHostingModifyMap.userHostingModifyList }">
+						<c:choose>
+							<c:when test="${roomVo.roomNo == userHostingModifyMap.roomNo}">
+								<tr id="${roomVo.roomNo}">
+									<td style="width:10%;"><input type="text" name="rname" value="${roomVo.rname}"></td>
+									<td style="width:5%;"><input type="text" name="rcity"  value="${roomVo.rcity}"></td>							
+									<td style="width:6%;"><input type="text" name="rtype"  value="${roomVo.rtype}"></td>							
+									<td style="width:6%;"><input type="text" name="rpeople"  value="${roomVo.rpeople}"></td>						
+									<td style="width:6%;"><input type="text" name="rprice"  value="${roomVo.rprice}"></td>					
+									<td style="width:4%;"><input type="text" name="rbed"  value="${roomVo.rbed}"></td>		
+									<td style="width:4%;"><input type="text" name="rroom"  value="${roomVo.rroom}"></td>		
+									<td style="width:6%;"><input type="text" name="rsmoke"  value="${roomVo.rsmoke}"></td>		
+									<td style="width:6%;"><input type="text" name="rpet"  value="${roomVo.rpet}"></td>	
+									<td style="width:40%;"><input type="text" name="raddress"  value="${roomVo.raddress}"></td>		
+									<td><button type="submit" class=" btn-light" >저장</button></td>		
+									<td><button type="button" class=" btn-light" id="goto_userHostingView">취소</button></td>		
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<tr id="${roomVo.roomNo}">
+									<td>
+										<a href="*숙소링크*bno=${roomVo.roomNo}">${roomVo.rname}</a>
+									</td>
+									<td>${roomVo.rcity}</td>							
+									<td>${roomVo.rtype}</td>							
+									<td>${roomVo.rpeople}</td>							
+									<td>${roomVo.rprice}</td>							
+									<td>${roomVo.rbed}</td>		
+									<td>${roomVo.rroom}</td>		
+									<td>${roomVo.rsmoke}</td>		
+									<td>${roomVo.rpet}</td>		
+									<td>${roomVo.raddress}</td>		
+								</tr>
+							</c:otherwise>
+						</c:choose>
+						<input type="hidden" name="userno" value="${session_userno}" >
+						<input type="hidden" name="roomNo" value="${roomVo.roomNo}" >
 					</c:forEach>
-
 				</table>
             </form>
           </div>
