@@ -35,6 +35,8 @@ public class RoomServiceimpl implements RoomService {
    public List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
 		   int maxPrice, String rpet, String rsmoke, String rcity, int rpeople) {
 	   System.out.println("service "+ rcity);
+	   
+	   
 	   List<RoomVo> list = roomMapper.selectAdvancedRoomList(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
 	   System.out.println("service searchAdvanced " + list);
 	   return list;
@@ -53,6 +55,21 @@ public class RoomServiceimpl implements RoomService {
 	public void roomsWriteDo(RoomVo roomVo) {
 		roomMapper.insertRoomsWriteDo(roomVo);
 		
+	}
+
+	//페이징 연구중 by.봉
+	@Override
+	public List<RoomVo> roomListAdvanced2(String checkIn, String checkOut, String rtype, int rroom, int rbed,
+			int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int page) {
+		
+		//총 데이터 수 쿼리문으로 구해오기
+		int listCount = 0;
+		//listCount = mapper.총 데이터 수
+		
+		PageUtil paging = new PageUtil();
+		paging.getPageNum(page, 9, listCount);
+		
+		return null;
 	}
 
 

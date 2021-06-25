@@ -87,6 +87,9 @@ public class RoomController {
 		
 		List<RoomVo> list = roomService.roomListAdvanced(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
 		
+		//페이징 연구중 by.봉
+		List<RoomVo> pagetest = roomService.roomListAdvanced2(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, page);
+		
 		System.out.println(list);
 		
 		model.addAttribute("list", list);

@@ -93,10 +93,13 @@
 						style="font-weight: bolder;">방타입</label>
 					<div class="col-sm-7">
 						<select name="rtype">
-							<option value="all">집전체</option>
-							<option value="individual">개인실</option>
-							<option value="hotel">호텔</option>
-							<option value="share" selected>다인실</option>
+							<option value="apt">아파트</option>
+		                     <option value="house">주택</option>
+		                     <option value="walkup">공동주택</option>
+		                     <option value="hotel">호텔</option>
+		                     <option value="residence">레지던스</option>
+		                     <option value="hostel">호스텔</option>
+	                    	<option value="etc">기타</option>
 						</select>
 					</div>
 				</div>
@@ -107,10 +110,11 @@
 					<div class="col-sm-7">
 						<select name="rpeople">
 							<option value="1"selected>1명</option>
-							<option value="">2명</option>
-							<option value="">3명</option>
-							<option value="">4명</option>
-							<option value="">5명 이상</option>
+							<option value="2">2명</option>
+							<option value="3">3명</option>
+							<option value="4">4명</option>
+							<option value="5">5명</option>
+							<option value="6">6명 이상</option>
 						</select>
 					</div>
 				</div>
@@ -165,11 +169,13 @@
 						style="font-weight: bolder;">침실수</label>
 					<div class="col-sm-7">
 						<select name="rroom">
-							<option value="1"selected>1Room</option>
-							<option value="2">2Room</option>
-							<option value="3">3Room</option>
-							<option value="4">4Room</option>
-							<option value="5">5Room 이상</option>
+							<option value="1"selected>침실 1</option>
+							 <option value="2">침실 2</option>
+		                    <option value="3">침실 3</option>
+		                    <option value="4">침실 4</option>
+		                    <option value="5">침실 5</option>
+		                    <option value="6">침실 6</option>
+	                    	<option value="7">침실 7 이상</option>
 						</select>
 					</div>
 				</div>
@@ -178,11 +184,13 @@
 						style="font-weight: bolder;">침대수</label>
 					<div class="col-sm-7">
 						<select name="rbed">
-							<option value="1"selected>1Bed</option>
-							<option value="2">2Bed</option>
-							<option value="3">3Bed</option>
-							<option value="4">4Bed</option>
-							<option value="5">5Bed 이상</option>
+							<option value="1"selected>침대 1</option>
+	                      	<option value="2">침대 2</option>
+	                      	<option value="3">침대 3</option>
+	                      	<option value="4">침대 4</option>
+	                      	<option value="5">침대 5</option>
+	                      	<option value="6">침대 6</option>
+	                    	<option value="7">침대 7 이상</option>
 						</select>
 					</div>
 				</div>

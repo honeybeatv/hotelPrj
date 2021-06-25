@@ -24,8 +24,9 @@
 
 	<!-- 글쓰기 저장 -->
 	<insert id="insertRoomsWriteDo">
+	  <![CDATA[
 	  INSERT INTO ROOM VALUES
-	  (room_seq.nextval, #{rname}, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet},#{raddress})
+	  (SEQ_ROOM.nextval, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture},#{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet}, #{raddress}, #{rname}, #{userno}) ]]>
 	</insert>
 
 	<!-- 상세 조건 검색 -->
