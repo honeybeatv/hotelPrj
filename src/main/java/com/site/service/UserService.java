@@ -27,5 +27,7 @@ public interface UserService {
 	
 	// 회원 호스팅 페이지 호출
 	Map<String, Object> userHostingEditList(int userno);
+	// 회원 호스팅 상품 삭제
+	Map<String, Object> userHostingDelete(RoomVo roomVo);
 
 }
