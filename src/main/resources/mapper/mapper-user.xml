@@ -58,6 +58,7 @@
   		SELECT * 
   		  FROM room 
   		 WHERE userno=#{userno}
+		 ORDER BY roomno desc
   	</select>
   	
   	<!-- 회원 호스팅 상품 삭제 -->
