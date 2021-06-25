@@ -70,9 +70,9 @@ public class RoomServiceimpl implements RoomService {
 		}
 		System.out.println("userNo ==> " + userNo);
 		
-		System.out.println("roomVo ==> " + roomVo);	//
 		
 		roomMapper.insertRoomsWriteDo(roomVo);
+		System.out.println("roomVo ==> " + roomVo);	//
 		
 	}
 
