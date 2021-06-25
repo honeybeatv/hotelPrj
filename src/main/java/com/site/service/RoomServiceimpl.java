@@ -22,11 +22,10 @@ public class RoomServiceimpl implements RoomService {
 	@Autowired
    RoomMapper roomMapper;
 	
-	@Autowired
+
 	UserVo userVo;
 	
-	@Autowired
-	UserService userService;
+
 
 
    //index페이지에서 검색
@@ -59,10 +58,9 @@ public class RoomServiceimpl implements RoomService {
    //rooms 숙소 등록
 	@Override
 	public void roomsWriteDo(RoomVo roomVo) {
-		UserVo userLogin = userService.login(userVo);
-		System.out.println("userLogin ==> " + userLogin);
+	
 //		int userNo = userVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 
-		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 이게 6이 뽑혀야하는데 0이나오네?컨트롤러써야되는거아님?
+		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 이게 6이 뽑혀야하는데 0이나오네?
 //		roomVo.setUserno(userNo);			// 받아온 userNo를 roomVo의 userNo에 대입?
 		
 		System.out.println("userNo ==> " + userNo);
