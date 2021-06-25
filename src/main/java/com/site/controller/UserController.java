@@ -128,7 +128,6 @@ public class UserController {
 	public String userInfoView(Model model, @RequestParam("userno") int userno) {
 		UserVo userVo = userService.userInfoView(userno);
 		model.addAttribute("userVo", userVo);
-		
 		System.out.println("# mypage category_Informaton userInfoView userid : " + userVo.getUserid() + " #");
 		
 		return "/user/userInfoView";

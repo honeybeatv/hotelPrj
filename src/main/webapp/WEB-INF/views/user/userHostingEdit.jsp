@@ -132,7 +132,11 @@
 						<td width="6%">동물가능 여부</td>
 						<td width="40%">주소</td>
 						<td width="3%">   </td>
+
+						<td width="3%"><button type="button" class=" btn-light" onclick="javascript:location.href='../room/roomsadd?userno='+${session_userno}">숙소추가</button></td>
+
 						<td width="10%"><button type="button" class=" btn-light" onclick="">숙소추가</button></td>
+
 					</tr>
 
 					<tr height="1" bgcolor="#8f784b ">

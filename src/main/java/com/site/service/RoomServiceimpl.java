@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.site.mapper.RoomMapper;
@@ -20,11 +19,13 @@ import com.site.vo.UserVo;
 @Service
 public class RoomServiceimpl implements RoomService {
    
-@Autowired
+	@Autowired
    RoomMapper roomMapper;
-
+	
 
 	UserVo userVo;
+	
+
 
 
    //index페이지에서 검색
@@ -57,17 +58,21 @@ public class RoomServiceimpl implements RoomService {
    //rooms 숙소 등록
 	@Override
 	public void roomsWriteDo(RoomVo roomVo) {
-		
+	
 //		int userNo = userVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 
-		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 
-		
+		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 이게 6이 뽑혀야하는데 0이나오네?
 //		roomVo.setUserno(userNo);			// 받아온 userNo를 roomVo의 userNo에 대입?
-		
+		if( roomVo.getRsmoke()==null) {
+			roomVo.setRsmoke("nosmoke");
+		}
+		if( roomVo.getRpet()==null) {
+			roomVo.setRpet("nopet");
+		}
 		System.out.println("userNo ==> " + userNo);
 		
 		System.out.println("roomVo ==> " + roomVo);	//
 		
-		 roomMapper.insertRoomsWriteDo(roomVo); // 
+		roomMapper.insertRoomsWriteDo(roomVo);
 		
 	}
 
