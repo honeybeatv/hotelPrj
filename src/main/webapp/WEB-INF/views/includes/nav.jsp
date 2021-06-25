@@ -10,7 +10,7 @@
 
  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-			<a class="navbar-brand" href="../main/index">Deluxe</a>
+			<a class="navbar-brand" href="/">Deluxe</a>
 			
 			<!-- 사용자에 따른 환영 문구 설정 -->
 			<c:choose>
@@ -35,7 +35,7 @@
 				<c:when test="${session_flag==null || session_flag=='fail' }">
 					<div class="collapse navbar-collapse" id="ftco-nav">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
+							<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 							<li class="nav-item"><a href="/user/login" class="nav-link">Login</a></li>
 							<li class="nav-item"><a href="/user/join" class="nav-link">Join</a></li>
 <!-- 	사용안하는것 같아서		<li class="nav-item"><a href="restaurant" class="nav-link">Restaurant</a></li>
@@ -48,7 +48,7 @@
  				<c:when test="${session_flag=='success' && session_uadmin=='0'}">
 					<div class="collapse navbar-collapse" id="ftco-nav">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
+							<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 							<li class="nav-item"><a href="/user/mypage" class="nav-link">Mypage</a></li>
 							<li class="nav-item"><a href="/user/logout" class="nav-link">Logout</a></li>
 <!-- 						<li class="nav-item"><a href="restaurant" class="nav-link">Restaurant</a></li>
@@ -62,7 +62,7 @@
  				<c:when test="${session_flag=='success' && session_uadmin=='1'}">
 					<div class="collapse navbar-collapse" id="ftco-nav">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item"><a href="../main/index" class="nav-link">Home</a></li>
+							<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 							<li class="nav-item"><a href="/admin/administration" class="nav-link">Administration</a></li>
 							<li class="nav-item"><a href="/admin/logout" class="nav-link">Logout</a></li>
 <!-- 						<li class="nav-item"><a href="restaurant" class="nav-link">Restaurant</a></li>

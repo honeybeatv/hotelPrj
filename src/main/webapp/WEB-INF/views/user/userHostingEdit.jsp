@@ -71,7 +71,29 @@
  			  }else{ return false; }
  		}
   	</script>
+  	<style type="text/css">
+  	.btn-light {
+	background-color:#8d703b;
+	border-radius:28px;
+	border:1px solid #8d703b;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:0px 5px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #8d703b;
+}
+.btn-light:hover {
+	background-color:#8d703b;
+}
+.btn-light:active {
+	position:relative;
+	top:1px;
+}
   	
+  	</style>
   </head>
   <body>
 
@@ -110,7 +132,7 @@
 						<td width="6%">동물가능 여부</td>
 						<td width="40%">주소</td>
 						<td width="3%">   </td>
-						<td width="3%"><button type="button" class=" btn-light" onclick="">숙소추가</button></td>
+						<td width="10%"><button type="button" class=" btn-light" onclick="">숙소추가</button></td>
 					</tr>
 
 					<tr height="1" bgcolor="#8f784b ">
