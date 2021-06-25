@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 
- <c:if test="${session_flag==null || session_flag=='fail' }">
+<c:if test="${session_flag==null || session_flag=='fail' }">
 	<script type="text/javascript">
 		alert("로그인을 하셔야 글쓰기가 가능합니다.")
 	</script>
@@ -46,6 +46,29 @@
 <script type="text/javascript">
 	
 </script>
+<!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
+<script type="text/javascript">
+	function searchSubmit() {
+
+		var rcity = $("#rcity").val();
+		var rroom = $("#rroom").val();
+		var rbed = $("#rbed").val();
+
+		
+		if (rcity == "" || rcity == null) {
+			alert("지역을선택하세요")
+			return false;
+		} else if (rroom == 0) {
+			alert("침실수를 선택하세요")
+			return false;
+		} else if (rbed == 0) {
+			alert("침대수를 선택하세요")
+			return false;
+		}
+			document.searchForm.submit();
+
+	}
+</script>
 
 </head>
 <body>
@@ -76,18 +99,19 @@
 		<div class="col-10" style="display: inline-block;">
 			<form action="roomsWriteDo" class="bg-white p-5 " width="100%">
 
-				
-				
+
+
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방이름</label>
+						style="font-weight: bolder;">방이름</label> <input type="hidden"
+						id="userno" name="userno" value="${session_userno }">
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;"
 							id="userid" name="rname">
 					</div>
-				
+
 				</div>
-				
+
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방타입</label>
@@ -106,11 +130,11 @@
 						style="font-weight: bolder;">인원수</label>
 					<div class="col-sm-7">
 						<select name="rpeople">
-							<option value="1"selected>1명</option>
-							<option value="">2명</option>
-							<option value="">3명</option>
-							<option value="">4명</option>
-							<option value="">5명 이상</option>
+							<option value="1" selected>1명</option>
+							<option value="2">2명</option>
+							<option value="3">3명</option>
+							<option value="4">4명</option>
+							<option value="5">5명 이상</option>
 						</select>
 					</div>
 				</div>
@@ -131,24 +155,26 @@
 						<input type="file" class="" style="width: 100%;" id="file"
 							name="rpicture">
 					</div>
-					
-					
+
+
 				</div>
 
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">도시</label>
 					<div class="col-sm-7">
-						<select name="rcity">
-							<option value="seoul"selected>서울</option>
-							<option value="incheon">인천</option>
-							<option value="sejong">세종</option>
-							<option value="daejeon">대전</option>
-							<option value="daegu">대구</option>
-							<option value="ulsan">울산</option>
-							<option value="busan">부산</option>
-							<option value="Gwangju">광주</option>
-							<option value="jeju">제주</option>
+
+						<select id="rcity" name="rcity">
+							<option value="" selected>지역</option>
+							<option value="서울">서울</option>
+							<option value="인천">인천</option>
+							<option value="세종">세종</option>
+							<option value="대전">대전</option>
+							<option value="대구">대구</option>
+							<option value="울산">울산</option>
+							<option value="부산">부산</option>
+							<option value="광주">광주</option>
+							<option value="제주">제주</option>
 						</select>
 					</div>
 				</div>
@@ -165,7 +191,7 @@
 						style="font-weight: bolder;">침실수</label>
 					<div class="col-sm-7">
 						<select name="rroom">
-							<option value="1"selected>1Room</option>
+							<option value="1" selected>1Room</option>
 							<option value="2">2Room</option>
 							<option value="3">3Room</option>
 							<option value="4">4Room</option>
@@ -173,12 +199,12 @@
 						</select>
 					</div>
 				</div>
-					<div class="form-inline form-group">
+				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">침대수</label>
 					<div class="col-sm-7">
 						<select name="rbed">
-							<option value="1"selected>1Bed</option>
+							<option value="1" selected>1Bed</option>
 							<option value="2">2Bed</option>
 							<option value="3">3Bed</option>
 							<option value="4">4Bed</option>
@@ -186,12 +212,12 @@
 						</select>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
-		              <input type="checkbox" name="rsmoke" value="smoke"> 흡연실 
-		              <input type="checkbox" name="rpet" value="pet"> 반려동물
-		              </div>
-		              
+					<input type="checkbox" name="rsmoke" value="smoke"> 흡연실 <input
+						type="checkbox" name="rpet" value="pet"> 반려동물
+				</div>
+
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">상세 주소</label>
@@ -201,9 +227,12 @@
 					</div>
 				</div>
 
-				<button type="submit" value="등록" class="btn btn-primary py-3 px-5">등록</button>
-				<button type="button" value="취소" class="btn btn-primary py-3 px-5 onclick="javascript:location.href='/room/rooms'">취소</button>
-				
+				<button type="submit" value="등록" class="btn btn-primary py-3 px-5"
+					onclick="searchSubmit();">등록</button>
+				<button type="button" value="취소"
+					class="btn btn-primary py-3 px-5 onclick="
+					javascript:location.href='/room/rooms'">취소</button>
+
 			</form>
 		</div>
 	</section>
