@@ -49,6 +49,8 @@
 <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
 <script type="text/javascript">
 	function searchSubmit() {
+		//location.href="userHostingView.jsp"
+		
 		var rname = $("#rname").val();
 		var rtype = $("#rtype").val();
 		var rpeople = $("#rpeople").val();
@@ -125,7 +127,7 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
-			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%">
+			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post">
 
 
 
