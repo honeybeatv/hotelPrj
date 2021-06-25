@@ -86,7 +86,7 @@ $(document).ready(function(){
  			 success:function(data){
  				 alert(data.msg);
  				 if(data.flag=="success"){
- 				    location.href="../main/index";
+ 				    location.href="/";
  				 }else{
  					 $("#userid").val(""); //공백처리 
  					 $("#userpw").val("");
