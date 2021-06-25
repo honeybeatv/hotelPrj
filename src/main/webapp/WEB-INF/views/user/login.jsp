@@ -86,7 +86,7 @@ $(document).ready(function(){
  			 success:function(data){
  				 alert(data.msg);
  				 if(data.flag=="success"){
- 				    location.href="../main/index";
+ 				    location.href="/";
  				 }else{
  					 $("#userid").val(""); //공백처리 
  					 $("#userpw").val("");
@@ -119,7 +119,7 @@ function onEnterSubmit(){
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>login</span></p>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>login</span></p>
 	            <h1 class="mb-4 bread">Login</h1>
             </div>
           </div>

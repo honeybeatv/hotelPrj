@@ -33,7 +33,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		System.out.println("# user logout success #");
-		return "redirect:/main/index";
+		return "redirect:/";
 	}
 
 	@RequestMapping("/login")

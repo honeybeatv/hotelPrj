@@ -163,6 +163,7 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">도시</label>
 					<div class="col-sm-7">
+<<<<<<< HEAD
 
 						<select id="rcity" name="rcity">
 							<option value="" selected>지역</option>
@@ -175,6 +176,19 @@
 							<option value="부산">부산</option>
 							<option value="광주">광주</option>
 							<option value="제주">제주</option>
+=======
+						<select name="rcity">
+							<option value="" selected>지역</option>
+							<option value="seoul">서울</option>
+							<option value="incheon">인천</option>
+							<option value="sejong">세종</option>
+							<option value="daejeon">대전</option>
+							<option value="daegu">대구</option>
+							<option value="ulsan">울산</option>
+							<option value="busan">부산</option>
+							<option value="Gwangju">광주</option>
+							<option value="jeju">제주</option>
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 						</select>
 					</div>
 				</div>
