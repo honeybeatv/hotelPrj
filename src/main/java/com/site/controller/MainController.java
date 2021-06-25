@@ -11,13 +11,12 @@ import com.site.service.RoomService;
 import com.site.vo.RoomVo;
 
 @Controller
-@RequestMapping("/main")
 public class MainController {
 	
 	@Autowired
 	RoomService roomService;
 	
-	@RequestMapping("/index")
+	@RequestMapping("")
 	public String index(Model model) {
 		List<RoomVo> list = roomService.roomsListAll();
 		model.addAttribute("list", list);

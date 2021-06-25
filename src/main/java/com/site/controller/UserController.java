@@ -169,15 +169,21 @@ public class UserController {
 		return "/user/userReservationView";
 	}
 */	
-	@RequestMapping("/userHostingView")	// 회원 호스팅 페이지 호출
-	public String userHostingView(Model model, @RequestParam("userno") int userno) {
-		System.out.println("1");
-		Map<String, Object> userHostingViewMap = userService.userHostingView(userno);
-		System.out.println("2");
-		model.addAttribute("userHostingViewMap", userHostingViewMap);
-		System.out.println("3");
-		System.out.println("# mypage category_Informaton userHostingView  : " + userHostingViewMap + " #");
+	@RequestMapping("/userHostingEdit")	// 회원 호스팅 페이지 호출
+	public String userHostingEdit(Model model, @RequestParam("userno") int userno) {
+		Map<String, Object> userHostingEditMap = userService.userHostingEditList(userno);
+		model.addAttribute("userHostingEditMap", userHostingEditMap);
 		
-		return "/user/userHostingView";
+		System.out.println("# mypage category_Hosting ListAll #");
+		
+		return "/user/userHostingEdit";
 	}
+	
+	@RequestMapping("/userHostingDelete") // 회원 호스팅 상품 삭제
+	@ResponseBody
+	public Map<String, Object> userHostingDelete(RoomVo roomVo){
+		System.out.println("# mypage category_Hosting Delete #");
+		return userService.userHostingDelete(roomVo);
+	}
+	
 }
