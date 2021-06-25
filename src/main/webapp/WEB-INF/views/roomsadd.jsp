@@ -49,24 +49,52 @@
 <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
 <script type="text/javascript">
 	function searchSubmit() {
-
+		var rname = $("#rname").val();
+		var rtype = $("#rtype").val();
+		var rpeople = $("#rpeople").val();
+		var rinfo = $("#rinfo").val();
+		//var rpicture = $("#rpicture").val();
 		var rcity = $("#rcity").val();
+		var rprice = $("#rprice").val();
 		var rroom = $("#rroom").val();
 		var rbed = $("#rbed").val();
+		var raddress = $("#raddress").val();
 
 		
-		if (rcity == "" || rcity == null) {
-			alert("지역을선택하세요")
+		if (rname == "" || rname == null) {
+			alert("방이름을 입력하세요")
 			return false;
-		} else if (rroom == 0) {
+		}else if (rtype == "" || rtype == null) {
+			alert("방종류를 선택하세요")
+			return false;
+		}else if (rpeople == "" || rpeople == null) {
+			alert("인원수를 선택하세요")
+			return false;
+		}else if (rinfo == "" || rinfo == null) {
+			alert("방정보를 입력하세요")
+			return false;
+		//}else if (rpicture == "" || rpicture == null) {
+			//alert("방사진을 등록하세요")
+			//return false;
+		}else if (rcity == "" || rcity == null) {
+			alert("지역을 선택하세요")
+			return false;
+		}else if (rprice == "" || rprice == null) {
+			alert("가격을 정해주세요")
+			return false;
+		} else if (rroom == "" || rroom == null) {
 			alert("침실수를 선택하세요")
+			alert(rroom)
 			return false;
-		} else if (rbed == 0) {
+		} else if (rbed == "" || rbed ==null) {
 			alert("침대수를 선택하세요")
 			return false;
-		}
+		} else if (raddress == "" || raddress ==null) {
+			alert("상세주소를 입력하세요")
+			return false;
+		} else{
 			document.searchForm.submit();
-
+		}
 	}
 </script>
 
@@ -97,7 +125,7 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
-			<form action="roomsWriteDo" class="bg-white p-5 " width="100%">
+			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%">
 
 
 
@@ -106,21 +134,21 @@
 						style="font-weight: bolder;">방이름</label> <input type="hidden"
 						id="userno" name="userno" value="${session_userno }">
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;"
-							id="userid" name="rname">
+						<input type="text" class="form-control" style="width: 100%;" id="rname" name="rname">
 					</div>
 
 				</div>
 
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방타입</label>
+						style="font-weight: bolder;">방종류</label>
 					<div class="col-sm-7">
-						<select name="rtype">
+						<select name="rtype" id="rtype">
+							<option value="" selected>방종류</option>
 							<option value="all">집전체</option>
 							<option value="individual">개인실</option>
 							<option value="hotel">호텔</option>
-							<option value="share" selected>다인실</option>
+							<option value="share">다인실</option>
 						</select>
 					</div>
 				</div>
@@ -129,8 +157,9 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">인원수</label>
 					<div class="col-sm-7">
-						<select name="rpeople">
-							<option value="1" selected>1명</option>
+						<select name="rpeople" id="rpeople">
+						<option value="" selected>인원수</option>
+							<option value="1">1명</option>
 							<option value="2">2명</option>
 							<option value="3">3명</option>
 							<option value="4">4명</option>
@@ -143,8 +172,7 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방정보</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="rinfo">
+						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
 					</div>
 				</div>
 
@@ -152,8 +180,7 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">사진</label>
 					<div class="col-sm-7">
-						<input type="file" class="" style="width: 100%;" id="file"
-							name="rpicture">
+						<input type="file" class="" style="width: 100%;" id="file"	name="rpicture">
 					</div>
 
 
@@ -163,7 +190,6 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">도시</label>
 					<div class="col-sm-7">
-<<<<<<< HEAD
 
 						<select id="rcity" name="rcity">
 							<option value="" selected>지역</option>
@@ -176,19 +202,6 @@
 							<option value="부산">부산</option>
 							<option value="광주">광주</option>
 							<option value="제주">제주</option>
-=======
-						<select name="rcity">
-							<option value="" selected>지역</option>
-							<option value="seoul">서울</option>
-							<option value="incheon">인천</option>
-							<option value="sejong">세종</option>
-							<option value="daejeon">대전</option>
-							<option value="daegu">대구</option>
-							<option value="ulsan">울산</option>
-							<option value="busan">부산</option>
-							<option value="Gwangju">광주</option>
-							<option value="jeju">제주</option>
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 						</select>
 					</div>
 				</div>
@@ -196,16 +209,16 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">1박 가격</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="rprice">
+						<input type="text" class="form-control" style="width: 100%;" id="rprice" name="rprice">
 					</div>
 				</div>
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">침실수</label>
 					<div class="col-sm-7">
-						<select name="rroom">
-							<option value="1" selected>1Room</option>
+						<select name="rroom" id="rroom">
+							<option value="" selected>침실수</option>
+							<option value="1">1Room</option>
 							<option value="2">2Room</option>
 							<option value="3">3Room</option>
 							<option value="4">4Room</option>
@@ -217,8 +230,9 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">침대수</label>
 					<div class="col-sm-7">
-						<select name="rbed">
-							<option value="1" selected>1Bed</option>
+						<select name="rbed" id="rbed">
+							<option value="" selected>침대수</option>
+							<option value="1" >1Bed</option>
 							<option value="2">2Bed</option>
 							<option value="3">3Bed</option>
 							<option value="4">4Bed</option>
@@ -236,16 +250,14 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">상세 주소</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="raddress">
+						<textarea name="raddress" cols="65" rows="3" id="raddress"></textarea>
 					</div>
 				</div>
 
-				<button type="submit" value="등록" class="btn btn-primary py-3 px-5"
-					onclick="searchSubmit();">등록</button>
-				<button type="button" value="취소"
-					class="btn btn-primary py-3 px-5 onclick="
-					javascript:location.href='/room/rooms'">취소</button>
+				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
+					onclick="searchSubmit();">
+				<input type="button" value="취소"
+					class="btn btn-primary py-3 px-5" onclick="history.back()">
 
 			</form>
 		</div>
