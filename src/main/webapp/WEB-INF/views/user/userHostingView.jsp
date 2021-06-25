@@ -30,25 +30,31 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
- 	
- 		// 수정버튼 눌렀을 때 수정가능하게 칸 변화
+ 		
+/* 		// *호스팅 상품 수정*
+ 		
+ 		// 수정버튼 눌렀을 때 수정가능하게 칸&버튼 변화
 		function ajax_updateFromUserHostingModify(roomNo, rcity, rtype, rpeople, rprice, rbed, rroom, rsmoke, rpet, raddress){
 			alert("Hosting Modify Form ajax 실행 : " + roomNo);
 			var sourceCode ="";
-			sourceCode += "<td>"+rname+"</td>";
-			sourceCode += "<td>"+rcity+"</td>";
-			sourceCode += "<td>"+rtype+"</td>";
-			sourceCode += "<td>"+rpeople+"</td>";
-			sourceCode += "<td>"+rprice+"</td>";
-			sourceCode += "<td>"+rbed+"</td>";
-			sourceCode += "<td>"+rroom+"</td>";
-			sourceCode += "<td>"+rsmoke+"</td>";
-			sourceCode += "<td>"+rpet+"</td>";
-			sourceCode += "<td>"+raddress+"</td>";
-			sourceCode += "<td><button type=\"button\" class=\" btn-light\" onclick=\"ajax_userHostingModifyDo("+roomNo+")\">수정</button></td>";
-			sourceCode += "<td><button type=\"button\" class=\"btn-light\" onclick=\"ajax_userHostingModifyCancel("+roomNo+","+rcity+","+rtype+","+rpeople+","+rprice+","+rbed+","+rroom+","+rsmoke+","+rpet+","+raddress+")\">취소</button></td>";
+			alert("ck1");
+			sourceCode += "<td><textarea id='roomNameModify'>"+rname+"</textarea></td>";
+			alert("ck2");
+			sourceCode += "<td><textarea id='roomCityModify'>"+rcity+"</textarea></td>";
+			sourceCode += "<td><textarea id='roomTypeModify'>"+rtype+"</textarea></td>";
+			sourceCode += "<td><textarea id='roomPeopleModify'>"+rpeople+"</textarea></td>";
+			sourceCode += "<td><textarea id='roomPriceModify'>"+rprice+"</textarea></td>";
+			sourceCode += "<td><textarea id='rommBedModify'>"+rbed+"</textarea></td>";
+			sourceCode += "<td><textarea id='roomRoomModify'>"+rroom+"</textarea></td>";
+			sourceCode += "<td><textarea id='roomSmokeModify'>"+rsmoke+"</textarea></td>";
+			sourceCode += "<td><textarea id='roomPetModify'>"+rpet+"</textarea></td>";
+			sourceCode += "<td><textarea id='roomAddressModify'>"+raddress+"</textarea></td>";
+			sourceCode += "<td><button type='button' class='btn-light' onclick=\"ajax_userHostingModifyDo("+roomNo+")\">저장</button></td>";
+			sourceCode += "<td><button type='button' class='btn-light' onclick=\"ajax_userHostingModifyCancel("+roomNo+","+rcity+","+rtype+","+rpeople+","+rprice+","+rbed+","+rroom+","+rsmoke+","+rpet+","+raddress+")\">취소</button></td>";
 			$('#'+roomNo).html(sourceCode);
  		}
+ 		
+*/		
  		
  		// 호스팅 상품 삭제
  		function ajax_userHostingDelete(roomNo){
@@ -70,30 +76,9 @@
  				  });
  			  }else{ return false; }
  		}
+ 		
   	</script>
-  	<style type="text/css">
-  	.btn-light {
-	background-color:#8d703b;
-	border-radius:28px;
-	border:1px solid #8d703b;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	padding:0px 5px;
-	text-decoration:none;
-	text-shadow:0px 0px 0px #8d703b;
-}
-.btn-light:hover {
-	background-color:#8d703b;
-}
-.btn-light:active {
-	position:relative;
-	top:1px;
-}
   	
-  	</style>
   </head>
   <body>
 
@@ -105,7 +90,7 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>mypage</span></p>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>mypage</span></p>
 	            <h1 class="mb-4 bread">Hosting</h1>
             </div>
           </div>
@@ -132,18 +117,14 @@
 						<td width="6%">동물가능 여부</td>
 						<td width="40%">주소</td>
 						<td width="3%">   </td>
-
 						<td width="3%"><button type="button" class=" btn-light" onclick="javascript:location.href='../room/roomsadd?userno='+${session_userno}">숙소추가</button></td>
-
-						<td width="10%"><button type="button" class=" btn-light" onclick="">숙소추가</button></td>
-
 					</tr>
 
 					<tr height="1" bgcolor="#8f784b ">
 						<td colspan="12"></td>
 					</tr>
 
-					<c:forEach var="roomVo" items="${userHostingEditMap.userHostingEditList }">
+					<c:forEach var="roomVo" items="${userHostingViewMap.userHostingViewList }">
 						<tr id="${roomVo.roomNo}">
 							<td>
 								<a href="*숙소링크*bno=${roomVo.roomNo}">${roomVo.rname}</a>
@@ -157,10 +138,12 @@
 							<td>${roomVo.rsmoke}</td>		
 							<td>${roomVo.rpet}</td>		
 							<td>${roomVo.raddress}</td>		
-							<td><button type="button" class=" btn-light"
+<!-- 							<td><button type="button" class=" btn-light"
 										onclick="ajax_updateFromUserHostingModify('${roomVo.roomNo}', '${roomVo.rcity}', '${roomVo.rtype}', '${roomVo.rpeople}',							
 																		'${roomVo.rprice}', '${roomVo.rbed}', '${roomVo.rroom}', '${roomVo.rsmoke}', 
 																		'${roomVo.rpet}', '${roomVo.raddress}')">수정</button></td>		
+ -->						 <td><button type="button" class=" btn-light"
+										onclick="javascript:location.href='./userHostingModify?userno='+${session_userno}+'&&roomNo='+${roomVo.roomNo}">수정</button></td>		
 							<td><button type="button" class=" btn-light" onclick="ajax_userHostingDelete('${roomVo.roomNo}')">삭제</button></td>		
 						</tr>
 					</c:forEach>

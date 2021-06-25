@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.site.service.RoomService;
 import com.site.vo.RoomVo;
-import com.site.vo.UserVo;
 
 @Controller
 @RequestMapping("/room")
@@ -53,7 +52,7 @@ public class RoomController {
 	@RequestMapping("/roomsWriteDo") //쓰기저장 호출
 	public String roomsWriteDo(RoomVo roomVo) {
 		System.out.println("1");
-		roomService.roomsWriteDo(roomVo);
+		roomService.roomsWriteDo(roomVo);	// 여기서 왜 0을 쳐 가지고오지 next val인데
 		System.out.println("2");
 		
 		return "/roomsadd";

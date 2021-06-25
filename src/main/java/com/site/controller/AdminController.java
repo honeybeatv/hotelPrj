@@ -31,7 +31,7 @@ public class AdminController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		System.out.println("# admin logout success #");
-		return "redirect:/main/index";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/administration")

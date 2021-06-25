@@ -79,7 +79,7 @@ ul{
           <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-12 ftco-animate text-center">
           	<div class="text mb-5 pb-3">
-	            <h1 class="mb-3">Welcome To Deluxe</h1>
+	            <h1 class="mb-3">Deluxe</h1>
             </div>
           </div>
         </div>
@@ -113,15 +113,17 @@ ul{
 			      					<div class="form-field">
 			        					<div class="select-wrap">
 			                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-			                    <select name="rcity" id="city" class="form-control" style="cursor:pointer;">
-			                    	<option value="">지역</option>
-			                    	<option value="서울">서울</option>
-			                      <option value="경기">경기</option>
-			                      <option value="인천">인천</option>
-			                      <option value="강원">강원</option>
-			                      <option value="대전">대전</option>
-			                      <option value="부산">부산</option>
-			                      <option value="제주">제주</option>
+			                    <select name="rcity" id="rcity" class="form-control" style="cursor:pointer;">
+									<option value="" selected>지역</option>
+									<option value="서울">서울</option>
+									<option value="인천">인천</option>
+									<option value="세종">세종</option>
+									<option value="대전">대전</option>
+									<option value="대구">대구</option>
+									<option value="울산">울산</option>
+									<option value="부산">부산</option>
+									<option value="광주">광주</option>
+									<option value="제주">제주</option>
 			                    </select>
 			                  </div>
 				              </div>

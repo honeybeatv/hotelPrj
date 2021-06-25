@@ -57,14 +57,28 @@ public class UserServiceImpl implements UserService {
 		return uReservationReserveList;
 	}
 
-	@Override // 회원 호스팅 페이지 호출
-	public Map<String, Object> userHostingEditList(int userno) {
-		Map<String, Object> userHostingEditMap = new HashMap<String, Object>();
+	@Override // 회원 호스팅 상품 페이지 호출
+	public Map<String, Object> userHostingViewList(int userno) {
+		Map<String, Object> userHostingViewMap = new HashMap<String, Object>();
 		
-		List<RoomVo> userHostingEditList = userMapper.selectUserHostingEditList(userno);
-		userHostingEditMap.put("userHostingEditList", userHostingEditList);
+		List<RoomVo> userHostingViewList = userMapper.selectUserHostingViewList(userno);
+		userHostingViewMap.put("userHostingViewList", userHostingViewList);
 
-		return userHostingEditMap;
+		return userHostingViewMap;
+	}
+	@Override // 회원 호스팅 상품 수정페이지 호출
+	public Map<String, Object> userHostingModifyList(int userno, int roomNo) {
+		Map<String, Object> userHostingModifyMap = new HashMap<String, Object>();
+		
+		List<RoomVo> userHostingModifyList = userMapper.selectUserHostingViewList(userno);
+		userHostingModifyMap.put("userHostingModifyList", userHostingModifyList);
+		userHostingModifyMap.put("roomNo", roomNo);
+
+		return userHostingModifyMap;
+	}
+	@Override // 회원 호스팅 상품 수정페이지 실행
+	public void userHostingModifDo (RoomVo roomVo) {
+		userMapper.updateUserHostingModifDo(roomVo);
 	}
 	@Override // 회원 호스팅 상품 삭제
 	public Map<String, Object> userHostingDelete(RoomVo roomVo) {
@@ -85,6 +99,5 @@ public class UserServiceImpl implements UserService {
 		
 		return uHostingdeleteMap;
 	}
-	
 	
 }

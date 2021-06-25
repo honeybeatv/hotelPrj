@@ -27,8 +27,12 @@ public interface UserService {
 	// 회원 예약정보 페이지 호출
 	List<RoomReserveVo> userReservationViewList(int userno);
 	
-	// 회원 호스팅 페이지 호출
-	Map<String, Object> userHostingEditList(int userno);
+	// 회원 호스팅 상품 페이지 호출
+	Map<String, Object> userHostingViewList(int userno);
+	// 회원 호스팅 상품 수정페이지 호출
+	Map<String, Object> userHostingModifyList(int userno, int roomNo);
+	// 회원 호스팅 상품 수정페이지 실행
+	void userHostingModifDo(RoomVo roomVo);
 	// 회원 호스팅 상품 삭제
 	Map<String, Object> userHostingDelete(RoomVo roomVo);
 

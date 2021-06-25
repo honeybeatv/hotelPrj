@@ -28,8 +28,12 @@ public interface UserMapper {
 	// 회원 예약정보 호출
 	List<RoomReserveVo> selectUserReservationList(int userno);
 	
-	// 회원 호스팅 정보 호출
-	List<RoomVo> selectUserHostingEditList(int userno);
+	// 회원 호스팅 상품 호출
+	List<RoomVo> selectUserHostingViewList(int userno);
+	// 회원 호스팅 상품 수정 호출
+	List<RoomVo> selectUserHostingModifyList(int userno);
+	// 회원 호스팅 상품 수정 실행
+	void updateUserHostingModifDo(RoomVo roomVo);
 	// 회원 호스팅 상품 삭제
 	int selectUserHostingDeleteCount(RoomVo roomVo);
 	int deleteUserHostingDeleteList(RoomVo roomVo);
