@@ -210,7 +210,7 @@
 				</div>
 
 				<button type="submit" value="등록" class="btn btn-primary py-3 px-5">등록</button>
-				<button type="submit" value="취소" class="btn btn-primary py-3 px-5 onclick="javascript:location.href='/room/rooms'">취소</button>
+				<button type="button" value="취소" class="btn btn-primary py-3 px-5 onclick="javascript:location.href='/room/rooms'">취소</button>
 				
 			</form>
 		</div>
