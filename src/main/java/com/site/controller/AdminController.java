@@ -69,5 +69,13 @@ public class AdminController {
 		
 		return "redirect:/admin/adminInfoView?userno="+ adminVo.getUserno();
 	}
+	@RequestMapping("/administrationUsersView")	// 관리자 기본정보 페이지 호출
+	public String administrationUsersView(Model model, @RequestParam(value="page", defaultValue="1") int page) {
+		Map<String,Object> map = null;
+		map = adminService.userList(page);
+		model.addAttribute("map",map);
+		
+		return "/admin/administrationUsersView";
+	}
 
 }

@@ -6,9 +6,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.site.mapper.UserMapper;
 import com.site.vo.ReserveVo;
+import com.site.vo.RoomReserveVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -47,14 +49,12 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override // 회원 예약정보 페이지 호출
-	public Map<String, Object> userReservationViewList(int userno) {
-		Map<String, Object> uRVMap = new HashMap<String, Object>();
+	public List<RoomReserveVo> userReservationViewList(int userno) {
 		
-//		List<RoomVo> uReservationRoomList =  userMapper.selectUserReservationRoomList(userno);
-		List<ReserveVo> uReservationReserveList =  userMapper.selectUserReservationReserveList(userno);
-		uRVMap.put("uReservationReserveList", uReservationReserveList);
+		List<RoomReserveVo> uReservationReserveList =  userMapper.selectUserReservationList(userno);
+		System.out.println(uReservationReserveList);
 		
-		return uRVMap;
+		return uReservationReserveList;
 	}
 
 	@Override // 회원 호스팅 상품 페이지 호출

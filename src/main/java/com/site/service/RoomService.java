@@ -20,6 +20,10 @@ public interface RoomService {
 	
 	//rooms 숙소 등록
 	void roomsWriteDo(RoomVo roomVo);
+
+	//페이징 연구중 by.봉
+	List<RoomVo> roomListAdvanced2(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
+			int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int page);
 	
 
 }

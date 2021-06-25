@@ -84,14 +84,12 @@ public class RoomController {
 	
 	//상세 조건 검색
 	@RequestMapping("/advancedSearch")
-	public String advancedSearch(@RequestParam("inDate") @Nullable String inDate, @RequestParam("outDate") @Nullable String outDate,
-						@RequestParam("rtype") @Nullable String rtype, @RequestParam("rroom") @Nullable int rroom,
-						@RequestParam("rbed") @Nullable int rbed,
-						@RequestParam("minPrice") @Nullable int minPrice, @RequestParam("maxPrice") @Nullable int maxPrice, 
-						@RequestParam(value = "rpet", defaultValue = "nopet") @Nullable String rpet, @RequestParam(value= "rsmoke", defaultValue = "nosmoke") @Nullable String rsmoke,
-						//@RequestParam("rpet") String rpet, @RequestParam("rsmoke") @Nullable String rsmoke,
-						@RequestParam("rcity") @Nullable String rcity, @RequestParam("rpeople") @Nullable int rpeople, Model model  
-						) {
+	public String advancedSearch(@RequestParam(value="page", defaultValue = "1")int page, @RequestParam("inDate") String inDate, @RequestParam("outDate") String outDate,
+						@RequestParam("rtype") String rtype, @RequestParam("rroom") int rroom,
+						@RequestParam("rbed") int rbed,
+						@RequestParam("minPrice") int minPrice, @RequestParam("maxPrice") int maxPrice, 
+						@RequestParam(value = "rpet", defaultValue = "nopet") String rpet, @RequestParam(value= "rsmoke", defaultValue = "nosmoke") String rsmoke,
+						@RequestParam("rcity") String rcity, @RequestParam("rpeople") int rpeople, Model model ) throws ParseException {
 		String checkIn = inDate.replaceAll("/", "");
 		String checkOut = outDate.replaceAll("/", "");
 		
@@ -102,6 +100,9 @@ public class RoomController {
 		System.out.println(minPrice + ", " + maxPrice);
 		
 		List<RoomVo> list = roomService.roomListAdvanced(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
+		
+		//페이징 연구중 by.봉
+		List<RoomVo> pagetest = roomService.roomListAdvanced2(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, page);
 		
 		System.out.println(list);
 		
