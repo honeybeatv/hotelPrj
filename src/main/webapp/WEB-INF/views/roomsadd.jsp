@@ -141,7 +141,8 @@
 						style="font-weight: bolder;">도시</label>
 					<div class="col-sm-7">
 						<select name="rcity">
-							<option value="seoul"selected>서울</option>
+							<option value="" selected>지역</option>
+							<option value="seoul">서울</option>
 							<option value="incheon">인천</option>
 							<option value="sejong">세종</option>
 							<option value="daejeon">대전</option>
