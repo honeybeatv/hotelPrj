@@ -118,9 +118,13 @@
 								</tr>
 							</c:otherwise>
 						</c:choose>
-						<input type="hidden" name="userno" value="${session_userno}" >
+						<form action="./userHostingModifyDo" method="post">
+							<input type="hidden" id="userno" name="userno" value="${session_userno }">
+							<input type="hidden" id="roomNo" name="roomNo" value="${roomVo.roomNo}" >
+						</form>
+<!-- 					<input type="hidden" name="userno" value="${session_userno}" >
 						<input type="hidden" name="roomNo" value="${roomVo.roomNo}" >
-					</c:forEach>
+ -->					</c:forEach>
 				</table>
             </form>
           </div>

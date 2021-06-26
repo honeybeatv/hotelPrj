@@ -56,7 +56,7 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
-            <form action="userInfoModify" class="bg-white p-5 " width="100%">
+            <form action="userInfoModify" class="bg-white p-5 " width="100%" method="post">
 			<input type="hidden" id="userno" name="userno" value="${userVo.userno}" >            
             
             	<div class="form-inline form-group">

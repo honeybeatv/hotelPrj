@@ -152,6 +152,7 @@ public class UserController {
 		System.out.println("# mypage category_Informaton userInfoModifyDo userid : " + userVo.getUserid() + " #");
 		
 		return "redirect:/user/userInfoView?userno="+ userVo.getUserno();
+//		return "redirect:/user/userInfoView";
 	}
 	
 	@RequestMapping("/userReservationView")	// 회원 예약정보 페이지 호출

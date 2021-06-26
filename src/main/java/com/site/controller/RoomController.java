@@ -21,16 +21,11 @@ public class RoomController {
 	
 	@Autowired
 	RoomService roomService;
-
-	
-
 	
    @RequestMapping("/index")
    public String index() {
       return "/index";
    }
-
-
 
    
    @RequestMapping("/rooms-single")
@@ -94,17 +89,17 @@ public class RoomController {
 		System.out.println(rtype + " " + rpeople);
 		System.out.println("흡연 : "+ rsmoke + " " + "동물 : "+ rpet+" end");
 		System.out.println(minPrice + ", " + maxPrice);
-		
+		System.out.println("controller " + page);
 		List<RoomVo> list = roomService.roomListAdvanced(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
 		
 		//페이징 연구중 by.봉
-		List<RoomVo> pagetest = roomService.roomListAdvanced2(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, page);
+		//List<RoomVo> list = roomService.roomListAdvanced2(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, page);
 		
-		System.out.println(list);
+		//System.out.println(list);
 		
 		model.addAttribute("list", list);
 		model.addAttribute("start",inDate);
-		model.addAttribute("end",outDate);
+		model.addAttribute("end",outDate); 
 		model.addAttribute("rpeople", rpeople);
 		model.addAttribute("rcity", rcity);
 		return "rooms";

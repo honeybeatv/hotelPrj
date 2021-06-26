@@ -76,11 +76,49 @@
 						<td>${userReservationList.rname }</td>
 						<td>${userReservationList.startday } ~ ${userReservationList.endday }</td>
 						<td>${userReservationList.rcity }</td>
-					</tr>
 				</c:forEach>
 				
 			</table>
 		</div>
+    </section>
+    
+    
+    
+    
+    
+        <section class="ftco-section bg-light">
+    	<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4">전체 숙소</h2>
+          </div>
+        </div>    		
+    		<div class="row">
+			<c:forEach var="userReservationList" items="${userReservationList}">
+    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
+    				<div class="room">
+    					<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-1.jpg);">
+    						<div class="icon d-flex justify-content-center align-items-center">
+    						
+    							<span class="icon-search2"></span>
+    						</div>
+    					</a>
+    					<div class="text p-3 text-center">
+    					<h3 class="mb-3"><a href="rooms">${list.rname }</a></h3>
+    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
+    						<ul>
+    						<li>방 종류 : ${list.rtype }</li>
+    						<li>위치 : ${list.rcity }</li>
+    						<li>권장인원수 : ${list.rpeople }</li>
+    						</ul>
+    						<hr>
+    						<p class="pt-1"><a href="../room/rooms-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+    					</div>
+    				</div>
+    			</div>
+    			</c:forEach>
+    		</div>
+    	</div>
     </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>

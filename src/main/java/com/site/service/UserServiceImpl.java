@@ -1,5 +1,6 @@
 package com.site.service;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,7 @@ public class UserServiceImpl implements UserService {
 	public List<RoomReserveVo> userReservationViewList(int userno) {
 		
 		List<RoomReserveVo> uReservationReserveList =  userMapper.selectUserReservationList(userno);
+		
 		System.out.println(uReservationReserveList);
 		
 		return uReservationReserveList;

@@ -84,13 +84,23 @@ public class RoomServiceimpl implements RoomService {
 			int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int page) {
 		
 		//총 데이터 수 쿼리문으로 구해오기
-		int listCount = 0;
+		//int listCount = 0;
 		//listCount = mapper.총 데이터 수
+		int listCount = roomMapper.selectSearchCount(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
+		System.out.println("service count" + listCount);
 		
 		PageUtil paging = new PageUtil();
-		paging.getPageNum(page, 9, listCount);
+		Map<String, Integer> pageNums= paging.getPageNum(page, 9, listCount);
 		
-		return null;
+		int startRow = pageNums.get("startrow");
+		int endrow = pageNums.get("endrow");
+		System.out.println(startRow);
+		
+		List<RoomVo> list = roomMapper.selectAdvancedRoomListPage(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, startRow, endrow);
+
+		System.out.println("paging list");
+		
+		return list;
 	}
 
 
