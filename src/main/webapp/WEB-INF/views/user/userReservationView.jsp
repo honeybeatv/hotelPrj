@@ -71,11 +71,11 @@
 					<th>주소</th>
 				</tr>
 				<!-- 내용부분 시작-->
-				<c:forEach var="reserveVo" items="${uRVMap.uReservationReserveList}">
+				<c:forEach var="userReservationList" items="${userReservationList}">
 					<tr>
-						<td></td>
-						<td>${reserveVo.startday } ~ ${reserveVo.endday }</td>
-						<td></td>
+						<td>${userReservationList.rname }</td>
+						<td>${userReservationList.startday } ~ ${userReservationList.endday }</td>
+						<td>${userReservationList.rcity }</td>
 					</tr>
 				</c:forEach>
 				

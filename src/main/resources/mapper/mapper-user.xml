@@ -93,4 +93,14 @@
 		 WHERE roomno=#{roomNo}  	
   	</select>
 
+	<!-- 회원 예약정보 출력 -->
+	<select id="selectUserReservationList" resultType="com.site.vo.RoomReserveVo">
+		<![CDATA[
+			 SELECT ro.rname as rname, ro.rcity as rcity, re.startday as startday, re.endday as endday
+			    FROM reserve re, room ro
+			    WHERE re.roomno = ro.roomno
+			    AND re.userno = #{userno}
+		]]>
+	</select>
+	
   </mapper>

@@ -60,16 +60,13 @@
 				<table width="100%" >
 				
 					<tr>
-						<td width="10%">숙소이름</td>
-						<td width="5%">지역</td>
-						<td width="6%">종류</td>
-						<td width="6%">수용 가능 인원</td>
-						<td width="6%">가격</td>
-						<td width="4%">침대갯수</td>
-						<td width="4%">방갯수</td>
-						<td width="6%">흡연가능 여부</td>
-						<td width="6%">동물가능 여부</td>
-						<td width="40%">주소</td>
+						<td width="10%">userNo</td>
+						<td width="15%">이름</td>
+						<td width="16%">아이디</td>
+						<td width="16%">비밀번호</td>
+						<td width="16%">핸드폰번호</td>
+						
+						<td width="20%">이메일</td>
 						<td width="3%">   </td>
 						<td width="3%">	  </td>
 					</tr>
@@ -78,24 +75,55 @@
 						<td colspan="12"></td>
 					</tr>
 
-					<c:forEach var="roomVo" items="${userHostingEditMap.userHostingEditList }">
-						<tr id="${roomVo.roomNo}">
+					<c:forEach var="userVo" items="${map.list }">
+						<tr id="${userVo.userno}">
 							<td>
-								<a href="*숙소링크*bno=${roomVo.roomNo}">${roomVo.rname}</a>
+								<a href="adminInfoView?userno=${userVo.userno}">${userVo.userno}</a>
 							</td>
-							<td>${roomVo.rcity}</td>							
-							<td>${roomVo.rtype}</td>							
-							<td>${roomVo.rpeople}</td>							
-							<td>${roomVo.rprice}</td>							
-							<td>${roomVo.rbed}</td>		
-							<td>${roomVo.rroom}</td>		
-							<td>${roomVo.rsmoke}</td>		
-							<td>${roomVo.rpet}</td>		
-							<td>${roomVo.raddress}</td>		
+							<td>${userVo.name}</td>							
+							<td>${userVo.userid}</td>							
+							<td>${userVo.userpw}</td>							
+							<td>${userVo.uphone}</td>							
+									
+							<td>${userVo.uemail}</td>		
+								
 						</tr>
 					</c:forEach>
 
 				</table>
+				<!-- 하단 넘버링 -->
+    <ul class="page-num">
+      <a href="./administrationUsersView?page=1"><li class="first"></li></a>
+      <!-- 이전페이지는 1이상일때 -1을 해줌, 1일때는 링크 삭제시킴 -->
+      <c:if test="${map.page<=1 }">
+        <li class="prev"></li>
+      </c:if>
+      <c:if test="${map.page>1}">
+        <a href="./administrationUsersView?page=${map.page-1 }"><li class="prev"></li></a>
+      </c:if>
+      
+      <!-- 번호넣기 -->
+      <c:forEach var="nowPage" begin="${map.startPage}" end="${map.endPage }">
+        <c:if test="${map.page == nowPage }">
+          <li class="num"><div>${nowPage}</div></li>
+        </c:if>
+        <c:if test="${map.page != nowPage }">
+          <li class="num">
+            <a href="./administrationUsersView?page=${nowPage}"><div>${nowPage}</div></a>
+          </li>
+        </c:if>
+      </c:forEach>
+      <!-- 다음페이지는 max보다 작을때 +1 증가, max보다 크거나 같을때 링크 삭제시킴 -->
+      <c:if test="${map.page>=map.maxPage }">
+        <li class="next"></li>
+      </c:if>
+      <c:if test="${map.page<map.maxPage }">
+        <a href="./administrationUsersView?page=${map.page+1 }"><li class="next"></li></a>
+      </c:if>
+      <!-- 마지막페이지 이동 -->
+      <a href="./administrationUsersView?page=${map.maxPage }"><li class="last"></li></a>
+    </ul>
+    <!-- 하단 넘버링 끝 -->
             </form>
           </div>
     </section>
