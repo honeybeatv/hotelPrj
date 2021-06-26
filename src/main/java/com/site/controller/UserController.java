@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.service.UserService;
 import com.site.vo.ReserveVo;
-import com.site.vo.RoomReserveVo;
+import com.site.vo.UserReservationVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -146,7 +146,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/userInfoModifyDo") // 회원 기본정보 수정페이지 실행
-	public String userInfoModifyDo(UserVo userVo) {
+	public String userInfoModifyDo(UserVo userVo, @RequestParam("userno") int userno) {
 		userService.userInfoModifyDo(userVo);
 		
 		System.out.println("# mypage category_Informaton userInfoModifyDo userid : " + userVo.getUserid() + " #");
@@ -157,7 +157,7 @@ public class UserController {
 	@RequestMapping("/userReservationView")	// 회원 예약정보 페이지 호출
 	public String userReservationView(Model model, @RequestParam("userno") int userno) {
 		UserVo userVo = userService.userInfoView(userno);
-		List<RoomReserveVo> userReservationList= userService.userReservationViewList(userno);
+		List<UserReservationVo> userReservationList= userService.userReservationViewList(userno);
 		
 		System.out.println("# mypage category_Reservation userReservationView userno : " + userVo.getUserno() + " #");
 		
@@ -178,7 +178,6 @@ public class UserController {
 
 	@RequestMapping("/userHostingModify") // 회원 호스팅 상품 수정페이지 호출
 	public String userHostingModify(Model model, @RequestParam("userno") int userno, @RequestParam("roomNo") int roomNo) {
-		System.out.println("userno : " + userno + " | roomNo : " + roomNo);
 		Map<String, Object> userHostingModifyMap = userService.userHostingModifyList(userno, roomNo);
 		model.addAttribute("userHostingModifyMap", userHostingModifyMap);
 		
@@ -191,7 +190,7 @@ public class UserController {
 	public String userHostingModifyDo(RoomVo roomVo, @RequestParam("userno") int userno) {
 		userService.userHostingModifDo(roomVo);
 		
-		System.out.println(userno);
+		System.out.println("userno : " + userno + " | roomVo : " + roomVo);
 		System.out.println("# mypage category_Hosting ModifyDo #");
 		
 		return "/user/userHostingView";

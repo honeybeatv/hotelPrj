@@ -39,19 +39,17 @@
 	  	   	   uemail=#{uemail}
 	  	 WHERE userno=#{userno}
   	</update>
-  	
-  	<!-- 회원 예약정보 호출 -->
-  	<select id="selectUserReservationReserveList" resultType="com.site.vo.ReserveVo">
-		<![CDATA[
-			SELECT *
-			FROM reserve
-			WHERE userno = (
-							SELECT userno
-							FROM user1
-							where userno=#{userno})
 
+	<!-- 회원 예약한 예약정보 호출 -->
+	<select id="selectUserReservationViewList" resultType="com.site.vo.UserReservationVo">
+		<![CDATA[
+			 SELECT ro.rname as rname, ro.raddress as raddress, ro.rprice as rprice,
+			 		to_char(re.startday, 'yyyy-MM-dd') as startday, to_char(re.endday, 'yyyy-MM-dd') as endday
+			    FROM reserve re, room ro
+			    WHERE re.roomno = ro.roomno
+			    AND re.userno = #{userno}
 		]]>
-  	</select>
+	</select>
   	
   	<!-- 회원 호스팅 상품정보 호출 -->
   	<select id="selectUserHostingViewList" resultType="com.site.vo.RoomVo">
@@ -94,14 +92,4 @@
 		 WHERE roomno=#{roomNo}  	
   	</select>
 
-	<!-- 회원 예약정보 출력 -->
-	<select id="selectUserReservationList" resultType="com.site.vo.RoomReserveVo">
-		<![CDATA[
-			 SELECT ro.rname as rname, ro.rcity as rcity, re.startday as startday, re.endday as endday
-			    FROM reserve re, room ro
-			    WHERE re.roomno = ro.roomno
-			    AND re.userno = #{userno}
-		]]>
-	</select>
-	
   </mapper>

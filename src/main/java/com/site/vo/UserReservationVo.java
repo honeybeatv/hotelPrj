@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoomReserveVo {
+public class UserReservationVo {
 
 	private String rname;	//room.rname
-	private String rcity;	//room.rcity
+	private String raddress;	//room.raddress
+	private int rprice;		//room.rprice
 	private String startday;	//reserve.startday
 	private String endday;	//reserve.endday
 }

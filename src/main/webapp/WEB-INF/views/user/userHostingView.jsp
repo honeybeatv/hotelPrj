@@ -78,7 +78,7 @@
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
 			<table width="100%">
-				<form class="bg-white p-2 " width="100%" method="post">
+ 				<form action="userHostingModify" class="bg-white p-2 " width="100%"> 
 					<tr>
 						<td width="10%">숙소이름</td>
 						<td width="5%">지역</td>
@@ -100,8 +100,7 @@
 						<td colspan="12"></td>
 					</tr>
 	
-					<c:forEach var="roomVo"
-						items="${userHostingViewMap.userHostingViewList }">
+					<c:forEach var="roomVo" items="${userHostingViewMap.userHostingViewList }">
 						<form action="userHostingModify" method="post">
 							<tr id="${roomVo.roomNo}">
 								<td><a href="*숙소링크(상세페이지)*bno=${roomVo.roomNo}">${roomVo.rname}</a></td>

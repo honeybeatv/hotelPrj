@@ -70,7 +70,7 @@
 	
     <section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
-            <form action="./userInfoModifyDo" method="post" class="bg-white p-5 "width="100%">
+            <form action="userInfoModifyDo" method="post" class="bg-white p-5 "width="100%">
             	<div class="form-inline form-group">
 					<label for="name" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>
 					<div class="col-sm-10">

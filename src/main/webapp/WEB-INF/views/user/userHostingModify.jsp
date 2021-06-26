@@ -60,7 +60,7 @@
 
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
-            <form action="./userHostingModifyDo" class="bg-white p-2 " width="100%" method="post">
+            <form class="bg-white p-2 " width="100%" method="post">
 				<table width="100%" >
 				
 					<tr>
@@ -83,26 +83,27 @@
 					</tr>
 
 					<c:forEach var="roomVo" items="${userHostingModifyMap.userHostingModifyList }">
+						        <form action="userHostingModifyDo" class="bg-white p-2 " width="100%" method="post">
 							<c:choose>
-								<c:when test="${roomVo.roomNo == userHostingModifyMap.roomNo}">
-									<tr id="${roomVo.roomNo}">
-										<input type="hidden" name="userno" value="${session_userno}">
-										<input type="hidden" name="roomNo" value="${roomVo.roomNo}">
-
-										<td><input style="width: 100%;" type="text" name="rname"    value="${roomVo.rname}"></td>
-										<td><input style="width: 100%;" type="text" name="rcity"    value="${roomVo.rcity}"></td>
-										<td><input style="width: 100%;" type="text" name="rtype"    value="${roomVo.rtype}"></td>
-										<td><input style="width: 100%;" type="text" name="rpeople"  value="${roomVo.rpeople}"></td>
-										<td><input style="width: 100%;" type="text" name="rprice"   value="${roomVo.rprice}"></td>
-										<td><input style="width: 100%;" type="text" name="rbed"     value="${roomVo.rbed}"></td>
-										<td><input style="width: 100%;" type="text" name="rroom"    value="${roomVo.rroom}"></td>
-										<td><input style="width: 100%;" type="text" name="rsmoke"   value="${roomVo.rsmoke}"></td>
-										<td><input style="width: 100%;" type="text" name="rpet"     value="${roomVo.rpet}"></td>
-										<td><input style="width: 100%;" type="text" name="raddress" value="${roomVo.raddress}"></td>
-										<td><button style="width: 100%;" type="submit" class=" btn-light">저장</button></td>
-										<td><button style="width: 100%;" type="button" class=" btn-light" id="goto_userHostingView">취소</button></td>
-									</tr>
-								</c:when>
+										<c:when test="${roomVo.roomNo == userHostingModifyMap.roomNo}">
+													<input type="hidden" name="userno" value="${session_userno}">
+													<input type="hidden" name="roomNo" value="${roomVo.roomNo}">
+													<tr id="${roomVo.roomNo}">
+				
+														<td><input style="width: 100%;" type="text" name="rname"    value="${roomVo.rname}"></td>
+														<td><input style="width: 100%;" type="text" name="rcity"    value="${roomVo.rcity}"></td>
+														<td><input style="width: 100%;" type="text" name="rtype"    value="${roomVo.rtype}"></td>
+														<td><input style="width: 100%;" type="text" name="rpeople"  value="${roomVo.rpeople}"></td>
+														<td><input style="width: 100%;" type="text" name="rprice"   value="${roomVo.rprice}"></td>
+														<td><input style="width: 100%;" type="text" name="rbed"     value="${roomVo.rbed}"></td>
+														<td><input style="width: 100%;" type="text" name="rroom"    value="${roomVo.rroom}"></td>
+														<td><input style="width: 100%;" type="text" name="rsmoke"   value="${roomVo.rsmoke}"></td>
+														<td><input style="width: 100%;" type="text" name="rpet"     value="${roomVo.rpet}"></td>
+														<td><input style="width: 100%;" type="text" name="raddress" value="${roomVo.raddress}"></td>
+														<td><button style="width: 100%;" type="submit" class=" btn-light">저장</button></td>
+														<td><button style="width: 100%;" type="button" class=" btn-light" id="goto_userHostingView">취소</button></td>
+													</tr>
+										</c:when>
 								<c:otherwise>
 									<tr id="${roomVo.roomNo}">
 										<td>
@@ -120,6 +121,7 @@
 									</tr>
 								</c:otherwise>
 							</c:choose>
+									</form>
 					</c:forEach>
 				</table>
             </form>
