@@ -151,7 +151,7 @@ public class UserController {
 		
 		System.out.println("# mypage category_Informaton userInfoModifyDo userid : " + userVo.getUserid() + " #");
 		
-		return "redirect:/user/userInfoView?userno="+ userVo.getUserno();
+		return "/user/userInfoView";
 	}
 	
 	@RequestMapping("/userReservationView")	// 회원 예약정보 페이지 호출
@@ -178,6 +178,7 @@ public class UserController {
 
 	@RequestMapping("/userHostingModify") // 회원 호스팅 상품 수정페이지 호출
 	public String userHostingModify(Model model, @RequestParam("userno") int userno, @RequestParam("roomNo") int roomNo) {
+		System.out.println("userno : " + userno + " | roomNo : " + roomNo);
 		Map<String, Object> userHostingModifyMap = userService.userHostingModifyList(userno, roomNo);
 		model.addAttribute("userHostingModifyMap", userHostingModifyMap);
 		
@@ -187,12 +188,13 @@ public class UserController {
 	}
 
 	@RequestMapping("/userHostingModifyDo") // 회원 호스팅 상품 수정페이지 실행
-	public String userHostingModifyDo(RoomVo roomVo) {
+	public String userHostingModifyDo(RoomVo roomVo, @RequestParam("userno") int userno) {
 		userService.userHostingModifDo(roomVo);
 		
+		System.out.println(userno);
 		System.out.println("# mypage category_Hosting ModifyDo #");
 		
-		return "redirect:/user/userHostingView?userno="+ roomVo.getUserno();
+		return "/user/userHostingView";
 	}
 
 	@RequestMapping("/userHostingDelete") // 회원 호스팅 상품 삭제

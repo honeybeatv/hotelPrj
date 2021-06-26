@@ -55,11 +55,12 @@
   	
   	<!-- 회원 호스팅 상품정보 호출 -->
   	<select id="selectUserHostingViewList" resultType="com.site.vo.RoomVo">
-  		SELECT * 
-  		  FROM room 
-  		 WHERE userno=#{userno}
-  	  ORDER BY roomno asc
-
+  		<![CDATA[
+	  		SELECT * 
+	  		  FROM room 
+	  		 WHERE userno=#{userno}
+	  	  ORDER BY roomno asc
+		]]>
   	</select>
   	
   	<!-- 회원 호스팅 상품정보 수정 실행 -->

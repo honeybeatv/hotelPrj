@@ -1409,10 +1409,6 @@
 		todayBtn: false,
 		todayHighlight: false,
 		weekStart: 0
-<<<<<<< HEAD
-		
-=======
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 	};
 	var locale_opts = $.fn.datepicker.locale_opts = [
 		'format',

@@ -4,7 +4,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>숙소등록 Page</title>
+
+<c:if test="${session_flag==null || session_flag=='fail' }">
+	<script type="text/javascript">
+		alert("로그인을 하셔야 글쓰기가 가능합니다.")
+	</script>
+	<c:redirect url="../user/login" />
+</c:if>
+
+<title>숙소 등록</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,6 +46,59 @@
 <script type="text/javascript">
 	
 </script>
+<!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
+<script type="text/javascript">
+	function searchSubmit() {
+		//location.href="userHostingView.jsp"
+		
+		var rname = $("#rname").val();
+		var rtype = $("#rtype").val();
+		var rpeople = $("#rpeople").val();
+		var rinfo = $("#rinfo").val();
+		//var rpicture = $("#rpicture").val();
+		var rcity = $("#rcity").val();
+		var rprice = $("#rprice").val();
+		var rroom = $("#rroom").val();
+		var rbed = $("#rbed").val();
+		var raddress = $("#raddress").val();
+
+		
+		if (rname == "" || rname == null) {
+			alert("방이름을 입력하세요")
+			return false;
+		}else if (rtype == "" || rtype == null) {
+			alert("방종류를 선택하세요")
+			return false;
+		}else if (rpeople == "" || rpeople == null) {
+			alert("인원수를 선택하세요")
+			return false;
+		}else if (rinfo == "" || rinfo == null) {
+			alert("방정보를 입력하세요")
+			return false;
+		//}else if (rpicture == "" || rpicture == null) {
+			//alert("방사진을 등록하세요")
+			//return false;
+		}else if (rcity == "" || rcity == null) {
+			alert("지역을 선택하세요")
+			return false;
+		}else if (rprice == "" || rprice == null) {
+			alert("가격을 정해주세요")
+			return false;
+		} else if (rroom == "" || rroom == null) {
+			alert("침실수를 선택하세요")
+			alert(rroom)
+			return false;
+		} else if (rbed == "" || rbed ==null) {
+			alert("침대수를 선택하세요")
+			return false;
+		} else if (raddress == "" || raddress ==null) {
+			alert("상세주소를 입력하세요")
+			return false;
+		} else{
+			document.searchForm.submit();
+		}
+	}
+</script>
 
 </head>
 <body>
@@ -65,29 +126,33 @@
 
 
 	<section class="ftco-section contact-section bg-light" align="center">
-		<div class="col-6" style="display: inline-block;">
-			<form action="#" class="bg-white p-5 " width="100%">
+		<div class="col-10" style="display: inline-block;">
+			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post">
+
+
 
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방번호</label>
+						style="font-weight: bolder;">방이름</label> <input type="hidden"
+						id="userno" name="userno" value="${session_userno }">
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;"
-							id="userid" name="userid">
+						<input type="text" class="form-control" style="width: 100%;" id="rname" name="rname">
 					</div>
-				
+
 				</div>
 
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방타입</label>
+						style="font-weight: bolder;">방종류</label>
 					<div class="col-sm-7">
-						<input type="password" class="form-control" style="width: 100%;"
-							id="" name=""> <select name="room">
-							<option value="all">집전체</option>
-							<option value="individual">개인실</option>
-							<option value="hotel">호텔</option>
-							<option value="share" selected>다인실</option>
+						<select name="rtype">
+							<option value="apt">아파트</option>
+		                     <option value="house">주택</option>
+		                     <option value="walkup">공동주택</option>
+		                     <option value="hotel">호텔</option>
+		                     <option value="residence">레지던스</option>
+		                     <option value="hostel">호스텔</option>
+	                    	<option value="etc">기타</option>
 						</select>
 					</div>
 				</div>
@@ -96,8 +161,15 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">인원수</label>
 					<div class="col-sm-7">
-						<input type="password" class="form-control" style="width: 100%;"
-							id="" name="">
+						<select name="rpeople" id="rpeople">
+						<option value="" selected>인원수</option>
+							<option value="1">1명</option>
+							<option value="2">2명</option>
+							<option value="3">3명</option>
+							<option value="4">4명</option>
+							<option value="5">5명</option>
+							<option value="6">6명 이상</option>
+						</select>
 					</div>
 				</div>
 
@@ -105,80 +177,94 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방정보</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
 					</div>
-					<!-- <div class="col-sm-3">ex)ya63kr@nate.com</div> -->
 				</div>
 
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">사진</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+						<input type="file" class="" style="width: 100%;" id="file"	name="rpicture">
 					</div>
-					<!-- 		<div class="col-sm-3">ex) -없이 작성하세요</div> -->
+
+
 				</div>
 
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">도시</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+
+						<select id="rcity" name="rcity">
+							<option value="" selected>지역</option>
+							<option value="서울">서울</option>
+							<option value="인천">인천</option>
+							<option value="세종">세종</option>
+							<option value="대전">대전</option>
+							<option value="대구">대구</option>
+							<option value="울산">울산</option>
+							<option value="부산">부산</option>
+							<option value="광주">광주</option>
+							<option value="제주">제주</option>
+						</select>
 					</div>
 				</div>
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">가격</label>
+						style="font-weight: bolder;">1박 가격</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+						<input type="text" class="form-control" style="width: 100%;" id="rprice" name="rprice">
 					</div>
 				</div>
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">침실수<label>
-							<div class="col-sm-7">
-								<input type="text" class="form-control" style="width: 100%;"
-									id="" name="">
-							</div>
+						style="font-weight: bolder;">침실수</label>
+					<div class="col-sm-7">
+						<select name="rroom" id="rroom">
+							<option value="1"selected>침실 1</option>
+							 <option value="2">침실 2</option>
+		                    <option value="3">침실 3</option>
+		                    <option value="4">침실 4</option>
+		                    <option value="5">침실 5</option>
+		                    <option value="6">침실 6</option>
+	                    	<option value="7">침실 7 이상</option>
+						</select>
+					</div>
 				</div>
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">침대수</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
-					</div>
-				</div>
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">흡연가능여부</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
-					</div>
-				</div>
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">애완동물 가능여부</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
-					</div>
-				</div>
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">주소</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id=""
-							name="">
+						<select name="rbed" id="rbed">
+							<option value="1"selected>침대 1</option>
+	                      	<option value="2">침대 2</option>
+	                      	<option value="3">침대 3</option>
+	                      	<option value="4">침대 4</option>
+	                      	<option value="5">침대 5</option>
+	                      	<option value="6">침대 6</option>
+						</select>
 					</div>
 				</div>
 
-				<input type="submit" value="등록" class="btn btn-primary py-3 px-5">
+				<div class="form-group">
+					<input type="checkbox" name="rsmoke" value="smoke"> 흡연실 <input
+						type="checkbox" name="rpet" value="pet"> 반려동물
+				</div>
+
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label"
+						style="font-weight: bolder;">상세 주소</label>
+					<div class="col-sm-7">
+						<textarea name="raddress" cols="65" rows="3" id="raddress"></textarea>
+					</div>
+				</div>
+
+				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
+					onclick="searchSubmit();">
+				<input type="button" value="취소"
+					class="btn btn-primary py-3 px-5" onclick="history.back()">
+
 			</form>
 		</div>
 	</section>

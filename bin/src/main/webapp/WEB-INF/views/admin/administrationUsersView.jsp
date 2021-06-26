@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MyPage</title>
+    <title>Administration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -30,28 +30,7 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
- 		
- 		// 호스팅 상품 삭제
- 		function ajax_userHostingDelete(roomNo){
- 			if(confirm("상품을 삭제하시겠습니까?")){
- 				  $.ajax({
- 						 url:'./userHostingDelete',     
- 						 type:'post',
- 						 data:{
- 							 "roomNo":roomNo
- 						 },
- 						 success:function(data){
- 							 alert(data.msg);
- 							 var html="";
- 							 $('#'+roomNo).remove();
- 						 },
- 						 error:function(){
- 							 alert("에러");
- 						 }
- 				  });
- 			  }else{ return false; }
- 		}
- 		
+ 	
   	</script>
   	
   </head>
@@ -65,67 +44,88 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>mypage</span></p>
-	            <h1 class="mb-4 bread">Hosting</h1>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>Administration</span></p>
+	            <h1 class="mb-4 bread"></h1>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-	<c:import url="/WEB-INF/views/user/mypageCategory.jsp"></c:import>
+	<c:import url="/WEB-INF/views/admin/administrationCategory.jsp"></c:import>
 
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
-			<table width="100%">
-				<form class="bg-white p-2 " width="100%" method="post">
+            <form class="bg-white p-2 " width="100%">
+				<table width="100%" >
+				
 					<tr>
-						<td width="10%">숙소이름</td>
-						<td width="5%">지역</td>
-						<td width="6%">종류</td>
-						<td width="6%">수용 가능 인원</td>
-						<td width="6%">가격</td>
-						<td width="4%">침대갯수</td>
-						<td width="4%">방갯수</td>
-						<td width="6%">흡연가능 여부</td>
-						<td width="6%">동물가능 여부</td>
-						<td width="40%">주소</td>
-						<td width="3%"></td>
-						<td width="3%">
-							<button type="button" class=" btn-light" onclick="javascript:location.href='../room/roomsadd?userno='+${session_userno}">숙소추가</button>
-						</td>
+						<td width="10%">userNo</td>
+						<td width="15%">이름</td>
+						<td width="16%">아이디</td>
+						<td width="16%">비밀번호</td>
+						<td width="16%">핸드폰번호</td>
+						
+						<td width="20%">이메일</td>
+						<td width="3%">   </td>
+						<td width="3%">	  </td>
 					</tr>
-	
+
 					<tr height="1" bgcolor="#8f784b ">
 						<td colspan="12"></td>
 					</tr>
-	
-					<c:forEach var="roomVo"
-						items="${userHostingViewMap.userHostingViewList }">
-						<form action="userHostingModify" method="post">
-							<tr id="${roomVo.roomNo}">
-								<td><a href="*숙소링크(상세페이지)*bno=${roomVo.roomNo}">${roomVo.rname}</a></td>
-								<td>${roomVo.rcity}</td>
-								<td>${roomVo.rtype}</td>
-								<td>${roomVo.rpeople}</td>
-								<td>${roomVo.rprice}</td>
-								<td>${roomVo.rbed}</td>
-								<td>${roomVo.rroom}</td>
-								<td>${roomVo.rsmoke}</td>
-								<td>${roomVo.rpet}</td>
-								<td>${roomVo.raddress}</td>
-		
-								<input type="hidden" name="userno" value="${session_userno}">
-								<input type="hidden" name="roomNo" value="${roomVo.roomNo}">
-		
-								<td><button type="submit" class=" btn-light">수정</button></td>
-								<td><button type="button" class=" btn-light" onclick="ajax_userHostingDelete('${roomVo.roomNo}')">삭제</button></td>
-							 </tr>
-						</form>
+
+					<c:forEach var="userVo" items="${map.list }">
+						<tr id="${userVo.userno}">
+							<td>
+								<a href="adminInfoView?userno=${userVo.userno}">${userVo.userno}</a>
+							</td>
+							<td>${userVo.name}</td>							
+							<td>${userVo.userid}</td>							
+							<td>${userVo.userpw}</td>							
+							<td>${userVo.uphone}</td>							
+									
+							<td>${userVo.uemail}</td>		
+								
+						</tr>
 					</c:forEach>
-				</form>
-			</table>
-		</div>
+
+				</table>
+				<!-- 하단 넘버링 -->
+    <ul class="page-num">
+      <a href="./administrationUsersView?page=1"><li class="first"></li></a>
+      <!-- 이전페이지는 1이상일때 -1을 해줌, 1일때는 링크 삭제시킴 -->
+      <c:if test="${map.page<=1 }">
+        <li class="prev"></li>
+      </c:if>
+      <c:if test="${map.page>1}">
+        <a href="./administrationUsersView?page=${map.page-1 }"><li class="prev"></li></a>
+      </c:if>
+      
+      <!-- 번호넣기 -->
+      <c:forEach var="nowPage" begin="${map.startPage}" end="${map.endPage }">
+        <c:if test="${map.page == nowPage }">
+          <li class="num"><div>${nowPage}</div></li>
+        </c:if>
+        <c:if test="${map.page != nowPage }">
+          <li class="num">
+            <a href="./administrationUsersView?page=${nowPage}"><div>${nowPage}</div></a>
+          </li>
+        </c:if>
+      </c:forEach>
+      <!-- 다음페이지는 max보다 작을때 +1 증가, max보다 크거나 같을때 링크 삭제시킴 -->
+      <c:if test="${map.page>=map.maxPage }">
+        <li class="next"></li>
+      </c:if>
+      <c:if test="${map.page<map.maxPage }">
+        <a href="./administrationUsersView?page=${map.page+1 }"><li class="next"></li></a>
+      </c:if>
+      <!-- 마지막페이지 이동 -->
+      <a href="./administrationUsersView?page=${map.maxPage }"><li class="last"></li></a>
+    </ul>
+    <!-- 하단 넘버링 끝 -->
+            </form>
+          </div>
     </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
