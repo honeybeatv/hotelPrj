@@ -19,7 +19,9 @@ public interface RoomService {
 	List<RoomVo> roomsListAll();
 	
 	//rooms 숙소 등록
-	void roomsWriteDo(RoomVo roomVo);
+	void roomsWriteDo(RoomVo roomVo); //void return타입이 필요없음
+
+	RoomVo roomSingle(int roomNo);
 	
 
 }

@@ -23,6 +23,8 @@ public interface RoomMapper {
 	//글쓰기
 	void insertRoomsWriteDo(RoomVo roomVo);
 
+	RoomVo roomSingle(int roomNo);
+
 }
 
 

@@ -48,7 +48,10 @@
 </script>
 <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
 <script type="text/javascript">
+
 	function searchSubmit() {
+		location.href="mypage.jsp";
+		
 		var rname = $("#rname").val();
 		var rtype = $("#rtype").val();
 		var rpeople = $("#rpeople").val();
@@ -254,7 +257,7 @@
 					</div>
 				</div>
 
-				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
+				<input type="button" value="등록" class="btn btn-primary py-3 px-5" 
 					onclick="searchSubmit();">
 				<input type="button" value="취소"
 					class="btn btn-primary py-3 px-5" onclick="history.back()">

@@ -51,5 +51,9 @@
   		]]>
 
 	</select>
+	
+	<select id="roomSingle" resultType="com.site.vo.RoomVo">
+	select * from room where roomno=#{roomno}
+	</select>
 
 </mapper>

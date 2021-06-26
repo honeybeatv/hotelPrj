@@ -34,7 +34,15 @@ public class RoomController {
 
    
    @RequestMapping("/rooms-single")
-   public String rooms() {
+   public String rooms(@RequestParam("roomNo") int roomNo, Model model) {
+	   
+//	   roomService.roomSingle(roomNo);
+	   RoomVo roomVo = roomService.roomSingle(roomNo);
+	   
+	   
+	   model.addAttribute("roomVo", roomVo);
+	   
+	   
       return "/rooms-single";
    }
    

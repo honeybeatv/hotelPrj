@@ -76,6 +76,14 @@ public class RoomServiceimpl implements RoomService {
 		
 	}
 
+	@Override
+	public RoomVo roomSingle(int roomNo) {
+		
+		RoomVo roomVo = roomMapper.roomSingle(roomNo);
+		
+		return roomVo;
+	}
+
 
    
 }
