@@ -12,5 +12,7 @@ public interface AdminService {
 	UserVo AdminInfoModify(int userno);
 	// 관리자 기본정보 수정페이지 실행
 	void AdminInfoModifyDo(UserVo adminVo);
+	
+	Map<String, Object> userList(int page);
 
 }

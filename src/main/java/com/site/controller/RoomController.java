@@ -3,6 +3,7 @@ package com.site.controller;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -45,12 +46,15 @@ public class RoomController {
 	}
 
 	@RequestMapping("/roomsWriteDo") //쓰기저장 호출
-	public String roomsWriteDo(RoomVo roomVo) {
+	public String roomsWriteDo(Model model,RoomVo roomVo) {
+
+		
 		System.out.println("1");
 		roomService.roomsWriteDo(roomVo);	// 여기서 왜 0을 쳐 가지고오지 next val인데
-		System.out.println("2");
+		model.addAttribute("roomVo",roomVo);
+		System.out.println(roomVo.getRoomNo());
 		
-		return "/roomsadd";
+		return "redirect:/user/userHostingView?userno="+roomVo.getUserno();
 	}
 
    //index페이지에서 검색

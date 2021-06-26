@@ -127,7 +127,7 @@
 					<c:forEach var="roomVo" items="${userHostingViewMap.userHostingViewList }">
 						<tr id="${roomVo.roomNo}">
 							<td>
-								<a href="*숙소링크*bno=${roomVo.roomNo}">${roomVo.rname}</a>
+								<a href="*숙소링크(상세페이지)*bno=${roomVo.roomNo}">${roomVo.rname}</a>
 							</td>
 							<td>${roomVo.rcity}</td>							
 							<td>${roomVo.rtype}</td>							

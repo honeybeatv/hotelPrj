@@ -11,5 +11,18 @@
   		SELECT * FROM user1 WHERE userno=#{userno}
   	</select>
   	
+  	<!-- 전체리스트 호출 -->
+	<select id="selectUserList" resultType="com.site.vo.UserVo">
+	    <![CDATA[
+		    select * from
+			(select rownum as rnum,a.* from
+			(select * from user1 where uadmin=0 order by userno desc) a)
+			where rnum>=#{startrow} and rnum<=#{endrow}
+	    ]]>
+	</select>
+	<!-- 전체게시글 수 -->
+	<select id="selectUserCount" resultType="int">
+	   select count(*) from user1
+	</select>
   
   </mapper>
