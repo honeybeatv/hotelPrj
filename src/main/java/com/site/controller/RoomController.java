@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.site.service.RoomService;
 import com.site.vo.RoomVo;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/room")
+@Slf4j
 public class RoomController {
 	
 	@Autowired
@@ -30,17 +33,19 @@ public class RoomController {
 
    
    @RequestMapping("/rooms-single")
-   public String rooms(@RequestParam("roomNo") int roomNo, Model model) {
+   public String roomSingle(@RequestParam(value="roomNo") int roomNo, Model model) {
 	   
 //	   roomService.roomSingle(roomNo);
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
-	   
+	   System.out.println(roomNo);
+	   log.debug("ROOM :: {}", roomVo);
 	   
 	   model.addAttribute("roomVo", roomVo);
 	   
-	   
       return "/rooms-single";
    }
+   
+  
    
    @RequestMapping("/roomsList") //쓰기페이지 호출
   	public String roomsList() {

@@ -77,7 +77,7 @@
 				    						<li>상세주소 : ${userReservationList.raddress }</li>
 			    						</ul>
 			    						<hr>
-			    						<p class="pt-1"><a href="../room/rooms-single*상세보기 페이지로 이동(주소)*" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+			    						<p class="pt-1"><a href="/room/rooms-single/?roomNO=${userReservationList.roomNo} " class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>

@@ -1,13 +1,7 @@
 package com.site.service;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -79,37 +73,40 @@ public class RoomServiceimpl implements RoomService {
 	}
 
 	//페이징 연구중 by.봉
-	@Override
-	public List<RoomVo> roomListAdvanced2(String checkIn, String checkOut, String rtype, int rroom, int rbed,
-			int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int page) {
-		
-		//총 데이터 수 쿼리문으로 구해오기
-		//int listCount = 0;
-		//listCount = mapper.총 데이터 수
-		int listCount = roomMapper.selectSearchCount(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
-		System.out.println("service count" + listCount);
-		
-		PageUtil paging = new PageUtil();
-		Map<String, Integer> pageNums= paging.getPageNum(page, 9, listCount);
-		
-		int startRow = pageNums.get("startrow");
-		int endrow = pageNums.get("endrow");
-		System.out.println(startRow);
-		
-		List<RoomVo> list = roomMapper.selectAdvancedRoomListPage(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, startRow, endrow);
+//	@Override
+//	public List<RoomVo> roomListAdvanced2(String checkIn, String checkOut, String rtype, int rroom, int rbed,
+//			int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int page) {
+//		
+//		//총 데이터 수 쿼리문으로 구해오기
+//		//int listCount = 0;
+//		//listCount = mapper.총 데이터 수
+//		int listCount = roomMapper.selectSearchCount(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
+//		System.out.println("service count" + listCount);
+//		
+//		PageUtil paging = new PageUtil();
+//		Map<String, Integer> pageNums= paging.getPageNum(page, 9, listCount);
+//		
+//		int startRow = pageNums.get("startrow");
+//		int endrow = pageNums.get("endrow");
+//		System.out.println(startRow);
+//		
+//		List<RoomVo> list = roomMapper.selectAdvancedRoomListPage(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, startRow, endrow);
+//
+//		System.out.println("paging list");
+//		
+//		return list;
+//	}
 
-		System.out.println("paging list");
-		
-		return list;
-	}
-
+	
 	@Override
 	public RoomVo roomSingle(int roomNo) {
 		
 		RoomVo roomVo = roomMapper.roomSingle(roomNo);
+		roomVo.setRoomVoList(roomMapper.findOtherRoom(roomVo));
 		
 		return roomVo;
 	}
+	
 
 
    

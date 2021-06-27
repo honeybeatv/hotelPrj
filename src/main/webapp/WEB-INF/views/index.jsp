@@ -204,7 +204,7 @@ ul{
     						<li>권장인원수 : ${list.rpeople }</li>
     						</ul>
     						<hr>
-    						<p class="pt-1"><a href="../room/rooms-single" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
+    						<p class="pt-1"><a href="../room/rooms-single?roomNo=${list.roomNo }" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
     					</div>
     				</div>
     			</div>

@@ -33,6 +33,8 @@ public interface RoomMapper {
 				int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int startRow,
 				int endrow);
 
+		List<RoomVo> findOtherRoom(RoomVo roomVo);
+
 }
 
 

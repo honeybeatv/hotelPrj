@@ -146,7 +146,7 @@
 					<c:forEach var="roomVo" items="${userHostingEditMap.userHostingEditList }">
 						<tr id="${roomVo.roomNo}">
 							<td>
-								<a href="*숙소링크*rno=${roomVo.roomNo}">${roomVo.rname}</a> //여기 수정
+								<a href="/room/rooms-single?roomNo=${roomVo.roomNo}">${roomVo.rname}</a> //여기 수정
 							</td>
 							<td>${roomVo.rcity}</td>							
 							<td>${roomVo.rtype}</td>							

@@ -1,5 +1,7 @@
 package com.site.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +25,9 @@ public class RoomVo {
 	private String raddress;
 	private String rname;
 	private int userno;
+	
+	private String prevyn;
+	
+	private List<RoomVo> roomVoList;
+	
 }
