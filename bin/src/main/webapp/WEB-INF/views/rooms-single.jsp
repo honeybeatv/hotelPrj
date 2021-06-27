@@ -10,23 +10,23 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
 
-    <link rel="stylesheet" href="static/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/animate.css">
+    <link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/animate.css">
     
-    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="static/css/magnific-popup.css">
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="static/css/aos.css">
+    <link rel="stylesheet" href="../static/css/aos.css">
 
-    <link rel="stylesheet" href="static/css/ionicons.min.css">
+    <link rel="stylesheet" href="../static/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="static/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="static/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../static/css/jquery.timepicker.css">
     
-    <link rel="stylesheet" href="static/css/flaticon.css">
-    <link rel="stylesheet" href="static/css/icomoon.css">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="../static/css/flaticon.css">
+    <link rel="stylesheet" href="../static/css/icomoon.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
@@ -39,7 +39,7 @@
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('static/images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
@@ -63,13 +63,13 @@
           			<h2 class="mb-4">Family Room</h2>
           			<div class="single-slider owl-carousel">
           				<div class="item">
-          					<div class="room-img" style="background-image: url(static/images/room-1.jpg);"></div>
+          					<div class="room-img" style="background-image: url(../static/images/room-1.jpg);"></div>
           				</div>
           				<div class="item">
-          					<div class="room-img" style="background-image: url(/static/images/room-2.jpg);"></div>
+          					<div class="room-img" style="background-image: url(../static/images/room-2.jpg);"></div>
           				</div>
           				<div class="item">
-          					<div class="room-img" style="background-image: url(/static/images/room-3.jpg);"></div>
+          					<div class="room-img" style="background-image: url(../static/images/room-3.jpg);"></div>
           				</div>
           			</div>
           		</div>
@@ -91,7 +91,7 @@
           			<h3 class="mb-4">Take A Tour</h3>
           			<div class="block-16">
 		              <figure>
-		                <img src="static/images/room-4.jpg" alt="Image placeholder" class="img-fluid">
+		                <img src="../static/images/room-4.jpg" alt="Image placeholder" class="img-fluid">
 		                <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a>
 		              </figure>
 		            </div>
@@ -141,7 +141,7 @@
           			<div class="row">
           				<div class="col-sm col-md-6 ftco-animate">
 				    				<div class="room">
-				    					<a href="rooms" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/room-1.jpg);">
+				    					<a href="rooms" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
 				    						<div class="icon d-flex justify-content-center align-items-center">
 				    							<span class="icon-search2"></span>
 				    						</div>
@@ -156,7 +156,7 @@
 				    			</div>
 				    			<div class="col-sm col-md-6 ftco-animate">
 				    				<div class="room">
-				    					<a href="rooms" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/room-2.jpg);">
+				    					<a href="rooms" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-2.jpg);">
 				    						<div class="icon d-flex justify-content-center align-items-center">
 				    							<span class="icon-search2"></span>
 				    						</div>
@@ -198,7 +198,7 @@
             <div class="sidebar-box ftco-animate">
               <h3>Recent Blog</h3>
               <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                <a class="blog-img mr-4" style="background-image: url(../static/images/image_1.jpg);"></a>
                 <div class="text">
                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
                   <div class="meta">
@@ -209,7 +209,7 @@
                 </div>
               </div>
               <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                <a class="blog-img mr-4" style="background-image: url(../static/images/image_2.jpg);"></a>
                 <div class="text">
                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
                   <div class="meta">
@@ -220,7 +220,7 @@
                 </div>
               </div>
               <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(images/image_3.jpg);"></a>
+                <a class="blog-img mr-4" style="background-image: url(../static/images/image_3.jpg);"></a>
                 <div class="text">
                   <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
                   <div class="meta">
@@ -264,23 +264,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="static/js/jquery.min.js"></script>
-  <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="static/js/popper.min.js"></script>
-  <script src="static/js/bootstrap.min.js"></script>
-  <script src="static/js/jquery.easing.1.3.js"></script>
-  <script src="static/js/jquery.waypoints.min.js"></script>
-  <script src="static/js/jquery.stellar.min.js"></script>
-  <script src="static/js/owl.carousel.min.js"></script>
-  <script src="static/js/jquery.magnific-popup.min.js"></script>
-  <script src="static/js/aos.js"></script>
-  <script src="static/js/jquery.animateNumber.min.js"></script>
-  <script src="static/js/bootstrap-datepicker.js"></script>
-  <script src="static/js/jquery.timepicker.min.js"></script>
-  <script src="static/js/scrollax.min.js"></script>
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/jquery.easing.1.3.js"></script>
+  <script src="../static/js/jquery.waypoints.min.js"></script>
+  <script src="../static/js/jquery.stellar.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.magnific-popup.min.js"></script>
+  <script src="../static/js/aos.js"></script>
+  <script src="../static/js/jquery.animateNumber.min.js"></script>
+  <script src="../static/js/bootstrap-datepicker.js"></script>
+  <script src="../static/js/jquery.timepicker.min.js"></script>
+  <script src="../static/js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="static/js/google-map.js"></script>
-  <script src="static/js/main.js"></script>
+  <script src="../static/js/google-map.js"></script>
+  <script src="../static/js/main.js"></script>
     
   </body>
 </html>

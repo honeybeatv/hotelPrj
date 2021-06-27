@@ -1,5 +1,6 @@
 package com.site.service;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +11,8 @@ import org.springframework.ui.Model;
 
 import com.site.mapper.UserMapper;
 import com.site.vo.ReserveVo;
-import com.site.vo.RoomReserveVo;
 import com.site.vo.RoomVo;
+import com.site.vo.UserReservationVo;
 import com.site.vo.UserVo;
 
 @Service
@@ -49,9 +50,10 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override // 회원 예약정보 페이지 호출
-	public List<RoomReserveVo> userReservationViewList(int userno) {
+	public List<UserReservationVo> userReservationViewList(int userno) {
 		
-		List<RoomReserveVo> uReservationReserveList =  userMapper.selectUserReservationList(userno);
+		List<UserReservationVo> uReservationReserveList =  userMapper.selectUserReservationViewList(userno);
+		
 		System.out.println(uReservationReserveList);
 		
 		return uReservationReserveList;

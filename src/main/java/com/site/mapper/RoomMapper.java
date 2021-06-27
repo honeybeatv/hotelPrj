@@ -24,6 +24,14 @@ public interface RoomMapper {
 	void insertRoomsWriteDo(RoomVo roomVo);
 
 	RoomVo roomSingle(int roomNo);
+	
+	//페이징용 게시글 카운트
+		int selectSearchCount(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
+				int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
+
+		List<RoomVo> selectAdvancedRoomListPage(String checkIn, String checkOut, String rtype, int rroom, int rbed,
+				int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int startRow,
+				int endrow);
 
 }
 

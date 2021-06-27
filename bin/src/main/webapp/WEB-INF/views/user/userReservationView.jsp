@@ -45,7 +45,7 @@
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
 	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>mypage</span></p>
-	            <h1 class="mb-4 bread">Mypage</h1>
+	            <h1 class="mb-4 bread">Reservation</h1>
             </div>
           </div>
         </div>
@@ -54,12 +54,44 @@
 
 	<c:import url="/WEB-INF/views/user/mypageCategory.jsp"></c:import>
 
-	<section class="ftco-section contact-section bg-light" align="center"> </section>
+	<section class="ftco-section contact-section bg-light" align="center">
+		<div  class="col-12" >
+			<table>
+
+				<colgroup>
+					<col width="20%">
+					<col width="40%">
+					<col width="30%">
+				</colgroup>
+				<!-- 제목부분 -->
+
+				<tr>
+					<th>숙소</th>
+					<th>방문일</th>
+					<th>주소</th>
+				</tr>
+				<!-- 내용부분 시작-->
+				<c:forEach var="userReservationList" items="${userReservationList}">
+					<tr>
+						<td>${userReservationList.rname }</td>
+						<td>${userReservationList.startday } ~ ${userReservationList.endday }</td>
+						<td>${userReservationList.rcity }</td>
+					</tr>
+				</c:forEach>
+				
+			</table>
+		</div>
+    </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
     
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+	  	<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+	  	<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+  		</svg>
+    </div>
 
   <script src="/static/js/jquery.min.js"></script>
   <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>

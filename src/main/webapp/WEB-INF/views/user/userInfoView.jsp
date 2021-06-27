@@ -56,8 +56,8 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
-            <form action="userInfoModify" class="bg-white p-5 " width="100%">
-			<input type="hidden" id="userno" name="userno" value="${userVo.userno}" >            
+            <form action="userInfoModify" class="bg-white p-5 " width="100%" method="post">
+			<input type="hidden" id="userno" name="userno" value="${session_userno}" >            
             
             	<div class="form-inline form-group">
 					<label for="name" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>

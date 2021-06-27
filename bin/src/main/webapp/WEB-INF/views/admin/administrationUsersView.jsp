@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MyPage</title>
+    <title>Administration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/static/css/animate.css">
     
     <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/static/css/owl.tdeme.default.min.css">
     <link rel="stylesheet" href="/static/css/magnific-popup.css">
 
     <link rel="stylesheet" href="/static/css/aos.css">
@@ -30,7 +30,7 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
-  	 
+ 	
   	</script>
   	
   </head>
@@ -44,46 +44,88 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>mypage</span></p>
-	            <h1 class="mb-4 bread">Reservation</h1>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>Administration</span></p>
+	            <h1 class="mb-4 bread"></h1>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-	<c:import url="/WEB-INF/views/user/mypageCategory.jsp"></c:import>
+	<c:import url="/WEB-INF/views/admin/administrationCategory.jsp"></c:import>
 
-    
-    
-    
-        <section class="ftco-section bg-light">
-	    	<div class="container">
-	    		<div class="row">
-					<c:forEach var="userReservationList" items="${userReservationList}">
-		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-		    				<div class="room">
-		<!--      				<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-1.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		-->  					
-								<div class="text p-3 text-center">
-			    					<h3 class="mb-3"><a href="rooms">${userReservationList.rname }</a></h3>
-			    						<p><span class="price mr-2">${userReservationList.rprice }</span> <span class="per">/ 일</span></p>
-			    						<ul>
-				    						<li>방문일 : ${userReservationList.startday } ~ ${userReservationList.endday }</li>
-				    						<li>상세주소 : ${userReservationList.raddress }</li>
-			    						</ul>
-			    						<hr>
-			    						<p class="pt-1"><a href="../room/rooms-single*상세보기 페이지로 이동(주소)*" class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-		    					</div>
-		    				</div>
-		    			</div>
-		    		</c:forEach>
-	    		</div>
-	    	</div>
+	<section position="relative" width="100%" display="block" align="center" padding="2em">
+		<div  class="col-12" style="display:inline-block;" >
+            <form class="bg-white p-2 " width="100%">
+				<table width="100%" >
+				
+					<tr>
+						<td width="10%">userNo</td>
+						<td width="15%">이름</td>
+						<td width="16%">아이디</td>
+						<td width="16%">비밀번호</td>
+						<td width="16%">핸드폰번호</td>
+						
+						<td width="20%">이메일</td>
+						<td width="3%">   </td>
+						<td width="3%">	  </td>
+					</tr>
+
+					<tr height="1" bgcolor="#8f784b ">
+						<td colspan="12"></td>
+					</tr>
+
+					<c:forEach var="userVo" items="${map.list }">
+						<tr id="${userVo.userno}">
+							<td>
+								<a href="adminInfoView?userno=${userVo.userno}">${userVo.userno}</a>
+							</td>
+							<td>${userVo.name}</td>							
+							<td>${userVo.userid}</td>							
+							<td>${userVo.userpw}</td>							
+							<td>${userVo.uphone}</td>							
+									
+							<td>${userVo.uemail}</td>		
+								
+						</tr>
+					</c:forEach>
+
+				</table>
+				<!-- 하단 넘버링 -->
+    <ul class="page-num">
+      <a href="./administrationUsersView?page=1"><li class="first"></li></a>
+      <!-- 이전페이지는 1이상일때 -1을 해줌, 1일때는 링크 삭제시킴 -->
+      <c:if test="${map.page<=1 }">
+        <li class="prev"></li>
+      </c:if>
+      <c:if test="${map.page>1}">
+        <a href="./administrationUsersView?page=${map.page-1 }"><li class="prev"></li></a>
+      </c:if>
+      
+      <!-- 번호넣기 -->
+      <c:forEach var="nowPage" begin="${map.startPage}" end="${map.endPage }">
+        <c:if test="${map.page == nowPage }">
+          <li class="num"><div>${nowPage}</div></li>
+        </c:if>
+        <c:if test="${map.page != nowPage }">
+          <li class="num">
+            <a href="./administrationUsersView?page=${nowPage}"><div>${nowPage}</div></a>
+          </li>
+        </c:if>
+      </c:forEach>
+      <!-- 다음페이지는 max보다 작을때 +1 증가, max보다 크거나 같을때 링크 삭제시킴 -->
+      <c:if test="${map.page>=map.maxPage }">
+        <li class="next"></li>
+      </c:if>
+      <c:if test="${map.page<map.maxPage }">
+        <a href="./administrationUsersView?page=${map.page+1 }"><li class="next"></li></a>
+      </c:if>
+      <!-- 마지막페이지 이동 -->
+      <a href="./administrationUsersView?page=${map.maxPage }"><li class="last"></li></a>
+    </ul>
+    <!-- 하단 넘버링 끝 -->
+            </form>
+          </div>
     </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
@@ -91,11 +133,11 @@
   <!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
-	  	<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-	  	<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+	  	<circle class="patd-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+	  	<circle class="patd" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
   		</svg>
     </div>
-
+    
   <script src="/static/js/jquery.min.js"></script>
   <script src="/static/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="/static/js/popper.min.js"></script>

@@ -30,12 +30,39 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
-  	 
-  	</script>
   	
-  	<script type="text/javascript">
-	
+  	
+  	function chkword(obj, maxByte) {
+  		
+		var strValue = obj.value;
+		var strLen = strValue.length;
+		var totalByte = 0;
+		var len = 0;
+		var oneChar = "";
+		var str2 = "";
+		
+		for (var i = 0; i < strLen; i++){
+			oneChar = strValue.charAt(i);
+			if(escape(oneChar).length > 4){
+				totalByte += 2;
+			}else {
+				totalByte++;
+			}
+			if(totalByte <= maxByte){
+				len = i + 1;
+			}
+		}
+		if(totalByte > maxByte){
+			str2 = strValue.substr(0, len);
+			obj.value = str2;
+			chkword(obj, 4000);
+		}
+	}
+  	
 $(document).ready(function(){
+	
+	
+	
 	$("#joinBtn").click(function(){
 		
         // 태크.val() : 태그에 입력된 값
@@ -98,7 +125,7 @@ $(document).ready(function(){
 	 			 success:function(data){
 	 				 alert(data.msg);
 	 				 if(data.flag=="success"){
-	 				    location.href="/index";
+	 				    location.href="../main/index";
 	 				 }else{
 	 					 $("#userpw").val("");//공백처리
 	 					return false;
@@ -109,9 +136,75 @@ $(document).ready(function(){
 	 			 }
 	 		  });
 	    }
-	
+	// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
+	$("#userid").blur(function() {
+		// id = "id_reg" / name = "userId"
+		var userid = $('#userid').val();
+		$.ajax({
+			url : '${pageContext.request.contextPath}./id_check?userid='+ userid,
+			type : 'get',
+			success : function(data) {
+				console.log("1 = 중복o / 0 = 중복x : "+ data.data);							
+				
+				if (data.data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$("#id_check").text("사용중인 아이디입니다 :p");
+						$("#id_check").css("color", "red");
+						$("#joinBtn").attr("disabled", true);
+						
+				} else 	{
+						var idPattern = /^[a-zA-Z0-9]{4,10}$/;
+						if(userid == ""){
+							$('#id_check').text('아이디를 입력해주세요 :)');
+							$('#id_check').css('color', 'red');
+							$("#joinBtn").attr("disabled", true);
+							
+						}
+						else if(idPattern.test($("#userid").val())!=true){
+							$('#id_check').text("아이디는 영어 소문자와 대문자 숫자 4~10자리만 가능합니다 :) :)");
+							$('#id_check').css('color', 'red');
+							$("#joinBtn").attr("disabled", true);
+							
+						} else{
+							$('#id_check').text("사용가능한 아이디입니다 :) :)");
+							$('#id_check').css('color', 'green');
+							$("#joinBtn").attr("disabled", false);
+							
+						}
+						
+				 }
+				}, error : function() {
+						console.log("실패");
+				}
+			});
+		});
+		
+	// 이메일 유효성 검사(1 = 중복 / 0 != 중복)
+	$("#uemail").blur(function() {
+		// id = "id_reg" / name = "userId"
+		var uemail = $('#uemail').val();
+		var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 검증에 사용할 정규식 변수 regExp에 저장 
+		
+
+		if(uemail == ""){
+			$('#email_check').text('이메일을 입력해주세요 :)');
+			$('#email_check').css('color', 'red');
+			$("#joinBtn").attr("disabled", true);
+		} else if(uemail.match(regExp) != null){
+			$('#email_check').text("사용가능한 이메일입니다 :) :)");
+			$('#email_check').css('color', 'green');
+			$("#joinBtn").attr("disabled", false);
+		} else{
+			$('#email_check').text("이메일은 이메일형식에 맞게 입력해주세요 :) :)");
+			$('#email_check').css('color', 'red');
+			$("#joinBtn").attr("disabled", true);
+		}			
+	});
+		
+		
 	
 });
+
 </script>
   	
   	
@@ -126,7 +219,7 @@ $(document).ready(function(){
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>join</span></p>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>join</span></p>
 	            <h1 class="mb-4 bread">Join</h1>
             </div>
           </div>
@@ -149,9 +242,9 @@ $(document).ready(function(){
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label" style="font-weight:bolder;">아이디</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid">
+						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid" onkeyup="chkword(this, 10);">
 					</div>
-					<div class="col-sm-3"><a href='#'>중복확인 </a></div>
+					<div id="id_check"  class="col-sm-3"></div>
 				</div>
 				
 				<div class="form-inline form-group">
@@ -166,7 +259,7 @@ $(document).ready(function(){
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width:100%;" id="uemail" name="uemail">
 					</div>
-					<div class="col-sm-3">ex)ya63kr@nate.com</div>
+					<div id="email_check"  class="col-sm-3">ex)ya63kr@nate.com</div>
 				</div>
 				
 				<div class="form-inline form-group">
@@ -185,14 +278,14 @@ $(document).ready(function(){
 					<div class="col-sm-3">ex)19920913</div>
 				</div>
 				
-				<input type="button" value="회원가입" id="joinBtn" class="btn btn-primary py-3 px-5">
+				<input type="button" value="회원가입" id="joinBtn" class="btn btn-primary py-3 px-5" >
             </form>
           </div>
     </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
     
-  <!-- loader -->
+   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
   <script src="/static/js/jquery.min.js"></script>

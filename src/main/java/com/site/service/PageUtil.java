@@ -10,6 +10,7 @@ public class PageUtil {
 		
 		Map<String, Integer> resultMap = new HashMap<String, Integer>();
 		
+		System.out.println("pageutil in ");
 		//게시글 데이터 계산해서 가져오기
 				int startrow = (page-1) * limit+1; 	//첫 페이지 계산 공식 1, 11, 21, 31....
 				int endrow = startrow+limit-1;	//마지막 페이지 계산 공식 10, 20, 30, 40..

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MyPage</title>
+    <title>Administration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -44,39 +44,39 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../index">Home</a></span> <span>mypage</span></p>
-	            <h1 class="mb-4 bread">Mypage</h1>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>administration</span></p>
+	            <h1 class="mb-4 bread">Information</h1>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-	<c:import url="/WEB-INF/views/includes/mypageCategory.jsp"></c:import>
+	<c:import url="/WEB-INF/views/admin/administrationCategory.jsp"></c:import>
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
-            <form action="UserInfoModify" class="bg-white p-5 " width="100%">
-			<input type="hidden" id="userno" name="userno" value="${userVo.userno}" >            
+            <form action="adminInfoModify" class="bg-white p-5 " width="100%">
+			<input type="hidden" id="userno" name="userno" value="${adminVo.userno}" >            
             
             	<div class="form-inline form-group">
 					<label for="name" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" style="width:100%;" id="name" name="name" value="${userVo.name}" readonly>
+						<input type="text" class="form-control" style="width:100%;" id="name" name="name" value="${adminVo.name}" readonly>
 					</div>
 				</div>
 				
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label" style="font-weight:bolder;">아이디</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid" value="${userVo.userid}" readonly>
+						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid" value="${adminVo.userid}" readonly>
 					</div>
 				</div>
 
 				<div class="form-inline form-group">
 					<label for="uemail" class="col-sm-2 control-label" style="font-weight:bolder;">이메일</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" style="width:100%;" id="uemail" name="uemail" value="${userVo.uemail}" readonly>
+						<input type="text" class="form-control" style="width:100%;" id="uemail" name="uemail" value="${adminVo.uemail}" readonly>
 					</div>
 				</div>
 				
@@ -90,7 +90,7 @@
 				<div class="form-inline form-group">
 					<label for="uphone" class="col-sm-2 control-label" style="font-weight:bolder;">핸드폰 번호</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" style="width:100%;" id="uphone" name="uphone" value="${userVo.uphone}" readonly>
+						<input type="text" class="form-control" style="width:100%;" id="uphone" name="uphone" value="${adminVo.uphone}" readonly>
 					</div>
 				</div>
 				
