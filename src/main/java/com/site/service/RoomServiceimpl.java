@@ -129,6 +129,7 @@ public class RoomServiceimpl implements RoomService {
 	public RoomVo roomSingle(int roomNo) {
 		
 		RoomVo roomVo = roomMapper.roomSingle(roomNo);
+		
 		roomVo.setRoomVoList(roomMapper.findOtherRoom(roomVo));
 		
 		return roomVo;

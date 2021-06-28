@@ -145,7 +145,7 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방종류</label>
 					<div class="col-sm-7">
-						<select name="rtype">
+						<select name="rtype" id="rtype">
 							<option value="apt">아파트</option>
 		                     <option value="house">주택</option>
 		                     <option value="walkup">공동주택</option>
