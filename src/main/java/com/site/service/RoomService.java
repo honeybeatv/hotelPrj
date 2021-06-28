@@ -16,7 +16,7 @@ public interface RoomService {
 			int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
 
 	//room 리스트 페이지 호출
-	List<RoomVo> roomsListAll();
+	Map<String, Object> roomsListAll(int page);
 	
 	//rooms 숙소 등록
 	void roomsWriteDo(RoomVo roomVo); //void return타입이 필요없음

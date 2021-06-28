@@ -1,7 +1,9 @@
 package com.site.service;
 
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,9 +48,34 @@ public class RoomServiceimpl implements RoomService {
 
    //room 리스트 페이지 호출
    @Override
-   public List<RoomVo> roomsListAll() {
-      List<RoomVo> roomlist = roomMapper.selectroomsListAll();
-      return roomlist;
+   public Map<String,Object> roomsListAll(int page) {
+      Map<String,Object> map = new HashMap<String,Object>();
+		
+		int limit = 6; // 페이지당 몇개의 게시물
+		
+		int startrow = (page-1)*limit + 1;
+		int endrow = startrow+limit-1;
+		List<RoomVo> list = roomMapper.selectroomsListAll(startrow,endrow);
+		int listCount=0; // 총게시글 수
+		listCount = roomMapper.selectRoomCount();
+		//하단 넘버링 최대페이지
+		int maxPage = (int)((double)listCount/limit+0.95);
+		//하단 넘버링 시작페이지
+		int startPage = (((int) ((double)page / 10 + 0.95)) - 1) * 10 + 1;
+		//하단 끝 넘버링페이지
+		int endPage = maxPage;
+		// 1,2,3,4,5,6,7,8,9,10 -> 10개가 모두 있을 경우는 10을 endPage에 넣어줌.
+		if (endPage>startPage+10-1) {
+			endPage=startPage+10-1;
+		}
+		// page(현재페이지), listCount,startPage,endPage,maxPage 5개 리턴해서 보내줌
+		map.put("listCount", listCount);
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		map.put("maxPage", maxPage);
+		map.put("page", page);
+		map.put("list", list);
+		return map;
    }
    
    //rooms 숙소 등록
