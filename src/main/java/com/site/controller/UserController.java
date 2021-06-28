@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.site.service.UserService;
 import com.site.vo.ReserveVo;
@@ -167,11 +169,11 @@ public class UserController {
 	}
 
 	@RequestMapping("/userHostingView")	// 회원 호스팅 상품 페이지 호출
-	public String userHostingView(Model model, @RequestParam("userno") int userno) {
+	public String userHostingView(Model model , @RequestParam("userno") int userno) {
 		Map<String, Object> userHostingViewMap = userService.userHostingViewList(userno);
 		model.addAttribute("userHostingViewMap", userHostingViewMap);
 		
-		System.out.println("# mypage category_Hosting ListAll #");
+		System.out.println("# mypage category_Hosting View ListAll #");
 		
 		return "/user/userHostingView";
 	}
@@ -187,11 +189,14 @@ public class UserController {
 	}
 
 	@RequestMapping("/userHostingModifyDo") // 회원 호스팅 상품 수정페이지 실행
-	public String userHostingModifyDo(RoomVo roomVo, @RequestParam("userno") int userno) {
+	public String userHostingModifyDo(Model model, RoomVo roomVo, @RequestParam("userno") int userno) {
 		userService.userHostingModifDo(roomVo);
 		
 		System.out.println("userno : " + userno + " | roomVo : " + roomVo);
 		System.out.println("# mypage category_Hosting ModifyDo #");
+		
+		Map<String, Object> userHostingViewMap = userService.userHostingViewList(userno);
+		model.addAttribute("userHostingViewMap", userHostingViewMap);
 		
 		return "/user/userHostingView";
 	}

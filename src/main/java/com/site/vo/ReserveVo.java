@@ -18,4 +18,5 @@ public class ReserveVo {
 	private String startday;
 	private String endday;
 	private int userno;
+	
 }

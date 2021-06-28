@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.site.service.RoomService;
 import com.site.vo.RoomVo;
 
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -43,15 +44,6 @@ public class RoomController {
 	   
       return "/rooms-single";
    }
-   
-   @RequestMapping("/roomsReserve")
-   public String roomsReserve(Model model) {
-	   
-	   RoomVo roomVo = roomService.roomsReserve();
-	   
-	   return "/user/mypage";
-   }
-   
   
    
    @RequestMapping("/roomsList") 
