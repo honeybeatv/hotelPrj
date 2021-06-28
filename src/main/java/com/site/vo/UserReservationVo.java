@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserReservationVo {
 
+	private int roomNo;	//room.roomNo
 	private String rname;	//room.rname
 	private String raddress;	//room.raddress
 	private int rprice;		//room.rprice
