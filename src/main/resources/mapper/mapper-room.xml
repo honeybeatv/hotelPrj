@@ -22,7 +22,7 @@
    		 <![CDATA[
 	 select * from
 	(select rownum as rnum, a.* from
-	(select * from room) a) where rnum >=#{startrow} and rnum <=#{endrow}
+	(select * from room order by roomno desc) a) where rnum >=#{startrow} and rnum <=#{endrow}
 	]]>
 	</select>
 	<!-- 전체 room 정보 가져오기 -->
