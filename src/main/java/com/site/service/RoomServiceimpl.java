@@ -98,12 +98,12 @@ public class RoomServiceimpl implements RoomService {
 		
 		System.out.println("roomVo ==> " + roomVo);	//
 		
-		String fileUrl = "D:stspyw/hotelPrj/src/main/resources/static/upload/";
+		String fileUrl = "C:/Users/pom53/git/hotelPrj/src/main/resources/static/upload/";
 		//중복 방지를 위한 파일명 변경
 		long time = System.currentTimeMillis();
 		String uploadFileName = time+"_"+file.getOriginalFilename();
 		//파일저장
-		File f = new File(uploadFileName);
+		File f = new File(fileUrl + uploadFileName);
 		//파일업로드
 		try {
 			file.transferTo(f);

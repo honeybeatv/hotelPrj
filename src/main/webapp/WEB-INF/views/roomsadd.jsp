@@ -196,7 +196,6 @@
 						style="font-weight: bolder;">사진</label>
 					<div class="col-sm-7">
 						<input type="file" class="" style="width: 100%;" id="file"	name="file">
-						<a herf="/upload/${roomVo.rpicture}" download>${roomVo.rpicture}</a>
 					</div>
 
 

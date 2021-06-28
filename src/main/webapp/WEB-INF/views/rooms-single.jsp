@@ -61,7 +61,7 @@
 		          			<h2 class="mb-4">${roomVo.rname }</h2>
 		          			<div class="single-slider owl-carousel">
 		          				<div class="item">
-		          					<div class="room-img" style="background-image: url(../static/images/room-1.jpg);"></div>
+		          					<div class="room-img" style="background-image: url(../static/upload/${roomVo.rpicture});"></div>
 		          				</div>
 		          				<div class="item">
 		          					<div class="room-img" style="background-image: url(../static/images/room-2.jpg);"></div>
@@ -99,7 +99,7 @@
 		          				<c:forEach var="item" items="${roomVo.roomVoList }">
 		          					<div class="col-sm col-md-6 ftco-animate">
 				    				<div class="room">
-				    					<a href="/room/rooms-single?roomNo=${item.roomNo }" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
+				    					<a href="/room/rooms-single?roomNo=${item.roomNo }" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../static/upload/${item.rpicture});">
 				    						<div class="icon d-flex justify-content-center align-items-center">
 				    							<span class="icon-search2"></span>
 				    						</div>

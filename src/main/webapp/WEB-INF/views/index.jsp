@@ -213,7 +213,7 @@ ul {
 						<div class="room" id="room">
 							<a href="../room/rooms-single?roomNo=${list.roomNo }"
 								class="img d-flex justify-content-center align-items-center"
-								style="background-image: url(/static/images/room-1.jpg);">
+								style="background-image: url(/static/upload/${list.rpicture};">
 								<div
 									class="icon d-flex justify-content-center align-items-center">
 
