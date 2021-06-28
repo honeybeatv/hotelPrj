@@ -98,7 +98,7 @@ public class RoomController {
 	}
 
 	@RequestMapping("/roomsWriteDo") //쓰기저장 호출
-	public String roomsWriteDo(Model model,RoomVo roomVo,@RequestPart MultipartFile file) throws Exception{
+	public String roomsWriteDo(Model model,RoomVo roomVo,@RequestPart MultipartFile file) {
 
 		
 		System.out.println("1");
