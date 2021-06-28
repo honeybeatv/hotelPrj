@@ -7,16 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.site.service.ReserveService;
 
 @Controller
-@RequestMapping("reserve")
+@RequestMapping("/reserve")
 public class ReserveController {
 	
 	@Autowired
 	ReserveService reserveService;
 	
 	//숙소 예약
-	@RequestMapping("/reserve")
-	public String reserve() {
-		return "/";
+	@RequestMapping("/roomReserve")
+	public String roomReserve() {
+		
+		
+		
+		
+		return "/roomReserve";
 	}
 	
 	
