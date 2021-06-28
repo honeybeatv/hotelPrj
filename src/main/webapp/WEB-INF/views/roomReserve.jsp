@@ -68,7 +68,7 @@
 						<p class="breadcrumbs mb-2">
 							<span class="mr-2"><a href="index">Home</a></span> <span>숙소 예약</span>
 						</p>
-						<h1 class="mb-4 bread">숙소 예약 : ${roomVo.rname }</h1>
+						<h1 class="mb-4 bread">숙소 예약</h1>
 					</div>
 				</div>
 			</div>
