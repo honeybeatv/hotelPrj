@@ -3,7 +3,11 @@
 
 <mapper namespace="com.site.mapper.ReserveMapper">
 
+<select id="selectReserveListAll" resultType="com.site.vo.ReserveVo">
 
+	select * FROM RESERVE
+	
+</select>
 
 
 
