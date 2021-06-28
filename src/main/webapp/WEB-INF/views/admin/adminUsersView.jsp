@@ -30,8 +30,32 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
- 	
-  	</script>
+ 		$(document).ready(function() {
+			$("#goto_adminUserInfoView").click(function() {
+				alert("클릭이벤트");
+			});
+		});
+ 		
+ 		function ajax_adminUsersDelete(userno){
+ 			if(confirm("회원을 삭제하시겠습니까?")){
+ 				  $.ajax({
+ 						 url:'./adminUsersDelete',     
+ 						 type:'post',
+ 						 data:{
+ 							 "userno":userno
+ 						 },
+ 						 success:function(data){
+ 							 alert(data.msg);
+ 							 var html="";
+ 							 $('#'+userno).remove();
+ 						 },
+ 						 error:function(){
+//  							 alert("에러");
+ 						 }
+ 				  });
+ 			  }throw new Error(alert("삭제하려는 사용자가 운영중인 숙소가 있습니다.\n삭제하려는 회원이 운영중인 숙소를 삭제한 뒤 회원삭제를 진행해 주세요."))
+ 		}
+	</script>
   	
   </head>
   <body>
@@ -56,7 +80,7 @@
 
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
-            <form class="bg-white p-2 " width="100%">
+            <form class="bg-white p-2 " width="100%" method="post">
 				<table width="100%" >
 				
 					<tr>
@@ -65,10 +89,9 @@
 						<td width="16%">아이디</td>
 						<td width="16%">비밀번호</td>
 						<td width="16%">핸드폰번호</td>
-						
 						<td width="20%">이메일</td>
 						<td width="3%">   </td>
-						<td width="3%">	  </td>
+						<td width="3%">   </td>
 					</tr>
 
 					<tr height="1" bgcolor="#8f784b ">
@@ -77,29 +100,32 @@
 
 					<c:forEach var="userVo" items="${map.list }">
 						<tr id="${userVo.userno}">
+							<td>${userVo.userno}</td>
 							<td>
-								<a href="adminInfoView?userno=${userVo.userno}">${userVo.userno}</a>
-							</td>
-							<td>${userVo.name}</td>							
+								<form >
+									<input type="hidden" id = "userno" name = "userno" value="${userVo.userno}">
+									<a id="goto_adminUserInfoView">${userVo.name}</a>
+								</form>
+							</td>							
 							<td>${userVo.userid}</td>							
 							<td>${userVo.userpw}</td>							
 							<td>${userVo.uphone}</td>							
-									
 							<td>${userVo.uemail}</td>		
-								
+							<td><button type="button" class=" btn-light" onclick="ajax_adminUsersDelete('${userVo.userno}')">삭제</button></td>	
+							<td><button type="button" class=" btn-light" onclick="ajax_adminUsersDelete('${userVo.userno}')">삭제</button></td>	
 						</tr>
 					</c:forEach>
 
 				</table>
 				<!-- 하단 넘버링 -->
     <ul class="page-num">
-      <a href="./administrationUsersView?page=1"><li class="first"></li></a>
+      <a href="./adminUsersView?page=1"><li class="first"></li></a>
       <!-- 이전페이지는 1이상일때 -1을 해줌, 1일때는 링크 삭제시킴 -->
       <c:if test="${map.page<=1 }">
         <li class="prev"></li>
       </c:if>
       <c:if test="${map.page>1}">
-        <a href="./administrationUsersView?page=${map.page-1 }"><li class="prev"></li></a>
+        <a href="./adminUsersView?page=${map.page-1 }"><li class="prev"></li></a>
       </c:if>
       
       <!-- 번호넣기 -->
@@ -109,7 +135,7 @@
         </c:if>
         <c:if test="${map.page != nowPage }">
           <li class="num">
-            <a href="./administrationUsersView?page=${nowPage}"><div>${nowPage}</div></a>
+            <a href="./adminUsersView?page=${nowPage}"><div>${nowPage}</div></a>
           </li>
         </c:if>
       </c:forEach>
@@ -118,10 +144,10 @@
         <li class="next"></li>
       </c:if>
       <c:if test="${map.page<map.maxPage }">
-        <a href="./administrationUsersView?page=${map.page+1 }"><li class="next"></li></a>
+        <a href="./adminUsersView?page=${map.page+1 }"><li class="next"></li></a>
       </c:if>
       <!-- 마지막페이지 이동 -->
-      <a href="./administrationUsersView?page=${map.maxPage }"><li class="last"></li></a>
+      <a href="./adminUsersView?page=${map.maxPage }"><li class="last"></li></a>
     </ul>
     <!-- 하단 넘버링 끝 -->
             </form>

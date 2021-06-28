@@ -60,7 +60,7 @@
 
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
-            <form class="bg-white p-2 " width="100%" method="post">
+            <form action="userHostingModifyDo" class="bg-white p-2 " width="100%" method="post">
 				<table width="100%" >
 				
 					<tr>

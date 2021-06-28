@@ -49,7 +49,8 @@
  							 alert("에러");
  						 }
  				  });
- 			  }else{ return false; }
+ 			}else{return false;}
+//  			throw new Error(alert("삭제하려는 숙소를 예약한 고객이 있습니다.\n"))
  		}
  		
   	</script>
@@ -78,7 +79,7 @@
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
 			<table width="100%">
- 				<form action="userHostingModify" class="bg-white p-2 " width="100%"> 
+ 				<form action="userHostingModify" class="bg-white p-2 " width="100%" method="post"> 
 					<tr>
 						<td width="10%">숙소이름</td>
 						<td width="5%">지역</td>

@@ -82,6 +82,25 @@ public class UserServiceImpl implements UserService {
 	public void userHostingModifDo (RoomVo roomVo) {
 		userMapper.updateUserHostingModifDo(roomVo);
 	}
+	@Override // 호스팅 상품 삭제를 위한 예약 내역 삭제
+	public Map<String, Object> userReservationDelete(int roomNo) {
+		Map<String, Object> uReservartionDeleteMap = new HashMap<String, Object>();
+		
+		int resultDelete = userMapper.deleteUserReservationDeleteList(roomNo);
+		int resultNum = userMapper.selectUserReservationDeleteCount(roomNo);
+		
+		String msg = "";
+		if(resultNum == 0) {
+			System.out.println("예약내역 삭제를 성공하였습니다.");
+		}else {
+			System.out.println("예약내역 삭제를 실패하였습니다.");
+		}
+		
+		uReservartionDeleteMap.put("userReservationDeleteList", resultDelete);
+		uReservartionDeleteMap.put("msg", msg);
+		
+		return uReservartionDeleteMap;
+	}
 	@Override // 회원 호스팅 상품 삭제
 	public Map<String, Object> userHostingDelete(RoomVo roomVo) {
 		Map<String, Object> uHostingdeleteMap = new HashMap<String, Object>();

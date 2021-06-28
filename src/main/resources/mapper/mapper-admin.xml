@@ -8,21 +8,46 @@
   
 	<!-- 회원 기본정보 호출 -->
   	<select id="selectUserInfo" resultType="com.site.vo.UserVo">
-  		SELECT * FROM user1 WHERE userno=#{userno}
+	  	<![CDATA[
+	  		SELECT * 
+	  		  FROM user1 
+	  		 WHERE userno=#{userno}
+	  	]]>
   	</select>
   	
   	<!-- 전체리스트 호출 -->
 	<select id="selectUserList" resultType="com.site.vo.UserVo">
 	    <![CDATA[
-		    select * from
-			(select rownum as rnum,a.* from
-			(select * from user1 where uadmin=0 order by userno desc) a)
-			where rnum>=#{startrow} and rnum<=#{endrow}
+		    SELECT * 
+		      FROM (SELECT rownum as rnum, a.* 
+		              FROM (SELECT * 
+		                      FROM user1 
+		                     WHERE uadmin!=#{uadmin} 
+		                  ORDER BY userno asc) 		a )
+			WHERE rnum>=#{startrow} and rnum<=#{endrow}
 	    ]]>
 	</select>
-	<!-- 전체게시글 수 -->
+	
+	<!-- 전체 일반회원 호출 -->
 	<select id="selectUserCount" resultType="int">
 	   select count(*) from user1
 	</select>
   
+    <!-- 관리자 회원 삭제 -->
+  	<delete id="deleteAdminUsersDeleteList">
+	  	<![CDATA[
+	  		DELETE user1 
+	  		 WHERE userno=#{userno}
+	  	]]>
+  	</delete>
+  	
+  	<!-- 관리자 회원 삭제 결과확인용 -->
+  	<select id="selectAdminUsersDeleteCount" resultType="int">
+	  	<![CDATA[
+			SELECT count(*) 
+			  FROM user1 
+			 WHERE userno=#{userno}
+		]]>  	
+  	</select>
+  	
   </mapper>
