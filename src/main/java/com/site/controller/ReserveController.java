@@ -23,6 +23,14 @@ public class ReserveController {
 		return "/roomReserve";
 	}
 	
+	@RequestMapping("/contact")
+	public String contact() {
+		
+		
+		
+		
+		return "/contact";
+	}
 	
 
 }
