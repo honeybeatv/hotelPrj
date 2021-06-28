@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Deluxe - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Deluxe</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -45,7 +45,7 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index">Home</a></span> <span class="mr-2"><a href="rooms">Room</a></span> <span>Room Details</span></p>
+	            <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/">Home</a></span> <span>Room Details</span></p>
 	            <h1 class="mb-4 bread">${roomVo.rname }</h1>
             </div>
           </div>
@@ -96,14 +96,14 @@
 		          				<c:forEach var="item" items="${roomVo.roomVoList }">
 		          					<div class="col-sm col-md-6 ftco-animate">
 				    				<div class="room">
-				    					<a href="rooms" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
+				    					<a href="/room/rooms-single?roomNo=${item.roomNo }" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
 				    						<div class="icon d-flex justify-content-center align-items-center">
 				    							<span class="icon-search2"></span>
 				    						</div>
 				    					</a>
 				    					<div class="text p-3 text-center">
-				    						<h3 class="mb-3"><a href="#">${item.rtype }</a></h3>
-				    						<p><span class="price mr-2">${item.rprice }</span> <span class="per">per night</span></p>
+				    						<h3 class="mb-3"><a>${item.rtype }</a></h3>
+				    						<p><span class="price mr-2">${item.rprice }</span> <span class="per">/ 일</span></p>
 				    						<hr>
 				    						<p class="pt-1">
 				    							<a href="/room/rooms-single?roomNo=${item.roomNo }" class="btn-custom"> 
