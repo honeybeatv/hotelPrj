@@ -106,6 +106,7 @@
 					</div>
 				</div>
 					<input type="hidden" id = "userno" name = "userno" value="${session_userno }">
+					<input type="hidden" id = "uadmin" name = "uadmin" value="${userVo.uadmin }">
 					<button type="submit" class="btn btn-primary py-3 px-5">수정</button>
 					<button type="button" id="goto_userInfoView" class="btn btn-primary py-3 px-5">취소</button>
             </form>

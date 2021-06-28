@@ -64,8 +64,6 @@
     <section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
             <form action="adminInfoModifyDo" class="bg-white p-5 " method="post" width="100%">
-            	<input type="hidden" id="userno" name="userno" value="${adminVo.userno}" >
-            	 
             	<div class="form-inline form-group">
 					<label for="name" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>
 					<div class="col-sm-10">
@@ -101,6 +99,8 @@
 					</div>
 				</div>
 				
+            	<input type="hidden" id="userno" name="userno" value="${session_userno}" >
+            	<input type="hidden" id="uadmin" name="uadmin" value="${adminVo.uadmin}" >
 				<button type="submit" class="btn btn-primary py-3 px-5">수정</button>
 				<button type="button" id="goto_adminInfoView" class="btn btn-primary py-3 px-5">취소</button>
             </form>
