@@ -1,5 +1,6 @@
 package com.site.service;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.site.mapper.RoomMapper;
 import com.site.vo.RoomVo;
@@ -80,7 +82,7 @@ public class RoomServiceimpl implements RoomService {
    
    //rooms 숙소 등록
 	@Override
-	public void roomsWriteDo(RoomVo roomVo) {
+	public void roomsWriteDo(RoomVo roomVo,MultipartFile file) {
 	
 //		int userNo = userVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 
 		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 이게 6이 뽑혀야하는데 0이나오네?
@@ -94,11 +96,33 @@ public class RoomServiceimpl implements RoomService {
 		System.out.println("userNo ==> " + userNo);
 		
 		
-		roomMapper.insertRoomsWriteDo(roomVo);
 		System.out.println("roomVo ==> " + roomVo);	//
 		
+		String fileUrl = "D:stspyw/hotelPrj/src/main/resources/static/upload/";
+		//중복 방지를 위한 파일명 변경
+		long time = System.currentTimeMillis();
+		String uploadFileName = time+"_"+file.getOriginalFilename();
+		//파일저장
+		File f = new File(uploadFileName);
+		//파일업로드
+		try {
+			file.transferTo(f);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		roomVo.setRpicture(uploadFileName);
+		
+		
+		roomMapper.insertRoomsWriteDo(roomVo);
+		
+		System.out.println("db 저장 전 uploadFile : " +uploadFileName);
+		
+		
+	
 	}
-
+		
+	
 	//페이징 연구중 by.봉
 //	@Override
 //	public List<RoomVo> roomListAdvanced2(String checkIn, String checkOut, String rtype, int rroom, int rbed,
@@ -124,11 +148,12 @@ public class RoomServiceimpl implements RoomService {
 //		return list;
 //	}
 
-	
+	//숙소 상세 페이지
 	@Override
 	public RoomVo roomSingle(int roomNo) {
 		
 		RoomVo roomVo = roomMapper.roomSingle(roomNo);
+		
 		roomVo.setRoomVoList(roomMapper.findOtherRoom(roomVo));
 		
 		return roomVo;

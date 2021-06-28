@@ -7,7 +7,7 @@
 
 <c:if test="${session_flag==null || session_flag=='fail' }">
 	<script type="text/javascript">
-		alert("로그인을 하셔야 글쓰기가 가능합니다.")
+		alert("로그인을 하셔야 예약이 가능합니다.")
 	</script>
 	<c:redirect url="../user/login" />
 </c:if>
@@ -48,56 +48,7 @@
 </script>
 <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>   -->
 <script type="text/javascript">
-	function searchSubmit() {
-		//location.href="userHostingView.jsp"
-		
-		var rname = $("#rname").val();
-		var rtype = $("#rtype").val();
-		var rpeople = $("#rpeople").val();
-		var rinfo = $("#rinfo").val();
-		//var rpicture = $("#rpicture").val();
-		var rcity = $("#rcity").val();
-		var rprice = $("#rprice").val();
-		var rroom = $("#rroom").val();
-		var rbed = $("#rbed").val();
-		var raddress = $("#raddress").val();
-
-		
-		if (rname == "" || rname == null) {
-			alert("방이름을 입력하세요")
-			return false;
-		}else if (rtype == "" || rtype == null) {
-			alert("방종류를 선택하세요")
-			return false;
-		}else if (rpeople == "" || rpeople == null) {
-			alert("인원수를 선택하세요")
-			return false;
-		}else if (rinfo == "" || rinfo == null) {
-			alert("방정보를 입력하세요")
-			return false;
-		//}else if (rpicture == "" || rpicture == null) {
-			//alert("방사진을 등록하세요")
-			//return false;
-		}else if (rcity == "" || rcity == null) {
-			alert("지역을 선택하세요")
-			return false;
-		}else if (rprice == "" || rprice == null) {
-			alert("가격을 정해주세요")
-			return false;
-		} else if (rroom == "" || rroom == null) {
-			alert("침실수를 선택하세요")
-			alert(rroom)
-			return false;
-		} else if (rbed == "" || rbed ==null) {
-			alert("침대수를 선택하세요")
-			return false;
-		} else if (raddress == "" || raddress ==null) {
-			alert("상세주소를 입력하세요")
-			return false;
-		} else{
-			document.searchForm.submit();
-		}
-	}
+	
 </script>
 
 </head>
@@ -115,9 +66,9 @@
 					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2">
-							<span class="mr-2"><a href="index">Home</a></span> <span>숙소등록</span>
+							<span class="mr-2"><a href="index">Home</a></span> <span>숙소 예약</span>
 						</p>
-						<h1 class="mb-4 bread">숙소등록</h1>
+						<h1 class="mb-4 bread">숙소 예약</h1>
 					</div>
 				</div>
 			</div>
@@ -127,14 +78,14 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
-			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
+			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post">
 
 
 
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방이름</label> <input type="hidden"
-						id="userno" name="userno" value="${session_userno }">
+						id="rname" name="rname" value="${roomVo.rname }">
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id="rname" name="rname">
 					</div>
@@ -145,16 +96,7 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방종류</label>
 					<div class="col-sm-7">
-						<select name="rtype" id="rtype">
-
-							<option value="아파트">아파트</option>
-		                     <option value="집">주택</option>
-		                     <option value="공동주택">공동주택</option>
-		                     <option value="호탤">호텔</option>
-		                     <option value="레지던스">레지던스</option>
-		                     <option value="호스텔">호스텔</option>
-	                    	<option value="기타">기타</option>
-
+						<select name="rtype">
 							<option value="apt">아파트</option>
 		                     <option value="house">주택</option>
 		                     <option value="walkup">공동주택</option>
@@ -162,7 +104,6 @@
 		                     <option value="residence">레지던스</option>
 		                     <option value="hostel">호스텔</option>
 	                    	<option value="etc">기타</option>
-
 						</select>
 					</div>
 				</div>
@@ -195,8 +136,7 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">사진</label>
 					<div class="col-sm-7">
-						<input type="file" class="" style="width: 100%;" id="file"	name="file">
-						<a herf="/upload/${roomVo.rpicture}" download>${roomVo.rpicture}</a>
+						<input type="file" class="" style="width: 100%;" id="file"	name="rpicture">
 					</div>
 
 
@@ -271,7 +211,7 @@
 					</div>
 				</div>
 
-				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
+				<input type="button" value="예약하기" class="btn btn-primary py-3 px-5"
 					onclick="searchSubmit();">
 				<input type="button" value="취소"
 					class="btn btn-primary py-3 px-5" onclick="history.back()">

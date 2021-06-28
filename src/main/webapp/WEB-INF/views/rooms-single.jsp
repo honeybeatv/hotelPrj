@@ -88,8 +88,11 @@
 									<li><span>침대 갯수: </span>${roomVo.rbed }개</li>
 									<li><span>도시: </span>${roomVo.rcity }</li>
 								</ul>
+								
 							</div>
-						</div>			          								
+						</div>		
+						<a href="예약페이지링크 " class="btn-custom">
+						<button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;">예약하기</button>	          								
 		          		<div class="col-md-12 room-single ftco-animate mb-5 mt-5">
 		          			<h4 class="mb-4">이전 / 이후</h4>
 		          			<div class="row">

@@ -1,5 +1,6 @@
 package com.site.controller;
 
+import java.io.File;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
@@ -12,9 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.RoomService;
+
 import com.site.vo.RoomVo;
+
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,28 +31,62 @@ public class RoomController {
 	@Autowired
 	RoomService roomService;
 	
+	@RequestMapping("/fileDo")
+	   public String fileDo(RoomVo roomVo, @RequestPart MultipartFile file) {
+
+	      
+	      //2. 파일첨부 되는 것 체크
+	      
+	      // 파일저장위치
+	      String fileUrl = "E:/0_koreavc/00_subclass/java/hotelPrj/src/main/resources/static/upload/";
+	      
+	      // 파일이름중복방지
+	      long time = System.currentTimeMillis();
+	      String uploadFileName = time + "_" + file.getOriginalFilename(); 
+	      
+	      // 파일저장
+	      File f = new File(fileUrl + uploadFileName);   
+	      // 파일전송
+	      try {
+	         file.transferTo(f);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      // 파일이름 삽입
+	      roomVo.setRpicture(uploadFileName);
+	      
+	      //1. 파일첨부 내용 넘어오는것 체크
+//	      System.out.println("파일업로드 유저 이름 : " + roomVo.getUserid());
+//	      System.out.println("파일업로드 btitle : " + roomVo.getBtitle());
+//	      System.out.println("파일업로드 bcontent : " + roomVo.getBcontent());
+	      System.out.println("파일업로드 파일 이름 : " + file.getOriginalFilename());
+	      System.out.println("파일업로드 변경된 파일 이름 : " + uploadFileName);
+
+	      // - 파일업로드   -db저장
+	      
+	      return "fileUpload";
+	   }
+	
    @RequestMapping("/index")
    public String index() {
       return "/index";
    }
-
    
+
+   //숙소 상세정보 보기
    @RequestMapping("/rooms-single")
    public String roomSingle(@RequestParam(value="roomNo") int roomNo, Model model) {
-	   
 //	   roomService.roomSingle(roomNo);
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
-	   System.out.println(roomNo);
-	   log.debug("ROOM :: {}", roomVo);
+	  
 	   
 	   model.addAttribute("roomVo", roomVo);
 	   
       return "/rooms-single";
    }
-   
   
    
-   @RequestMapping("/roomsList") //쓰기페이지 호출
+   @RequestMapping("/roomsList") 
   	public String roomsList() {
   		return "/roomsList";
   	}
@@ -59,14 +98,14 @@ public class RoomController {
 	}
 
 	@RequestMapping("/roomsWriteDo") //쓰기저장 호출
-	public String roomsWriteDo(Model model,RoomVo roomVo) {
+	public String roomsWriteDo(Model model,RoomVo roomVo,@RequestPart MultipartFile file) throws Exception{
 
 		
 		System.out.println("1");
-		roomService.roomsWriteDo(roomVo);	// 여기서 왜 0을 쳐 가지고오지 next val인데
+		roomService.roomsWriteDo(roomVo, file);	// 
 		model.addAttribute("roomVo",roomVo);
 		System.out.println(roomVo.getRoomNo());
-		
+
 		return "redirect:/user/userHostingView?userno="+roomVo.getUserno();
 	}
 

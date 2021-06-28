@@ -57,17 +57,21 @@ public class AdminController {
 		model.addAttribute("adminVo", adminVo);
 		
 		System.out.println("# administration category_Informaton adminInfoModify userid : " + adminVo.getUserid() + " #");
+		System.out.println(adminVo);
 		
 		return "/admin/adminInfoModify";
 	}
 
 	@RequestMapping("/adminInfoModifyDo") // 관리자 기본정보 수정페이지 실행
-	public String adminInfoModifyDo(UserVo adminVo) {
+	public String adminInfoModifyDo(Model model, UserVo adminVo, @RequestParam("userno") int userno) {
 		adminService.AdminInfoModifyDo(adminVo);
+		model.addAttribute("adminVo", adminVo);
 		
 		System.out.println("# administration category_Informaton adminInfoModifyDo userid : " + adminVo.getUserid() + " #");
+		System.out.println(adminVo);
 		
-		return "redirect:/admin/adminInfoView?userno="+ adminVo.getUserno();
+//		return "redirect:/admin/adminInfoView?userno="+ adminVo.getUserno();
+		return "/admin/adminInfoView";
 	}
 	@RequestMapping("/administrationUsersView")	// 관리자 기본정보 페이지 호출
 	public String administrationUsersView(Model model, @RequestParam(value="page", defaultValue="1") int page) {

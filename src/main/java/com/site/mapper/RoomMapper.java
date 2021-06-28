@@ -22,7 +22,8 @@ public interface RoomMapper {
 
 	//글쓰기
 	void insertRoomsWriteDo(RoomVo roomVo);
-
+	
+	// 방 상세정보
 	RoomVo roomSingle(int roomNo);
 	
 	//페이징용 게시글 카운트
