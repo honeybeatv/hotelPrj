@@ -30,24 +30,31 @@ public class RoomController {
    public String index() {
       return "/index";
    }
-
    
+
+   //숙소 상세정보 보기
    @RequestMapping("/rooms-single")
    public String roomSingle(@RequestParam(value="roomNo") int roomNo, Model model) {
-	   
 //	   roomService.roomSingle(roomNo);
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
-	   System.out.println(roomNo);
-	   log.debug("ROOM :: {}", roomVo);
+	  
 	   
 	   model.addAttribute("roomVo", roomVo);
 	   
       return "/rooms-single";
    }
    
+   @RequestMapping("/roomsReserve")
+   public String roomsReserve(Model model) {
+	   
+	   RoomVo roomVo = roomService.roomsReserve();
+	   
+	   return "/user/mypage";
+   }
+   
   
    
-   @RequestMapping("/roomsList") //쓰기페이지 호출
+   @RequestMapping("/roomsList") 
   	public String roomsList() {
   		return "/roomsList";
   	}

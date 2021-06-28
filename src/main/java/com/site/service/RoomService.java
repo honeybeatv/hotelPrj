@@ -20,7 +20,8 @@ public interface RoomService {
 	
 	//rooms 숙소 등록
 	void roomsWriteDo(RoomVo roomVo); //void return타입이 필요없음
-
+	
+	//숙소 상세페이지
 	RoomVo roomSingle(int roomNo);
 	
 

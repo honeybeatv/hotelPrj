@@ -103,7 +103,7 @@
 					<c:forEach var="roomVo" items="${userHostingViewMap.userHostingViewList }">
 						<form action="userHostingModify" method="post">
 							<tr id="${roomVo.roomNo}">
-								<td><a href="*숙소링크(상세페이지)*bno=${roomVo.roomNo}">${roomVo.rname}</a></td>
+								<td><a href="/room/rooms-single?roomNo=${roomVo.roomNo}">${roomVo.rname}</a></td>
 								<td>${roomVo.rcity}</td>
 								<td>${roomVo.rtype}</td>
 								<td>${roomVo.rpeople}</td>

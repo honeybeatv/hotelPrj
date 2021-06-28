@@ -97,7 +97,7 @@ public class RoomServiceimpl implements RoomService {
 //		return list;
 //	}
 
-	
+	//숙소 상세 페이지
 	@Override
 	public RoomVo roomSingle(int roomNo) {
 		
