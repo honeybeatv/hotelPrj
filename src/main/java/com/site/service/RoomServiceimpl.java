@@ -1,10 +1,14 @@
 package com.site.service;
 
+import java.io.File;
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.site.mapper.RoomMapper;
 import com.site.vo.RoomVo;
@@ -46,14 +50,39 @@ public class RoomServiceimpl implements RoomService {
 
    //room 리스트 페이지 호출
    @Override
-   public List<RoomVo> roomsListAll() {
-      List<RoomVo> roomlist = roomMapper.selectroomsListAll();
-      return roomlist;
+   public Map<String,Object> roomsListAll(int page) {
+      Map<String,Object> map = new HashMap<String,Object>();
+		
+		int limit = 6; // 페이지당 몇개의 게시물
+		
+		int startrow = (page-1)*limit + 1;
+		int endrow = startrow+limit-1;
+		List<RoomVo> list = roomMapper.selectroomsListAll(startrow,endrow);
+		int listCount=0; // 총게시글 수
+		listCount = roomMapper.selectRoomCount();
+		//하단 넘버링 최대페이지
+		int maxPage = (int)((double)listCount/limit+0.95);
+		//하단 넘버링 시작페이지
+		int startPage = (((int) ((double)page / 10 + 0.95)) - 1) * 10 + 1;
+		//하단 끝 넘버링페이지
+		int endPage = maxPage;
+		// 1,2,3,4,5,6,7,8,9,10 -> 10개가 모두 있을 경우는 10을 endPage에 넣어줌.
+		if (endPage>startPage+10-1) {
+			endPage=startPage+10-1;
+		}
+		// page(현재페이지), listCount,startPage,endPage,maxPage 5개 리턴해서 보내줌
+		map.put("listCount", listCount);
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		map.put("maxPage", maxPage);
+		map.put("page", page);
+		map.put("list", list);
+		return map;
    }
    
    //rooms 숙소 등록
 	@Override
-	public void roomsWriteDo(RoomVo roomVo) {
+	public void roomsWriteDo(RoomVo roomVo,MultipartFile file) {
 	
 //		int userNo = userVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 
 		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 이게 6이 뽑혀야하는데 0이나오네?
@@ -67,11 +96,33 @@ public class RoomServiceimpl implements RoomService {
 		System.out.println("userNo ==> " + userNo);
 		
 		
-		roomMapper.insertRoomsWriteDo(roomVo);
 		System.out.println("roomVo ==> " + roomVo);	//
 		
+		String fileUrl = "C:/Users/pom53/git/hotelPrj/src/main/resources/static/upload/";
+		//중복 방지를 위한 파일명 변경
+		long time = System.currentTimeMillis();
+		String uploadFileName = time+"_"+file.getOriginalFilename();
+		//파일저장
+		File f = new File(fileUrl + uploadFileName);
+		//파일업로드
+		try {
+			file.transferTo(f);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		roomVo.setRpicture(uploadFileName);
+		
+		
+		roomMapper.insertRoomsWriteDo(roomVo);
+		
+		System.out.println("db 저장 전 uploadFile : " +uploadFileName);
+		
+		
+	
 	}
-
+		
+	
 	//페이징 연구중 by.봉
 //	@Override
 //	public List<RoomVo> roomListAdvanced2(String checkIn, String checkOut, String rtype, int rroom, int rbed,
@@ -102,6 +153,7 @@ public class RoomServiceimpl implements RoomService {
 	public RoomVo roomSingle(int roomNo) {
 		
 		RoomVo roomVo = roomMapper.roomSingle(roomNo);
+		
 		roomVo.setRoomVoList(roomMapper.findOtherRoom(roomVo));
 		
 		return roomVo;
