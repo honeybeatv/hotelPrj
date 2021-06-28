@@ -18,7 +18,7 @@ public interface RoomMapper {
 			int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
 
 	//room 리스트 페이지 호출
-	List<RoomVo> selectroomsListAll();
+	List<RoomVo> selectroomsListAll(int startrow, int endrow);
 
 	//글쓰기
 	void insertRoomsWriteDo(RoomVo roomVo);
@@ -34,6 +34,8 @@ public interface RoomMapper {
 				int endrow);
 
 		List<RoomVo> findOtherRoom(RoomVo roomVo);
+
+		int selectRoomCount();
 
 }
 

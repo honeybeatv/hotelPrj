@@ -19,7 +19,15 @@
 
 	<!-- 전체 room 정보 가져오기 -->
 	<select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
-   		 select * from room order by roomNo desc
+   		 <![CDATA[
+	 select * from
+	(select rownum as rnum, a.* from
+	(select * from room) a) where rnum >=#{startrow} and rnum <=#{endrow}
+	]]>
+	</select>
+	<!-- 전체 room 정보 가져오기 -->
+	<select id="selectRoomCount" resultType="int">
+   		 select count(*) from room
 	</select>
 
 	<!-- 글쓰기 저장 -->
