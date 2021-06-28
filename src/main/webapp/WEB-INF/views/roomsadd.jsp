@@ -145,14 +145,14 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방종류</label>
 					<div class="col-sm-7">
-						<select name="rtype">
-							<option value="apt">아파트</option>
-		                     <option value="house">주택</option>
-		                     <option value="walkup">공동주택</option>
-		                     <option value="hotel">호텔</option>
-		                     <option value="residence">레지던스</option>
-		                     <option value="hostel">호스텔</option>
-	                    	<option value="etc">기타</option>
+						<select name="rtype" id="rtype">
+							<option value="아파트">아파트</option>
+		                     <option value="집">주택</option>
+		                     <option value="공동주택">공동주택</option>
+		                     <option value="호탤">호텔</option>
+		                     <option value="레지던스">레지던스</option>
+		                     <option value="호스텔">호스텔</option>
+	                    	<option value="기타">기타</option>
 						</select>
 					</div>
 				</div>
