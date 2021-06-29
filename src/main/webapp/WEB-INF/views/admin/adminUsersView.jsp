@@ -74,8 +74,8 @@
 
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-11" style="display:inline-block;" >
-            <form class="bg-white p-2 " width="100%" method="post">
-				<table width="90%" >
+            <form class="bg-white p-2 " width="80%" method="post">
+				<table width="100%" >
 				
 					<tr>
 						<td width="10%">userNo</td>
