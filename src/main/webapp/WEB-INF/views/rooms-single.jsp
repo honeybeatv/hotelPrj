@@ -86,7 +86,7 @@
 							<div class="single-slider owl-carousel">
 								<div class="item">
 									<div class="room-img"
-										style="background-image: url(../static/upload/${roomVo.rpicture});"></div>
+										style="background-image: url(../static/upload/${roomVo.rpicture1});"></div>
 								</div>
 								<div class="item">
 									<div class="room-img"
@@ -181,7 +181,7 @@
 										<div class="room">
 											<a href="/room/rooms-single?roomNo=${item.roomNo }"
 												class="img img-2 d-flex justify-content-center align-items-center"
-												style="background-image: url(../static/upload/${item.rpicture});">
+												style="background-image: url(../static/upload/${item.rpicture1});">
 												<div class="icon d-flex justify-content-center align-items-center">
 													<span class="icon-search2"></span>
 												</div>
@@ -195,6 +195,7 @@
 														class="per">/ 일</span>
 												</p>
 												<hr>
+												<!--  -->
 												<p class="pt-1">
 													<a href="/room/rooms-single?roomNo=${item.roomNo }"
 														class="btn-custom"> <c:if

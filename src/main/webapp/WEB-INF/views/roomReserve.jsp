@@ -86,7 +86,7 @@
 							<div class="single-slider owl-carousel">
 								<div class="item">
 									<div class="room-img"
-										style="background-image: url(../static/upload/${roomVo.rpicture});"></div>
+										style="background-image: url(../static/upload/${roomVo.rpicture1});"></div>
 								</div>
 								<div class="item">
 									<div class="room-img"
