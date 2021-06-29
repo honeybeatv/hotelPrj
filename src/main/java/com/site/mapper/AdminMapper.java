@@ -14,9 +14,20 @@ public interface AdminMapper {
 
 	int selectUserCount();
 
-	// 관리자 회원 삭제
+	// *관리자 회원 삭제*
+	
+	// 1단계. 예약내역 삭제
+	int deleteAdminReservationDeleteList(int userno);
+	int selectAdminReservationDeleteCount(int userno);
+	// 2단계. 호스트 상품 삭제
+	int deleteAdminHostingDeleteList(int userno);
+	int selectAdminHostingDeleteCount(int userno);
+	// 3단계. 회원 삭제 
 	int deleteAdminUsersDeleteList(UserVo userVo);
 	int selectAdminUsersDeleteCount(UserVo userVo);
+
+
+
 
 
 }

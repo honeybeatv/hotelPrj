@@ -14,7 +14,10 @@ public interface AdminService {
 	void adminInfoModifyDo(UserVo adminVo);
 	
 	Map<String, Object> userList(int uadmin, int page);
+	
 	// 관리자 회원 삭제
-	Map<String, Object> adminUsersDelete(UserVo userVo);
+	Map<String, Object> adminReservationDelete(int userno); // 예약 내역 삭제
+	Map<String, Object> adminHostingDelete(int userno); 	// 호스팅 상품 삭제
+	Map<String, Object> adminUsersDelete(UserVo userVo); 	// 회원 삭제
 
 }

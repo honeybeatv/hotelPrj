@@ -33,8 +33,50 @@
 	   select count(*) from user1
 	</select>
   
+    <!-- 관리자 회원 삭제용 예약내역 삭제 -->
+  	<delete id="deleteAdminReservationDeleteList">
+	  	<![CDATA[
+	  		DELETE reserve 
+			 WHERE userno=#{userno}
+			    or  re_no in (SELECT re.re_no
+			                    FROM reserve re, room ro
+			                   WHERE ro.userno=#{userno}
+			                     and ro.roomno=re.roomno)
+	  	]]>
+  	</delete>
+  	
+  	<!-- 관리자 회원 삭제용 예약내역 삭제 결과확인용 -->
+  	<select id="selectAdminReservationDeleteCount" resultType="int">
+	  	<![CDATA[
+	  		SELECT count(*) 
+			  FROM reserve 
+			 WHERE userno=#{userno}
+			    or  re_no in (SELECT re.re_no
+			                    FROM reserve re, room ro
+			                   WHERE ro.userno=#{userno}
+			                     and ro.roomno=re.roomno)
+		]]>  	
+  	</select>
+  	
+  	<!-- 관리자 회원 삭제용 호스팅 상품 삭제 -->
+  	<delete id="deleteUserHostingDeleteList">
+	  	<![CDATA[
+	  		DELETE room 
+	  		 WHERE userno=#{userno}
+	  	]]>
+  	</delete>
+  	
+  	<!-- 관리자 회원 삭제용 호스팅 상품 삭제 결과확인용 -->
+  	<select id="deleteAdminHostingDeleteList" resultType="int">
+	  	<![CDATA[
+			SELECT count(*) 
+			  FROM room 
+			 WHERE userno=#{userno}
+		]]>  	
+  	</select>
+  	
     <!-- 관리자 회원 삭제 -->
-  	<delete id="deleteAdminUsersDeleteList">
+  	<delete id="selectAdminHostingDeleteCount">
 	  	<![CDATA[
 	  		DELETE user1 
 	  		 WHERE userno=#{userno}
