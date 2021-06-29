@@ -111,7 +111,9 @@ public class RoomServiceimpl implements RoomService {
 			e.printStackTrace();
 		}
 		
-		roomVo.setRpicture(uploadFileName);
+		roomVo.setRpicture1(uploadFileName);
+		roomVo.setRpicture2(uploadFileName);
+		roomVo.setRpicture3(uploadFileName);
 		
 		
 		roomMapper.insertRoomsWriteDo(roomVo);

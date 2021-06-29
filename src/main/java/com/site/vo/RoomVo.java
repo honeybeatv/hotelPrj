@@ -15,7 +15,9 @@ public class RoomVo {
 	private String rtype;
 	private int rpeople;
 	private String rinfo;
-	private String rpicture;
+	private String rpicture1;
+	private String rpicture2;
+	private String rpicture3;
 	private String rcity;
 	private int rprice;
 	private int rroom;
