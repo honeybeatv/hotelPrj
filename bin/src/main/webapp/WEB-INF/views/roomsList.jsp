@@ -131,7 +131,9 @@
 					<td>${roomVo.rtype}</td>
 					<td>${roomVo.rpeople}</td>
 					<td>${roomVo.rinfo}</td>
-					<td>${roomVo.rpicture}</td>
+					<td>${roomVo.rpicture1}</td>
+					<td>${roomVo.rpicture2}</td>
+					<td>${roomVo.rpicture3}</td>
 					<td>${roomVo.rcity}</td>
 					<td>${roomVo.rprice}</td>
 					<td>${roomVo.rroom}</td>

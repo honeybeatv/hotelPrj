@@ -216,7 +216,7 @@ ul {
 								style="background-image: url(/static/upload/${list.rpicture1};">
 								<div
 									class="icon d-flex justify-content-center align-items-center">
-
+<!--  -->
 									<span class="icon-search2"></span>
 								</div>
 							</a>
