@@ -204,6 +204,8 @@ public class UserController {
 	@RequestMapping("/userHostingDelete") // 회원 호스팅 상품 삭제
 	@ResponseBody
 	public Map<String, Object> userHostingDelete(RoomVo roomVo){
+		userService.userReservationDelete(roomVo.getRoomNo());
+		
 		System.out.println("# mypage category_Hosting Delete #");
 		return userService.userHostingDelete(roomVo);
 	}

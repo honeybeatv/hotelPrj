@@ -21,21 +21,25 @@
   
 	<!-- 회원 기본정보 호출 -->
   	<select id="selectUserInfoList" resultType="com.site.vo.UserVo">
-  		SELECT * 
-  		  FROM user1 
-  		 WHERE userno=#{userno}
+	  	<![CDATA[
+	  		SELECT * 
+	  		  FROM user1 
+	  		 WHERE userno=#{userno}
+	  	]]>
   	</select>
   	
   	<!-- 회원 기본정보 수정 -->
   	<update id="updateUserInfoModifyDo">
-	  	UPDATE user1 
-	  	   SET name=#{name}		, 
-	  	   	   userid=#{userid}	, 
-	  	   	   userpw=#{userpw}	, 
-	  	   	   uphone=#{uphone}	, 
-	  	   	   uadmin=#{uadmin}	, 
-	  	   	   uemail=#{uemail}
-	  	 WHERE userno=#{userno}
+	  	<![CDATA[
+		  	UPDATE user1 
+		  	   SET name=#{name}		, 
+		  	   	   userid=#{userid}	, 
+		  	   	   userpw=#{userpw}	, 
+		  	   	   uphone=#{uphone}	, 
+		  	   	   uadmin=#{uadmin}	, 
+		  	   	   uemail=#{uemail}
+		  	 WHERE userno=#{userno}
+		]]>
   	</update>
 
 	<!-- 회원 예약한 예약정보 호출 -->
@@ -76,18 +80,40 @@
 		  	 WHERE roomno=#{roomNo}
 	  	 ]]>
   	</update>
+
+  	<!-- 회원 호스팅 상품 삭제를 위한 예약내역 삭제 -->
+  	<delete id="deleteUserReservationDeleteList">
+	  	<![CDATA[
+	  		DELETE reserve 
+	  		 WHERE roomno=#{roomNo}
+	  	]]>
+  	</delete>
+  	
+  	<!-- 회원 호스팅 상품 삭제를 위한 예약내역 삭제 결과확인용 -->
+  	<select id="selectUserReservationDeleteCount" resultType="int">
+	  	<![CDATA[
+			SELECT count(*) 
+			  FROM reserve 
+			 WHERE roomno=#{roomNo}
+		]]>  	
+  	</select>
   	
   	<!-- 회원 호스팅 상품 삭제 -->
   	<delete id="deleteUserHostingDeleteList">
-  		DELETE room 
-  		 WHERE roomno=#{roomNo}
+	  	<![CDATA[
+	  		DELETE room 
+	  		 WHERE roomno=#{roomNo}
+	  	]]>
   	</delete>
   	
   	<!-- 회원 호스팅 상품 삭제 결과확인용 -->
   	<select id="selectUserHostingDeleteCount" resultType="int">
-		SELECT count(*) 
-		  FROM room 
-		 WHERE roomno=#{roomNo}  	
+	  	<![CDATA[
+			SELECT count(*) 
+			  FROM room 
+			 WHERE roomno=#{roomNo}
+		]]>  	
   	</select>
+
 
   </mapper>

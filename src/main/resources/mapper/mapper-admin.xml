@@ -8,21 +8,108 @@
   
 	<!-- 회원 기본정보 호출 -->
   	<select id="selectUserInfo" resultType="com.site.vo.UserVo">
-  		SELECT * FROM user1 WHERE userno=#{userno}
+	  	<![CDATA[
+	  		SELECT * 
+	  		  FROM user1 
+	  		 WHERE userno=#{userno}
+	  	]]>
   	</select>
   	
   	<!-- 전체리스트 호출 -->
 	<select id="selectUserList" resultType="com.site.vo.UserVo">
 	    <![CDATA[
-		    select * from
-			(select rownum as rnum,a.* from
-			(select * from user1 where uadmin=0 order by userno desc) a)
-			where rnum>=#{startrow} and rnum<=#{endrow}
+		    SELECT * 
+		      FROM (SELECT rownum as rnum, a.* 
+		              FROM (SELECT * 
+		                      FROM user1 
+		                     WHERE uadmin!=#{uadmin} 
+		                  ORDER BY userno asc) 		a )
+			WHERE rnum>=#{startrow} and rnum<=#{endrow}
 	    ]]>
 	</select>
-	<!-- 전체게시글 수 -->
+	
+	<!-- 전체 일반회원 호출 -->
 	<select id="selectUserCount" resultType="int">
 	   select count(*) from user1
 	</select>
   
+    <!-- 관리자 회원 삭제용 예약내역 삭제 -->
+  	<delete id="deleteAdminReservationDeleteList">
+	  	<![CDATA[
+	  		DELETE reserve 
+			 WHERE userno=#{userno}
+			    or  re_no in (SELECT re.re_no
+			                    FROM reserve re, room ro
+			                   WHERE ro.userno=#{userno}
+			                     and ro.roomno=re.roomno)
+	  	]]>
+  	</delete>
+  	
+  	<!-- 관리자 회원 삭제용 예약내역 삭제 결과확인용 -->
+  	<select id="selectAdminReservationDeleteCount" resultType="int">
+	  	<![CDATA[
+	  		SELECT count(*) 
+			  FROM reserve 
+			 WHERE userno=#{userno}
+			    or  re_no in (SELECT re.re_no
+			                    FROM reserve re, room ro
+			                   WHERE ro.userno=#{userno}
+			                     and ro.roomno=re.roomno)
+		]]>  	
+  	</select>
+  	
+  	<!-- 관리자 회원 삭제용 호스팅 상품 삭제 -->
+  	<delete id="deleteAdminHostingDeleteList">
+	  	<![CDATA[
+	  		DELETE room 
+	  		 WHERE userno=#{userno}
+	  	]]>
+  	</delete>
+  	
+  	<!-- 관리자 회원 삭제용 호스팅 상품 삭제 결과확인용 -->
+  	<select id="selectAdminHostingDeleteCount" resultType="int">
+	  	<![CDATA[
+			SELECT count(*) 
+			  FROM room 
+			 WHERE userno=#{userno}
+		]]>  	
+  	</select>
+  	
+    <!-- 관리자 회원 삭제 -->
+  	<delete id="deleteAdminUsersDeleteList">
+	  	<![CDATA[
+	  		DELETE user1 
+	  		 WHERE userno=#{userno}
+	  	]]>
+  	</delete>
+  	
+  	<!-- 관리자 회원 삭제 결과확인용 -->
+  	<select id="selectAdminUsersDeleteCount" resultType="int">
+	  	<![CDATA[
+			SELECT count(*) 
+			  FROM user1 
+			 WHERE userno=#{userno}
+		]]>  	
+  	</select>
+  	
+  	<!-- 전체게시글 수 -->
+	<select id="selectHostingCount" resultType="com.site.vo.HostingVO">
+	<![CDATA[
+	    SELECT userno, COUNT(userno) as count
+		from room
+		group by userno
+		]]>
+	</select>
+	
+	
+	<!-- 회원 호스팅 상품정보 호출 -->
+  	<select id="selectUserHostingViewList" resultType="com.site.vo.RoomVo">
+  		<![CDATA[
+	  		SELECT * 
+	  		  FROM room 
+	  		 WHERE userno=#{userno}
+	  	  ORDER BY roomno asc
+		]]>
+  	</select>
+  	
   </mapper>

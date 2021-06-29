@@ -3,7 +3,32 @@
 
 <mapper namespace="com.site.mapper.ReserveMapper">
 
+<select id="selectReserveListAll" resultType="com.site.vo.ReserveVo">
 
+	select * FROM RESERVE
+	
+</select>
+
+<select id="roomReserve" resultType="com.site.vo.RoomVo">
+	
+SELECT * FROM room WHERE ROOMNO=#{roomNo}
+
+		
+</select>
+
+<select id="findOtherRoom" resultType="com.site.vo.ReserveVo">
+	
+	SELECT * 
+  		  FROM reserve 
+  		 WHERE re_no=#{re_no}
+		
+</select>
+
+<select id="userInfo" resultType="com.site.vo.UserVo">
+	
+	SELECT * FROM USER1 WHERE userno=#{userno}
+		
+</select>
 
 
 
