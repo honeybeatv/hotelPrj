@@ -80,6 +80,7 @@ public class AdminController {
 		
 		return "/admin/adminUsersView";
 	}
+
 	@RequestMapping("/adminUsersHosting")	// 관리자 기본정보 페이지 호출
 	public String adminUsersHosting(Model model) {
 		Map<String,Object> map = null;
@@ -88,6 +89,7 @@ public class AdminController {
 		
 		return "/admin/adminUsersHosting";
 	}
+
 	@RequestMapping("/adminUserHostingView")	// 회원 호스팅 상품 페이지 호출
 	public String adminUserHostingView(Model model , @RequestParam("userno") int userno) {
 		Map<String, Object> adminUserHostingViewMap = adminService.adminUserHostingViewList(userno);
