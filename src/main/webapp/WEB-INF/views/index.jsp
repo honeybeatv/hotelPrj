@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Deluxe - Free Bootstrap 4 Template by Colorlib</title>
+<title>Deluxe</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -96,7 +96,9 @@ ul {
 				<div
 					class="row no-gutters slider-text align-items-center justify-content-center">
 					<div class="col-md-12 ftco-animate text-center">
-						<div class="text mb-5 pb-3"></div>
+						<div class="text mb-5 pb-3">
+							<h1 class="mb-3">Deluxe</h1>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -209,9 +211,9 @@ ul {
 				<c:forEach var="list" items="${map.list }">
 					<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 						<div class="room" id="room">
-							<a href="rooms"
+							<a href="../room/rooms-single?roomNo=${list.roomNo }"
 								class="img d-flex justify-content-center align-items-center"
-								style="background-image: url(/static/images/room-1.jpg);">
+								style="background-image: url(/static/upload/${list.rpicture};">
 								<div
 									class="icon d-flex justify-content-center align-items-center">
 
@@ -220,7 +222,7 @@ ul {
 							</a>
 							<div class="text p-3 text-center">
 								<h3 class="mb-3">
-									<a href="rooms">${list.rname }</a>
+									<a>${list.rname }</a>
 								</h3>
 								<p>
 									<span class="price mr-2">${list.rprice }</span> <span
@@ -231,12 +233,6 @@ ul {
 									<li>위치 : ${list.rcity }</li>
 									<li>권장인원수 : ${list.rpeople }</li>
 								</ul>
-								<hr>
-								<p class="pt-1">
-									<a href="../room/rooms-single?roomNo=${list.roomNo }"
-										class="btn-custom">View Room Details <span
-										class="icon-long-arrow-right"></span></a>
-								</p>
 							</div>
 						</div>
 					</div>
@@ -266,6 +262,7 @@ ul {
 			</div>
 		</div>
 	</section>
+
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<%--   <%@ include file="/WEB-INF/views/include/footer.jsp" %> --%>
 

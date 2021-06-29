@@ -14,4 +14,9 @@ public interface ReserveMapper {
 
 	List<ReserveVo> selectReserveListAll();
 
+	List<ReserveVo> findOtherRoom(ReserveVo reserveVo);
+
+	RoomVo roomReserve(int roomNo);
+
+
 }

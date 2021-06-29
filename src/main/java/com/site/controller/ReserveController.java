@@ -21,7 +21,7 @@ public class ReserveController {
 	ReserveService reserveService;
 	
 	
-	//숙소 예약 페이지
+	//숙소 전체 예약 리스트
 	@RequestMapping("/reserveList")
 	public String reserveList(Model model) {
 		
@@ -32,6 +32,20 @@ public class ReserveController {
 		
 		model.addAttribute("list", list);
 		return "/reserveList";
+	}
+	
+	// 숙소 
+	@RequestMapping("/roomReserve")
+	public String roomReserve(@RequestParam(value="roomNo") int roomNo, Model model) {
+		
+		RoomVo roomVo = reserveService.roomReserve(roomNo);
+		
+		System.out.println("roomVo : " + roomVo);
+		
+		model.addAttribute("roomVo", roomVo);
+		
+		
+		return "/roomReserve";
 	}
 	 
 	

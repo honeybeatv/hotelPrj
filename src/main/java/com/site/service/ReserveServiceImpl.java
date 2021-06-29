@@ -15,14 +15,26 @@ public class ReserveServiceImpl implements ReserveService {
 	@Autowired
 	ReserveMapper reserveMapper;
 
-	
-
 
 
 	@Override
 	public List<ReserveVo> reserveListAll() {
 		List<ReserveVo> list = reserveMapper.selectReserveListAll();
 		return list;
+	}
+
+
+
+
+	@Override
+	public RoomVo roomReserve(int roomNo) {
+		
+		RoomVo roomVo = reserveMapper.roomReserve(roomNo);
+		System.out.println("roomVo : " + roomVo);
+
+		//roomVo.setReserveVoList(reserveMapper.findOtherRoom(roomVo));
+
+		return roomVo;
 	}
 
 }

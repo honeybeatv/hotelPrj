@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Deluxe - Free Bootstrap 4 Template by Colorlib</title>
+<title>Deluxe</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,6 +34,16 @@
 <link rel="stylesheet" href="../static/css/flaticon.css">
 <link rel="stylesheet" href="../static/css/icomoon.css">
 <link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/contact.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -57,8 +67,7 @@
 					<div class="text">
 						<p class="breadcrumbs mb-2"
 							data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-							<span class="mr-2"><a href="index">Home</a></span> <span
-								class="mr-2"><a href="rooms">Room</a></span> <span>Room
+							<span class="mr-2"><a href="/">Home</a></span> <span>Room
 								Details</span>
 						</p>
 						<h1 class="mb-4 bread">${roomVo.rname }</h1>
@@ -77,7 +86,7 @@
 							<div class="single-slider owl-carousel">
 								<div class="item">
 									<div class="room-img"
-										style="background-image: url(../static/images/room-1.jpg);"></div>
+										style="background-image: url(../static/upload/${roomVo.rpicture});"></div>
 								</div>
 								<div class="item">
 									<div class="room-img"
@@ -107,12 +116,11 @@
 
 							</div>
 						</div>
-						
+
 						<div id="contact">
 							<button type="button" class="btn btn-info btn"
-								data-toggle="modal" data-target="#contact-modal"> 예약 하기</button>
+								data-toggle="modal" data-target="#contact-modal">예약하기</button>
 						</div>
-						
 						<div id="contact-modal" class="modal fade" role="dialog">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -123,16 +131,12 @@
 									<form id="contactForm" name="contact" role="form">
 										<div class="modal-body">
 											<div class="form-group">
-												<label for="name">이름</label> <input type="text"
-													name="name" class="form-control">
+												<label for="uname">이름</label> <input type="text"
+													name="uname" class="form-control">
 											</div>
 											<div class="form-group">
-												<label for="email">이메일</label> <input type="email"
-													name="email" class="form-control">
-											</div>
-												<div class="form-group">
-												<label for="phone">전화번호</label> <input type="phone"
-													name="phone" class="form-control">
+												<label for="uphone">전화번호</label> <input type="uphone"
+													name="uphone" class="form-control">
 											</div>
 											<div class="form-group">
 												<label for="#">체크인</label> <input type="text"
@@ -147,22 +151,25 @@
 											readonly>
 											</div>
 											<div class="form-group">
-												<label for="email">금액</label> <input type="email"
-													name="email" class="form-control">
+												<label for="email">이메일</label>
+												<textarea name="email" class="form-control"></textarea>
 											</div>
-											
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default"
-												data-dismiss="modal">취소</button>
-													<button type="button" class="btn btn-default"
-												data-dismiss="modal">예약</button>
-												
+												data-dismiss="modal">Close</button>
+											<input type="submit" class="btn btn-success" id="submit">
 										</div>
 									</form>
 								</div>
 							</div>
 						</div>
+
+						<a href="../reserve/roomReserve<%-- ?roomNo=${roomVo.roomNo } --%>"
+							class="btn-custom">
+							<!-- <button type="submit" class="btn py-3 px-5"
+								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button> -->
+						</a>
 
 
 						<div class="col-md-12 room-single ftco-animate mb-5 mt-5">
@@ -171,20 +178,21 @@
 								<c:forEach var="item" items="${roomVo.roomVoList }">
 									<div class="col-sm col-md-6 ftco-animate">
 										<div class="room">
-											<a href="rooms"
+											<a href="/room/rooms-single?roomNo=${item.roomNo }"
 												class="img img-2 d-flex justify-content-center align-items-center"
-												style="background-image: url(../static/images/room-1.jpg);">
-												<div class="icon d-flex justify-content-center align-items-center">
+												style="background-image: url(../static/upload/${item.rpicture});">
+												<div
+													class="icon d-flex justify-content-center align-items-center">
 													<span class="icon-search2"></span>
 												</div>
 											</a>
 											<div class="text p-3 text-center">
 												<h3 class="mb-3">
-													<a href="#">${item.rtype }</a>
+													<a>${item.rtype }</a>
 												</h3>
 												<p>
 													<span class="price mr-2">${item.rprice }</span> <span
-														class="per">per night</span>
+														class="per">/ 일</span>
 												</p>
 												<hr>
 												<p class="pt-1">
@@ -205,7 +213,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<!-- .col-md-8 -->
 				<div class="col-lg-4 sidebar ftco-animate">
 					<div class="sidebar-box">

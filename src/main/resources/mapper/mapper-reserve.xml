@@ -9,6 +9,21 @@
 	
 </select>
 
+<select id="roomReserve" resultType="com.site.vo.RoomVo">
+	
+SELECT * FROM room WHERE ROOMNO=#{roomNo}
+
+		
+</select>
+
+<select id="findOtherRoom" resultType="com.site.vo.ReserveVo">
+	
+	SELECT * 
+  		  FROM reserve 
+  		 WHERE re_no=#{re_no}
+		
+</select>
+
 
 
 

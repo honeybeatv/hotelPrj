@@ -77,13 +77,7 @@
 				    						<li>상세주소 : ${userReservationList.raddress }</li>
 			    						</ul>
 			    						<hr>
-<<<<<<< HEAD
 			    						<p class="pt-1"><a href="/room/rooms-single/?roomNo=${userReservationList.roomNo} " class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a></p>
-=======
-			    						<p class="pt-1">
-			    							<a href="/room/rooms-single/?roomNo=${userReservationList.roomNo} " class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a>
-			    						</p>
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 		    					</div>
 		    				</div>
 		    			</div>

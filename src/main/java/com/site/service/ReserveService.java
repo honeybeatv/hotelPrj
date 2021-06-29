@@ -10,4 +10,6 @@ public interface ReserveService {
 
 	List<ReserveVo> reserveListAll();
 
+	RoomVo roomReserve(int re_no);
+
 }

@@ -66,7 +66,8 @@
 					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2">
-							<span class="mr-2"><a href="index">Home</a></span> <span>숙소 예약</span>
+							<span class="mr-2"><a href="index">Home</a></span> <span>숙소
+								예약</span>
 						</p>
 						<h1 class="mb-4 bread">숙소 예약</h1>
 					</div>
@@ -75,150 +76,56 @@
 		</div>
 	</div>
 
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="row">
+						<div class="col-md-12 ftco-animate">
+							<h2 class="mb-4">${roomVo.rname }</h2>
+							<div class="single-slider owl-carousel">
+								<div class="item">
+									<div class="room-img"
+										style="background-image: url(../static/upload/${roomVo.rpicture});"></div>
+								</div>
+								<div class="item">
+									<div class="room-img"
+										style="background-image: url(../static/images/room-2.jpg);"></div>
+								</div>
+								<div class="item">
+									<div class="room-img"
+										style="background-image: url(../static/images/room-3.jpg);"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
+							<p>${roomVo.rinfo }</p>
+							<div class="d-md-flex mt-5 mb-5">
+								<ul class="list">
+									<li><span>방 타입: </span> ${roomVo.rtype }</li>
+									<li><span>가용인원: </span>${roomVo.rpeople }명</li>
+									<li><span>주소: </span>${roomVo.raddress }</li>
+								</ul>
+								<ul class="list ml-md-5">
+									<li><span>편의 시설: </span> <c:if
+											test="${roomVo.rsmoke ne null }">흡연실</c:if> <c:if
+											test="${roomVo.rpet ne null }">, 반려동물</c:if></li>
+									<li><span>침대 갯수: </span>${roomVo.rbed }개</li>
+									<li><span>도시: </span>${roomVo.rcity }</li>
+								</ul>
 
-	<section class="ftco-section contact-section bg-light" align="center">
-		<div class="col-10" style="display: inline-block;">
-			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post">
+							</div>
+						</div>
 
-
-
-				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방이름</label> <input type="hidden"
-						id="rname" name="rname" value="${roomVo.rname }">
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id="rname" name="rname">
-					</div>
-
-				</div>
-
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방종류</label>
-					<div class="col-sm-7">
-						<select name="rtype">
-							<option value="apt">아파트</option>
-		                     <option value="house">주택</option>
-		                     <option value="walkup">공동주택</option>
-		                     <option value="hotel">호텔</option>
-		                     <option value="residence">레지던스</option>
-		                     <option value="hostel">호스텔</option>
-	                    	<option value="etc">기타</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">인원수</label>
-					<div class="col-sm-7">
-						<select name="rpeople" id="rpeople">
-						<option value="" selected>인원수</option>
-							<option value="1">1명</option>
-							<option value="2">2명</option>
-							<option value="3">3명</option>
-							<option value="4">4명</option>
-							<option value="5">5명</option>
-							<option value="6">6명 이상</option>
-						</select>
 					</div>
 				</div>
-
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방정보</label>
-					<div class="col-sm-7">
-						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
-					</div>
-				</div>
-
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">사진</label>
-					<div class="col-sm-7">
-						<input type="file" class="" style="width: 100%;" id="file"	name="rpicture">
-					</div>
-
-
-				</div>
-
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">도시</label>
-					<div class="col-sm-7">
-
-						<select id="rcity" name="rcity">
-							<option value="" selected>지역</option>
-							<option value="서울">서울</option>
-							<option value="인천">인천</option>
-							<option value="세종">세종</option>
-							<option value="대전">대전</option>
-							<option value="대구">대구</option>
-							<option value="울산">울산</option>
-							<option value="부산">부산</option>
-							<option value="광주">광주</option>
-							<option value="제주">제주</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">1박 가격</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id="rprice" name="rprice">
-					</div>
-				</div>
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">침실수</label>
-					<div class="col-sm-7">
-						<select name="rroom" id="rroom">
-							<option value="1"selected>침실 1</option>
-							 <option value="2">침실 2</option>
-		                    <option value="3">침실 3</option>
-		                    <option value="4">침실 4</option>
-		                    <option value="5">침실 5</option>
-		                    <option value="6">침실 6</option>
-	                    	<option value="7">침실 7 이상</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">침대수</label>
-					<div class="col-sm-7">
-						<select name="rbed" id="rbed">
-							<option value="1"selected>침대 1</option>
-	                      	<option value="2">침대 2</option>
-	                      	<option value="3">침대 3</option>
-	                      	<option value="4">침대 4</option>
-	                      	<option value="5">침대 5</option>
-	                      	<option value="6">침대 6</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<input type="checkbox" name="rsmoke" value="smoke"> 흡연실 <input
-						type="checkbox" name="rpet" value="pet"> 반려동물
-				</div>
-
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">상세 주소</label>
-					<div class="col-sm-7">
-						<textarea name="raddress" cols="65" rows="3" id="raddress"></textarea>
-					</div>
-				</div>
-
-				<input type="button" value="예약하기" class="btn btn-primary py-3 px-5"
-					onclick="searchSubmit();">
-				<input type="button" value="취소"
-					class="btn btn-primary py-3 px-5" onclick="history.back()">
-
-			</form>
+			</div>
 		</div>
+		
+		
 	</section>
+
+
 
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 

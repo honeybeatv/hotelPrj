@@ -60,9 +60,9 @@
 					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2">
-							<span class="mr-2"><a href="index">Home</a></span> <span>예약 리스트</span>
+							<span class="mr-2"><a href="index">Home</a></span> <span>전체예약 리스트</span>
 						</p>
-						<h1 class="mb-4 bread">예약 리스트</h1>
+						<h1 class="mb-4 bread">전체예약 리스트</h1>
 					</div>
 				</div>
 			</div>
@@ -88,7 +88,6 @@
 	      <tr>
 	        <td><span class="table-notice">${reserveVo.re_no }</span></td>
 	        <td class="table-title">
-	        <!-- content_view?번호를 전달 -->
 		    <a href="/reserve/reserveList?re_no=${reserveVo.re_no }">
 		        <c:forEach begin="1" end="${reserveVo.re_no}">
 		        <img alt="" src="./images/icon_reply.png"></c:forEach>
