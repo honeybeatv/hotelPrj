@@ -3,6 +3,7 @@ package com.site.controller;
 import java.io.File;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.RoomService;
@@ -32,20 +34,23 @@ public class RoomController {
 	RoomService roomService;
 	
 	@RequestMapping("/fileDo")
-	   public String fileDo(RoomVo roomVo, @RequestPart MultipartFile file) {
+	@ResponseBody
+	   public List<String> fileDo(RoomVo roomVo, @RequestPart List<MultipartFile> files)  throws Exception {
 
-	      
+	      List<String> list = new ArrayList<>();
 	      //2. 파일첨부 되는 것 체크
-	      
+	      for(MultipartFile file : files) {
 	      // 파일저장위치
-	      String fileUrl = "E:/0_koreavc/00_subclass/java/hotelPrj/src/main/resources/static/upload/";
+	    	  String originalfileName = file.getOriginalFilename();
+	    	  File f = new File("E:/0_koreavc/00_subclass/java/hotelPrj/src/main/resources/static/upload/" + originalfileName);
+	     // String fileUrl = "E:/0_koreavc/00_subclass/java/hotelPrj/src/main/resources/static/upload/";
 	      
 	      // 파일이름중복방지
 	      long time = System.currentTimeMillis();
 	      String uploadFileName = time + "_" + file.getOriginalFilename(); 
 	      
 	      // 파일저장
-	      File f = new File(fileUrl + uploadFileName);   
+	      //File f = new File(fileUrl + uploadFileName);   
 	      // 파일전송
 	      try {
 	         file.transferTo(f);
@@ -54,6 +59,7 @@ public class RoomController {
 	      }
 	      // 파일이름 삽입
 	      roomVo.setRpicture(uploadFileName);
+	      file.transferTo(f);
 	      
 	      //1. 파일첨부 내용 넘어오는것 체크
 //	      System.out.println("파일업로드 유저 이름 : " + roomVo.getUserid());
@@ -63,9 +69,10 @@ public class RoomController {
 	      System.out.println("파일업로드 변경된 파일 이름 : " + uploadFileName);
 
 	      // - 파일업로드   -db저장
+	      }
+	      return list;
 	      
-	      return "fileUpload";
-	   }
+	  }
 	
    @RequestMapping("/index")
    public String index() {

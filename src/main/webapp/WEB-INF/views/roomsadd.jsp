@@ -195,7 +195,7 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">사진</label>
 					<div class="col-sm-7">
-						<input type="file" class="" style="width: 100%;" id="file"	name="file">
+						<input multiple="multiple" type="file" class="" style="width: 100%;" id="file"	name="file">
 					</div>
 
 
