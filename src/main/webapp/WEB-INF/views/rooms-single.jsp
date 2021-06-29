@@ -195,6 +195,7 @@
 														class="per">/ 일</span>
 												</p>
 												<hr>
+												<!--  -->
 												<p class="pt-1">
 													<a href="/room/rooms-single?roomNo=${item.roomNo }"
 														class="btn-custom"> <c:if
