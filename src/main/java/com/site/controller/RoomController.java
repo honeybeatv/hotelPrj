@@ -58,7 +58,9 @@ public class RoomController {
 	         e.printStackTrace();
 	      }
 	      // 파일이름 삽입
-	      roomVo.setRpicture(uploadFileName);
+	      roomVo.setRpicture1(uploadFileName);
+	      roomVo.setRpicture2(uploadFileName);
+	      roomVo.setRpicture3(uploadFileName);
 	      file.transferTo(f);
 	      
 	      //1. 파일첨부 내용 넘어오는것 체크
