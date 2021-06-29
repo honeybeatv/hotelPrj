@@ -2,16 +2,20 @@ package com.site.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.site.service.ReserveService;
 import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
+import com.site.vo.UserVo;
 
 @Controller
 @RequestMapping("/reserve")
@@ -36,18 +40,27 @@ public class ReserveController {
 	
 	// 숙소 
 	@RequestMapping("/roomReserve")
-	public String roomReserve(@RequestParam(value="roomNo") int roomNo, Model model) {
+	public String roomReserve(HttpServletRequest request ,Model model) {
 		
-		RoomVo roomVo = reserveService.roomReserve(roomNo);
+		HttpSession session = request.getSession();
+		int userno = (int)session.getAttribute("session_userno");
 		
-		System.out.println("roomVo : " + roomVo);
+		//RoomVo roomVo = reserveService.roomReserve(roomNo);
+		 UserVo userVo = reserveService.userInfo(userno);
 		
-		model.addAttribute("roomVo", roomVo);
+		//System.out.println("roomVo : " + roomVo);
 		
+		//model.addAttribute("roomVo", roomVo);
+		//model.addAttribute("userid", userid);
+		
+		System.out.println(userVo.getName() + "userVo controller ");
+		model.addAttribute("userVo", userVo);
+		
+	     
 		
 		return "/roomReserve";
 	}
-	 
 	
+
 
 }

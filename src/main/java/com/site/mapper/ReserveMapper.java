@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
+import com.site.vo.UserVo;
 
 @Mapper
 public interface ReserveMapper {
@@ -17,6 +18,8 @@ public interface ReserveMapper {
 	List<ReserveVo> findOtherRoom(ReserveVo reserveVo);
 
 	RoomVo roomReserve(int roomNo);
+
+	UserVo userInfo(int userno);
 
 
 }

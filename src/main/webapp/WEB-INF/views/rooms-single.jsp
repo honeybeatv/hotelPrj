@@ -131,12 +131,12 @@
 									<form id="contactForm" name="contact" role="form">
 										<div class="modal-body">
 											<div class="form-group">
-												<label for="uname">이름</label> <input type="text"
-													name="uname" class="form-control">
+												<label for="uname">이름 : ${userVo.name }</label> <input type="text"
+													name="name" value="${userVo.name }" class="form-control">
 											</div>
 											<div class="form-group">
 												<label for="uphone">전화번호</label> <input type="uphone"
-													name="uphone" class="form-control">
+													name="uphone" value="${userVo.uphone }"class="form-control">
 											</div>
 											<div class="form-group">
 												<label for="#">체크인</label> <input type="text"
@@ -151,25 +151,26 @@
 											readonly>
 											</div>
 											<div class="form-group">
-												<label for="email">이메일</label>
+												<label for="email">요구사항</label>
 												<textarea name="email" class="form-control"></textarea>
 											</div>
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Close</button>
-											<input type="submit" class="btn btn-success" id="submit">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal" onclick="location.href='../user/userReservationView'" >예약하기</button>
 										</div>
 									</form>
 								</div>
 							</div>
 						</div>
 
-						<a href="../reserve/roomReserve<%-- ?roomNo=${roomVo.roomNo } --%>"
+						<%-- <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }"
 							class="btn-custom">
 							<!-- <button type="submit" class="btn py-3 px-5"
 								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button> -->
-						</a>
+						</a> --%>
 
 
 						<div class="col-md-12 room-single ftco-animate mb-5 mt-5">
@@ -181,8 +182,7 @@
 											<a href="/room/rooms-single?roomNo=${item.roomNo }"
 												class="img img-2 d-flex justify-content-center align-items-center"
 												style="background-image: url(../static/upload/${item.rpicture});">
-												<div
-													class="icon d-flex justify-content-center align-items-center">
+												<div class="icon d-flex justify-content-center align-items-center">
 													<span class="icon-search2"></span>
 												</div>
 											</a>
@@ -208,9 +208,11 @@
 											</div>
 										</div>
 									</div>
+									
 								</c:forEach>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 				<!-- .col-md-8 -->
@@ -223,17 +225,7 @@
 							</div>
 						</form>
 					</div>
-					<div class="sidebar-box ftco-animate">
-						<div class="categories">
-							<h3>Categories</h3>
-							<li><a href="#">Properties <span>(12)</span></a></li>
-							<li><a href="#">Home <span>(22)</span></a></li>
-							<li><a href="#">House <span>(37)</span></a></li>
-							<li><a href="#">Villa <span>(42)</span></a></li>
-							<li><a href="#">Apartment <span>(14)</span></a></li>
-							<li><a href="#">Condominium <span>(140)</span></a></li>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>

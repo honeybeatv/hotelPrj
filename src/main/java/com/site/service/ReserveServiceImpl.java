@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.site.mapper.ReserveMapper;
 import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
+import com.site.vo.UserVo;
 
 @Service
 public class ReserveServiceImpl implements ReserveService {
@@ -35,6 +36,21 @@ public class ReserveServiceImpl implements ReserveService {
 		//roomVo.setReserveVoList(reserveMapper.findOtherRoom(roomVo));
 
 		return roomVo;
+	}
+
+
+
+
+	@Override
+	public UserVo userInfo(int userno) {
+		
+		UserVo userVo = reserveMapper.userInfo(userno);
+		
+		
+		
+		
+		
+		return userVo;
 	}
 
 }

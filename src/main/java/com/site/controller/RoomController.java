@@ -76,7 +76,7 @@ public class RoomController {
    //숙소 상세정보 보기
    @RequestMapping("/rooms-single")
    public String roomSingle(@RequestParam(value="roomNo") int roomNo, Model model) {
-//	   roomService.roomSingle(roomNo);
+	   
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
 	  
 	   
