@@ -19,5 +19,7 @@ public interface AdminService {
 	Map<String, Object> adminReservationDelete(int userno); // 예약 내역 삭제
 	Map<String, Object> adminHostingDelete(int userno); 	// 호스팅 상품 삭제
 	Map<String, Object> adminUsersDelete(UserVo userVo); 	// 회원 삭제
-
+	
+	Map<String, Object> userHostingList();
+	Map<String, Object> adminUserHostingViewList(int userno);
 }

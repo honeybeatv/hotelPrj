@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.site.mapper.AdminMapper;
 import com.site.mapper.UserMapper;
+import com.site.vo.HostingVO;
+import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
 @Service
@@ -84,9 +86,9 @@ public class AdminServiceImpl implements AdminService {
 		
 		String msg = "";
 		if(resultNum == 0) {
-			msg = "예약내역 삭제를 성공하였습니다.";
+			System.out.println("예약내역 삭제를 성공하였습니다.");
 		}else {
-			msg = "예약내역 삭제를 실패하였습니다.";
+			System.out.println("예약내역 삭제를 실패하였습니다.");
 		}
 		
 		aReservationDeleteMap.put("adminReservationDelete", resultDelete);
@@ -104,9 +106,9 @@ public class AdminServiceImpl implements AdminService {
 
 		String msg = "";
 		if (resultNum == 0) {
-			msg = "상품 삭제를 성공하였습니다.";
+			System.out.println("상품 삭제를 성공하였습니다.");
 		} else {
-			msg = "상품 삭제를 실패하였습니다.";
+			System.out.println("상품 삭제를 실패하였습니다.");
 		}
 
 		aHostingDeleteMap.put("adminHostingDelete", resultDelete);
@@ -135,5 +137,24 @@ public class AdminServiceImpl implements AdminService {
 		return aUsersDeleteMap;
 	}
 
+	@Override
+	public Map<String, Object> userHostingList() {
+		Map<String,Object> map = new HashMap<String, Object>();
 
+		List<HostingVO> listCount = adminMapper.selectHostingCount();
+		System.out.println(listCount);
+		
+		map.put("listCount", listCount);
+		
+		return map;
+	}
+	@Override // 회원 호스팅 상품 페이지 호출
+	public Map<String, Object> adminUserHostingViewList(int userno) {
+		Map<String, Object> adminUserHostingViewMap = new HashMap<String, Object>();
+		
+		List<RoomVo> adminUserHostingViewList = adminMapper.selectUserHostingViewList(userno);
+		adminUserHostingViewMap.put("adminUserHostingViewList", adminUserHostingViewList);
+
+		return adminUserHostingViewMap;
+	}
 }

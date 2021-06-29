@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.site.vo.HostingVO;
+import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
 @Mapper
@@ -25,6 +27,10 @@ public interface AdminMapper {
 	// 3단계. 회원 삭제 
 	int deleteAdminUsersDeleteList(UserVo userVo);
 	int selectAdminUsersDeleteCount(UserVo userVo);
+	
+	List<HostingVO> selectHostingCount();
+	// 회원 호스팅 상품 호출
+	List<RoomVo> selectUserHostingViewList(int userno);
 
 
 

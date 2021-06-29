@@ -53,7 +53,7 @@
 //  							 alert("에러");
  						 }
  				  });
- 			  }throw new Error(alert("삭제하려는 사용자가 운영중인 숙소가 있습니다.\n삭제하려는 회원이 운영중인 숙소를 삭제한 뒤 회원삭제를 진행해 주세요."))
+ 			  }else{return false;}
  		}
 	</script>
   	
