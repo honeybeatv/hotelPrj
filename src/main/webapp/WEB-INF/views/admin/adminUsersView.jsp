@@ -30,12 +30,6 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
- 		$(document).ready(function() {
-			$("#goto_adminUserInfoView").click(function() {
-				alert("클릭이벤트");
-			});
-		});
- 		
  		function ajax_adminUsersDelete(userno){
  			if(confirm("회원을 삭제하시겠습니까?")){
  				  $.ajax({
@@ -50,7 +44,7 @@
  							 $('#'+userno).remove();
  						 },
  						 error:function(){
-//  							 alert("에러");
+ 							 alert("에러");
  						 }
  				  });
  			  }else{return false;}
@@ -90,8 +84,7 @@
 						<td width="16%">비밀번호</td>
 						<td width="16%">핸드폰번호</td>
 						<td width="20%">이메일</td>
-						<td width="3%">   </td>
-						<td width="3%">   </td>
+						<td width="6%">   </td>
 					</tr>
 
 					<tr height="1" bgcolor="#8f784b ">
@@ -99,23 +92,15 @@
 					</tr>
 
 					<c:forEach var="userVo" items="${map.list }">
-						<form method="post">
-							<tr id="${userVo.userno}">
-								<td>${userVo.userno}</td>
-								<td>
-									<form >
-										<input type="hidden" id = "userno" name = "userno" value="${userVo.userno}">
-										<a id="goto_adminUserInfoView">${userVo.name}</a>
-									</form>
-								</td>							
-								<td>${userVo.userid}</td>							
-								<td>${userVo.userpw}</td>							
-								<td>${userVo.uphone}</td>							
-								<td>${userVo.uemail}</td>		
-								<td><button type="button" class=" btn-light" onclick="">수정</button></td>	
-								<td><button type="button" class=" btn-light" onclick="ajax_adminUsersDelete('${userVo.userno}')">삭제</button></td>	
-							</tr>
-						</form>
+						<tr id="${userVo.userno}">
+							<td>${userVo.userno}</td>
+							<td>${userVo.name}</td>
+							<td>${userVo.userid}</td>
+							<td>${userVo.userpw}</td>
+							<td>${userVo.uphone}</td>
+							<td>${userVo.uemail}</td>
+							<td><button type="button" class=" btn-light" onclick="ajax_adminUsersDelete('${userVo.userno}')">삭제</button></td>
+						</tr>
 					</c:forEach>
 
 				</table>

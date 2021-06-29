@@ -80,14 +80,14 @@ public class AdminController {
 		
 		return "/admin/adminUsersView";
 	}
-	@RequestMapping("/adminUserHostingView")	// 회원 호스팅 상품 페이지 호출
+	@RequestMapping("/adminUserHosting")	// 회원 호스팅 상품 페이지 호출
 	public String adminUserHostingView(Model model , @RequestParam("userno") int userno) {
 		Map<String, Object> adminUserHostingViewMap = adminService.adminUserHostingViewList(userno);
 		model.addAttribute("adminUserHostingViewMap", adminUserHostingViewMap);
 		
 		System.out.println("# mypage category_Hosting View ListAll #");
 		
-		return "/admin/adminUserHostingView";
+		return "/admin/adminUserHosting";
 	}
 
 	@RequestMapping("/adminUserInfoView")	// 관리자 회원정보 상세페이지 호출
