@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.site.vo.RoomVo;
+import com.site.vo.UserVo;
 
 @Mapper
 public interface RoomMapper {
@@ -37,6 +38,9 @@ public interface RoomMapper {
 		List<RoomVo> findOtherRoom(RoomVo roomVo);
 
 		int selectRoomCount();
+		
+		
+		UserVo userInfo(int userno);
 
 }
 

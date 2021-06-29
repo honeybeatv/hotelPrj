@@ -160,6 +160,14 @@ public class RoomServiceimpl implements RoomService {
 		
 		return roomVo;
 	}
+
+	@Override
+	public UserVo userInfo(int userno) {
+		
+		UserVo userVo = roomMapper.userInfo(userno);
+		
+		return userVo;
+	}
 	
 
 
