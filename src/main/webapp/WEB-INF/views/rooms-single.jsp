@@ -85,6 +85,7 @@
 							<h2 class="mb-4">${roomVo.rname }</h2>
 							<div class="single-slider owl-carousel">
 								<div class="item">
+								<!--<c:forEach var="item" items="${roomVo.??}"> (이미지3개돌리기위해서 아이템스 값고민)--> 
 									<div class="room-img"
 										style="background-image: url(../static/upload/${roomVo.rpicture1});"></div>
 								</div>
