@@ -26,27 +26,25 @@
 
     <link rel="stylesheet" href="../static/css/flaticon.css">
     <link rel="stylesheet" href="../static/css/icomoon.css">
-    <link rel="stylesheet" href="..	/static/css/style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
- 	<script type="text/javascript">
+    <script type="text/javascript">
 
-  	</script>
-  	
-  </head>
-  <body>
+     </script>
+     
+  	</head>
+  	<body>
 
     <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
     <!-- END nav -->
 
-    <div class="hero-wrap" style="background-image: url('../images/bg_1.jpg');">
+    <div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
-          	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home</a></span> <span>About</span></p>
-	            <h1 class="mb-4 bread">111</h1>
+             <div class="text">>
             </div>
           </div>
         </div>
@@ -66,16 +64,13 @@
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">${list.roomNo }</a></h3>
+		    						<h3 class="mb-3"><a href="rooms-single">${list.rname }</a></h3>
 		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
-		    							<li><span>Max:</span> 3 Persons</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 1</li>
+		    							<li><span>권장인원:</span> ${list.rpeople }</li>
+		    							<li><span>위치:</span> ${list.raddress }</li>
+		    							<li><span>침대갯수:</span> ${list.rbed	 }</li>
 		    						</ul>
-		    						<hr>
-		    						<p class="pt-1"><a href="room-single" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
 		    					</div>
 		    				</div>
 		    			</div>
@@ -85,60 +80,63 @@
 		    	<div class="col-lg-3 sidebar">
 	      		<div class="sidebar-wrap bg-light ftco-animate">
 	      			<h3 class="heading mb-4">상세조건 검색</h3>
-	      			<form action="/advancedSearch">
+	      			<form action="../room/advancedSearch" method="post">
+	      			<input type="hidden" name="rcity" value="${rcity }">
+	      			<input type="hidden" name="rpeople" value="${rpeople }">
 	      				<div class="fields">
 		              <div class="form-group">
-		                <input type="text" name="inDate" id="checkin_date" class="form-control checkin_date" placeholder="체크인 날짜">
+		                <input type="text" name="inDate" id="checkin_date" value="${start }" class="form-control checkin_date" placeholder="Check In Date">
 		              </div>
 		              <div class="form-group">
-		                <input type="text" name="outDate" id="checkin_date" class="form-control checkout_date" placeholder="체크아웃 날짜">
+		                <input type="text" name="outDate" id="checkin_date" value="${end }" class="form-control checkout_date" placeholder="Check Out Date">
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="roomType" id="" class="form-control">
-	                    	<option value="">숙소유형</option>
+	                    <select name="rtype" id="" class="form-control">
 	                    	<option value="apt">아파트</option>
-	                      <option value="house">주택</option>
-	                      <option value="walkup">공동주택</option>
-	                      <option value="hotel">호텔</option>
-	                      <option value="residence">레지던스</option>
-	                      <option value="hostel">호스텔</option>
+		                     <option value="house">주택</option>
+		                     <option value="walkup">공동주택</option>
+		                     <option value="hotel">호텔</option>
+		                     <option value="residence">레지던스</option>
+		                     <option value="hostel">호스텔</option>
+	                    	<option value="etc">기타</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="bedroom" id="" class="form-control">
-	                    	<option value="0">침실 0</option>
+	                    <select name="rroom" id="" class="form-control">
 	                    	<option value="1">침실 1</option>
-	                      <option value="2">침실 2</option>
-	                      <option value="3">침실 3</option>
-	                      <option value="4">침실 4</option>
-	                      <option value="5">침실 5</option>
-	                      <option value="6">침실 6</option>
+		                    <option value="2">침실 2</option>
+		                    <option value="3">침실 3</option>
+		                    <option value="4">침실 4</option>
+		                    <option value="5">침실 5</option>
+		                    <option value="6">침실 6</option>
+	                    	<option value="7">침실 7 이상</option>
+
 	                    </select>
 	                  </div>
 		              </div>
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="bed" id="" class="form-control">
-	                    	<option value="0">침대 0</option>
+	                    <select name="rbed" id="" class="form-control">
 	                    	<option value="1">침대 1</option>
-	                      <option value="2">침대 2</option>
-	                      <option value="3">침대 3</option>
-	                      <option value="4">침대 4</option>
-	                      <option value="5">침대 5</option>
-	                      <option value="6">침대 6</option>
+	                      	<option value="2">침대 2</option>
+	                      	<option value="3">침대 3</option>
+	                      	<option value="4">침대 4</option>
+	                      	<option value="5">침대 5</option>
+	                      	<option value="6">침대 6</option>
+	                    	<option value="7">침대 7 이상</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              
-		              <div class="form-group">
-		              <input type="checkbox" name="smoke" value="smoke"> 흡연실&emsp;
-		              <input type="checkbox" name="pet" value="pet"> 반려동물
+		               <div class="form-group">
+		              <input type="checkbox" name="rsmoke" value="smoke"> 흡연실&emsp;
+		              <input type="checkbox" name="rpet" value="pet"> 반려동물
 		              </div>
 		              
 		              <div class="form-group">
@@ -147,9 +145,6 @@
 										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>	-
 										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
 										  </span>
-										  <!-- <input value="1000" min="0" max="120000" step="500" type="range"/>
-										  <input value="50000" min="0" max="120000" step="500" type="range"/>
-										  </svg> -->
 										</div>
 		              </div>
 		              <div class="form-group">
@@ -195,6 +190,30 @@
 	      		</div>
 	        </div>
 		    </div>
+		    
+														  	 
+							  
+
+		    
+		    
+		    
+		    
+		    <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
     	</div>
     </section>
 

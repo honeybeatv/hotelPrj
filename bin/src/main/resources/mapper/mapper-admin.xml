@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.site.mapper.AdminMapper">
+  	
+  
+	<!-- 회원 기본정보 호출 -->
+  	<select id="selectUserInfo" resultType="com.site.vo.UserVo">
+  		SELECT * FROM user1 WHERE userno=#{userno}
+  	</select>
+  	
+  	<!-- 전체리스트 호출 -->
+	<select id="selectUserList" resultType="com.site.vo.UserVo">
+	    <![CDATA[
+		    select * from
+			(select rownum as rnum,a.* from
+			(select * from user1 where uadmin=0 order by userno desc) a)
+			where rnum>=#{startrow} and rnum<=#{endrow}
+	    ]]>
+	</select>
+	<!-- 전체게시글 수 -->
+	<select id="selectUserCount" resultType="int">
+	   select count(*) from user1
+	</select>
+  
+  </mapper>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.site.mapper.UserMapper">
   	
@@ -23,43 +21,46 @@
   
 	<!-- 회원 기본정보 호출 -->
   	<select id="selectUserInfoList" resultType="com.site.vo.UserVo">
-  		SELECT * 
-  		  FROM user1 
-  		 WHERE userno=#{userno}
+	  	<![CDATA[
+	  		SELECT * 
+	  		  FROM user1 
+	  		 WHERE userno=#{userno}
+	  	]]>
   	</select>
   	
   	<!-- 회원 기본정보 수정 -->
   	<update id="updateUserInfoModifyDo">
-	  	UPDATE user1 
-	  	   SET name=#{name}		, 
-	  	   	   userid=#{userid}	, 
-	  	   	   userpw=#{userpw}	, 
-	  	   	   uphone=#{uphone}	, 
-	  	   	   uadmin=#{uadmin}	, 
-	  	   	   uemail=#{uemail}
-	  	 WHERE userno=#{userno}
-  	</update>
-  	
-  	<!-- 회원 예약정보 호출 -->
-  	<select id="selectUserReservationReserveList" resultType="com.site.vo.ReserveVo">
-		<![CDATA[
-			SELECT *
-			FROM reserve
-			WHERE userno = (
-							SELECT userno
-							FROM user1
-							where userno=#{userno})
-
+	  	<![CDATA[
+		  	UPDATE user1 
+		  	   SET name=#{name}		, 
+		  	   	   userid=#{userid}	, 
+		  	   	   userpw=#{userpw}	, 
+		  	   	   uphone=#{uphone}	, 
+		  	   	   uadmin=#{uadmin}	, 
+		  	   	   uemail=#{uemail}
+		  	 WHERE userno=#{userno}
 		]]>
-  	</select>
+  	</update>
+
+	<!-- 회원 예약한 예약정보 호출 -->
+	<select id="selectUserReservationViewList" resultType="com.site.vo.UserReservationVo">
+		<![CDATA[
+			 SELECT ro.rname as rname, ro.raddress as raddress, ro.rprice as rprice, ro.roomno as roomNo,
+			 		to_char(re.startday, 'yyyy-MM-dd') as startday, to_char(re.endday, 'yyyy-MM-dd') as endday
+			    FROM reserve re, room ro
+			    WHERE re.roomno = ro.roomno
+			    AND re.userno = #{userno}
+		]]>
+	</select>
   	
   	<!-- 회원 호스팅 상품정보 호출 -->
   	<select id="selectUserHostingViewList" resultType="com.site.vo.RoomVo">
-  		SELECT * 
-  		  FROM room 
-  		 WHERE userno=#{userno}
-  	  ORDER BY roomno asc
-
+  		<![CDATA[
+	  		SELECT * 
+	  		  FROM room 
+	  		 WHERE userno=#{userno}
+	  	  ORDER BY roomno asc
+		]]>
   	</select>
   	
   	<!-- 회원 호스팅 상품정보 수정 실행 -->
@@ -82,25 +83,36 @@
   	
   	<!-- 회원 호스팅 상품 삭제 -->
   	<delete id="deleteUserHostingDeleteList">
-  		DELETE room 
-  		 WHERE roomno=#{roomNo}
+	  	<![CDATA[
+	  		DELETE room 
+	  		 WHERE roomno=#{roomNo}
+	  	]]>
   	</delete>
   	
   	<!-- 회원 호스팅 상품 삭제 결과확인용 -->
   	<select id="selectUserHostingDeleteCount" resultType="int">
-		SELECT count(*) 
-		  FROM room 
-		 WHERE roomno=#{roomNo}  	
+	  	<![CDATA[
+			SELECT count(*) 
+			  FROM room 
+			 WHERE roomno=#{roomNo}
+		]]>  	
   	</select>
 
-	<!-- 회원 예약정보 출력 -->
-	<select id="selectUserReservationList" resultType="com.site.vo.RoomReserveVo">
-		<![CDATA[
-			 SELECT ro.rname as rname, ro.rcity as rcity, re.startday as startday, re.endday as endday
-			    FROM reserve re, room ro
-			    WHERE re.roomno = ro.roomno
-			    AND re.userno = #{userno}
-		]]>
-	</select>
-	
+  	<!-- 회원 호스팅 상품 삭제를 위한 예약내역 삭제 -->
+  	<delete id="deleteUserReservationDeleteList">
+	  	<![CDATA[
+	  		DELETE reserve 
+	  		 WHERE roomno=#{roomNo}
+	  	]]>
+  	</delete>
+  	
+  	<!-- 회원 호스팅 상품 삭제를 위한 예약내역 삭제 결과확인용 -->
+  	<select id="selectUserReservationDeleteCount" resultType="int">
+	  	<![CDATA[
+			SELECT count(*) 
+			  FROM reserve 
+			 WHERE roomno=#{roomNo}
+		]]>  	
+  	</select>
+
   </mapper>

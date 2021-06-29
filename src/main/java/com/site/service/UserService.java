@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.site.vo.ReserveVo;
-import com.site.vo.RoomReserveVo;
+import com.site.vo.UserReservationVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -25,7 +25,7 @@ public interface UserService {
 	void userInfoModifyDo(UserVo userVo);
 	
 	// 회원 예약정보 페이지 호출
-	List<RoomReserveVo> userReservationViewList(int userno);
+	List<UserReservationVo> userReservationViewList(int userno);
 	
 	// 회원 호스팅 상품 페이지 호출
 	Map<String, Object> userHostingViewList(int userno);
@@ -34,6 +34,7 @@ public interface UserService {
 	// 회원 호스팅 상품 수정페이지 실행
 	void userHostingModifDo(RoomVo roomVo);
 	// 회원 호스팅 상품 삭제
-	Map<String, Object> userHostingDelete(RoomVo roomVo);
+	Map<String, Object> userReservationDelete(int roomNo);	// 상품 삭제를 위한 예약 기록 삭제
+	Map<String, Object> userHostingDelete(RoomVo roomVo);	// 상품 삭제
 
 }

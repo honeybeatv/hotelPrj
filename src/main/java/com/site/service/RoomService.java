@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.site.vo.RoomVo;
 
 public interface RoomService {
@@ -16,14 +18,15 @@ public interface RoomService {
 			int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
 
 	//room 리스트 페이지 호출
-	List<RoomVo> roomsListAll();
+	Map<String, Object> roomsListAll(int page);
 	
 	//rooms 숙소 등록
-	void roomsWriteDo(RoomVo roomVo);
+	void roomsWriteDo(RoomVo roomVo, MultipartFile file); //void return타입이 필요없음
+	
+	//숙소 상세페이지
+	RoomVo roomSingle(int roomNo);
 
-	//페이징 연구중 by.봉
-	List<RoomVo> roomListAdvanced2(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
-			int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int page);
+	
 	
 
 }

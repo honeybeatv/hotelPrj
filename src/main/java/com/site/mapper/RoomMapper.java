@@ -18,10 +18,25 @@ public interface RoomMapper {
 			int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
 
 	//room 리스트 페이지 호출
-	List<RoomVo> selectroomsListAll();
+	List<RoomVo> selectroomsListAll(int startrow, int endrow);
 
 	//글쓰기
 	void insertRoomsWriteDo(RoomVo roomVo);
+	
+	// 방 상세정보
+	RoomVo roomSingle(int roomNo);
+	
+	//페이징용 게시글 카운트
+		int selectSearchCount(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
+				int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
+
+		List<RoomVo> selectAdvancedRoomListPage(String checkIn, String checkOut, String rtype, int rroom, int rbed,
+				int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int startRow,
+				int endrow);
+
+		List<RoomVo> findOtherRoom(RoomVo roomVo);
+
+		int selectRoomCount();
 
 }
 

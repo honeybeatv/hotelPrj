@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.site.service.UserService;
 import com.site.vo.ReserveVo;
-import com.site.vo.RoomReserveVo;
+import com.site.vo.UserReservationVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -26,7 +26,7 @@ public interface UserMapper {
 	void updateUserInfoModifyDo(UserVo userVo);
 	
 	// 회원 예약정보 호출
-	List<RoomReserveVo> selectUserReservationList(int userno);
+	List<UserReservationVo> selectUserReservationViewList(int userno);
 	
 	// 회원 호스팅 상품 호출
 	List<RoomVo> selectUserHostingViewList(int userno);
@@ -37,5 +37,8 @@ public interface UserMapper {
 	// 회원 호스팅 상품 삭제
 	int selectUserHostingDeleteCount(RoomVo roomVo);
 	int deleteUserHostingDeleteList(RoomVo roomVo);
+	// 회원 호스팅 상품를 위한 예약내역 삭제
+	int deleteUserReservationDeleteList(int roomNo);
+	int selectUserReservationDeleteCount(int roomNo);
 
 }

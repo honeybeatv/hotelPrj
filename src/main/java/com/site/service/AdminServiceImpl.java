@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.site.mapper.AdminMapper;
 import com.site.mapper.UserMapper;
+import com.site.vo.HostingVO;
+import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
 @Service
@@ -20,24 +22,24 @@ public class AdminServiceImpl implements AdminService {
 	AdminMapper adminMapper;
 
 	@Override // 관리자 기본정보 페이지 호출
-	public UserVo AdminInfoView(int userno) {
+	public UserVo adminInfoView(int userno) {
 		UserVo adminVo = userMapper.selectUserInfoList(userno);
 		return adminVo;
 	}
 
 	@Override // 관리자 기본정보 수정페이지 호출
-	public UserVo AdminInfoModify(int userno) {
+	public UserVo adminInfoModify(int userno) {
 		UserVo adminVo = userMapper.selectUserInfoList(userno);
 		return adminVo;
 	}
 
 	@Override // 관리자 기본정보 수정페이지 실행
-	public void AdminInfoModifyDo(UserVo adminVo) {
+	public void adminInfoModifyDo(UserVo adminVo) {
 		userMapper.updateUserInfoModifyDo(adminVo);
 	}
 	
-	@Override
-	public Map<String, Object> userList(int page) {
+	@Override // 관리자 일반회원 정보 전체 호출
+	public Map<String, Object> userList(int uadmin, int page) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		
 		int limit = 10; //페이지당 몇개의 게시글을 가져올지 정의(10,20,30...)
@@ -47,7 +49,7 @@ public class AdminServiceImpl implements AdminService {
 		int endrow = startrow+limit-1;   //마지막페이지 계산공식 10,20,30,40.....
 		
 		
-		List<UserVo> list = adminMapper.selectUserList(startrow,endrow);
+		List<UserVo> list = adminMapper.selectUserList(uadmin, startrow,endrow);
 		//[[ 하단 넘버링 계산 : startpage,endpage,maxpage 처리 ]]
 		int listCount=0;  //총게시글 수
 		listCount = adminMapper.selectUserCount();
@@ -73,5 +75,45 @@ public class AdminServiceImpl implements AdminService {
 		map.put("maxPage", maxPage);
 		
 		return map;
+	}
+
+	@Override // 관리자 회원 삭제
+	public Map<String, Object> adminUsersDelete(UserVo userVo) {
+		Map<String, Object> aUsersDeleteMap = new HashMap<String, Object>();
+		
+		int resultDelete = adminMapper.deleteAdminUsersDeleteList(userVo);
+		int resultNum = adminMapper.selectAdminUsersDeleteCount(userVo);
+		
+		String msg = "";
+		if(resultNum == 0) {
+			msg = "상품 삭제를 성공하였습니다.";
+		}else {
+			msg = "상품 삭제를 실패하였습니다.";
+		}
+		
+		aUsersDeleteMap.put("adminUsersDelete", resultDelete);
+		aUsersDeleteMap.put("msg", msg);
+		
+		return aUsersDeleteMap;
+	}
+	@Override
+	public Map<String, Object> userHostingList() {
+		Map<String,Object> map = new HashMap<String, Object>();
+
+		List<HostingVO> listCount = adminMapper.selectHostingCount();
+		System.out.println(listCount);
+		
+		map.put("listCount", listCount);
+		
+		return map;
+	}
+	@Override // 회원 호스팅 상품 페이지 호출
+	public Map<String, Object> adminUserHostingViewList(int userno) {
+		Map<String, Object> adminUserHostingViewMap = new HashMap<String, Object>();
+		
+		List<RoomVo> adminUserHostingViewList = adminMapper.selectUserHostingViewList(userno);
+		adminUserHostingViewMap.put("adminUserHostingViewList", adminUserHostingViewList);
+
+		return adminUserHostingViewMap;
 	}
 }

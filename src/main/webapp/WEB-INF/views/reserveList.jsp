@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>숙소 리스트 </title>
+<title>예약 리스트 </title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -60,92 +60,49 @@
 					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2">
-							<span class="mr-2"><a href="index">Home</a></span> <span>숙소 리스트</span>
+							<span class="mr-2"><a href="index">Home</a></span> <span>전체예약 리스트</span>
 						</p>
-						<h1 class="mb-4 bread">숙소 리스트</h1>
+						<h1 class="mb-4 bread">전체예약 리스트</h1>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<section class="ftco-section bg-light">
-    	<div class="container">
-    		<div class="row">
-	        <div class="col-lg-9">
-		    		<div class="row">
-		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
-		    				<div class="room">
-		    					<a href="rooms-single.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
-		    						<div class="icon d-flex justify-content-center align-items-center">
-		    							<span class="icon-search2"></span>
-		    						</div>
-		    					</a>
-		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single.html"> </a></h3>
-		    						<p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
-		    						<ul class="roomsList">
-		    							<li><span>${roomVo.roomno }</span> 방번호</li>
-		    							<li><span>Size:</span> 45 m2</li>
-		    							<li><span>View:</span> Sea View</li>
-		    							<li><span>Bed:</span> 1</li>
-		    						</ul>
-		    						<hr>
-		    						<p class="pt-1"><a href="room-single.html" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
-		    					</div>
-		    				</div>
-		    			</div>
-
-
-			<colgroup>
-				<col width="10%">
-				<col width="48%">
-				<col width="15%">
-				<col width="15%">
-				<col width="12%">
-			</colgroup>
-			<!-- 제목부분 -->
-			<tr>
-				<th>방번호</th>
-				<th>방타입</th>
-				<th>인원수</th>
-				<th>정보</th>
-				<th>사진</th>
-				<th>시티</th>
-				<th>가격</th>
-				<th>방</th>
-				<th>침대</th>
-				<th>흡연 가능 여부</th>
-				<th>애완동물</th>
-				<th>주소</th>
-			</tr>
-			<!-- 내용부분 시작 -->
-			<c:forEach var="roomVo" items="${roomsList }">
-				<tr>
-					<td><span class="table-notice">${roomVo.roomNo }</span></td>
-					<td class="table-title">
-							<c:forEach begin="1" end="${roomVo.roomNo}">
-							</c:forEach>
-					</a>
-					</td>
-					<td>${roomVo.roomNo}</td>
-					<td>${roomVo.rtype}</td>
-					<td>${roomVo.rpeople}</td>
-					<td>${roomVo.rinfo}</td>
-					<td>${roomVo.rpicture}</td>
-					<td>${roomVo.rcity}</td>
-					<td>${roomVo.rprice}</td>
-					<td>${roomVo.rroom}</td>
-					<td>${roomVo.rbed}</td>
-					<td>${roomVo.rsmoke}</td>
-					<td>${roomVo.rpet}</td>
-					<td>${roomVo.raddress}</td>
-				</tr>
-			</c:forEach>
-                    
-
-  
-			<!-- 내용부분 끝 -->
-		</table>
+	 <table>
+      <colgroup>
+        <col width="10%">
+        <col width="48%">
+        <col width="15%">
+        <col width="15%">
+        <col width="12%">
+      </colgroup>
+      <!-- 제목부분 -->
+      <tr>
+        <th>예약 번호</th>
+        <th>방 번호</th>
+        <th>신분</th>
+        <th>체크인</th>
+        <th>체크아웃</th>
+      </tr>
+	<c:forEach var="reserveVo" items="${list }">
+	      <tr>
+	        <td><span class="table-notice">${reserveVo.re_no }</span></td>
+	        <td class="table-title">
+		    <a href="/reserve/reserveList?re_no=${reserveVo.re_no }">
+		        <c:forEach begin="1" end="${reserveVo.re_no}">
+		        <img alt="" src="./images/icon_reply.png"></c:forEach>
+			    ${reserveVo.re_no }
+		    </a>
+	        </td>
+	        <td>${reserveVo.re_no}</td>
+	        <td>${reserveVo.roomno}</td>
+	        <td>${reserveVo.status}</td>
+	        <td>${reserveVo.startday}</td>
+	        <td>${reserveVo.endday}</td>
+	      </tr>
+      </c:forEach>
+      </table>
+	
 		<!-- loader -->
 		<div id="ftco-loader" class="show fullscreen">
 			<svg class="circular" width="48px" height="48px">

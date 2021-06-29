@@ -1,5 +1,6 @@
 package com.site.service;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +11,8 @@ import org.springframework.ui.Model;
 
 import com.site.mapper.UserMapper;
 import com.site.vo.ReserveVo;
-import com.site.vo.RoomReserveVo;
 import com.site.vo.RoomVo;
+import com.site.vo.UserReservationVo;
 import com.site.vo.UserVo;
 
 @Service
@@ -49,9 +50,10 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override // 회원 예약정보 페이지 호출
-	public List<RoomReserveVo> userReservationViewList(int userno) {
+	public List<UserReservationVo> userReservationViewList(int userno) {
 		
-		List<RoomReserveVo> uReservationReserveList =  userMapper.selectUserReservationList(userno);
+		List<UserReservationVo> uReservationReserveList =  userMapper.selectUserReservationViewList(userno);
+		
 		System.out.println(uReservationReserveList);
 		
 		return uReservationReserveList;
@@ -79,6 +81,25 @@ public class UserServiceImpl implements UserService {
 	@Override // 회원 호스팅 상품 수정페이지 실행
 	public void userHostingModifDo (RoomVo roomVo) {
 		userMapper.updateUserHostingModifDo(roomVo);
+	}
+	@Override // 호스팅 상품 삭제를 위한 예약 내역 삭제
+	public Map<String, Object> userReservationDelete(int roomNo) {
+		Map<String, Object> uReservartionDeleteMap = new HashMap<String, Object>();
+		
+		int resultDelete = userMapper.deleteUserReservationDeleteList(roomNo);
+		int resultNum = userMapper.selectUserReservationDeleteCount(roomNo);
+		
+		String msg = "";
+		if(resultNum == 0) {
+			System.out.println("예약내역 삭제를 성공하였습니다.");
+		}else {
+			System.out.println("예약내역 삭제를 실패하였습니다.");
+		}
+		
+		uReservartionDeleteMap.put("userReservationDeleteList", resultDelete);
+		uReservartionDeleteMap.put("msg", msg);
+		
+		return uReservartionDeleteMap;
 	}
 	@Override // 회원 호스팅 상품 삭제
 	public Map<String, Object> userHostingDelete(RoomVo roomVo) {

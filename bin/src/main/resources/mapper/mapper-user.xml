@@ -5,10 +5,27 @@
   
   <mapper namespace="com.site.mapper.UserMapper">
   	
+  	<!-- 로그인 userid,upw 검색 -->
+  	<select id="selectLogin" resultType="com.site.vo.UserVo">
+  		select * from user1 where userid=#{userid} and userpw=#{userpw} 
+  	</select>
+  	
+  	<!-- 회원가입 -->
+	<insert id="join_check">
+	    insert into user1 values(#{name},#{userid},
+	    #{userpw},SEQ_USER.nextval,#{uphone},0,#{uemail})
+	</insert>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="id_check" parameterType="String" resultType="int">
+	    select count(*) from user1 where userid=#{userid}
+	</select>
   
 	<!-- 회원 기본정보 호출 -->
-  	<select id="selectUserInfo" resultType="com.site.vo.UserVo">
-  		SELECT * FROM user1 WHERE userno=7
+  	<select id="selectUserInfoList" resultType="com.site.vo.UserVo">
+  		SELECT * 
+  		  FROM user1 
+  		 WHERE userno=#{userno}
   	</select>
   	
   	<!-- 회원 기본정보 수정 -->
@@ -20,21 +37,70 @@
 	  	   	   uphone=#{uphone}	, 
 	  	   	   uadmin=#{uadmin}	, 
 	  	   	   uemail=#{uemail}
-	  	 WHERE userno=7
+	  	 WHERE userno=#{userno}
   	</update>
   	
-  	
-  	
+  	<!-- 회원 예약정보 호출 -->
+  	<select id="selectUserReservationReserveList" resultType="com.site.vo.ReserveVo">
+		<![CDATA[
+			SELECT *
+			FROM reserve
+			WHERE userno = (
+							SELECT userno
+							FROM user1
+							where userno=#{userno})
 
-  	<!-- 로그인 userid,upw 검색 -->
-  	<select id="selectLogin" resultType="com.site.vo.UserVo">
-  		select * from user1 where userid=#{userid} and userpw=#{userpw} 
+		]]>
   	</select>
   	
-  	<!-- 회원가입 -->
-	<insert id="join_check">
-	    insert into user1 values(#{name},#{userid},
-	    #{userpw},USER1_SEQ.nextval,#{uphone},0,#{uemail})
-	</insert>
-  
+  	<!-- 회원 호스팅 상품정보 호출 -->
+  	<select id="selectUserHostingViewList" resultType="com.site.vo.RoomVo">
+  		SELECT * 
+  		  FROM room 
+  		 WHERE userno=#{userno}
+  	  ORDER BY roomno asc
+
+  	</select>
+  	
+  	<!-- 회원 호스팅 상품정보 수정 실행 -->
+  	<update id="updateUserHostingModifDo" >
+  		<![CDATA[
+		  	UPDATE room 
+		  	   SET rname=#{rname}		, 
+		  	   	   rcity=#{rcity}		, 
+		  	   	   rtype=#{rtype}		, 
+		  	   	   rpeople=#{rpeople}	, 
+		  	   	   rprice=#{rprice}		, 
+		  	   	   rbed=#{rbed}			,
+		  	   	   rroom=#{rroom}		,
+		  	   	   rsmoke=#{rsmoke}		,
+		  	   	   rpet=#{rpet}			,
+		  	   	   raddress=#{raddress}
+		  	 WHERE roomno=#{roomNo}
+	  	 ]]>
+  	</update>
+  	
+  	<!-- 회원 호스팅 상품 삭제 -->
+  	<delete id="deleteUserHostingDeleteList">
+  		DELETE room 
+  		 WHERE roomno=#{roomNo}
+  	</delete>
+  	
+  	<!-- 회원 호스팅 상품 삭제 결과확인용 -->
+  	<select id="selectUserHostingDeleteCount" resultType="int">
+		SELECT count(*) 
+		  FROM room 
+		 WHERE roomno=#{roomNo}  	
+  	</select>
+
+	<!-- 회원 예약정보 출력 -->
+	<select id="selectUserReservationList" resultType="com.site.vo.RoomReserveVo">
+		<![CDATA[
+			 SELECT ro.rname as rname, ro.rcity as rcity, re.startday as startday, re.endday as endday
+			    FROM reserve re, room ro
+			    WHERE re.roomno = ro.roomno
+			    AND re.userno = #{userno}
+		]]>
+	</select>
+	
   </mapper>

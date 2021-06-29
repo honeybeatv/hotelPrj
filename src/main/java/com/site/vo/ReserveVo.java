@@ -1,6 +1,7 @@
 package com.site.vo;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,4 +19,9 @@ public class ReserveVo {
 	private String startday;
 	private String endday;
 	private int userno;
+	
+	
+	
+	private List<ReserveVo> reserveVoList;
+	
 }
