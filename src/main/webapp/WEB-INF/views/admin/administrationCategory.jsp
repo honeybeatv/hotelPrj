@@ -23,7 +23,7 @@
 			<button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" >Reservations</button>
 		</form>
 		<div class="col-md-1"></div>
-		<form action="./adminInfoView"  method="post">
+		<form action="./adminUsersHosting"  method="post">
 			<input type="hidden" id = "userno" name = "userno" value="${session_userno }">
 			<button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" >Hostings</button>
 		</form>

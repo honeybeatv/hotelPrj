@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.site.mapper.AdminMapper;
 import com.site.mapper.UserMapper;
+import com.site.vo.HostingVO;
+import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
 @Service
@@ -75,6 +77,46 @@ public class AdminServiceImpl implements AdminService {
 		return map;
 	}
 
+	@Override // 관리자 회원 삭제용 예약 내역 삭제
+	public Map<String, Object> adminReservationDelete(int userno) {
+		Map<String, Object> aReservationDeleteMap = new HashMap<String, Object>();
+		
+		int resultDelete = adminMapper.deleteAdminReservationDeleteList(userno);
+		int resultNum = adminMapper.selectAdminReservationDeleteCount(userno);
+		
+		String msg = "";
+		if(resultNum == 0) {
+			System.out.println("예약내역 삭제를 성공하였습니다.");
+		}else {
+			System.out.println("예약내역 삭제를 실패하였습니다.");
+		}
+		
+		aReservationDeleteMap.put("adminReservationDelete", resultDelete);
+		aReservationDeleteMap.put("msg", msg);
+		
+		return aReservationDeleteMap;
+	}
+
+	@Override // 관리자 회원 삭제용 호스트 상품 삭제
+	public Map<String, Object> adminHostingDelete(int userno) {
+		Map<String, Object> aHostingDeleteMap = new HashMap<String, Object>();
+
+		int resultDelete = adminMapper.deleteAdminHostingDeleteList(userno);
+		int resultNum = adminMapper.selectAdminHostingDeleteCount(userno);
+
+		String msg = "";
+		if (resultNum == 0) {
+			System.out.println("상품 삭제를 성공하였습니다.");
+		} else {
+			System.out.println("상품 삭제를 실패하였습니다.");
+		}
+
+		aHostingDeleteMap.put("adminHostingDelete", resultDelete);
+		aHostingDeleteMap.put("msg", msg);
+
+		return aHostingDeleteMap;
+	}
+
 	@Override // 관리자 회원 삭제
 	public Map<String, Object> adminUsersDelete(UserVo userVo) {
 		Map<String, Object> aUsersDeleteMap = new HashMap<String, Object>();
@@ -84,14 +126,35 @@ public class AdminServiceImpl implements AdminService {
 		
 		String msg = "";
 		if(resultNum == 0) {
-			msg = "상품 삭제를 성공하였습니다.";
+			msg = "회원 삭제를 성공하였습니다.";
 		}else {
-			msg = "상품 삭제를 실패하였습니다.";
+			msg = "회원 삭제를 실패하였습니다.";
 		}
 		
 		aUsersDeleteMap.put("adminUsersDelete", resultDelete);
 		aUsersDeleteMap.put("msg", msg);
 		
 		return aUsersDeleteMap;
+	}
+
+	@Override
+	public Map<String, Object> userHostingList() {
+		Map<String,Object> map = new HashMap<String, Object>();
+
+		List<HostingVO> listCount = adminMapper.selectHostingCount();
+		System.out.println(listCount);
+		
+		map.put("listCount", listCount);
+		
+		return map;
+	}
+	@Override // 회원 호스팅 상품 페이지 호출
+	public Map<String, Object> adminUserHostingViewList(int userno) {
+		Map<String, Object> adminUserHostingViewMap = new HashMap<String, Object>();
+		
+		List<RoomVo> adminUserHostingViewList = adminMapper.selectUserHostingViewList(userno);
+		adminUserHostingViewMap.put("adminUserHostingViewList", adminUserHostingViewList);
+
+		return adminUserHostingViewMap;
 	}
 }

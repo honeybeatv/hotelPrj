@@ -80,6 +80,23 @@
 		  	 WHERE roomno=#{roomNo}
 	  	 ]]>
   	</update>
+
+  	<!-- 회원 호스팅 상품 삭제를 위한 예약내역 삭제 -->
+  	<delete id="deleteUserReservationDeleteList">
+	  	<![CDATA[
+	  		DELETE reserve 
+	  		 WHERE roomno=#{roomNo}
+	  	]]>
+  	</delete>
+  	
+  	<!-- 회원 호스팅 상품 삭제를 위한 예약내역 삭제 결과확인용 -->
+  	<select id="selectUserReservationDeleteCount" resultType="int">
+	  	<![CDATA[
+			SELECT count(*) 
+			  FROM reserve 
+			 WHERE roomno=#{roomNo}
+		]]>  	
+  	</select>
   	
   	<!-- 회원 호스팅 상품 삭제 -->
   	<delete id="deleteUserHostingDeleteList">
@@ -98,21 +115,5 @@
 		]]>  	
   	</select>
 
-  	<!-- 회원 호스팅 상품 삭제를 위한 예약내역 삭제 -->
-  	<delete id="deleteUserReservationDeleteList">
-	  	<![CDATA[
-	  		DELETE reserve 
-	  		 WHERE roomno=#{roomNo}
-	  	]]>
-  	</delete>
-  	
-  	<!-- 회원 호스팅 상품 삭제를 위한 예약내역 삭제 결과확인용 -->
-  	<select id="selectUserReservationDeleteCount" resultType="int">
-	  	<![CDATA[
-			SELECT count(*) 
-			  FROM reserve 
-			 WHERE roomno=#{roomNo}
-		]]>  	
-  	</select>
 
   </mapper>
