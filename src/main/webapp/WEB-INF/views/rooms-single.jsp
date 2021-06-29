@@ -159,7 +159,7 @@
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Close</button>
 											<button type="button" class="btn btn-default"
-												data-dismiss="modal" onclick="location.href='../user/userReservationView'" >예약하기</button>
+												data-dismiss="modal" onclick="location.href='../user/userReservationView?userno=${userVo.userno}'" >예약하기</button>
 										</div>
 									</form>
 								</div>
