@@ -119,5 +119,11 @@
 	FROM 	room
 	WHERE 	roomno IN (#{roomNo} + 1, #{roomNo} - 1)
 	</select>
+	
+	<select id="userInfo" resultType="com.site.vo.UserVo">
+	
+	SELECT * FROM USER1 WHERE userno=#{userno}
+		
+</select>
 
 </mapper>

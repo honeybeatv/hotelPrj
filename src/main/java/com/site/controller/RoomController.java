@@ -1,25 +1,23 @@
 package com.site.controller;
 
 import java.io.File;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.RoomService;
-
 import com.site.vo.RoomVo;
-
+import com.site.vo.UserVo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -75,12 +73,18 @@ public class RoomController {
 
    //숙소 상세정보 보기
    @RequestMapping("/rooms-single")
-   public String roomSingle(@RequestParam(value="roomNo") int roomNo, Model model) {
+   public String roomSingle(@RequestParam(value="roomNo") int roomNo,
+		   HttpServletRequest request, Model model) {
 	   
+	   HttpSession session = request.getSession();
+		int userno = (int)session.getAttribute("session_userno");
+		
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
-	  
+	   UserVo userVo = roomService.userInfo(userno);
 	   
+	   System.out.println(userVo.getName()+ " Controller userVo Test ");
 	   model.addAttribute("roomVo", roomVo);
+	   model.addAttribute("userVo", userVo);
 	   
       return "/rooms-single";
    }
