@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.site.mapper.RoomMapper;
+import com.site.mapper.UserMapper;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -19,7 +20,6 @@ public class RoomServiceimpl implements RoomService {
    
 	@Autowired
    RoomMapper roomMapper;
-	
 
 	UserVo userVo;
 	
@@ -167,6 +167,16 @@ public class RoomServiceimpl implements RoomService {
 		UserVo userVo = roomMapper.userInfo(userno);
 		
 		return userVo;
+	}
+
+	@Override
+	public void roomReserve(int roomNo, int userno, String startday, String endday) {
+		
+		roomMapper.insertRoomReserve(roomNo);
+		
+		System.out.println("roomServiceImpl :" +roomNo);
+		
+		
 	}
 	
 
