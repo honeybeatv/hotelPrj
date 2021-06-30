@@ -32,12 +32,5 @@ public interface RoomService {
 	
 	void roomReserve(int roomNo, int userno, String startday, String endday);
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
-
-	
-	
 
 }
