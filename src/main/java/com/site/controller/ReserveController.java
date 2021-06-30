@@ -56,7 +56,7 @@ public class ReserveController {
 		roomVo.setUserno((Integer) session.getAttribute("session_userno"));
 		reserveService.save(roomVo);
 	   
-		
+		System.out.println("roomVo {TEST} :" + roomVo);
 	   roomVo.setCode("SUCCESS");
 	   
 		return roomVo; 
