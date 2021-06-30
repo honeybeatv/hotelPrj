@@ -78,40 +78,11 @@ public class AdminController {
 		map = adminService.userList(uadmin,page);
 		model.addAttribute("map",map);
 		
+		System.out.println("# admin category_Users adminUsersView View ListAll #");
+		
 		return "/admin/adminUsersView";
 	}
 
-	@RequestMapping("/adminUsersHosting")	// 관리자 기본정보 페이지 호출
-	public String adminUsersHosting(Model model) {
-		Map<String,Object> map = null;
-		map = adminService.userHostingList();
-		model.addAttribute("map",map);
-		
-		return "/admin/adminUsersHosting";
-	}
-
-	@RequestMapping("/adminUserHostingView")	// 회원 호스팅 상품 페이지 호출
-	public String adminUserHostingView(Model model , @RequestParam("userno") int userno) {
-		Map<String, Object> adminUserHostingViewMap = adminService.adminUserHostingViewList(userno);
-		model.addAttribute("adminUserHostingViewMap", adminUserHostingViewMap);
-		
-		System.out.println("# mypage category_Hosting View ListAll #");
-		
-		return "/admin/adminUserHostingView";
-	}
-
-	@RequestMapping("/adminUserInfoView")	// 관리자 회원정보 상세페이지 호출
-	public String adminUserInfoView(Model model, @RequestParam("userno") int userno) {
-		System.out.println("# admin category_Informaton adminInfoView #");
-		System.out.println(userno);
-		UserVo adminVo = adminService.adminInfoView(userno);
-		model.addAttribute("adminVo", adminVo);
-		
-		System.out.println("# admin category_Informaton adminInfoView userid : " + adminVo.getUserid() + " #");
-		
-		return "/admin/adminInfoView";
-	}
-	
 	@RequestMapping("/adminUsersDelete") // 관리자 회원 삭제
 	@ResponseBody
 	public Map<String, Object> adminUsersDelete(UserVo userVo){
@@ -119,6 +90,40 @@ public class AdminController {
 		adminService.adminHostingDelete(userVo.getUserno());
 		
 		System.out.println("# admin category_Users Delete #");
+		
 		return adminService.adminUsersDelete(userVo);
+	}
+	
+	@RequestMapping("/adminReservationView")	// 관리자 회원 예약정보 호출
+	public String adminReservationView(Model model, @RequestParam("uadmin") int uadmin) {
+		Map<String,Object> adminReservationViewMap = adminService.adminReservationViewList(uadmin);
+		model.addAttribute("adminReservationViewMap", adminReservationViewMap);
+		
+		System.out.println("# admin category_Reservation View ListAll #");
+		
+		return "/admin/adminReservationView";
+	}
+	
+
+	@RequestMapping("/adminUsersHosting")	// 관리자 회원 상품 페이지 호출
+	public String adminUsersHosting(Model model) {
+		Map<String,Object> map = null;
+		map = adminService.userHostingList();
+		model.addAttribute("map",map);
+		
+		System.out.println("# admin category_Hosting adminUsersHosting View ListAll #");
+		
+		return "/admin/adminUsersHosting";
+	}
+	
+	@RequestMapping("/adminUserHostingView")	// 회원 호스팅 상품 페이지 호출
+	public String adminUserHostingView(Model model , @RequestParam("userno") int userno) {
+		Map<String, Object> adminUserHostingViewMap = null;
+		adminUserHostingViewMap = adminService.adminUserHostingViewList(userno);
+		model.addAttribute("adminUserHostingViewMap", adminUserHostingViewMap);
+		
+		System.out.println("# admin category_Hosting View ListAll #");
+		
+		return "/admin/adminUserHostingView";
 	}
 }

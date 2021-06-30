@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Administration</title>
+    <title>MyPage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -30,7 +30,8 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
- 	
+ 		
+ 		
   	</script>
   	
   </head>
@@ -44,8 +45,8 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>Administration</span></p>
-	            <h1 class="mb-4 bread"></h1>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>mypage</span></p>
+	            <h1 class="mb-4 bread">Hosting</h1>
             </div>
           </div>
         </div>
@@ -54,35 +55,36 @@
 
 	<c:import url="/WEB-INF/views/admin/administrationCategory.jsp"></c:import>
 
-	<section position="relative" width="50%" display="block" align="center" padding="2em">
+	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
-            <form class="bg-white p-2 " width="100%" method="post">
-				<table width="100%" >
-				
+			<table width="100%">
+ 				<form class="bg-white p-2 " width="100%" method="post"> 
 					<tr>
-						<td width="50%">userNo</td>
-						<td width="50%">숙소 갯수</td>
+						<td width="10%">회원 이름</td>
+						<td width="5%">숙소 이름</td>
+						<td width="6%">방문일</td>
+						<td width="6%">상세 주소</td>
+						<td width="6%">호스트 이름</td>
+							
+						</td>
 					</tr>
-
+	
 					<tr height="1" bgcolor="#8f784b ">
 						<td colspan="12"></td>
 					</tr>
-
-					<c:forEach var="roomVo" items="${map.listCount }">
-						<tr id="${roomVo.userno}">
-							<td>
-								${roomVo.userno}
-							</td>
-							<td>
-								<a href="adminUserHostingView?userno=${roomVo.userno}">${roomVo.count }</a>
-							</td>
-								
+	
+					<c:forEach var="reservationVo" items="${adminReservationViewMap.adminUserHostingViewList }">
+						<tr id="${reservationVo.re_no}">
+							<td>${reservationVo.cname}</td>
+							<td>${reservationVo.rname}</td>
+							<td>${reservationVo.startday} ~ ${reservationVo.endday}</td>
+							<td>${reservationVo.raddress}</td>
+							<td>${reservationVo.hname}</td>
 						</tr>
 					</c:forEach>
-
-				</table>
-            </form>
-          </div>
+				</form>
+			</table>
+		</div>
     </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
