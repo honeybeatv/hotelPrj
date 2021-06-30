@@ -37,6 +37,7 @@
 	  (seq_room.nextval, #{rtype}, #{rpeople}, #{rinfo}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet}, #{raddress}, #{rname}, #{userno},#{rpicture1},#{rpicture2},#{rpicture3})
 	  ]]>
 	</insert>
+	
 
 
 	<!-- 상세 조건 검색 -->
@@ -128,11 +129,7 @@
 	</select>
 	
 	
-	<select id="insertRoomReserve" resultType="com.site.vo.ReserveVo">
 	
-	insert into reserve values(seq_reserve.nextval, #{roomNo}, 'normal', startday=#{startday}, endday=#{endday}, #{userno})
-		
-	</select>
 	
 
 

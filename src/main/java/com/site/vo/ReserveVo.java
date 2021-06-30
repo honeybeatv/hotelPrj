@@ -24,4 +24,6 @@ public class ReserveVo {
 	
 	private List<ReserveVo> reserveVoList;
 	
+	private String code;
+	
 }
