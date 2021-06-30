@@ -3,6 +3,7 @@ package com.site.config;
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,8 @@ public class App_config {
 	//classpath : resources를 어디에 담아서 어디껄 쓸껀지 설정.		mapper폴더 안의 모든걸 mapper라고 할꺼다.
 	Resource[] res = new PathMatchingResourcePatternResolver().getResources("classpath:/mapper/**/*.xml");
 	sessionFactory.setMapperLocations(res);
+	SqlSessionFactory sqlSessionFactory = sessionFactory.getObject(); 
+	sqlSessionFactory.getConfiguration().setJdbcTypeForNull(JdbcType.NULL); 
 
 	return sessionFactory.getObject();
 	}

@@ -194,10 +194,8 @@
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">사진</label>
-					<div class="col-sm-7">
-						<input multiple="multiple" type="file" class="" style="width: 100%;" id="file"	name="file" accept=".gif, .jpg, .png" onchange="loadFile(event)">
-						
-					</div>
+						<input multiple="multiple" type="file" class="" style="padding-left: 15px; width: 15%; text-align: left;" id="file" name="file" accept=".gif, .jpg, .png" onchange="loadFile(event)">
+						<span style="font-size:10px; color: gray;">※사진은 최대 3개까지 등록이 가능합니다.</span>	
 
 
 				</div>

@@ -214,9 +214,7 @@ ul {
 							<a href="../room/rooms-single?roomNo=${list.roomNo }"
 								class="img d-flex justify-content-center align-items-center"
 								style="background-image: url(/static/upload/${list.rpicture1};">
-								<div
-									class="icon d-flex justify-content-center align-items-center">
-<!--  -->
+								<div class="icon d-flex justify-content-center align-items-center">
 									<span class="icon-search2"></span>
 								</div>
 							</a>
@@ -225,8 +223,8 @@ ul {
 									<a>${list.rname }</a>
 								</h3>
 								<p>
-									<span class="price mr-2">${list.rprice }</span> <span
-										class="per">/ 일</span>
+									<span class="price mr-2">${list.rprice }</span>
+									<span class="per">/ 일</span>
 								</p>
 								<ul>
 									<li>방 종류 : ${list.rtype }</li>
