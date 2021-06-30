@@ -41,6 +41,8 @@ public interface RoomMapper {
 		
 		
 		UserVo userInfo(int userno);
+		
+		void insertRoomReserve(int roomNo);
 
 }
 

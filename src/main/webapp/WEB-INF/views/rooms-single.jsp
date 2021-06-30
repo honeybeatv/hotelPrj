@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
 <title>Deluxe</title>
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,6 +48,8 @@
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+
+
 	
 </script>
 
@@ -133,22 +136,22 @@
 										<div class="modal-body">
 											<div class="form-group">
 												<label for="uname">이름 : ${userVo.name }</label> <input type="text"
-													name="name" value="${userVo.name }" class="form-control">
+													name="name" value="${userVo.name }" class="form-control" readonly>
 											</div>
 											<div class="form-group">
 												<label for="uphone">전화번호</label> <input type="uphone"
-													name="uphone" value="${userVo.uphone }"class="form-control">
+													name="uphone" value="${userVo.uphone }"class="form-control" readonly>
 											</div>
 											<div class="form-group">
 												<label for="#">체크인</label> <input type="text"
 											class="form-control checkin_date" id="datepicker1"
-											name="startDate" placeholder="체크인 날짜"
+											name="startday" placeholder="체크인 날짜"
 											style="cursor: pointer;" readonly>
 											</div>
 											<div class="form-group">
 												<label for="#">체크아웃</label> <input type="text"
 											class="form-control checkout_date" id="datepicker2"
-											name="endDate" placeholder="체크아웃 날짜" style="cursor: pointer;"
+											name="endday" placeholder="체크아웃 날짜" style="cursor: pointer;"
 											readonly>
 											</div>
 											<div class="form-group">
@@ -160,7 +163,7 @@
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Close</button>
 											<button type="button" class="btn btn-default"
-												data-dismiss="modal" onclick="location.href='../user/userReservationView?userno=${userVo.userno}'" >예약하기</button>
+												data-dismiss="modal" onclick="location.href='/roomReserve'" >예약하기</button>
 										</div>
 									</form>
 								</div>
