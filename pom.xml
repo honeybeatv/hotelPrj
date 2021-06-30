@@ -58,6 +58,7 @@
 			<version>6</version>
 			<scope>system</scope>
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6_g.jar</systemPath>
+			<!-- <systemPath>D:/stspyw/ex0610/src/main/webapp/WEB-INF/lib/ojdbc6_g.jar</systemPath> 영우씨 경로-->
 		</dependency>
 
 		<!-- mybatis -->
