@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -39,10 +40,11 @@ public interface RoomMapper {
 
 		int selectRoomCount();
 		
-		
+		//예약하기 누를시 user정보 가져오기
 		UserVo userInfo(int userno);
 		
-		void insertRoomReserve(int roomNo);
+		void insertRoomReserve(int roomNo, int userno, String startday, String endday);
+		
 
 }
 

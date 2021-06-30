@@ -47,8 +47,8 @@
 <script type="text/javascript" src="../static/js/contact.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
 
+<script type="text/javascript">
 
 	
 </script>
@@ -59,11 +59,14 @@
 	<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 	<!-- END nav -->
 
-	<div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
+	<div class="hero-wrap"
+		style="background-image: url('../static/images/bg_1.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
-			<div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
-				<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+			<div
+				class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+				<div
+					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2"
 							data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
@@ -89,16 +92,16 @@
 										style="background-image: url(../static/upload/${roomVo.rpicture1});"></div>
 								</div>
 								<c:if test="${roomVo.rpicture2 != null }">
-								<div class="item">
-									<div class="room-img"
-										style="background-image: url(../static/upload/${roomVo.rpicture2});"></div>
-								</div>
+									<div class="item">
+										<div class="room-img"
+											style="background-image: url(../static/upload/${roomVo.rpicture2});"></div>
+									</div>
 								</c:if>
 								<c:if test="${roomVo.rpicture3 != null }">
-								<div class="item">
-									<div class="room-img"
-										style="background-image: url(../static/upload/${roomVo.rpicture3});"></div>
-								</div>
+									<div class="item">
+										<div class="room-img"
+											style="background-image: url(../static/upload/${roomVo.rpicture3});"></div>
+									</div>
 								</c:if>
 							</div>
 						</div>
@@ -120,9 +123,8 @@
 
 							</div>
 						</div>
-
 						<div id="contact">
-							<button type="button" class="btn btn-info btn"
+							<button type="submit" class="btn btn-info btn"
 								data-toggle="modal" data-target="#contact-modal">예약하기</button>
 						</div>
 						<div id="contact-modal" class="modal fade" role="dialog">
@@ -132,44 +134,49 @@
 										<a class="close" data-dismiss="modal">×</a>
 										<h3>예약 하기</h3>
 									</div>
-									<form id="contactForm" name="contact" role="form">
+									<form action="roomsReserve" id="" name="" role="form" method="post">
 										<div class="modal-body">
 											<div class="form-group">
-												<label for="uname">이름 : ${userVo.name }</label> <input type="text"
-													name="name" value="${userVo.name }" class="form-control" readonly>
+												<label for="name">이름 </label> <input
+													type="text" name="name" value="${userVo.name }"
+													class="form-control" readonly>
 											</div>
 											<div class="form-group">
 												<label for="uphone">전화번호</label> <input type="uphone"
-													name="uphone" value="${userVo.uphone }"class="form-control" readonly>
+													name="uphone" value="${userVo.uphone }"
+													class="form-control" readonly>
 											</div>
 											<div class="form-group">
 												<label for="#">체크인</label> <input type="text"
-											class="form-control checkin_date" id="datepicker1"
-											name="startday" placeholder="체크인 날짜"
-											style="cursor: pointer;" readonly>
+													class="form-control checkin_date" id="datepicker1"
+													value="${reserveVo.startday }" name="startday" placeholder="체크인 날짜"
+													style="cursor: pointer;" readonly>
 											</div>
 											<div class="form-group">
 												<label for="#">체크아웃</label> <input type="text"
-											class="form-control checkout_date" id="datepicker2"
-											name="endday" placeholder="체크아웃 날짜" style="cursor: pointer;"
-											readonly>
+													class="form-control checkout_date" id="datepicker2"
+													value="${reserveVo.endday }" name="endday" placeholder="체크아웃 날짜"
+													style="cursor: pointer;" readonly>
 											</div>
 											<div class="form-group">
-												<label for="email">요구사항</label>
-												<textarea name="email" class="form-control"></textarea>
+												<label for="">요구사항</label>
+												<textarea name="" class="form-control"></textarea>
 											</div>
 										</div>
 										<div class="modal-footer">
+										<button type="submit" class="btn btn-default"
+												data-dismiss="modal"
+												onclick="location.href='/user/userReservationView?userno=${userVo.userno}'">예약하기</button>
 											<button type="button" class="btn btn-default"
-												data-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal" onclick="location.href='/roomReserve'" >예약하기</button>
+												data-dismiss="modal">취소 </button>
+											
+												
 										</div>
 									</form>
 								</div>
 							</div>
 						</div>
-
+					
 						<%-- <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }"
 							class="btn-custom">
 							<!-- <button type="submit" class="btn py-3 px-5"
@@ -186,7 +193,8 @@
 											<a href="/room/rooms-single?roomNo=${item.roomNo }"
 												class="img img-2 d-flex justify-content-center align-items-center"
 												style="background-image: url(../static/upload/${item.rpicture1});">
-												<div class="icon d-flex justify-content-center align-items-center">
+												<div
+													class="icon d-flex justify-content-center align-items-center">
 													<span class="icon-search2"></span>
 												</div>
 											</a>
@@ -213,11 +221,11 @@
 											</div>
 										</div>
 									</div>
-									
+
 								</c:forEach>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 				<!-- .col-md-8 -->
@@ -230,7 +238,7 @@
 							</div>
 						</form>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>

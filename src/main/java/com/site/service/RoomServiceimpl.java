@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.site.mapper.RoomMapper;
 import com.site.mapper.UserMapper;
+import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -164,7 +165,7 @@ public class RoomServiceimpl implements RoomService {
 		
 		return roomVo;
 	}
-
+	//예약 하기 누를시 user 이름,번호 가져오기
 	@Override
 	public UserVo userInfo(int userno) {
 		
@@ -172,11 +173,11 @@ public class RoomServiceimpl implements RoomService {
 		
 		return userVo;
 	}
-
+	
 	@Override
 	public void roomReserve(int roomNo, int userno, String startday, String endday) {
 		
-		roomMapper.insertRoomReserve(roomNo);
+		roomMapper.insertRoomReserve(roomNo,userno,startday,endday);
 		
 		System.out.println("roomServiceImpl :" +roomNo);
 		

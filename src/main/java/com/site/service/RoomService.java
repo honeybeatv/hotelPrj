@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -30,6 +31,7 @@ public interface RoomService {
 	
 	
 	void roomReserve(int roomNo, int userno, String startday, String endday);
+
 
 	
 	

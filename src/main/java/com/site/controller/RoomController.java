@@ -3,7 +3,9 @@ package com.site.controller;
 import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -92,8 +94,8 @@ public class RoomController {
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
 	   UserVo userVo = roomService.userInfo(userno);
 	   
-	   System.out.println("Controller + roomVo" + roomVo);
-	   System.out.println(userVo.getName()+ " Controller userVo Test ");
+	   System.out.println("Controller roomVo Test" + roomVo);
+	   System.out.println(" Controller userVo Test " + userVo.getName());
 	   
 	   model.addAttribute("roomVo", roomVo);
 	   model.addAttribute("userVo", userVo);
@@ -102,21 +104,35 @@ public class RoomController {
    }
    
    @RequestMapping("/roomsReserve") 
- 	public String roomsReserve(	@RequestParam(value="roomNo") int roomNo,
- 			@RequestParam(value="userno") int userno,
- 			@RequestParam(value="startday") String startday, 
- 			@RequestParam(value="endday") String endday, Model model) {
-	   
-	   
+	public String roomsReserve(	@RequestParam(value="roomNo") int roomNo,
+//			HttpServletRequest request,
+			@RequestParam(value="userno") int userno,
+			@RequestParam(value="startday") String startday, 
+			@RequestParam(value="endday") String endday, Model model) {
+	 
+//	 HttpSession session = request.getSession();
+//		int userno = (int)session.getAttribute("session_userno");
+		
+		System.out.println("Controller userno" +userno);
+		System.out.println("Controller roomNo" +roomNo);
 	   System.out.println("Controller Startday" +startday);
 	   System.out.println("Controller endday" +endday);
 	   
 	   
+	   
 	   roomService.roomReserve(roomNo, userno, startday, endday);
 	   
+	   model.addAttribute("roomNo", roomNo);
+	   model.addAttribute("userno", userno);
+	   model.addAttribute("startday", startday);
+	   model.addAttribute("endday", endday);
+	   model.addAttribute("userno", userno);
 	   
- 		return "/user/userReservationView";
- 	}
+		return "/user/userReservationView";
+	}
+
+   
+
    
  
   
