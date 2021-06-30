@@ -34,7 +34,7 @@
 	<insert id="insertRoomsWriteDo" parameterType="com.site.vo.RoomVo">
 	  <![CDATA[
 	  INSERT INTO ROOM VALUES
-	  (seq_room.nextval, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture1},#{rpicture2},#{rpicture3} #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet}, #{raddress}, #{rname}, #{userno})
+	  (seq_room.nextval, #{rtype}, #{rpeople}, #{rinfo}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet}, #{raddress}, #{rname}, #{userno}, #{rpicture1}, #{rpicture2}, #{rpicture3})
 	  ]]>
 	</insert>
 

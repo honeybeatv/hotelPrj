@@ -44,7 +44,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/contact.js"></script>
+<script type="text/javascript" src="../static/js/contact.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -59,14 +59,11 @@
 	<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 	<!-- END nav -->
 
-	<div class="hero-wrap"
-		style="background-image: url('../static/images/bg_1.jpg');">
+	<div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
-			<div
-				class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
-				<div
-					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+			<div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+				<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2"
 							data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
@@ -91,14 +88,18 @@
 									<div class="room-img"
 										style="background-image: url(../static/upload/${roomVo.rpicture1});"></div>
 								</div>
+								<c:if test="${roomVo.rpicture2 != null }">
 								<div class="item">
 									<div class="room-img"
-										style="background-image: url(../static/images/room-2.jpg);"></div>
+										style="background-image: url(../static/upload/${roomVo.rpicture2});"></div>
 								</div>
+								</c:if>
+								<c:if test="${roomVo.rpicture3 != null }">
 								<div class="item">
 									<div class="room-img"
-										style="background-image: url(../static/images/room-3.jpg);"></div>
+										style="background-image: url(../static/upload/${roomVo.rpicture3});"></div>
 								</div>
+								</c:if>
 							</div>
 						</div>
 						<div class="col-md-12 room-single mt-4 mb-5 ftco-animate">

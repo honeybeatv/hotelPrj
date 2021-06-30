@@ -82,8 +82,8 @@ public class RoomServiceimpl implements RoomService {
    
    //rooms 숙소 등록
 	@Override
-	public void roomsWriteDo(RoomVo roomVo,MultipartFile file) {
-	
+	public void roomsWriteDo(RoomVo roomVo,List<MultipartFile> files) {
+		int i = 0;
 //		int userNo = userVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 
 		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 이게 6이 뽑혀야하는데 0이나오네?
 //		roomVo.setUserno(userNo);			// 받아온 userNo를 roomVo의 userNo에 대입?
@@ -98,8 +98,10 @@ public class RoomServiceimpl implements RoomService {
 		
 		System.out.println("roomVo ==> " + roomVo);	//
 		
-		String fileUrl = "C:/Users/pom53/git/hotelPrj/src/main/resources/static/upload/";
+		String fileUrl = "C:/Users/1강의실/git/hotelPrj/src/main/resources/static/upload/";
 		//중복 방지를 위한 파일명 변경
+		for(MultipartFile file : files) {
+			i++;
 		long time = System.currentTimeMillis();
 		String uploadFileName = time+"_"+file.getOriginalFilename();
 		//파일저장
@@ -110,17 +112,19 @@ public class RoomServiceimpl implements RoomService {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		if (i==1) {
 		roomVo.setRpicture1(uploadFileName);
+		} else if (i==2) {
 		roomVo.setRpicture2(uploadFileName);
+		} else if (i==3) {
 		roomVo.setRpicture3(uploadFileName);
+		}
 		
-		
-		roomMapper.insertRoomsWriteDo(roomVo);
 		
 		System.out.println("db 저장 전 uploadFile : " +uploadFileName);
 		
-		
+		}
+		roomMapper.insertRoomsWriteDo(roomVo);
 	
 	}
 		
