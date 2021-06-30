@@ -92,6 +92,24 @@
 		]]>  	
   	</select>
   	
+  	<!-- 관리자 회원 예약 내역 호출 -->
+	<select id="selectReservationViewList" resultType="com.site.vo.AdminReservationVo">
+		<![CDATA[
+		    SELECT  re.re_no as re_no, 
+		    		uc.name as cname,
+			        ro.rname as rname,   
+			        to_char(re.startday, 'yyyy-MM-dd') as startday, 
+			        to_char(re.endday, 'yyyy-MM-dd') as endday, 
+			        ro.raddress as raddress,
+			        uh.name as hname
+			FROM reserve re, room ro, user1 uc, user1 uh
+			WHERE re.roomno = ro.roomno 
+			  and re.userno = uc.userno   
+			  and uh.userno = ro.userno   
+			  and uc.uadmin != #{uadmin}
+		]]>
+	</select>
+	
   	<!-- 전체게시글 수 -->
 	<select id="selectHostingCount" resultType="com.site.vo.HostingVO">
 	<![CDATA[
@@ -100,7 +118,6 @@
 		group by userno
 		]]>
 	</select>
-	
 	
 	<!-- 회원 호스팅 상품정보 호출 -->
   	<select id="selectUserHostingViewList" resultType="com.site.vo.RoomVo">

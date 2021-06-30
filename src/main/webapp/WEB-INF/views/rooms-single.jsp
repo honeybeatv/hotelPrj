@@ -47,9 +47,13 @@
 <script type="text/javascript" src="../static/js/contact.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<<<<<<< HEAD
 
 <script type="text/javascript">
 
+=======
+<script type="text/javascript">
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 	
 </script>
 
@@ -228,6 +232,7 @@
 
 					</div>
 				</div>
+<<<<<<< HEAD
 				<!-- .col-md-8 -->
 				<div class="col-lg-4 sidebar ftco-animate">
 					<div class="sidebar-box">
@@ -240,6 +245,8 @@
 					</div>
 
 				</div>
+=======
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 			</div>
 		</div>
 	</section>

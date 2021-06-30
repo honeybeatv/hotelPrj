@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.site.mapper.AdminMapper;
 import com.site.mapper.UserMapper;
+import com.site.vo.AdminReservationVo;
 import com.site.vo.HostingVO;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
@@ -137,6 +138,16 @@ public class AdminServiceImpl implements AdminService {
 		return aUsersDeleteMap;
 	}
 
+	@Override // 관리자 회원 예약내역 호출
+	public Map<String, Object> adminReservationViewList(int uadmin) {
+		Map<String,Object> adminReservationViewMap = new HashMap<String, Object>();
+		
+		List<AdminReservationVo> adminUserHostingViewList = adminMapper.selectReservationViewList(uadmin);
+		adminReservationViewMap.put("adminUserHostingViewList", adminUserHostingViewList);
+		
+		return adminReservationViewMap;
+	}
+
 	@Override
 	public Map<String, Object> userHostingList() {
 		Map<String,Object> map = new HashMap<String, Object>();
@@ -157,4 +168,5 @@ public class AdminServiceImpl implements AdminService {
 
 		return adminUserHostingViewMap;
 	}
+
 }

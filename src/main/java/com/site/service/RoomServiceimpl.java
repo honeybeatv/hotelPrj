@@ -2,6 +2,7 @@ package com.site.service;
 
 import java.io.File;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,7 +100,7 @@ public class RoomServiceimpl implements RoomService {
 		
 		System.out.println("roomVo ==> " + roomVo);	//
 		
-		String fileUrl = "C:/Users/1강의실/git/hotelPrj/src/main/resources/static/upload/";
+		String fileUrl = "C:/Users/pom53/git/hotelPrj/src/main/resources/static/upload/";
 		//중복 방지를 위한 파일명 변경
 		for(MultipartFile file : files) {
 			i++;
@@ -128,6 +129,7 @@ public class RoomServiceimpl implements RoomService {
 		roomMapper.insertRoomsWriteDo(roomVo);
 	
 	}
+	
 		
 	
 	//페이징 연구중 by.봉
