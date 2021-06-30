@@ -22,7 +22,7 @@ public interface RoomService {
 	Map<String, Object> roomsListAll(int page);
 	
 	//rooms 숙소 등록
-	void roomsWriteDo(RoomVo roomVo, MultipartFile file); //void return타입이 필요없음
+	void roomsWriteDo(RoomVo roomVo, List<MultipartFile> file); //void return타입이 필요없음
 	
 	//숙소 상세페이지
 	RoomVo roomSingle(int roomNo);
