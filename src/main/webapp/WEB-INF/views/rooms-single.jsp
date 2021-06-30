@@ -47,14 +47,32 @@
 <script type="text/javascript" src="../static/js/contact.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<<<<<<< HEAD
 
 <script type="text/javascript">
+	/* function roomReserve_ajax() {
+		alert($("#").val()); //form에 입력한 id값을 받아옴.
 
-=======
-<script type="text/javascript">
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
-	
+		 $.ajax({
+			url : "formOk", //어디로 보내줄꺼냐 : url은 무조건 controller로 감.
+			type : "post", //어떤 형식으로 보내줄꺼냐
+			data : { // data->controller->DB저장->DB정보를 들고와서 다시 data를 화면에 전달해달라.
+				"id" : $("#id").val(),
+				"pw" : $("#pw").val(),
+				"name" : $("#name").val(),
+				"nickName" : $("#nickName").val()
+			}, //데이터값. key-value형태로.
+			success : function(data) {
+				//controller의 return값을 data로 받음.
+				alert("성공" );
+				
+			}, //성공했을때는 여기로
+			error : function() {
+				alert("실패");
+			} //실패했을때는 여기로
+		}); 
+
+		//ajax기본 형식 : $.ajax({ }); 세미콜론 필수.
+	} */
 </script>
 
 </head>
@@ -83,11 +101,15 @@
 			</div>
 		</div>
 	</div>
+	
+	<input type="hidden" name="userno" value="${userno }">
+	<input type="text" name="userno" value="${userno }">
+	
+	
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="row">
 						<div class="col-md-12 ftco-animate">
 							<h2 class="mb-4">${roomVo.rname }</h2>
 							<div class="single-slider owl-carousel">
@@ -127,65 +149,12 @@
 
 							</div>
 						</div>
-						<div id="contact">
-							<button type="submit" class="btn btn-info btn"
-								data-toggle="modal" data-target="#contact-modal">예약하기</button>
-						</div>
-						<div id="contact-modal" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<a class="close" data-dismiss="modal">×</a>
-										<h3>예약 하기</h3>
-									</div>
-									<form action="roomsReserve" id="" name="" role="form" method="post">
-										<div class="modal-body">
-											<div class="form-group">
-												<label for="name">이름 </label> <input
-													type="text" name="name" value="${userVo.name }"
-													class="form-control" readonly>
-											</div>
-											<div class="form-group">
-												<label for="uphone">전화번호</label> <input type="uphone"
-													name="uphone" value="${userVo.uphone }"
-													class="form-control" readonly>
-											</div>
-											<div class="form-group">
-												<label for="#">체크인</label> <input type="text"
-													class="form-control checkin_date" id="datepicker1"
-													value="${reserveVo.startday }" name="startday" placeholder="체크인 날짜"
-													style="cursor: pointer;" readonly>
-											</div>
-											<div class="form-group">
-												<label for="#">체크아웃</label> <input type="text"
-													class="form-control checkout_date" id="datepicker2"
-													value="${reserveVo.endday }" name="endday" placeholder="체크아웃 날짜"
-													style="cursor: pointer;" readonly>
-											</div>
-											<div class="form-group">
-												<label for="">요구사항</label>
-												<textarea name="" class="form-control"></textarea>
-											</div>
-										</div>
-										<div class="modal-footer">
-										<button type="submit" class="btn btn-default"
-												data-dismiss="modal"
-												onclick="location.href='/user/userReservationView?userno=${userVo.userno}'">예약하기</button>
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">취소 </button>
-											
-												
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					
-						<%-- <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }"
+						
+						 <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }"
 							class="btn-custom">
-							<!-- <button type="submit" class="btn py-3 px-5"
-								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button> -->
-						</a> --%>
+							 <button type="submit" class="btn py-3 px-5"
+								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button>
+						</a> 
 
 
 						<div class="col-md-12 room-single ftco-animate mb-5 mt-5">
@@ -243,14 +212,122 @@
 							</div>
 						</form>
 					</div>
+=======
+				
+				
+				
+			<!-- 리뷰창  -->	
+			<div class="pt-5 mt-5">
+              <h3 class="mb-5">6 Comments</h3>
+              <ul class="comment-list">
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                  </div>
+                </li>
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 
+<<<<<<< HEAD
 				</div>
 =======
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </li>
+
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">December 7, 2018 at 2:21pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </li>
+              </ul>
+              <!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Leave a comment</h3>
+                <form action="#" class="p-5 bg-light">
+                  <div class="form-group">
+                  
+                  
+                  <!-- 별점 등록 -->
+                  	      <div class="sidebar-wrap bg-light ftco-animate">
+	      					<h3 class="heading mb-4">Star Rating</h3>
+							  <div class="form-check">
+									<input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+									<label class="form-check-label" for="exampleCheck1">
+										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
+									</label>
+							  </div>
+							  <div class="form-check">
+						      <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <label class="form-check-label" for="exampleCheck1">
+						    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						     </label>
+							  </div>
+							  <div class="form-check">
+							    <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+							    </label>
+							  </div>
+	      		</div>
+                  
+                  
+                  <!-- 리뷰등록 -->
+                  
+                    <label for="name">Name *</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" class="form-control" id="website">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+				
+				<!-- 리뷰 끝 -->
+				
 >>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 			</div>
 		</div>
 	</section>
 	<!-- .section -->
+		
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

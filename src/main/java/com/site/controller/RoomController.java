@@ -3,7 +3,6 @@ package com.site.controller;
 import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.RoomService;
-import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -55,15 +54,12 @@ public class RoomController {
       return "/rooms-single";
    }
    
-   @RequestMapping("/roomsReserve") 
+   @RequestMapping(value="/roomsReserve")
 	public String roomsReserve(	@RequestParam(value="roomNo") int roomNo,
-//			HttpServletRequest request,
 			@RequestParam(value="userno") int userno,
 			@RequestParam(value="startday") String startday, 
 			@RequestParam(value="endday") String endday, Model model) {
 	 
-//	 HttpSession session = request.getSession();
-//		int userno = (int)session.getAttribute("session_userno");
 		
 		System.out.println("Controller userno" +userno);
 		System.out.println("Controller roomNo" +roomNo);
@@ -82,7 +78,6 @@ public class RoomController {
 	   
 		return "/user/userReservationView";
 	}
-
    
    @RequestMapping("/roomsList") 
   	public String roomsList() {

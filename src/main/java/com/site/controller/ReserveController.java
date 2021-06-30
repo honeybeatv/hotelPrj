@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.service.ReserveService;
 import com.site.vo.ReserveVo;
+import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
 @Controller
@@ -23,7 +24,7 @@ public class ReserveController {
 	@Autowired
 	ReserveService reserveService;
 	
-	
+	UserVo userVo;	
 	//숙소 전체 예약 리스트
 	@RequestMapping("/reserveList")
 	public String reserveList(Model model) {
@@ -36,6 +37,33 @@ public class ReserveController {
 		model.addAttribute("list", list);
 		return "/reserveList";
 	}
+	
+	@RequestMapping("/roomReserve")
+	public String roomReserve(RoomVo roomVo, Model model ) {
+	
+	   
+	   model.addAttribute("roomVo", reserveService.roomReserve(roomVo));
+	   
+		return "/roomReserve";
+	}
+	
+	
+	@RequestMapping("/ajax/save")
+	@ResponseBody
+	public ReserveVo ajaxSave(ReserveVo roomVo, HttpServletRequest request ) {
+	
+		HttpSession session = request.getSession();
+		roomVo.setUserno((Integer) session.getAttribute("session_userno"));
+		reserveService.save(roomVo);
+	   
+		System.out.println("roomVo {TEST} :" + roomVo);
+	   roomVo.setCode("SUCCESS");
+	   
+		return roomVo; 
+	}
+	
+	
+	
 	
 	
 	 

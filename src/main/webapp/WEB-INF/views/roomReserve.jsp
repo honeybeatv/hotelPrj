@@ -76,53 +76,66 @@
 		</div>
 	</div>
 
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8">
-					<div class="row">
-						<div class="col-md-12 ftco-animate">
-							<h2 class="mb-4">${roomVo.rname }</h2>
-							<div class="single-slider owl-carousel">
-								<div class="item">
-									<div class="room-img"
-										style="background-image: url(../static/upload/${roomVo.rpicture1});"></div>
-								</div>
-								<div class="item">
-									<div class="room-img"
-										style="background-image: url(../static/images/room-2.jpg);"></div>
-								</div>
-								<div class="item">
-									<div class="room-img"
-										style="background-image: url(../static/images/room-3.jpg);"></div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
-							<p>${roomVo.rinfo }</p>
-							<div class="d-md-flex mt-5 mb-5">
-								<ul class="list">
-									<li><span>방 타입: </span> ${roomVo.rtype }</li>
-									<li><span>가용인원: </span>${roomVo.rpeople }명</li>
-									<li><span>주소: </span>${roomVo.raddress }</li>
-								</ul>
-								<ul class="list ml-md-5">
-									<li><span>편의 시설: </span> <c:if
-											test="${roomVo.rsmoke ne null }">흡연실</c:if> <c:if
-											test="${roomVo.rpet ne null }">, 반려동물</c:if></li>
-									<li><span>침대 갯수: </span>${roomVo.rbed }개</li>
-									<li><span>도시: </span>${roomVo.rcity }</li>
-								</ul>
+	<section class="ftco-section contact-section bg-light" align="center">
+		<div class="col-10" style="display: inline-block;">
+			<form action="roomsWriteDo" id="searchForm" name="searchForm"
+				class="bg-white p-5 " width="100%" method="post"
+				enctype="multipart/form-data">
 
-							</div>
-						</div>
 
+
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">방번호</label> <input type="hidden"
+						id="userno" name="userno" value="${session_userno }">
+					<div class="col-sm-7">
+						<input type="text" class="form-control" style="width: 100%;"
+							id="rname" name="rname">
+					</div>
+
+				</div>
+
+
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label"
+						style="font-weight: bolder;">요구사항</label>
+					<div class="col-sm-7">
+						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
 					</div>
 				</div>
-			</div>
+				<div class="col-md-3 d-flex">
+					<div class="form-group p-4 align-self-stretch d-flex align-items-end">
+						<div class="wrap">
+							<label for="#">체크인 날짜</label> <input type="text"
+								class="form-control checkin_date" id="datepicker1"
+								name="startday" placeholder="체크인 날짜" style="cursor: pointer;"
+								readonly>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 d-flex">
+					<div
+						class="form-group p-4 align-self-stretch d-flex align-items-end">
+						<div class="wrap">
+							<label for="#">체크아웃 날짜</label> <input type="text"
+								class="form-control checkout_date" id="datepicker2"
+								name="endday" placeholder="체크아웃 날짜" style="cursor: pointer;"
+								readonly>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
+					onclick="save()"> <input type="button" value="취소"
+					class="btn btn-primary py-3 px-5" onclick="history.back()">
+
+			</form>
 		</div>
-		
-		
 	</section>
 
 
@@ -156,6 +169,30 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="/static/js/google-map.js"></script>
 	<script src="/static/js/main.js"></script>
+	
+	<script type="text/javascript">
+	
+		function save(){
+			$.ajax({
+				url:'/reserve/ajax/save',
+				data: $('#searchForm').serialize(),
+				dataType:'JSON',
+				method:'POST',
+				success: function(resp){
+					if(resp.code == 'SUCCESS'){
+						alert('성공');
+						location.href='/user/userReservationView?userno=' + resp.userno; 
+					}else{
+						alert('에러가 발생했습니다.');
+					}
+				},
+				error: function(){
+					alert('에러가 발생했습니다.');
+				}
+			})
+		}	
+	
+	</script>
 
 </body>
 </html>

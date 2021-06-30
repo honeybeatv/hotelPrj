@@ -246,7 +246,7 @@ ul {
 					<!-- 번호 넣기 -->
 					<c:forEach var="x" begin="${map.startPage}" end="${map.endPage }">
 						<c:if test="${map.page == x }">
-							<span><li><a>${x}</a></li></span>
+							<span><li class="active"><a>${x}</a></li></span>
 						</c:if>
 						<c:if test="${map.page != x }">
 							<li><a href="/?page=${x}#room">${x}</a></li>
