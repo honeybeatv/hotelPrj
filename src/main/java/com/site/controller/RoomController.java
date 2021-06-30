@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.RoomService;
+import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -86,17 +87,38 @@ public class RoomController {
 		   HttpServletRequest request, Model model) {
 	   
 	   HttpSession session = request.getSession();
-		int userno = (int)session.getAttribute("session_userno");
+	   int userno = (int)session.getAttribute("session_userno");
 		
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
 	   UserVo userVo = roomService.userInfo(userno);
 	   
+	   System.out.println("Controller + roomVo" + roomVo);
 	   System.out.println(userVo.getName()+ " Controller userVo Test ");
+	   
 	   model.addAttribute("roomVo", roomVo);
 	   model.addAttribute("userVo", userVo);
 	   
       return "/rooms-single";
    }
+   
+   @RequestMapping("/roomsReserve") 
+ 	public String roomsReserve(	@RequestParam(value="roomNo") int roomNo,
+ 			@RequestParam(value="userno") int userno,
+ 			@RequestParam(value="startday") String startday, 
+ 			@RequestParam(value="endday") String endday, Model model) {
+	   
+	   
+	   System.out.println("Controller Startday" +startday);
+	   System.out.println("Controller endday" +endday);
+	   
+	   
+	   roomService.roomReserve(roomNo, userno, startday, endday);
+	   
+	   
+ 		return "/user/userReservationView";
+ 	}
+   
+ 
   
    
    @RequestMapping("/roomsList") 

@@ -40,5 +40,8 @@ public interface UserMapper {
 	// 회원 호스팅 상품를 위한 예약내역 삭제
 	int deleteUserReservationDeleteList(int roomNo);
 	int selectUserReservationDeleteCount(int roomNo);
+	
+	
+	void insertRoomReserve(int userno);
 
 }

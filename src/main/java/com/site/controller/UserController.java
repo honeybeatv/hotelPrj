@@ -82,6 +82,7 @@ public class UserController {
 		System.out.println("user join page");
 		return "/user/join";
 	}
+	
 	@RequestMapping ("/join_check")
 	@ResponseBody
 	public Map<String,Object> join_check(UserVo userVo,HttpServletRequest request,Model model) {
@@ -103,6 +104,7 @@ public class UserController {
 		}
 		return map;
 	}
+	
 	@RequestMapping ("/id_check")
 	@ResponseBody
 	public Map<String,Object> id_check(UserVo userVo,HttpServletRequest request) {

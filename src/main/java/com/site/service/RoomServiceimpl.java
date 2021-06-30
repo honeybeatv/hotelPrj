@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.site.mapper.RoomMapper;
+import com.site.mapper.UserMapper;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -20,7 +21,6 @@ public class RoomServiceimpl implements RoomService {
    
 	@Autowired
    RoomMapper roomMapper;
-	
 
 	UserVo userVo;
 	
@@ -84,7 +84,7 @@ public class RoomServiceimpl implements RoomService {
    //rooms 숙소 등록
 	@Override
 	public void roomsWriteDo(RoomVo roomVo,List<MultipartFile> files) {
-	
+		int i = 0;
 //		int userNo = userVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 
 		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 이게 6이 뽑혀야하는데 0이나오네?
 //		roomVo.setUserno(userNo);			// 받아온 userNo를 roomVo의 userNo에 대입?
@@ -99,43 +99,38 @@ public class RoomServiceimpl implements RoomService {
 		
 		System.out.println("roomVo ==> " + roomVo);	//
 		
-		List<String> list = new ArrayList<>();
-	      //2. 파일첨부 되는 것 체크
-	      for(MultipartFile file : files) {
-	      // 파일저장위치
-	    	  String originalfileName = file.getOriginalFilename();
-	    	  File f = new File("E:/0_koreavc/00_subclass/java/hotelPrj/src/main/resources/static/upload/" + originalfileName);
-	     // String fileUrl = "E:/0_koreavc/00_subclass/java/hotelPrj/src/main/resources/static/upload/";
-	      
-	      // 파일이름중복방지
-	      long time = System.currentTimeMillis();
-	      String uploadFileName = time + "_" + file.getOriginalFilename(); 
-	      
-	      // 파일저장
-	      //File f = new File(fileUrl + uploadFileName);   
-	      // 파일전송
-	      try {
-	         file.transferTo(f);
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	      }
-	      // 파일이름 삽입
-	      roomVo.setRpicture1(uploadFileName);
-	      roomVo.setRpicture2(uploadFileName);
-	      roomVo.setRpicture3(uploadFileName);
-	
-	
+		String fileUrl = "C:/Users/pom53/git/hotelPrj/src/main/resources/static/upload/";
+		//중복 방지를 위한 파일명 변경
+		for(MultipartFile file : files) {
+			i++;
+		long time = System.currentTimeMillis();
+		String uploadFileName = time+"_"+file.getOriginalFilename();
+		//파일저장
+		File f = new File(fileUrl + uploadFileName);
+		//파일업로드
+		try {
+			file.transferTo(f);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		if (i==1) {
+		roomVo.setRpicture1(uploadFileName);
+		} else if (i==2) {
+		roomVo.setRpicture2(uploadFileName);
+		} else if (i==3) {
+		roomVo.setRpicture3(uploadFileName);
+		}
 		
-		
-		roomMapper.insertRoomsWriteDo(roomVo);
 		
 		System.out.println("db 저장 전 uploadFile : " +uploadFileName);
 		
-		
+		}
+		roomMapper.insertRoomsWriteDo(roomVo);
 	
 	}
+	
 		
-	}
+	
 	//페이징 연구중 by.봉
 //	@Override
 //	public List<RoomVo> roomListAdvanced2(String checkIn, String checkOut, String rtype, int rroom, int rbed,
@@ -178,6 +173,16 @@ public class RoomServiceimpl implements RoomService {
 		UserVo userVo = roomMapper.userInfo(userno);
 		
 		return userVo;
+	}
+
+	@Override
+	public void roomReserve(int roomNo, int userno, String startday, String endday) {
+		
+		roomMapper.insertRoomReserve(roomNo);
+		
+		System.out.println("roomServiceImpl :" +roomNo);
+		
+		
 	}
 	
 

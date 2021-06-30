@@ -5,6 +5,7 @@
 <html lang="en">
 <head>
 <title>Deluxe</title>
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -43,7 +44,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/contact.js"></script>
+<script type="text/javascript" src="../static/js/contact.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -56,14 +57,11 @@
 	<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 	<!-- END nav -->
 
-	<div class="hero-wrap"
-		style="background-image: url('../static/images/bg_1.jpg');">
+	<div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
 		<div class="overlay"></div>
 		<div class="container">
-			<div
-				class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
-				<div
-					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+			<div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+				<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2"
 							data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
@@ -85,18 +83,21 @@
 							<h2 class="mb-4">${roomVo.rname }</h2>
 							<div class="single-slider owl-carousel">
 								<div class="item">
-								<!--<c:forEach var="item" items="${roomVo.??}"> (이미지3개돌리기위해서 아이템스 값고민)--> 
 									<div class="room-img"
 										style="background-image: url(../static/upload/${roomVo.rpicture1});"></div>
 								</div>
+								<c:if test="${roomVo.rpicture2 != null }">
 								<div class="item">
 									<div class="room-img"
-										style="background-image: url(../static/images/room-2.jpg);"></div>
+										style="background-image: url(../static/upload/${roomVo.rpicture2});"></div>
 								</div>
+								</c:if>
+								<c:if test="${roomVo.rpicture3 != null }">
 								<div class="item">
 									<div class="room-img"
-										style="background-image: url(../static/images/room-3.jpg);"></div>
+										style="background-image: url(../static/upload/${roomVo.rpicture3});"></div>
 								</div>
+								</c:if>
 							</div>
 						</div>
 						<div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
@@ -133,22 +134,22 @@
 										<div class="modal-body">
 											<div class="form-group">
 												<label for="uname">이름 : ${userVo.name }</label> <input type="text"
-													name="name" value="${userVo.name }" class="form-control">
+													name="name" value="${userVo.name }" class="form-control" readonly>
 											</div>
 											<div class="form-group">
 												<label for="uphone">전화번호</label> <input type="uphone"
-													name="uphone" value="${userVo.uphone }"class="form-control">
+													name="uphone" value="${userVo.uphone }"class="form-control" readonly>
 											</div>
 											<div class="form-group">
 												<label for="#">체크인</label> <input type="text"
 											class="form-control checkin_date" id="datepicker1"
-											name="startDate" placeholder="체크인 날짜"
+											name="startday" placeholder="체크인 날짜"
 											style="cursor: pointer;" readonly>
 											</div>
 											<div class="form-group">
 												<label for="#">체크아웃</label> <input type="text"
 											class="form-control checkout_date" id="datepicker2"
-											name="endDate" placeholder="체크아웃 날짜" style="cursor: pointer;"
+											name="endday" placeholder="체크아웃 날짜" style="cursor: pointer;"
 											readonly>
 											</div>
 											<div class="form-group">
@@ -160,7 +161,7 @@
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Close</button>
 											<button type="button" class="btn btn-default"
-												data-dismiss="modal" onclick="location.href='../user/userReservationView'" >예약하기</button>
+												data-dismiss="modal" onclick="location.href='/roomReserve'" >예약하기</button>
 										</div>
 									</form>
 								</div>
@@ -216,18 +217,6 @@
 						</div>
 						
 					</div>
-				</div>
-				<!-- .col-md-8 -->
-				<div class="col-lg-4 sidebar ftco-animate">
-					<div class="sidebar-box">
-						<form action="#" class="search-form">
-							<div class="form-group">
-								<span class="icon fa fa-search"></span> <input type="text"
-									class="form-control" placeholder="Type a keyword and hit enter">
-							</div>
-						</form>
-					</div>
-					
 				</div>
 			</div>
 		</div>
