@@ -15,4 +15,6 @@ public interface ReserveService {
 
 	UserVo userInfo(int userno);
 
+	void roomReserve(int roomNo, int userno, String startday, String endday);
+
 }

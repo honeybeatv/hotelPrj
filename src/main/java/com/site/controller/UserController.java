@@ -139,6 +139,18 @@ public class UserController {
 		return "/user/userInfoView";
 	}
 
+//	@RequestMapping("/userInfoView")	// 회원 기본정보 페이지 호출
+//	public String userInfoView(Model model, HttpServletRequest request) {
+//		HttpSession session = request.getSession();
+//		int userno = session.getAttribute("session_userno");
+//		
+//		UserVo userVo = userService.userInfoView(userno);
+//		model.addAttribute("userVo", userVo);
+//		System.out.println("# mypage category_Informaton userInfoView userid : " + userVo.getUserid() + " #");
+//		
+//		return "/user/userInfoView";
+//	}
+
 	@RequestMapping("/userInfoModify") // 회원 기본정보 수정페이지 호출
 	public String mypageModify(Model model, @RequestParam("userno") int userno) {
 		UserVo userVo = userService.userInfoModify(userno);

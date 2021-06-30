@@ -53,4 +53,14 @@ public class ReserveServiceImpl implements ReserveService {
 		return userVo;
 	}
 
+
+
+
+	@Override
+	public void roomReserve(int roomNo, int userno, String startday, String endday) {
+		reserveMapper.insertRoomReserve(roomNo,userno,startday,endday);
+		
+		
+	}
+
 }

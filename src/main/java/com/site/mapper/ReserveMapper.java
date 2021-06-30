@@ -21,5 +21,7 @@ public interface ReserveMapper {
 
 	UserVo userInfo(int userno);
 
+	void insertRoomReserve(int roomNo, int userno, String startday, String endday);
+
 
 }

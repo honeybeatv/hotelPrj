@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.site.mapper.RoomMapper;
 import com.site.mapper.UserMapper;
+import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -23,33 +24,78 @@ public class RoomServiceimpl implements RoomService {
    RoomMapper roomMapper;
 
 	UserVo userVo;
-	
-
-
 
    //index페이지에서 검색
-   @Override
-   public List<RoomVo> getlist(int startday, int endday, String rcity, int rpeople) throws ParseException {
-      String start = Integer.toString(startday);
-      String end = Integer.toString(endday);
-      List<RoomVo> vo = roomMapper.getlist(start,end,rcity,rpeople);
-      return vo;
-   }
+	@Override
+	public Map<String, Object> getlist(int startday, int endday, String rcity, int rpeople, int listPage) {
+
+		int listCount = 0;
+		listCount = roomMapper.selectSearchCount(startday, endday, rcity, rpeople);
+		System.out.println(listCount);
+		
+		PageUtil paging = new PageUtil();
+		Map<String, Object> listAndNums = new HashMap<String, Object>();
+		listAndNums = paging.getPageNum(listPage, 9, listCount);
+		
+		int startrow = (int) listAndNums.get("startrow");
+		int endrow = (int) listAndNums.get("endrow");
+				
+	    List<RoomVo> list = roomMapper.selectSearchList(startday,endday,rcity,rpeople, startrow, endrow);
+		System.out.println(list);
+	    //Map<String, Object> listAndNums = new HashMap<String, Object>();
+		
+	    //페이징용 숫자들
+	    //listAndNums.put("startrow", pageNums.get("startrow"));
+	    //listAndNums.put("endrow", pageNums.get("endrow"));
+	    //listAndNums.put("startPage", pageNums.get("startPage"));
+	    //listAndNums.put("endPage", pageNums.get("endPage"));
+	    //listAndNums.put("maxPage", pageNums.get("maxPage"));
+		listAndNums.put("page", listPage);
+		listAndNums.put("listCount", listCount);
+		listAndNums.put("list", list);
+		return listAndNums;
+	}
 
    //상세 조건 검색
    @Override
-   public List<RoomVo> roomListAdvanced(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
-		   int maxPrice, String rpet, String rsmoke, String rcity, int rpeople) {
-	   System.out.println("service "+ rcity);
+   public Map<String, Object> roomListAdvanced(String checkIn, String checkOut, String rtype, int rroom, int rbed,
+		   int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int page) {
 	   
+	   //총 데이터 수 쿼리문으로 구해오기
+	   int listCount = 0;
+	   //listCount = mapper.총 데이터 수
+	   listCount = roomMapper.selectAdvancedSearchCount(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
+	   System.out.println("service count" + listCount);
 	   
-	   List<RoomVo> list = roomMapper.selectAdvancedRoomList(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
-	   System.out.println("service searchAdvanced " + list);
-	   return list;
+	   PageUtil paging = new PageUtil();
+	   Map<String, Object> listAndNums = new HashMap<String, Object>();
+	   listAndNums= paging.getPageNum(page, 9, listCount);	//현재 페이지, 한 페이지에 표시될 갯수, 전체 갯수
+	   
+	   //pageNums.put("page", page);
+	   //pageNums.put("listCount", listCount);
+	   System.out.println(listAndNums);
+	   
+	   int startrow = (int)listAndNums.get("startrow");
+	   int endrow = (int)listAndNums.get("endrow");
+	   System.out.println(startrow);
+	   
+	   //한 페이지에 표시 될 목록의 리스트
+	   List<RoomVo> list = roomMapper.selectAdvancedRoomListPage(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, startrow, endrow);
+	   
+	   System.out.println("paging list " + list);
+	   
+//	   listAndNums.put("startrow", startrow);
+//	   listAndNums.put("endrow", endrow);
+//	   listAndNums.put("startPage", pageNums.get("startPage"));
+//	   listAndNums.put("endPage", pageNums.get("endPage"));
+	   listAndNums.put("page", page);
+	   listAndNums.put("listCount", listCount);		
+	   listAndNums.put("list", list);
+	   return listAndNums;
    }
 
 
-   //room 리스트 페이지 호출
+   //room 리스트 페이지 호출(index.jsp)
    @Override
    public Map<String,Object> roomsListAll(int page) {
       Map<String,Object> map = new HashMap<String,Object>();
@@ -129,33 +175,6 @@ public class RoomServiceimpl implements RoomService {
 	
 	}
 	
-		
-	
-	//페이징 연구중 by.봉
-//	@Override
-//	public List<RoomVo> roomListAdvanced2(String checkIn, String checkOut, String rtype, int rroom, int rbed,
-//			int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int page) {
-//		
-//		//총 데이터 수 쿼리문으로 구해오기
-//		//int listCount = 0;
-//		//listCount = mapper.총 데이터 수
-//		int listCount = roomMapper.selectSearchCount(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
-//		System.out.println("service count" + listCount);
-//		
-//		PageUtil paging = new PageUtil();
-//		Map<String, Integer> pageNums= paging.getPageNum(page, 9, listCount);
-//		
-//		int startRow = pageNums.get("startrow");
-//		int endrow = pageNums.get("endrow");
-//		System.out.println(startRow);
-//		
-//		List<RoomVo> list = roomMapper.selectAdvancedRoomListPage(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, startRow, endrow);
-//
-//		System.out.println("paging list");
-//		
-//		return list;
-//	}
-
 	//숙소 상세 페이지
 	@Override
 	public RoomVo roomSingle(int roomNo) {
@@ -166,7 +185,8 @@ public class RoomServiceimpl implements RoomService {
 		
 		return roomVo;
 	}
-
+	
+	//예약 하기 누를시 user 이름,번호 가져오기
 	@Override
 	public UserVo userInfo(int userno) {
 		
@@ -174,11 +194,11 @@ public class RoomServiceimpl implements RoomService {
 		
 		return userVo;
 	}
-
+	
 	@Override
 	public void roomReserve(int roomNo, int userno, String startday, String endday) {
 		
-		roomMapper.insertRoomReserve(roomNo);
+		roomMapper.insertRoomReserve(roomNo,userno,startday,endday);
 		
 		System.out.println("roomServiceImpl :" +roomNo);
 		

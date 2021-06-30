@@ -24,11 +24,8 @@ SELECT * FROM room WHERE ROOMNO=#{roomNo}
 		
 </select>
 
-<select id="userInfo" resultType="com.site.vo.UserVo">
-	
-	SELECT * FROM USER1 WHERE userno=#{userno}
-		
-</select>
+
+
 
 
 
