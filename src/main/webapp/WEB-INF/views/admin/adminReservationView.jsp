@@ -65,8 +65,6 @@
 						<td width="6%">방문일</td>
 						<td width="6%">상세 주소</td>
 						<td width="6%">호스트 이름</td>
-							
-						</td>
 					</tr>
 	
 					<tr height="1" bgcolor="#8f784b ">
