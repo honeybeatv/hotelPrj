@@ -201,6 +201,7 @@
 
 					</div>
 				</div>
+<<<<<<< HEAD
 				<!-- .col-md-8 -->
 				<div class="col-lg-4 sidebar ftco-animate">
 					<div class="sidebar-box">
@@ -211,12 +212,122 @@
 							</div>
 						</form>
 					</div>
+=======
+				
+				
+				
+			<!-- 리뷰창  -->	
+			<div class="pt-5 mt-5">
+              <h3 class="mb-5">6 Comments</h3>
+              <ul class="comment-list">
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                  </div>
+                </li>
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 
+<<<<<<< HEAD
 				</div>
+=======
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </li>
+
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>John Doe</h3>
+                    <div class="meta">December 7, 2018 at 2:21pm</div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <p><a href="#" class="reply">Reply</a></p>
+                  </div>
+                </li>
+              </ul>
+              <!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Leave a comment</h3>
+                <form action="#" class="p-5 bg-light">
+                  <div class="form-group">
+                  
+                  
+                  <!-- 별점 등록 -->
+                  	      <div class="sidebar-wrap bg-light ftco-animate">
+	      					<h3 class="heading mb-4">Star Rating</h3>
+							  <div class="form-check">
+									<input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+									<label class="form-check-label" for="exampleCheck1">
+										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
+									</label>
+							  </div>
+							  <div class="form-check">
+						      <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <label class="form-check-label" for="exampleCheck1">
+						    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						     </label>
+							  </div>
+							  <div class="form-check">
+							    <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+						      </label>
+							  </div>
+							  <div class="form-check">
+						      <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <label class="form-check-label" for="exampleCheck1">
+						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
+							    </label>
+							  </div>
+	      		</div>
+                  
+                  
+                  <!-- 리뷰등록 -->
+                  
+                    <label for="name">Name *</label>
+                    <input type="text" class="form-control" id="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" class="form-control" id="website">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+				
+				<!-- 리뷰 끝 -->
+				
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 			</div>
 		</div>
 	</section>
 	<!-- .section -->
+		
 	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

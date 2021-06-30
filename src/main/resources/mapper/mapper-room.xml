@@ -4,18 +4,37 @@
 <mapper namespace="com.site.mapper.RoomMapper">
 
 	<!-- index에서 검색시 -->
-	<select id="getlist" resultType="com.site.vo.RoomVo">
+	<!-- search 페이징용 게시글 카운트 -->
+	<select id="selectSearchCount" resultType="int">
 		<![CDATA[
-			SELECT * FROM room 
+			SELECT COUNT(*) FROM room 
    				WHERE roomno NOT IN(SELECT distinct ro.roomno 
 			    FROM reserve re RIGHT JOIN room ro
 				ON re.roomno = ro.roomno
-			    WHERE (TO_DATE(#{start}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
-			    AND (TO_DATE(#{end}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
-				and rcity = #{city}
-				and rpeople >= #{people}
+			    WHERE (TO_DATE(#{startday}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+			    AND (TO_DATE(#{endday}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+				and rcity = #{rcity}
+				and rpeople >= #{rpeople}
 	]]>
 	</select>
+	
+	<!-- search메소드 페이징용 게시글 리스트 -->
+	<select id="selectSearchList" resultType="com.site.vo.RoomVo">
+		<![CDATA[
+    	SELECT * FROM
+			(SELECT rownum AS rnum, a.*
+				FROM (SELECT * FROM room 
+   				WHERE roomno NOT IN(SELECT distinct ro.roomno 
+			    FROM reserve re RIGHT JOIN room ro
+				ON re.roomno = ro.roomno
+			    WHERE (TO_DATE(#{startday}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+			    AND (TO_DATE(#{endday}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+				and rcity = #{rcity}
+				and rpeople >= #{rpeople}) a)
+		WHERE rnum>=#{startrow} AND rnum<=#{endrow}
+		]]>
+	</select>
+	
 
 	<!-- 전체 room 정보 가져오기 -->
 	<select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
@@ -39,29 +58,8 @@
 	</insert>
 	
 
-
-	<!-- 상세 조건 검색 -->
-	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
-		<![CDATA[
-	    		SELECT * FROM room 
-   					WHERE roomno NOT IN(SELECT distinct ro.roomno 
-			            FROM reserve re RIGHT JOIN room ro
-						ON re.roomno = ro.roomno
-			            WHERE (TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
-			            AND (TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
-				    AND rcity = #{rcity}
-				    AND rpeople >= #{rpeople}
-				    AND rtype = #{rtype}
-				    AND rroom >= #{rroom}
-				    AND rbed >= #{rbed}
-				    AND rpet = #{rpet}
-				    AND rsmoke = #{rsmoke}
-				    AND #{minPrice}<=rprice AND rprice<=#{maxPrice}
-  		]]>
-	</select>
-	
-	<!-- 페이징용 글 개수 구하기 -->
-	<select id="selectSearchCount" resultType="int">
+	<!-- AdvancedSearch 페이징용 글 개수 구하기 -->
+	<select id="selectAdvancedSearchCount" resultType="int">
 		<![CDATA[
 	    		SELECT COUNT(*) FROM room 
    					WHERE roomno NOT IN(SELECT distinct ro.roomno 
@@ -80,7 +78,7 @@
   		]]>
 	</select>
 		
-	
+	<!-- AdvancedSearch 페이징용 상세 검색 쿼리 -->
 	<select id="selectAdvancedRoomListPage" resultType="com.site.vo.RoomVo">
 		<![CDATA[
     	SELECT * FROM
@@ -99,7 +97,7 @@
 				    AND rpet = #{rpet}
 				    AND rsmoke = #{rsmoke}
 				    AND #{minPrice}<=rprice AND rprice<=#{maxPrice}) a)
-		WHERE rnum>=#{startrow} AND rnum<=#{endrow}
+		WHERE rnum>=#{startRow} AND rnum<=#{endrow}
 		]]>
 	</select>
 	
@@ -131,7 +129,5 @@
 	
 	
 	
-
-
 
 </mapper>

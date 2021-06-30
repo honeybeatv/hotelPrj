@@ -4,11 +4,13 @@ import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -31,56 +33,7 @@ public class RoomController {
 	
 	@Autowired
 	RoomService roomService;
-	
-	@RequestMapping("/fileDo")
-	@ResponseBody
-	   public List<String> fileDo(RoomVo roomVo, @RequestPart List<MultipartFile> files)  throws Exception {
-
-	      List<String> list = new ArrayList<>();
-	      //2. 파일첨부 되는 것 체크
-	      for(MultipartFile file : files) {
-	      // 파일저장위치
-	    	  String originalfileName = file.getOriginalFilename();
-	    	  File f = new File("E:/0_koreavc/00_subclass/java/hotelPrj/src/main/resources/static/upload/" + originalfileName);
-	     // String fileUrl = "E:/0_koreavc/00_subclass/java/hotelPrj/src/main/resources/static/upload/";
-	      
-	      // 파일이름중복방지
-	      long time = System.currentTimeMillis();
-	      String uploadFileName = time + "_" + file.getOriginalFilename(); 
-	      
-	      // 파일저장
-	      //File f = new File(fileUrl + uploadFileName);   
-	      // 파일전송
-	      try {
-	         file.transferTo(f);
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	      }
-	      // 파일이름 삽입
-	      roomVo.setRpicture1(uploadFileName);
-	      roomVo.setRpicture2(uploadFileName);
-	      roomVo.setRpicture3(uploadFileName);
-	      file.transferTo(f);
-	      
-	      //1. 파일첨부 내용 넘어오는것 체크
-//	      System.out.println("파일업로드 유저 이름 : " + roomVo.getUserid());
-//	      System.out.println("파일업로드 btitle : " + roomVo.getBtitle());
-//	      System.out.println("파일업로드 bcontent : " + roomVo.getBcontent());
-	      System.out.println("파일업로드 파일 이름 : " + file.getOriginalFilename());
-	      System.out.println("파일업로드 변경된 파일 이름 : " + uploadFileName);
-
-	      // - 파일업로드   -db저장
-	      }
-	      return list;
-	      
-	  }
-	
-   @RequestMapping("/index")
-   public String index() {
-      return "/index";
-   }
    
-
    //숙소 상세정보 보기
    @RequestMapping("/rooms-single")
    public String roomSingle(@RequestParam(value="roomNo") int roomNo,
@@ -125,13 +78,11 @@ public class RoomController {
 	   
 		return "/user/userReservationView";
 	}
-  
    
    @RequestMapping("/roomsList") 
   	public String roomsList() {
   		return "/roomsList";
   	}
-
    
    @RequestMapping("/roomsadd") //쓰기페이지 호출
 	public String roomsWrite() {
@@ -141,7 +92,6 @@ public class RoomController {
 	@RequestMapping("/roomsWriteDo") //쓰기저장 호출
 	public String roomsWriteDo(Model model,RoomVo roomVo,@RequestPart List<MultipartFile> file) {
 
-		
 		System.out.println("1");
 		roomService.roomsWriteDo(roomVo, file);	// 
 		model.addAttribute("roomVo",roomVo);
@@ -152,21 +102,31 @@ public class RoomController {
 
    //index페이지에서 검색
 	@RequestMapping("/search")
-	public String test(@RequestParam("startDate") String start,@RequestParam("endDate") String end,RoomVo vo,Model model) throws ParseException {
+	public String test(HttpServletRequest request, @RequestParam @Nullable String page,@RequestParam("startDate") String start,@RequestParam("endDate") String end,RoomVo vo,Model model) throws ParseException {
+		int listPage = 0;
+		
+		if ( page == null) {
+			listPage = 1;
+		} else {
+			listPage = Integer.parseInt(page);
+		}
+		
 		System.out.println(vo);
 		String start1 = start.replaceAll("/", "");
 		String end1 = end.replaceAll("/", "");
 		int startday = Integer.parseInt(start1);
 		int endday = Integer.parseInt(end1);
 		System.out.println(startday+","+endday);
-		List<RoomVo> list = roomService.getlist(startday,endday,vo.getRcity(),vo.getRpeople());
-		System.out.println(list);
-		model.addAttribute("list",list);
+		
+		Map<String, Object> listAndNums = roomService.getlist(startday,endday,vo.getRcity(),vo.getRpeople(), listPage);
+		
+		System.out.println(listAndNums.get("pageNums"));
+		model.addAttribute("listAndNums", listAndNums);
 		model.addAttribute("start",start);
 		model.addAttribute("end",end);
 		model.addAttribute("rcity",vo.getRcity());		
 		model.addAttribute("rpeople", vo.getRpeople());
-		
+		   
 		return "/rooms";
 	}
 	
@@ -187,16 +147,21 @@ public class RoomController {
 		System.out.println("흡연 : "+ rsmoke + " " + "동물 : "+ rpet+" end");
 		System.out.println(minPrice + ", " + maxPrice);
 		System.out.println("controller " + page);
-		List<RoomVo> list = roomService.roomListAdvanced(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople);
 		
 		//페이징 연구중 by.봉
-		//List<RoomVo> list = roomService.roomListAdvanced2(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, page);
+		Map<String, Object> listAndNums = roomService.roomListAdvanced(checkIn, checkOut, rtype, rroom, rbed, minPrice, maxPrice, rpet, rsmoke, rcity, rpeople, page);
+		System.out.println(listAndNums);
 		
-		//System.out.println(list);
-		
-		model.addAttribute("list", list);
-		model.addAttribute("start",inDate);
+		model.addAttribute("listAndNums", listAndNums);	//한 페이지에 표시 될 리스트+페이징용 숫자들5개
+		model.addAttribute("start",inDate);	
 		model.addAttribute("end",outDate); 
+		model.addAttribute("rtype", rtype);
+		model.addAttribute("rroom", rroom);	//jsp페이징에서 판단기준
+		model.addAttribute("rbed", rbed);
+		model.addAttribute("minPrice", minPrice);
+		model.addAttribute("maxPrice", maxPrice);
+		model.addAttribute("rpet", rpet);
+		model.addAttribute("rsmoke", rsmoke);
 		model.addAttribute("rpeople", rpeople);
 		model.addAttribute("rcity", rcity);
 		return "rooms";

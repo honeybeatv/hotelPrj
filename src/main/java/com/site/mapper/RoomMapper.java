@@ -12,40 +12,39 @@ import com.site.vo.UserVo;
 @Mapper
 public interface RoomMapper {
 
-	//index에서 검색
-	List<RoomVo> getlist(String start, String end, String city, int people);
+	// index에서 검색
+	// search메소드 페이징용 게시글 카운트
+	int selectSearchCount(int startday, int endday, String rcity, int rpeople);
+	// search메소드 페이징용 게시글 리스트
+	List<RoomVo> selectSearchList(int startday, int endday, String rcity, int rpeople, int startrow, int endrow);
 
-	//상세조건 검색
-	List<RoomVo> selectAdvancedRoomList(String checkIn, String checkOut, String rtype, int rroom, int rbed,
-			int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
+	// 상세조건 검색
+	// AdvancedSearch 페이징용 게시글 카운트
+	int selectAdvancedSearchCount(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
+			int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
+	// AdvancedSearch페이징용 게시글 리스트
+	List<RoomVo> selectAdvancedRoomListPage(String checkIn, String checkOut, String rtype, int rroom, int rbed,
+			int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int startRow,
+			int endrow);
 
-	//room 리스트 페이지 호출
+	// room 리스트 페이지 호출
 	List<RoomVo> selectroomsListAll(int startrow, int endrow);
 
-	//글쓰기
+	// 글쓰기
 	void insertRoomsWriteDo(RoomVo roomVo);
-	
+
 	// 방 상세정보
 	RoomVo roomSingle(int roomNo);
-	
-	//페이징용 게시글 카운트
-		int selectSearchCount(String checkIn, String checkOut, String rtype, int rroom, int rbed, int minPrice,
-				int maxPrice, String rpet, String rsmoke, String rcity, int rpeople);
 
-		List<RoomVo> selectAdvancedRoomListPage(String checkIn, String checkOut, String rtype, int rroom, int rbed,
-				int minPrice, int maxPrice, String rpet, String rsmoke, String rcity, int rpeople, int startRow,
-				int endrow);
+	List<RoomVo> findOtherRoom(RoomVo roomVo);
 
-		List<RoomVo> findOtherRoom(RoomVo roomVo);
+	int selectRoomCount();
 
-		int selectRoomCount();
+	//예약하기 누를시 user정보 가져오기
+	UserVo userInfo(int userno);
 		
-		//예약하기 누를시 user정보 가져오기
-		UserVo userInfo(int userno);
+	void insertRoomReserve(int roomNo, int userno, String startday, String endday);
 		
-		void insertRoomReserve(int roomNo, int userno, String startday, String endday);
-		
+	void insertRoomReserve(int roomNo);
 
 }
-
-
