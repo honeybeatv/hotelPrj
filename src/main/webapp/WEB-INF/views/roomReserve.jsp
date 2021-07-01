@@ -148,7 +148,7 @@
 					 <label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">요구사항</label> 
 					<div class="col-sm-2">
-						<textarea name="rinfo" cols="100" rows="2" id="rinfo"></textarea>
+						<textarea name="request" cols="100" rows="2" id="rinfo"></textarea>
 					</div>
 				</div>
 				
