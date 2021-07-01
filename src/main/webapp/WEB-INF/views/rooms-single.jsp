@@ -87,7 +87,7 @@
 			document.reserve.submit();
 		}
 	};
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
+
 </script>
 
 </head>
@@ -245,12 +245,11 @@
 				</div>
 
 
-=======
-=======
+
                 <li class="comment">
                   <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
+                    <h3>리뷰자</h3>
+                    <div class="meta">2021/07/01, 2021 at 2:21pm</div>
 
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
@@ -258,9 +257,9 @@
 
                 <li class="comment">
                   <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">December 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <h3>리뷰자</h3>
+                    <div class="meta">2021/07/01, 2021 at 2:21pm</div>
+                    <p>나쁘지 않는 방이였다.</p>
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
                 </li>
