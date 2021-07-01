@@ -31,7 +31,7 @@ public interface RoomService {
 	UserVo userInfo(int userno);
 	
 	
-	void roomReserve(int roomNo, int userno, String startday, String endday);
+	//void roomReserve(int roomNo, int userno, String startday, String endday);
 
 
 

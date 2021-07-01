@@ -85,9 +85,10 @@
 					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">숙소 이름</label> 
 					<b>${roomVo.rname }</b>
 					<div class="col-sm-7">
+						<input type="hidden" class="form-control" style="width: 100%;"
+							id="rname" name="rname">
 					</div>
-				</div>
-				
+
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 이름</label> 
 					<b>${userVo.name }</b>
@@ -107,21 +108,47 @@
 						<textarea name="request" cols="150" rows="1" id="rinfo"></textarea>
 				</div>
 				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">체크인 날짜</label> 
-					<input type="text" class="form-control checkin_date" id="datepicker1"
-								name="startday" placeholder="체크인 날짜" style="cursor: pointer;" readonly>
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">체크인 날짜</label>
+						<c:if test="${start eq '1' }">
+						 <input type="text" class="form-control checkin_date" id="datepicker1"
+								name="startday" placeholder="체크인 날짜" style="cursor: pointer;"
+								readonly>
+						</c:if>
+						<c:if test="${start ne '1'}">
+						<input type="text" class="form-control" id="datepicker1"
+								name="startday" placeholder="체크인 날짜" value = "${start }" style="cursor: pointer;"
+								readonly>
+						</c:if>
 						</div>
 					
 				
-				
-				<div class="form-inline form-group">
+						<c:if test="${end eq '1' }">
+					<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
 						style="font-weight: bolder;">체크아웃 날짜</label> <input type="text"
 								class="form-control checkout_date" id="datepicker2"
 								name="endday" placeholder="체크아웃 날짜" style="cursor: pointer;"
 								readonly>
+						</c:if>
+						<c:if test="${end ne '1' }">
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">체크아웃 날짜</label> <input type="text"
+								class="form-control" id="datepicker2"
+								name="endday" placeholder="체크아웃 날짜" value= "${end }" style="cursor: pointer;"
+								readonly>
+						</c:if>
 						</div>
 
+				<div class="form-inline form-group">
+					 <label for="" class="col-sm-2 control-label"
+						style="font-weight: bolder;">요구사항</label> 
+					<div class="col-sm-7">
+						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
+					</div>
+				</div>
+				
 
 
 
@@ -170,7 +197,6 @@
 	<script type="text/javascript">
 	
 		function save(){
-			alert("입장");
 			$.ajax({
 				url:'/reserve/ajax/save',
 				data: $('#searchForm').serialize(),

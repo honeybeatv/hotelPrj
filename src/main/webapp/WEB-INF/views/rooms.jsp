@@ -58,13 +58,13 @@
 		    			<c:forEach var="list" items="${listAndNums.list }" > 
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
-		    					<a href="rooms-single?roomNo=${list.roomNo }" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
+		    					<a href="rooms-single?roomNo=${list.roomNo }&start=${start }&end=${end }" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
 		    							<span class="icon-search2"></span>
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">${list.rname }</a></h3>
+		    						<h3 class="mb-3"><a href="rooms-single?roomNo=${list.roomNo }&start=${start }&end=${end }">${list.rname }</a></h3>
 		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
 		    							<li><span>권장인원:</span> ${list.rpeople }</li>

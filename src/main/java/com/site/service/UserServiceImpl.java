@@ -72,9 +72,8 @@ public class UserServiceImpl implements UserService {
 	public Map<String, Object> userHostingModifyList(int userno, int roomNo) {
 		Map<String, Object> userHostingModifyMap = new HashMap<String, Object>();
 		
-		List<RoomVo> userHostingModifyList = userMapper.selectUserHostingViewList(userno);
+		List<RoomVo> userHostingModifyList = userMapper.selectUserHostingModifyList(userno, roomNo);
 		userHostingModifyMap.put("userHostingModifyList", userHostingModifyList);
-		userHostingModifyMap.put("roomNo", roomNo);
 
 		return userHostingModifyMap;
 	}

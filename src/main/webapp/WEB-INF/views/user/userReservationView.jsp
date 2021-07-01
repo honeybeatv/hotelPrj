@@ -73,8 +73,8 @@
 			    					<h3 class="mb-3"><a href="rooms">${userReservationList.rname }</a></h3>
 			    						<p><span class="price mr-2">${userReservationList.rprice }</span> <span class="per">/ 일</span></p>
 			    						<ul>
-				    						<li>방문일 : ${userReservationList.startday } ~ ${userReservationList.endday }</li>
-				    						<li>상세주소 : ${userReservationList.raddress }</li>
+				    						<li style="list-style:none; text-align: left !important;">방문일 : ${userReservationList.startday } ~ ${userReservationList.endday }</li>
+				    						<li style="list-style:none; text-align: left !important;">상세주소 : ${userReservationList.raddress }</li>
 			    						</ul>
 			    						<hr>
 			    						<p class="pt-1">

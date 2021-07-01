@@ -41,19 +41,15 @@ public class ReserveController {
 		return "/reserveList";
 	}
 	
+	//예약 페이지 표시
 	@RequestMapping("/roomReserve")
-	public String roomReserve(RoomVo roomVo, HttpServletRequest request,  Model model ) {
-	
-		//userno를 세션에서 가져옴
-	   HttpSession session = request.getSession();
-	   int userno = (int)session.getAttribute("session_userno");
-		
-	  //유저 객체 가져옴
-	   UserVo userVo = userService.userInfoView(userno);
+	public String roomReserve(RoomVo roomVo,@RequestParam("start") String start, @RequestParam("end") String end, Model model ) {
+		System.out.println("roomreserve"+start);
+		System.out.println(end);
 	   
-	   model.addAttribute("userVo", userVo);
 	   model.addAttribute("roomVo", reserveService.roomReserve(roomVo));
-	   
+	   model.addAttribute("start", start);
+	   model.addAttribute("end", end);
 		return "/roomReserve";
 	}
 	
@@ -74,7 +70,7 @@ public class ReserveController {
 		
 		System.out.println("ReserveVo {TEST} :" + ReserveVo);
 		
-		reserveService.save(ReserveVo);
+//		reserveService.save(ReserveVo);
 	   
 		ReserveVo.setCode("SUCCESS");
 	   
