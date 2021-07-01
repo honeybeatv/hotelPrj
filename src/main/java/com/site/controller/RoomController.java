@@ -61,30 +61,30 @@ public class RoomController {
       return "/rooms-single";
    }
    
-   @RequestMapping(value="/roomsReserve")
-	public String roomsReserve(	@RequestParam(value="roomNo") int roomNo,
-			@RequestParam(value="userno") int userno,
-			@RequestParam(value="startday") String startday, 
-			@RequestParam(value="endday") String endday, Model model) {
-	 
-		
-		System.out.println("Controller userno" +userno);
-		System.out.println("Controller roomNo" +roomNo);
-	   System.out.println("Controller Startday" +startday);
-	   System.out.println("Controller endday" +endday);
-	   
-	   
-	   
-	   roomService.roomReserve(roomNo, userno, startday, endday);
-	   
-	   model.addAttribute("roomNo", roomNo);
-	   model.addAttribute("userno", userno);
-	   model.addAttribute("startday", startday);
-	   model.addAttribute("endday", endday);
-	   model.addAttribute("userno", userno);
-	   
-		return "/user/userReservationView";
-	}
+//   @RequestMapping(value="/roomsReserve")
+//	public String roomsReserve(	@RequestParam(value="roomNo") int roomNo,
+//			@RequestParam(value="userno") int userno,
+//			@RequestParam(value="startday") String startday, 
+//			@RequestParam(value="endday") String endday, Model model) {
+//	 
+//		
+//		System.out.println("Controller userno" +userno);
+//		System.out.println("Controller roomNo" +roomNo);
+//	   System.out.println("Controller Startday" +startday);
+//	   System.out.println("Controller endday" +endday);
+//	   
+//	   
+//	   
+//	   roomService.roomReserve(roomNo, userno, startday, endday);
+//	   
+//	   model.addAttribute("roomNo", roomNo);
+//	   model.addAttribute("userno", userno);
+//	   model.addAttribute("startday", startday);
+//	   model.addAttribute("endday", endday);
+//	   model.addAttribute("userno", userno);
+//	   
+//		return "/user/userReservationView";
+//	}
    
    @RequestMapping("/roomsList") 
   	public String roomsList() {
