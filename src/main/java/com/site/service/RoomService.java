@@ -28,12 +28,12 @@ public interface RoomService {
 	
 	//숙소 상세페이지
 	RoomVo roomSingle(int roomNo);
-
 	UserVo userInfo(int userno);
+	
+	
 
 	
 	
-	void roomReplyDo(ReviewVo reviewVo);
 	
 	
 	//void roomReserve(int roomNo, int userno, String startday, String endday);

@@ -185,16 +185,5 @@ public class RoomController {
 //		return "/rooms-single";
 //	}
 	
-	@RequestMapping("/replyDo") //답글저장
-	public String roomReplyDo(ReviewVo reviewVo, 
-			@RequestParam("roomNo") int roomNo,
-			Model model) {
-		
-		System.out.println("reviewVo test {}" + reviewVo);
-		//작성자-session,제목,내용
-		roomService.roomReplyDo(reviewVo);
-		
-		return "redirect:/rooms-single";
-	}
 }
 

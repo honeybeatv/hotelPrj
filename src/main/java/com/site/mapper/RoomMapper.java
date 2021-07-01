@@ -44,10 +44,8 @@ public interface RoomMapper {
 	//예약하기 누를시 user정보 가져오기
 	UserVo userInfo(int userno);
 		
-//	void insertRoomReserve(int roomNo, int userno, String startday, String endday);
 		
 	void insertRoomReserve(int roomNo);
 	
-	void insertRoomReplyDo(ReviewVo reviewVo);
 
 }

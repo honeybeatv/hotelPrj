@@ -125,12 +125,6 @@
 	SELECT * FROM USER1 WHERE userno=#{userno}
 		
 	</select>
-	<select id="insertRoomReplyDo" resultType="com.site.vo.ReviewVo">
-	
-	<![CDATA[ INSERT INTO TEST.REVIEW VALUES(seq_review.nextval, #{roomno}, #{userno}, sysdate, '테스트', 3, '11') ]]>
-	
-		
-	</select>
 	
 	
 	

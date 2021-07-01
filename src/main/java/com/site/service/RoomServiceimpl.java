@@ -196,23 +196,6 @@ public class RoomServiceimpl implements RoomService {
 		return userVo;
 	}
 
-	@Override
-	public void roomReplyDo(ReviewVo reviewVo) {
-		
-		//roomMapper.insertRoomReplyDoPlus(reviewVo);
-		roomMapper.insertRoomReplyDo(reviewVo);
-		
-	}
-	
-//	@Override
-//	public void roomReserve(int roomNo, int userno, String startday, String endday) {
-//		
-//		roomMapper.insertRoomReserve(roomNo,userno,startday,endday);
-//		
-//		System.out.println("roomServiceImpl :" +roomNo);
-//		
-//		
-//	}
 	
 
 
