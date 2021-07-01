@@ -77,37 +77,39 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
-			<form action="roomsWriteDo" id="searchForm" name="searchForm"
-				class="bg-white p-5 " width="100%" method="post" 
-				enctype="multipart/form-data"><input type="text" name="roomNo" value="${roomVo.roomNo}" readonly>
-
-
+			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
+						<input type="hidden" id="userno" name="userno" value="${session_userno }">
+						<input type="hidden" id="roomNo" name="roomNo" value="${roomVo.roomNo }">
 
 				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방번호</label> <input type="hidden"
-						id="userno" name="userno" value="${session_userno }">
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">숙소 이름</label> 
+					<b>${roomVo.rname }</b>
 					<div class="col-sm-7">
-						<input type="hidden" class="form-control" style="width: 100%;"
-							id="rname" name="rname">
 					</div>
-
 				</div>
-
-
+				
 				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">요구사항</label>
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 이름</label> 
+					<b>${userVo.name }</b>
 					<div class="col-sm-7">
-						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
 					</div>
 				</div>
 				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">체크인 날짜</label> <input type="text"
-								class="form-control checkin_date" id="datepicker1"
-								name="startday" placeholder="체크인 날짜" style="cursor: pointer;"
-								readonly>
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 전화번호</label> 
+					<b>${userVo.uphone }</b>
+					<div class="col-sm-7">
+					</div>
+				</div>
+
+
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">요구사항</label>
+						<textarea name="request" cols="150" rows="1" id="rinfo"></textarea>
+				</div>
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">체크인 날짜</label> 
+					<input type="text" class="form-control checkin_date" id="datepicker1"
+								name="startday" placeholder="체크인 날짜" style="cursor: pointer;" readonly>
 						</div>
 					
 				
@@ -176,10 +178,10 @@
 				method:'POST',
 				success: function(resp){
 					if(resp.code == 'SUCCESS'){
-						alert('성공');
+						alert('예약완료');
 						location.href='/user/userReservationView?userno=' + resp.userno; 
 					}else{
-						alert('에러가 발생했습니다.');
+						alert('예약에 실패했습니다.');
 					}
 				},
 				error: function(){

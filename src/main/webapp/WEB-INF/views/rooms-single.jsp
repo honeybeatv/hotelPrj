@@ -50,28 +50,6 @@
 
 
 <script type="text/javascript">
-	/* function roomReserve_ajax() {
-		alert($("#").val()); //form에 입력한 id값을 받아옴.
-		 $.ajax({
-			url : "formOk", //어디로 보내줄꺼냐 : url은 무조건 controller로 감.
-			type : "post", //어떤 형식으로 보내줄꺼냐
-			data : { // data->controller->DB저장->DB정보를 들고와서 다시 data를 화면에 전달해달라.
-				"id" : $("#id").val(),
-				"pw" : $("#pw").val(),
-				"name" : $("#name").val(),
-				"nickName" : $("#nickName").val()
-			}, //데이터값. key-value형태로.
-			success : function(data) {
-				//controller의 return값을 data로 받음.
-				alert("성공" );
-				
-			}, //성공했을때는 여기로
-			error : function() {
-				alert("실패");
-			} //실패했을때는 여기로
-		}); 
-		//ajax기본 형식 : $.ajax({ }); 세미콜론 필수.
-	} */
 	function reserveSubmit() {
 		if (${session_flag==null || session_flag=='fail' }) {
 			alert("로그인이 필요합니다.")
@@ -108,9 +86,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<input type="hidden" name="userno" value="${userno }">
-	
 	
 	<section class="ftco-section">
 		<div class="container">
@@ -207,18 +182,6 @@
 
 					</div>
 				</div>
-				<!-- .col-md-8 -->
-				<div class="col-lg-4 sidebar ftco-animate">
-					<div class="sidebar-box">
-						<form action="#" class="search-form">
-							<div class="form-group">
-								<span class="icon fa fa-search"></span> <input type="text"
-									class="form-control" placeholder="Type a keyword and hit enter">
-							</div>
-						</form>
-					</div>
-				
-				
 				
 			<!-- 리뷰창  -->	
 			<div class="pt-5 mt-5">
@@ -232,9 +195,6 @@
                   </div>
                 </li>
 				</div>
-
-
-
 
 
                 <li class="comment">

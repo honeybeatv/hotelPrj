@@ -19,9 +19,7 @@ public interface ReserveMapper {
 
 	RoomVo roomReserve(RoomVo roomVo);
 
-	UserVo userInfo(int userno);
-
-	void insertRoomReserve(int roomNo, int userno, String startday, String endday);
+	void insertRoomReserve(int roomNo, int userno, String startday, String endday, String request);
 
 
 }

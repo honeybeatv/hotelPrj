@@ -13,8 +13,6 @@ public interface ReserveService {
 
 	RoomVo roomReserve(RoomVo roomVo);
 
-	UserVo userInfo(int userno);
-
 	void roomReserve(int roomNo, int userno, String startday, String endday);
 
 	void save(ReserveVo ReserveVo);
