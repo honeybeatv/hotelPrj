@@ -77,52 +77,39 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
-			<form action="roomsWriteDo" id="searchForm" name="searchForm"
-				class="bg-white p-5 " width="100%" method="post" 
-				enctype="multipart/form-data"><input type="hidden" name="roomNo" value="${roomVo.roomNo}">
-
-
+			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="roomNo" value="${roomVo.roomNo}">
 
 				<div class="form-inline form-group">
-					<%-- <label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">숙소 이름</label> 
-					<b>${roomVo.rname }</b> --%>
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">숙소 명</label> <input type="data"
-						id="userno" name="userno" value="${roomVo.rname } " readonly>
-					<div class="col-sm-7">
-						<input type="hidden" class="form-control" style="width: 100%;"
-							id="rname" name="rname">
-					</div>
-
-				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 이름</label> 
-					<b>${userVo.name }</b>
-					<div class="col-sm-7">
-					</div>
-				</div>
-				<div class="form-inline form-group">
-					<%-- <label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 전화번호</label> 
-					<b>${userVo.uphone }</b> --%>
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">유저 명</label> <input type="text"
-						id="userno" name="userno" value="${userVo.name }" readonly>
-					<div class="col-sm-7">
-					</div>
-				</div>
-
-
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">요구사항</label>
-						<textarea name="request" cols="150" rows="1" id="rinfo"></textarea>
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">유저 전화번호</label> <input type="text"
-						id="userno" name="userno" value="${userVo.uphone }" readonly>
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">숙소 이름</label> 
+						${roomVo.rname }
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
 					</div>
 
 				</div>
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 이름</label>
+					${userVo.name }
+					<div class="col-sm-7">
+						<input type="hidden" class="form-control" style="width: 100%;"
+							id="rname" name="rname">
+					</div>
+
+				</div>
+				
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 전화번호</label> 
+					${userVo.uphone }
+					<div class="col-sm-7">
+						<input type="hidden" class="form-control" style="width: 100%;"
+							id="rname" name="rname">
+					</div>
+
+				</div>
+
+
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
 						style="font-weight: bolder;">체크인 날짜</label>
@@ -140,7 +127,7 @@
 					
 				
 						<c:if test="${end eq '1' }">
-					<div class="form-inline form-group">
+				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
 						style="font-weight: bolder;">체크아웃 날짜</label> <input type="text"
 								class="form-control checkout_date" id="datepicker2"
@@ -161,15 +148,10 @@
 					 <label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">요구사항</label> 
 					<div class="col-sm-2">
-						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
+						<textarea name="rinfo" cols="100" rows="2" id="rinfo"></textarea>
 					</div>
 				</div>
 				
-
-
-
-
-
 				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
 					onclick="save()"> <input type="button" value="취소"
 					class="btn btn-primary py-3 px-5" onclick="history.back()">
@@ -220,7 +202,7 @@
 				method:'POST',
 				success: function(resp){
 					if(resp.code == 'SUCCESS'){
-						alert('예약완료');
+						alert('예약 완료');
 						location.href='/user/userReservationView?userno=' + resp.userno; 
 					}else{
 						alert('예약에 실패했습니다.');

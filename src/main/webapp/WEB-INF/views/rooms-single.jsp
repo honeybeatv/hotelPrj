@@ -210,16 +210,6 @@
 					</div>
 				</div>
 				<!-- .col-md-8 -->
-				<div class="col-lg-4 sidebar ftco-animate">
-					<div class="sidebar-box">
-						<form action="#" class="search-form">
-							<div class="form-group">
-								<span class="icon fa fa-search"></span> <input type="text"
-									class="form-control" placeholder="Type a keyword and hit enter">
-							</div>
-						</form>
-					</div>
-				
 				
 				
 			<!-- 리뷰창  -->	
@@ -321,9 +311,7 @@
                   </div>
                 </form>
               </div>
-            </div>
 				<!-- 리뷰 끝 -->
-			</div>
 		</div>
 	</section>
 	<!-- .section -->
