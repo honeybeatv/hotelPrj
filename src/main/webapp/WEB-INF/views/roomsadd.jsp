@@ -257,8 +257,8 @@
 				</div>
 
 				<div class="form-group">
-					<input type="checkbox" name="rsmoke" value="smoke"> 흡연실 <input
-						type="checkbox" name="rpet" value="pet"> 반려동물
+					<input type="checkbox" name="rsmoke" value="smoke"> 흡연실
+					 <input type="checkbox" name="rpet" value="pet"> 반려동물
 				</div>
 
 				<div class="form-inline form-group">

@@ -66,14 +66,15 @@
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
 			<c:forEach var="roomVo" items="${userHostingModifyMap.userHostingModifyList }">
-			<form action="userHostingModifyDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
+			<form action="userHostingModifyDo" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
 
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"style="font-weight: bolder;">방이름</label> 
-					<input type="hidden"id="userno" name="userno" value="${session_userno }">
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id="rname" name="rname" value="${roomVo.rname }">
 					</div>
+					<input type="hidden"id="userno" name="userno" value="${session_userno }">
+					<input type="hidden"id="roomNo" name="roomNo" value="${roomVo.roomNo }">
 				</div>
 
 				<div class="form-inline form-group">
@@ -126,12 +127,9 @@
 				</div>
 
 				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">사진</label>
-						<input multiple="multiple" type="file" class="" style="padding-left: 15px; width: 15%; text-align: left;" id="file" name="file" accept=".gif, .jpg, .png" onchange="loadFile(event)">
-						<span style="font-size:10px; color: gray;">※사진은 최대 3개까지 등록이 가능합니다.</span>	
-
-
+					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">사진</label>
+					<input multiple="multiple" type="file" class="" style="padding-left: 15px; width: 15%; text-align: left;" id="file" name="file" accept=".gif, .jpg, .png" onchange="loadFile(event)">
+					<span style="font-size:10px; color: gray;">※사진은 최대 3개까지 등록이 가능합니다.</span>	
 				</div>
 
 				<div class="form-inline form-group">
@@ -192,22 +190,20 @@
 
 				<div class="form-group">
 				
-					<input type="checkbox" name="rsmoke" value="smoke" checked> 흡연실 
-					<input type="checkbox" name="rpet" value="pet" ${(roomVo.rpet eq 'pet')? checked : '' }> 반려동물
+					<input type="checkbox" name="rsmoke" value="smoke" ${(roomVo.rsmoke eq 'smoke')? 'checked' : ''}> 흡연실 
+					<input type="checkbox" name="rpet" value="pet" ${(roomVo.rpet eq 'pet')? 'checked' : ''} > 반려동물
+					
 				</div>
 
 				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label"
-						style="font-weight: bolder;">상세 주소</label>
+					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">상세 주소</label>
 					<div class="col-sm-7">
 						<textarea name="raddress" cols="65" rows="3" id="raddress">${roomVo.raddress }</textarea>
 					</div>
 				</div>
 
-				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
-					onclick="searchSubmit();">
-				<input type="button" value="취소"
-					class="btn btn-primary py-3 px-5" onclick="history.back()">
+				<input type="submit" value="저장" class="btn btn-primary py-3 px-5">
+				<input type="button" value="취소" class="btn btn-primary py-3 px-5" onclick="history.back()">
 
 			</form>
 			</c:forEach>
