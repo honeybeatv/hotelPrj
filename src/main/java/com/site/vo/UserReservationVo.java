@@ -21,7 +21,8 @@ public class UserReservationVo {
 	private String raddress;	//room.raddress
 	private int rprice;		//room.rprice
 	
-	
 	private String startday;	//reserve.startday
 	private String endday;	//reserve.endday
+	private String status;	//reserve.status
+	
 }

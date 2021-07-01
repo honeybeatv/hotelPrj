@@ -75,6 +75,7 @@
 			    						<ul>
 				    						<li style="list-style:none; text-align: left !important;">방문일 : ${userReservationList.startday } ~ ${userReservationList.endday }</li>
 				    						<li style="list-style:none; text-align: left !important;">상세주소 : ${userReservationList.raddress }</li>
+				    						<li style="list-style:none; text-align: left !important;">승인여부 : ${userReservationList.status }</li>
 			    						</ul>
 			    						<hr>
 			    						<p class="pt-1">
