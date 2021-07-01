@@ -46,7 +46,8 @@
 	<select id="selectUserReservationViewList" resultType="com.site.vo.UserReservationVo">
 		<![CDATA[
 			 SELECT ro.rname as rname, ro.raddress as raddress, ro.rprice as rprice, ro.roomno as roomNo,
-			 		to_char(re.startday, 'yyyy-MM-dd') as startday, to_char(re.endday, 'yyyy-MM-dd') as endday
+			 		to_char(re.startday, 'yyyy-MM-dd') as startday, to_char(re.endday, 'yyyy-MM-dd') as endday,
+			 		re.status as status
 			    FROM reserve re, room ro
 			    WHERE re.roomno = ro.roomno
 			    AND re.userno = #{userno}
@@ -88,6 +89,7 @@
 		  	   	   rpet=#{rpet}			,
 		  	   	   raddress=#{raddress}
 		  	 WHERE roomno=#{roomNo}
+		  	   and userno=#{userno}
 	  	 ]]>
   	</update>
 

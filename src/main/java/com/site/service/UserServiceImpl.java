@@ -96,7 +96,6 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		uReservartionDeleteMap.put("userReservationDeleteList", resultDelete);
-		uReservartionDeleteMap.put("msg", msg);
 		
 		return uReservartionDeleteMap;
 	}
