@@ -62,8 +62,7 @@ public class ReserveController {
 	//예약 내역 DB저장
 	@RequestMapping("/ajax/save")
 	@ResponseBody
-	public ReserveVo ajaxSave(ReserveVo ReserveVo, HttpServletRequest request,
-			@RequestParam ("roomNo") int roomNo) {
+	public ReserveVo ajaxSave(ReserveVo ReserveVo, HttpServletRequest request, @RequestParam ("roomNo") int roomNo) {
 	
 		System.out.println("roomNo {TEST} :" + roomNo);
 		
@@ -75,7 +74,7 @@ public class ReserveController {
 		
 		System.out.println("ReserveVo {TEST} :" + ReserveVo);
 		
-//		reserveService.save(ReserveVo);
+		reserveService.save(ReserveVo);
 	   
 		ReserveVo.setCode("SUCCESS");
 	   
