@@ -79,7 +79,11 @@
 		<div class="col-10" style="display: inline-block;">
 			<form action="roomsWriteDo" id="searchForm" name="searchForm"
 				class="bg-white p-5 " width="100%" method="post" 
+<<<<<<< HEAD
 				enctype="multipart/form-data"><input type="hidden" name="roomNo" value="${roomVo.roomNo}">
+=======
+				enctype="multipart/form-data"><input type="text" name="roomNo" value="${roomVo.roomNo}" readonly>
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 
 
 
