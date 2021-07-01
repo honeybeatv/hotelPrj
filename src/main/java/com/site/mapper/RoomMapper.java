@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.site.vo.ReserveVo;
+import com.site.vo.ReviewVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -46,5 +47,7 @@ public interface RoomMapper {
 //	void insertRoomReserve(int roomNo, int userno, String startday, String endday);
 		
 	void insertRoomReserve(int roomNo);
+	
+	void insertRoomReplyDo(ReviewVo reviewVo);
 
 }

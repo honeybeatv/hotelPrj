@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.site.mapper.RoomMapper;
 import com.site.mapper.UserMapper;
 import com.site.vo.ReserveVo;
+import com.site.vo.ReviewVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -193,6 +194,14 @@ public class RoomServiceimpl implements RoomService {
 		UserVo userVo = roomMapper.userInfo(userno);
 		
 		return userVo;
+	}
+
+	@Override
+	public void roomReplyDo(ReviewVo reviewVo) {
+		
+		//roomMapper.insertRoomReplyDoPlus(reviewVo);
+		roomMapper.insertRoomReplyDo(reviewVo);
+		
 	}
 	
 //	@Override

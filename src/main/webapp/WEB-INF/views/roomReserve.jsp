@@ -79,11 +79,7 @@
 		<div class="col-10" style="display: inline-block;">
 			<form action="roomsWriteDo" id="searchForm" name="searchForm"
 				class="bg-white p-5 " width="100%" method="post" 
-<<<<<<< HEAD
 				enctype="multipart/form-data"><input type="hidden" name="roomNo" value="${roomVo.roomNo}">
-=======
-				enctype="multipart/form-data"><input type="text" name="roomNo" value="${roomVo.roomNo}" readonly>
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 
 
 
@@ -100,7 +96,7 @@
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
 						style="font-weight: bolder;">유저 명</label> <input type="text"
-						id="userno" name="userno" value="${userVo.name } ">
+						id="userno" name="userno" value="${roomVo.userVo.name } ">
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
@@ -111,7 +107,7 @@
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
 						style="font-weight: bolder;">유저 전화번호</label> <input type="text"
-						id="userno" name="userno" value="${userVo.uphone } ">
+						id="userno" name="userno" value="${roomVo.userVo.uphone } ">
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
