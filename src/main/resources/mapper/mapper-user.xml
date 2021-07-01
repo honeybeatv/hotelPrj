@@ -62,6 +62,16 @@
 	  	  ORDER BY roomno asc
 		]]>
   	</select>
+
+  	<!-- 회원 호스팅 상품정보 수정 호출 -->
+  	<select id="selectUserHostingModifyList" resultType="com.site.vo.RoomVo">
+  		<![CDATA[
+	  		SELECT * 
+	  		  FROM room 
+	  		 WHERE userno=#{userno}
+	  		   and roomno=#{roomNo}
+		]]>
+  	</select>
   	
   	<!-- 회원 호스팅 상품정보 수정 실행 -->
   	<update id="updateUserHostingModifDo" >
