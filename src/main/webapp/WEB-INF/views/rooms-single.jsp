@@ -88,7 +88,6 @@
 	</div>
 	
 	
-	
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
@@ -139,11 +138,10 @@
 						<input type="hidden" name="roomNo" value="${roomVo.roomNo }">
 							 <button onclick="reserveSubmit()" class="btn py-3 px-5"
 								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button>
-						</a>
 						</form> 
 
 
-						<div class="col-md-12 room-single ftco-animate mb-5 mt-5">
+						<%-- <div class="col-md-12 room-single ftco-animate mb-5 mt-5">
 							<h4 class="mb-4">이전 / 이후</h4>
 							<div class="row">
 								<c:forEach var="item" items="${roomVo.roomVoList }">
@@ -183,7 +181,7 @@
 
 								</c:forEach>
 							</div>
-						</div>
+						</div> --%>
 
 					</div>
 				</div>
@@ -225,6 +223,7 @@
               
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>
+               <!-- 여기 폼 -->
                 <form action="#" class="p-5 bg-light">
                   <div class="form-group">
                   
@@ -264,24 +263,24 @@
 							  </div>
 	      		</div>
                   <!-- 리뷰등록 -->
-                    <label for="name">Name *</label>
-                    <input type="text" class="form-control" id="name">
+                    <label for="name">예약자 아이디</label>&emsp;
+                    <b>${userVo.userid }</b>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="email">Email *</label>
                     <input type="email" class="form-control" id="email">
-                  </div>
+                  </div> -->
                   <div class="form-group">
-                    <label for="website">Website</label>
+                    <label for="website">예약기간 </label>
                     <input type="url" class="form-control" id="website">
                   </div>
 
                   <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    <label for="message">리뷰 내용</label>
+                    <textarea name="recontent" id="message" cols="30" rows="10" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                    <input type="submit" value="작성 완료" class="btn py-3 px-4 btn-primary">
                   </div>
                 </form>
               </div>
