@@ -39,11 +39,13 @@ public class ReserveController {
 	}
 	
 	@RequestMapping("/roomReserve")
-	public String roomReserve(RoomVo roomVo, Model model ) {
-	
+	public String roomReserve(RoomVo roomVo,@RequestParam("start") String start, @RequestParam("end") String end, Model model ) {
+	System.out.println("roomreserve"+start);
+	System.out.println(end);
 	   
 	   model.addAttribute("roomVo", reserveService.roomReserve(roomVo));
-	   
+	   model.addAttribute("start", start);
+	   model.addAttribute("end", end);
 		return "/roomReserve";
 	}
 	
@@ -63,7 +65,7 @@ public class ReserveController {
 		
 		System.out.println("ReserveVo {TEST} :" + ReserveVo);
 		
-		reserveService.save(ReserveVo);
+//		reserveService.save(ReserveVo);
 	   
 		
 		ReserveVo.setCode("SUCCESS");

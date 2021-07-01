@@ -3,11 +3,14 @@ package com.site.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,8 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	@Autowired
+	JavaMailSender javaMailSender;
 	
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request) {
@@ -210,6 +215,31 @@ public class UserController {
 		
 		System.out.println("# mypage category_Hosting Delete #");
 		return userService.userHostingDelete(roomVo);
+	}
+	
+	@RequestMapping("/CheckMail")
+	@ResponseBody
+	public Map<String, Object> SendMail(String mail, HttpSession session) {
+		Map<String, Object> map = new HashMap<>();
+		Random random = new Random();
+		String key = "";
+
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom("khw00050@gmail.com");
+		message.setTo(mail); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
+		// 입력 키를 위한 코드
+		for (int i = 0; i < 3; i++) {
+			int index = random.nextInt(25) + 65; // A~Z까지 랜덤 알파벳 생성
+			key += (char) index;
+		}
+		int numIndex = random.nextInt(8999) + 1000; // 4자리 정수를 생성
+		key += numIndex;
+		message.setSubject("인증번호 입력을 위한 메일 전송");
+		message.setText("인증 번호 : " + key);
+		System.out.println(key);
+		javaMailSender.send(message);
+		map.put("key", key);
+		return map;
 	}
 	
 }
