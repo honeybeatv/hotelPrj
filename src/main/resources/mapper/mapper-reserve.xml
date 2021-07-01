@@ -9,26 +9,29 @@
 	
 </select>
 
-<select id="roomReserve" resultType="com.site.vo.RoomVo">
-	
-SELECT * FROM room WHERE ROOMNO=#{roomNo}
-
+	<select id="roomReserve" resultType="com.site.vo.RoomVo">
 		
-</select>
-
-<select id="findOtherRoom" resultType="com.site.vo.ReserveVo">
+	SELECT * FROM room WHERE ROOMNO=#{roomNo}
 	
-	SELECT * 
-  		  FROM reserve 
-  		 WHERE re_no=#{re_no}
-		
-</select>
-
-<select id="insertRoomReserve" resultType="com.site.vo.ReserveVo">
-	
-	insert into reserve values(seq_reserve.nextval, #{roomNo}, 'normal', #{startday}, #{endday}, #{userno})
-		
+			
 	</select>
+	
+	
+	<select id="findOtherRoom" resultType="com.site.vo.ReserveVo">
+		
+		SELECT * 
+	  		  FROM reserve 
+	  		 WHERE re_no=#{re_no}
+			
+	</select>
+
+	<select id="insertRoomReserve" resultType="com.site.vo.ReserveVo">
+		
+		<![CDATA[
+		insert into reserve values(seq_reserve.nextval, #{roomNo}, 'normal', #{startday}, #{endday}, #{userno})
+			]]>
+			
+		</select>
 
 
 

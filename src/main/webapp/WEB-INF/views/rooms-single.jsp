@@ -53,10 +53,6 @@
 	/* function roomReserve_ajax() {
 		alert($("#").val()); //form에 입력한 id값을 받아옴.
 
-<<<<<<< HEAD
-
-
-=======
 		 $.ajax({
 			url : "formOk", //어디로 보내줄꺼냐 : url은 무조건 controller로 감.
 			type : "post", //어떤 형식으로 보내줄꺼냐
@@ -215,7 +211,6 @@
 
 					</div>
 				</div>
-
 				<!-- .col-md-8 -->
 				<div class="col-lg-4 sidebar ftco-animate">
 					<div class="sidebar-box">
@@ -226,7 +221,6 @@
 							</div>
 						</form>
 					</div>
-
 				
 				
 				
@@ -241,8 +235,9 @@
 
                   </div>
                 </li>
-
 				</div>
+
+
 
 
 
@@ -330,7 +325,6 @@
               </div>
             </div>
 				<!-- 리뷰 끝 -->
-
 			</div>
 		</div>
 	</section>

@@ -42,9 +42,6 @@ public class ReserveServiceImpl implements ReserveService {
 		UserVo userVo = reserveMapper.userInfo(userno);
 		
 		
-		
-		
-		
 		return userVo;
 	}
 
@@ -62,10 +59,15 @@ public class ReserveServiceImpl implements ReserveService {
 
 
 	@Override
-	public void save(ReserveVo roomVo) {
+	public void save(ReserveVo ReserveVo) {
 		
-		reserveMapper.insertRoomReserve(roomVo.getRoomno(), roomVo.getUserno(), roomVo.getStartday(), roomVo.getEndday());
+		reserveMapper.insertRoomReserve(ReserveVo.getRoomno(), ReserveVo.getUserno(), ReserveVo.getStartday(), ReserveVo.getEndday());
 		
 	}
+
+
+
+
+	
 
 }
