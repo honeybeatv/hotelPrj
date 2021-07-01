@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.service.ReserveService;
+import com.site.service.UserService;
 import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
@@ -23,8 +24,9 @@ public class ReserveController {
 	
 	@Autowired
 	ReserveService reserveService;
-	
-	UserVo userVo;	
+	@Autowired
+	UserService userService;
+		
 	//숙소 전체 예약 리스트
 	@RequestMapping("/reserveList")
 	public String reserveList(Model model) {
@@ -39,11 +41,15 @@ public class ReserveController {
 	}
 	
 	@RequestMapping("/roomReserve")
-	public String roomReserve(RoomVo roomVo,@RequestParam("start") String start, @RequestParam("end") String end, Model model ) {
+	public String roomReserve(@RequestParam("roomNo") int roomNo,@RequestParam("start") String start, @RequestParam("end") String end, @RequestParam("userno") int userno, Model model ) {
 	System.out.println("roomreserve"+start);
 	System.out.println(end);
-	   
-	   model.addAttribute("roomVo", reserveService.roomReserve(roomVo));
+	System.out.println("userno:" + userno);
+	RoomVo vo = reserveService.roomReserve(roomNo);
+	UserVo userVo = userService.userInfoView(userno);
+	System.out.println(vo);
+	   model.addAttribute("roomVo", vo);
+	   model.addAttribute("userVo", userVo);
 	   model.addAttribute("start", start);
 	   model.addAttribute("end", end);
 		return "/roomReserve";

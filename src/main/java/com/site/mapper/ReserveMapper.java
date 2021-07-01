@@ -17,7 +17,7 @@ public interface ReserveMapper {
 
 	List<ReserveVo> findOtherRoom(ReserveVo reserveVo);
 
-	RoomVo roomReserve(RoomVo roomVo);
+	RoomVo roomReserve(int roomNo);
 
 	UserVo userInfo(int userno);
 

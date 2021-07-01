@@ -86,7 +86,7 @@
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
 						style="font-weight: bolder;">숙소 명</label> <input type="data"
-						id="userno" name="userno" value="${roomVo.rname } ">
+						id="userno" name="userno" value="${roomVo.rname } " readonly>
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
@@ -96,7 +96,7 @@
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
 						style="font-weight: bolder;">유저 명</label> <input type="text"
-						id="userno" name="userno" value="${roomVo.userVo.name } ">
+						id="userno" name="userno" value="${userVo.name }" readonly>
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
@@ -107,7 +107,7 @@
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
 						style="font-weight: bolder;">유저 전화번호</label> <input type="text"
-						id="userno" name="userno" value="${roomVo.userVo.uphone } ">
+						id="userno" name="userno" value="${userVo.uphone }" readonly>
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
@@ -153,7 +153,7 @@
 				<div class="form-inline form-group">
 					 <label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">요구사항</label> 
-					<div class="col-sm-7">
+					<div class="col-sm-2">
 						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
 					</div>
 				</div>

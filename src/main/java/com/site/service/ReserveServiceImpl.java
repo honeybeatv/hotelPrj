@@ -28,9 +28,9 @@ public class ReserveServiceImpl implements ReserveService {
 
 
 	@Override
-	public RoomVo roomReserve(RoomVo roomVo) {
+	public RoomVo roomReserve(int roomNo) {
 
-		return reserveMapper.roomReserve(roomVo);
+		return reserveMapper.roomReserve(roomNo);
 	}
 
 

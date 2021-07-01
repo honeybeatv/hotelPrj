@@ -113,7 +113,6 @@
 		</div>
 	</div>
 	
-	<input type="hidden" name="userno" value="${userno }">
 	
 	
 	<section class="ftco-section">
@@ -159,12 +158,15 @@
 
 							</div>
 						</div>
-						
-						 <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }&start=${start}&end=${end}"
-							class="btn-custom" id="reserve">
+						<form action="../reserve/roomReserve" method="post" id="reserve">
+						<input type="hidden" name="userno" value="${userVo.userno }">
+						<input type="hidden" name="start" value="${start }">
+						<input type="hidden" name="end" value="${end }">
+						<input type="hidden" name="roomNo" value="${roomVo.roomNo }">
 							 <button onclick="reserveSubmit()" class="btn py-3 px-5"
 								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button>
-						</a> 
+						</a>
+						</form> 
 
 
 						<div class="col-md-12 room-single ftco-animate mb-5 mt-5">
