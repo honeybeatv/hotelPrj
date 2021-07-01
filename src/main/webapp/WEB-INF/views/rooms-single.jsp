@@ -52,7 +52,6 @@
 <script type="text/javascript">
 	/* function roomReserve_ajax() {
 		alert($("#").val()); //form에 입력한 id값을 받아옴.
-
 		 $.ajax({
 			url : "formOk", //어디로 보내줄꺼냐 : url은 무조건 controller로 감.
 			type : "post", //어떤 형식으로 보내줄꺼냐
@@ -71,10 +70,8 @@
 				alert("실패");
 			} //실패했을때는 여기로
 		}); 
-
 		//ajax기본 형식 : $.ajax({ }); 세미콜론 필수.
 	} */
-
 	function reserveSubmit() {
 		if (${session_flag==null || session_flag=='fail' }) {
 			alert("로그인이 필요합니다.")
@@ -83,7 +80,6 @@
 			document.reserve.submit();
 		}
 	};
-
 </script>
 
 </head>
@@ -113,7 +109,6 @@
 		</div>
 	</div>
 	
-	<input type="hidden" name="userno" value="${userno }">
 	
 	
 	<section class="ftco-section">
@@ -159,12 +154,15 @@
 
 							</div>
 						</div>
-						
-						 <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }&start=${start}&end=${end}"
-							class="btn-custom" id="reserve">
+						<form action="../reserve/roomReserve" method="post" id="reserve">
+						<input type="hidden" name="userno" value="${userVo.userno }">
+						<input type="hidden" name="start" value="${start }">
+						<input type="hidden" name="end" value="${end }">
+						<input type="hidden" name="roomNo" value="${roomVo.roomNo }">
 							 <button onclick="reserveSubmit()" class="btn py-3 px-5"
 								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button>
-						</a> 
+						</a>
+						</form> 
 
 
 						<div class="col-md-12 room-single ftco-animate mb-5 mt-5">
@@ -212,16 +210,6 @@
 					</div>
 				</div>
 				<!-- .col-md-8 -->
-				<div class="col-lg-4 sidebar ftco-animate">
-					<div class="sidebar-box">
-						<form action="#" class="search-form">
-							<div class="form-group">
-								<span class="icon fa fa-search"></span> <input type="text"
-									class="form-control" placeholder="Type a keyword and hit enter">
-							</div>
-						</form>
-					</div>
-				
 				
 				
 			<!-- 리뷰창  -->	
@@ -323,9 +311,7 @@
                   </div>
                 </form>
               </div>
-            </div>
 				<!-- 리뷰 끝 -->
-			</div>
 		</div>
 	</section>
 	<!-- .section -->

@@ -77,16 +77,12 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
-			<form action="roomsWriteDo" id="searchForm" name="searchForm"
-				class="bg-white p-5 " width="100%" method="post" 
-				enctype="multipart/form-data"><input type="hidden" name="roomNo" value="${roomVo.roomNo}">
-
-
+			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="roomNo" value="${roomVo.roomNo}">
 
 				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">숙소 명</label> <input type="data"
-						id="userno" name="userno" value="${roomVo.rname } ">
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">숙소 이름</label> 
+						${roomVo.rname }
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
@@ -94,9 +90,8 @@
 
 				</div>
 				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">유저 명</label> <input type="text"
-						id="userno" name="userno" value="${roomVo.userVo.name } ">
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 이름</label>
+					${userVo.name }
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
@@ -105,9 +100,8 @@
 				</div>
 				
 				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">유저 전화번호</label> <input type="text"
-						id="userno" name="userno" value="${roomVo.userVo.uphone } ">
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 전화번호</label> 
+					${userVo.uphone }
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
@@ -153,16 +147,11 @@
 				<div class="form-inline form-group">
 					 <label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">요구사항</label> 
-					<div class="col-sm-7">
-						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
+					<div class="col-sm-2">
+						<textarea name="request" cols="100" rows="2" id="rinfo"></textarea>
 					</div>
 				</div>
 				
-
-
-
-
-
 				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
 					onclick="save()"> <input type="button" value="취소"
 					class="btn btn-primary py-3 px-5" onclick="history.back()">
@@ -206,7 +195,6 @@
 	<script type="text/javascript">
 	
 		function save(){
-			alert("입장");
 			$.ajax({
 				url:'/reserve/ajax/save',
 				data: $('#searchForm').serialize(),
@@ -214,10 +202,10 @@
 				method:'POST',
 				success: function(resp){
 					if(resp.code == 'SUCCESS'){
-						alert('성공');
+						alert('예약 완료');
 						location.href='/user/userReservationView?userno=' + resp.userno; 
 					}else{
-						alert('에러가 발생했습니다.');
+						alert('예약에 실패했습니다.');
 					}
 				},
 				error: function(){

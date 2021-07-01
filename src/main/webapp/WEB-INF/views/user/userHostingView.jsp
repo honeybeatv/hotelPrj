@@ -79,7 +79,6 @@
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
 			<table width="100%">
- 				<form action="userHostingModify" class="bg-white p-2 " width="100%" method="post"> 
 					<tr>
 						<td width="10%">숙소이름</td>
 						<td width="5%">지역</td>
@@ -93,14 +92,17 @@
 						<td width="40%">주소</td>
 						<td width="3%"></td>
 						<td width="3%">
-							<button type="button" class=" btn-light" onclick="javascript:location.href='../room/roomsadd?userno='+${session_userno}">숙소추가</button>
+							<form action="../room/roomsadd" method="post">
+							<input type="hidden" name="userno" id="userno" value="${session_userno }">
+							<button type="submit" class=" btn-light">숙소추가</button>
+							</form>
 						</td>
 					</tr>
 	
 					<tr height="1" bgcolor="#8f784b ">
 						<td colspan="12"></td>
 					</tr>
-	
+					
 					<c:forEach var="roomVo" items="${userHostingViewMap.userHostingViewList }">
 						<form action="userHostingModify" method="post">
 							<tr id="${roomVo.roomNo}">

@@ -11,9 +11,7 @@ public interface ReserveService {
 
 	List<ReserveVo> reserveListAll();
 
-	RoomVo roomReserve(RoomVo roomVo);
-
-	UserVo userInfo(int userno);
+	RoomVo roomReserve(int roomNo);
 
 	void roomReserve(int roomNo, int userno, String startday, String endday);
 

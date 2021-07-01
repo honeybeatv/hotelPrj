@@ -28,40 +28,26 @@ public class ReserveServiceImpl implements ReserveService {
 
 
 	@Override
-	public RoomVo roomReserve(RoomVo roomVo) {
+	public RoomVo roomReserve(int roomNo) {
 
-		return reserveMapper.roomReserve(roomVo);
+		return reserveMapper.roomReserve(roomNo);
 	}
 
-
-
-
-	@Override
-	public UserVo userInfo(int userno) {
-		
-		UserVo userVo = reserveMapper.userInfo(userno);
-		
-		
-		return userVo;
-	}
-
-
-
-
+	//메소드가 아마 안쓰이는듯?
 	@Override
 	public void roomReserve(int roomNo, int userno, String startday, String endday) {
-		reserveMapper.insertRoomReserve(roomNo,userno,startday,endday);
+		
+		
+		//reserveMapper.insertRoomReserve(roomNo,userno,startday,endday);
 		
 		
 	}
 
-
-
-
+	//예약 DB저장
 	@Override
 	public void save(ReserveVo ReserveVo) {
 		
-		reserveMapper.insertRoomReserve(ReserveVo.getRoomno(), ReserveVo.getUserno(), ReserveVo.getStartday(), ReserveVo.getEndday());
+		reserveMapper.insertRoomReserve(ReserveVo.getRoomno(), ReserveVo.getUserno(), ReserveVo.getStartday(), ReserveVo.getEndday(), ReserveVo.getRequest());
 		
 	}
 
