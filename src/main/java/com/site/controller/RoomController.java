@@ -36,7 +36,7 @@ public class RoomController {
    
    //숙소 상세정보 보기
    @RequestMapping("/rooms-single")
-   public String roomSingle(@RequestParam(value="roomNo") int roomNo,
+   public String roomSingle(@RequestParam(value="roomNo") int roomNo,@RequestParam(value="start",defaultValue = "1") String start,@RequestParam(value="end",defaultValue = "1") String end,
 		   HttpServletRequest request, Model model) {
 	   int userno = 0;
 	   UserVo userVo = new UserVo();
@@ -54,7 +54,10 @@ public class RoomController {
 	   
 	   model.addAttribute("roomVo", roomVo);
 	   model.addAttribute("userVo", userVo);
-	   
+	   if(!start.equals(null) && !end.equals(null)) {
+	   model.addAttribute("start", start);
+	   model.addAttribute("end", end);
+	   }
       return "/rooms-single";
    }
    
