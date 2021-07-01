@@ -28,15 +28,10 @@
 	<select id="insertRoomReserve" resultType="com.site.vo.ReserveVo">
 		
 		<![CDATA[
-		insert into reserve values(seq_reserve.nextval, #{roomNo}, 'normal', #{startday}, #{endday}, #{userno})
+		insert into reserve values(seq_reserve.nextval, #{roomNo}, 'normal', #{startday}, #{endday}, #{userno}, #{request}, sysdate, '')
 			]]>
 			
 		</select>
-
-
-
-
-
 
 
 </mapper>
