@@ -48,6 +48,7 @@
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
+
 <script type="text/javascript">
 	/* function roomReserve_ajax() {
 		alert($("#").val()); //form에 입력한 id값을 받아옴.
@@ -73,16 +74,25 @@
 
 		//ajax기본 형식 : $.ajax({ }); 세미콜론 필수.
 	} */
+
+	function reserveSubmit() {
+		if (${session_flag==null || session_flag=='fail' }) {
+			alert("로그인이 필요합니다.")
+			return false;
+		} else {
+			document.reserve.submit();
+		}
+	};
 </script>
 
 </head>
 <body>
 
-	<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 	<!-- END nav -->
 
 	<div class="hero-wrap"
 		style="background-image: url('../static/images/bg_1.jpg');">
+		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 		<div class="overlay"></div>
 		<div class="container">
 			<div
@@ -103,7 +113,6 @@
 	</div>
 	
 	<input type="hidden" name="userno" value="${userno }">
-	<input type="text" name="userno" value="${userno }">
 	
 	
 	<section class="ftco-section">
@@ -151,8 +160,8 @@
 						</div>
 						
 						 <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }"
-							class="btn-custom">
-							 <button type="submit" class="btn py-3 px-5"
+							class="btn-custom" id="reserve">
+							 <button onclick="reserveSubmit()" class="btn py-3 px-5"
 								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button>
 						</a> 
 
@@ -222,7 +231,7 @@
                   <div class="comment-body">
                     <h3>John Doe</h3>
                     <div class="meta">Decmener 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+
                   </div>
                 </li>
 				</div>
@@ -230,7 +239,7 @@
                   <div class="comment-body">
                     <h3>John Doe</h3>
                     <div class="meta">Decmener 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
                 </li>
@@ -286,10 +295,7 @@
 							    </label>
 							  </div>
 	      		</div>
-                  
-                  
                   <!-- 리뷰등록 -->
-                  
                     <label for="name">Name *</label>
                     <input type="text" class="form-control" id="name">
                   </div>
@@ -309,13 +315,10 @@
                   <div class="form-group">
                     <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
                   </div>
-
                 </form>
               </div>
             </div>
-				
 				<!-- 리뷰 끝 -->
-				
 			</div>
 		</div>
 	</section>

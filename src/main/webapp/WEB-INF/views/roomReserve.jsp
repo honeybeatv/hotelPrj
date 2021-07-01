@@ -102,27 +102,23 @@
 						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
 					</div>
 				</div>
-				<div class="col-md-3 d-flex">
-					<div class="form-group p-4 align-self-stretch d-flex align-items-end">
-						<div class="wrap">
-							<label for="#">체크인 날짜</label> <input type="text"
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">체크인 날짜</label> <input type="text"
 								class="form-control checkin_date" id="datepicker1"
 								name="startday" placeholder="체크인 날짜" style="cursor: pointer;"
 								readonly>
 						</div>
-					</div>
-				</div>
-				<div class="col-md-3 d-flex">
-					<div
-						class="form-group p-4 align-self-stretch d-flex align-items-end">
-						<div class="wrap">
-							<label for="#">체크아웃 날짜</label> <input type="text"
+					
+				
+				
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">체크아웃 날짜</label> <input type="text"
 								class="form-control checkout_date" id="datepicker2"
 								name="endday" placeholder="체크아웃 날짜" style="cursor: pointer;"
 								readonly>
 						</div>
-					</div>
-				</div>
 
 
 

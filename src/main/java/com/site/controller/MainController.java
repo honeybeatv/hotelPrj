@@ -32,5 +32,7 @@ public class MainController {
 		model.addAttribute("map",map);
 		return "index";
 	}
+		
+		
 
 }
