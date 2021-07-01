@@ -24,6 +24,12 @@ SELECT * FROM room WHERE ROOMNO=#{roomNo}
 		
 </select>
 
+<select id="insertRoomReserve" resultType="com.site.vo.ReserveVo">
+	
+	insert into reserve values(seq_reserve.nextval, #{roomNo}, 'normal', #{startday}, #{endday}, #{userno})
+		
+	</select>
+
 
 
 

@@ -28,14 +28,9 @@ public class ReserveServiceImpl implements ReserveService {
 
 
 	@Override
-	public RoomVo roomReserve(int roomNo) {
-		
-		RoomVo roomVo = reserveMapper.roomReserve(roomNo);
-		System.out.println("roomVo : " + roomVo);
+	public RoomVo roomReserve(RoomVo roomVo) {
 
-		//roomVo.setReserveVoList(reserveMapper.findOtherRoom(roomVo));
-
-		return roomVo;
+		return reserveMapper.roomReserve(roomVo);
 	}
 
 
@@ -60,6 +55,16 @@ public class ReserveServiceImpl implements ReserveService {
 	public void roomReserve(int roomNo, int userno, String startday, String endday) {
 		reserveMapper.insertRoomReserve(roomNo,userno,startday,endday);
 		
+		
+	}
+
+
+
+
+	@Override
+	public void save(ReserveVo roomVo) {
+		
+		reserveMapper.insertRoomReserve(roomVo.getRoomno(), roomVo.getUserno(), roomVo.getStartday(), roomVo.getEndday());
 		
 	}
 

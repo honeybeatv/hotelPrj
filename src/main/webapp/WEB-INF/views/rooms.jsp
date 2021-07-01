@@ -55,7 +55,7 @@
     		<div class="row">
 	        <div class="col-lg-9">
 		    		<div class="row">
-		    			<c:forEach var="list" items="${list }" > 
+		    			<c:forEach var="list" items="${listAndNums.list }" > 
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
 		    					<a href="rooms-single?roomNo=${list.roomNo }" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
@@ -192,27 +192,82 @@
 		    </div>
 		    
 														  	 
-							  
-
 		    
+		    <!-- c태그 if문으로 rbed나 rroom같이 AdvancedSearch에서 쓰는 파라미터가 0이면 Search조건으로 뜨도록 하고  
+		    1이상이면 링크를 AdvancedSearch로 연결되어서 뜨도록..........우웩 토한다-->
+		    <!-- AdvancedSearch의 경우 start-->
 		    
-		    
-		    
-		    <div class="row mt-5">
+		     <!-- <div class="row mt-5"> -->
           <div class="col text-center">
             <div class="block-27">
+		    <c:if test= "${rroom>=1}">
               <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
+              
+              
+              	<!-- 이전 페이지는 1이상일 때 표시, 링크 -->
+			      <c:if test="${listAndNums.page>1 }">
+			      	<li><a href="./advancedSearch?page=${listAndNums.page-1 }&inDate=${start}&outDate=${end}&rtype=${rtype }&rroom=${rroom }&rbed=${rbed }&minPrice=${minPrice }&maxPrice=${maxPrice }&rpet=${rpet }&rsmoke=${rsmoke }&rcity=${rcity }&rpeople=${rpeople }">&lt;</a></li>
+			      </c:if>
+			      			      
+			       <!-- 번호 넣기 -->
+			      <c:forEach var="nowPage" begin="${listAndNums.startPage }" end="${listAndNums.endPage }">
+			      	<c:if test="${listAndNums.page == nowPage }">
+			      	  <li><a>${nowPage }</a></li>
+				    </c:if>
+				    <c:if test="${listAndNums.page != nowPage }">
+			      	  <li>
+			      		<a href="./advancedSearch?page=${nowPage }&inDate=${start}&outDate=${end}&rtype=${rtype }&rroom=${rroom }&rbed=${rbed }&minPrice=${minPrice }&maxPrice=${maxPrice }&rpet=${rpet }&rsmoke=${rsmoke }&rcity=${rcity }&rpeople=${rpeople }">${nowPage}</a>
+			      	  </li>
+				    </c:if>
+			      </c:forEach>
+			      
+			      <!-- 다음 페이지는 max보다 작을 때 +1 증가, max이상일 때 링크삭제 -->		      			      
+			      <c:if test="${listAndNums.page<listAndNums.maxPage }">
+			      	<li>
+			      		<a href="./advancedSearch?page=${listAndNums.page+1 }&inDate=${start}&outDate=${end}&rtype=${rtype }&rroom=${rroom }&rbed=${rbed }&minPrice=${minPrice }&maxPrice=${maxPrice }&rpet=${rpet }&rsmoke=${rsmoke }&rcity=${rcity }&rpeople=${rpeople }">&gt;</a>
+			      	</li>
+			      </c:if>
+
               </ul>
+		    </c:if>
+		    
+
+		    
+		    <!-- search의 경우 -->
+		    <c:if test= "${rtype==null}">
+              <ul>              
+              
+              	<!-- 이전 페이지는 1이상일 때 표시, 링크 -->
+			      <c:if test="${listAndNums.page>1 }">
+			      	<li><a href="./search?page=${listAndNums.page-1 }&startDate=${start}&endDate=${end}&rpeople=${rpeople }&rcity=${rcity }">&lt;</a></li>
+			      </c:if>
+			      
+			      
+			       <!-- 번호 넣기 -->
+			      <c:forEach var="nowPage" begin="${listAndNums.startPage }" end="${listAndNums.endPage }">
+			      	<c:if test="${listAndNums.page == nowPage }">
+			      	  <li><a>${nowPage }</a></li>
+				    </c:if>
+				    <c:if test="${listAndNums.page != nowPage }">
+			      	  <li>
+			      		<a href="./search?page=${nowPage  }&startDate=${start}&endDate=${end}&rpeople=${rpeople }&rcity=${rcity }">${nowPage }</a>
+			      	  </li>
+				    </c:if>
+			      </c:forEach>
+			      
+			      <!-- 다음 페이지는 max보다 작을 때 +1 증가, max이상일 때 링크삭제 -->
+			      <c:if test="${listAndNums.page<listAndNums.maxPage }">
+			      	<li>	
+			      		<a href="./search?page=${listAndNums.page+1  }&startDate=${start}&endDate=${end}&rpeople=${rpeople }&rcity=${rcity }">&gt;</a>
+			      	</li>
+			      </c:if>
+			    <!-- search의 경우 end -->  
+
+              </ul>
+		    </c:if>
             </div>
           </div>
-        </div>
+		  
         
     	</div>
     </section>
