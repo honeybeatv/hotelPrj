@@ -70,7 +70,7 @@
 		    					</a>
 		-->  					
 								<div class="text p-3 text-center">
-			    					<h3 class="mb-3"><a href="rooms">${userReservationList.rname }</a></h3>
+			    					<h3 class="mb-3">${userReservationList.rname }</h3>
 			    						<p><span class="price mr-2">${userReservationList.rprice }</span> <span class="per">/ 일</span></p>
 			    						<ul>
 				    						<li style="list-style:none; text-align: left !important;">방문일 : ${userReservationList.startday } ~ ${userReservationList.endday }</li>
