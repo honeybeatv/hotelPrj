@@ -106,10 +106,10 @@ $(document).ready(function(){
         // 태크.val("값") : 태그의 값을 변경 
         var userid = $("#userid").val();
         var userpw = $("#userpw").val();
-        
         var uemail = $("#uemail").val();
         var name = $("#name").val();
         var uphone = $("#uphone").val();
+        var code = $("#compare").val();
         
         
         if(name == ""){
@@ -134,6 +134,11 @@ $(document).ready(function(){
         if(uemail == ""){
             alert("이메일을 입력하세요.");
             $("#uemail").focus();
+            return;
+        }
+        if(code == ""){
+            alert("인증번호를 입력하세요.");
+            $("#compare").focus();
             return;
         }
         if(uphone == ""){

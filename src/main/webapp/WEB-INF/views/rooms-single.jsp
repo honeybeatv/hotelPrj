@@ -160,7 +160,7 @@
 							</div>
 						</div>
 						
-						 <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }"
+						 <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }&start=${start}&end=${end}"
 							class="btn-custom" id="reserve">
 							 <button onclick="reserveSubmit()" class="btn py-3 px-5"
 								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button>
