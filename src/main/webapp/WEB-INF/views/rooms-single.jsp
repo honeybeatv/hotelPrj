@@ -201,7 +201,6 @@
 
 					</div>
 				</div>
-<<<<<<< HEAD
 				<!-- .col-md-8 -->
 				<div class="col-lg-4 sidebar ftco-animate">
 					<div class="sidebar-box">
@@ -212,7 +211,6 @@
 							</div>
 						</form>
 					</div>
-=======
 				
 				
 				
@@ -227,11 +225,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
                   </div>
                 </li>
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
-
-<<<<<<< HEAD
 				</div>
-=======
                 <li class="comment">
                   <div class="comment-body">
                     <h3>John Doe</h3>
@@ -322,7 +316,6 @@
 				
 				<!-- 리뷰 끝 -->
 				
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 			</div>
 		</div>
 	</section>
