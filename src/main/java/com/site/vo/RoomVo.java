@@ -32,4 +32,6 @@ public class RoomVo {
 	
 	private List<RoomVo> roomVoList;
 	
+	private UserVo userVo;
+	
 }

@@ -3,24 +3,20 @@ package com.site.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
-
 import com.site.service.UserService;
-import com.site.vo.ReserveVo;
 import com.site.vo.UserReservationVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
@@ -31,31 +27,38 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	@Autowired
+	JavaMailSender javaMailSender;
 	
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		System.out.println("# user logout success #");
-		String referer = request.getHeader("Referer");
-		return "redirect:"+referer;
+		return "redirect:/";
 	}
 
 	@RequestMapping("/login")
-	public String login() {
+	public String login(HttpServletRequest request,Model model) {
 		System.out.println("# user login page #");
+		String referer = request.getHeader("Referer");
+		System.out.println(referer);
+		model.addAttribute("page", referer);
 		return "/user/login";
 	}
 	
 	@RequestMapping(value="/login_check")
 	@ResponseBody
-	public Map<String,Object> login_check(UserVo userVo,HttpServletRequest request,Model model) {
+	public Map<String,Object> login_check(UserVo userVo,HttpServletRequest request,Model model,@RequestParam(value="page",required=false) String page) {
 		
 		Map<String,Object> map=new HashMap<String, Object>();
 		HttpSession session = request.getSession();
 		UserVo uVo = userService.login(userVo); //전체리스트 가져오기
-		String referer = request.getHeader("Referer");
-		
+		if(page.equals("http://localhost:8000/room/search")) {
+			page = "/";
+		} else if (page.equals("http://localhost:8000/room/advancedSearch")) {
+			page = "/";
+		}
 		map.put("uVo",uVo);
 		if(uVo==null) {
 			map.put("flag", "fail");
@@ -67,7 +70,7 @@ public class UserController {
 		}else {
 			map.put("flag", "success");
 			map.put("msg", "로그인 성공!");
-			
+			map.put("page",page);
 			session.setAttribute("session_flag","success");	//nav.jsp 에서 로그인 확인용
 			session.setAttribute("session_userid", uVo.getUserid());	//로그인 확인 및 환영문구 이용
 			session.setAttribute("session_userno", uVo.getUserno());	//정보호출용
@@ -212,6 +215,31 @@ public class UserController {
 		
 		System.out.println("# mypage category_Hosting Delete #");
 		return userService.userHostingDelete(roomVo);
+	}
+	
+	@RequestMapping("/CheckMail")
+	@ResponseBody
+	public Map<String, Object> SendMail(String mail, HttpSession session) {
+		Map<String, Object> map = new HashMap<>();
+		Random random = new Random();
+		String key = "";
+
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setFrom("khw00050@gmail.com");
+		message.setTo(mail); // 스크립트에서 보낸 메일을 받을 사용자 이메일 주소
+		// 입력 키를 위한 코드
+		for (int i = 0; i < 3; i++) {
+			int index = random.nextInt(25) + 65; // A~Z까지 랜덤 알파벳 생성
+			key += (char) index;
+		}
+		int numIndex = random.nextInt(8999) + 1000; // 4자리 정수를 생성
+		key += numIndex;
+		message.setSubject("인증번호 입력을 위한 메일 전송");
+		message.setText("인증 번호 : " + key);
+		System.out.println(key);
+		javaMailSender.send(message);
+		map.put("key", key);
+		return map;
 	}
 	
 }

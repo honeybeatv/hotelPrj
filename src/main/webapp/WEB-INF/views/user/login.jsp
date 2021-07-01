@@ -81,12 +81,13 @@ $(document).ready(function(){
  			 type:'post',
  			 data:{
  				 "userid":$("#userid").val(),
- 				 "userpw":$("#userpw").val()
+ 				 "userpw":$("#userpw").val(),
+ 				 "page":$("#page").val()
  			 },
  			 success:function(data){
  				 alert(data.msg);
  				 if(data.flag=="success"){
- 				    location.href="/";
+ 				    location.href=data.page;
  				 }else{
  					 $("#userid").val(""); //공백처리 
  					 $("#userpw").val("");
@@ -132,6 +133,7 @@ function onEnterSubmit(){
           <div class="col-4  d-inline-flex" >
           
             <form method="post" name="form1" action="login_check" class="bg-white p-5 contact-form">
+            <input type="hidden" name="page" id="page" value="${page }">
               <div class="form-group">
                 <input type="text" class="form-control" name="userid" id="userid" placeholder="아이디">
               </div>

@@ -50,12 +50,12 @@
 	</select>
 
 	<!-- 글쓰기 저장 -->
-	<insert id="insertRoomsWriteDo" parameterType="com.site.vo.RoomVo">
+	<!-- <insert id="insertRoomsWriteDo" parameterType="com.site.vo.RoomVo">
 	  <![CDATA[
 	  INSERT INTO ROOM VALUES
 	  (seq_room.nextval, #{rtype}, #{rpeople}, #{rinfo}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet}, #{raddress}, #{rname}, #{userno},#{rpicture1},#{rpicture2},#{rpicture3})
 	  ]]>
-	</insert>
+	</insert> -->
 	
 
 	<!-- AdvancedSearch 페이징용 글 개수 구하기 -->
@@ -123,6 +123,12 @@
 	<select id="userInfo" resultType="com.site.vo.UserVo">
 	
 	SELECT * FROM USER1 WHERE userno=#{userno}
+		
+	</select>
+	<select id="insertRoomReplyDo" resultType="com.site.vo.ReviewVo">
+	
+	<![CDATA[ INSERT INTO TEST.REVIEW VALUES(seq_review.nextval, #{roomno}, #{userno}, sysdate, '테스트', 3, '11') ]]>
+	
 		
 	</select>
 	
