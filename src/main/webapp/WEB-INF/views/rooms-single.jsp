@@ -47,24 +47,51 @@
 <script type="text/javascript" src="../static/js/contact.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<<<<<<< HEAD
+
 
 <script type="text/javascript">
 
-=======
-<script type="text/javascript">
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
-	
+		 $.ajax({
+			url : "formOk", //어디로 보내줄꺼냐 : url은 무조건 controller로 감.
+			type : "post", //어떤 형식으로 보내줄꺼냐
+			data : { // data->controller->DB저장->DB정보를 들고와서 다시 data를 화면에 전달해달라.
+				"id" : $("#id").val(),
+				"pw" : $("#pw").val(),
+				"name" : $("#name").val(),
+				"nickName" : $("#nickName").val()
+			}, //데이터값. key-value형태로.
+			success : function(data) {
+				//controller의 return값을 data로 받음.
+				alert("성공" );
+				
+			}, //성공했을때는 여기로
+			error : function() {
+				alert("실패");
+			} //실패했을때는 여기로
+		}); 
+
+		//ajax기본 형식 : $.ajax({ }); 세미콜론 필수.
+	} 
+
+	function reserveSubmit() {
+		if (${session_flag==null || session_flag=='fail' }) {
+			alert("로그인이 필요합니다.")
+			return false;
+		} else {
+			document.reserve.submit();
+		}
+	};
+
 </script>
 
 </head>
 <body>
 
-	<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 	<!-- END nav -->
 
 	<div class="hero-wrap"
 		style="background-image: url('../static/images/bg_1.jpg');">
+		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 		<div class="overlay"></div>
 		<div class="container">
 			<div
@@ -83,6 +110,10 @@
 			</div>
 		</div>
 	</div>
+	
+	<input type="hidden" name="userno" value="${userno }">
+	
+	
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row">
@@ -186,6 +217,12 @@
 							<!-- <button type="submit" class="btn py-3 px-5"
 								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button> -->
 						</a> --%>
+						
+						 <a href="../reserve/roomReserve?roomNo=${roomVo.roomNo }"
+							class="btn-custom" id="reserve">
+							 <button onclick="reserveSubmit()" class="btn py-3 px-5"
+								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button>
+						</a> 
 
 
 						<div class="col-md-12 room-single ftco-animate mb-5 mt-5">
@@ -232,7 +269,7 @@
 
 					</div>
 				</div>
-				
+			
 				
 				
 			<!-- 리뷰창  -->	
@@ -243,24 +280,26 @@
                   <div class="comment-body">
                     <h3>John Doe</h3>
                     <div class="meta">Decmener 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+
                   </div>
                 </li>
+				</div>
+
 
                 <li class="comment">
                   <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <h3>리뷰자</h3>
+                    <div class="meta">2021/07/01, 2021 at 2:21pm</div>
+
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
                 </li>
 
                 <li class="comment">
                   <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">December 7, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                    <h3>리뷰자</h3>
+                    <div class="meta">2021/07/01, 2021 at 2:21pm</div>
+                    <p>나쁘지 않는 방이였다.</p>
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
                 </li>
@@ -307,10 +346,7 @@
 							    </label>
 							  </div>
 	      		</div>
-                  
-                  
                   <!-- 리뷰등록 -->
-                  
                     <label for="name">Name *</label>
                     <input type="text" class="form-control" id="name">
                   </div>
@@ -330,13 +366,10 @@
                   <div class="form-group">
                     <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
                   </div>
-
                 </form>
               </div>
             </div>
-				
 				<!-- 리뷰 끝 -->
-				
 			</div>
 		</div>
 	</section>

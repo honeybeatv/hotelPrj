@@ -50,16 +50,25 @@ public class ReserveController {
 	
 	@RequestMapping("/ajax/save")
 	@ResponseBody
-	public ReserveVo ajaxSave(ReserveVo roomVo, HttpServletRequest request ) {
+	public ReserveVo ajaxSave(ReserveVo ReserveVo, HttpServletRequest request,
+			@RequestParam ("roomNo") int roomNo) {
 	
+		System.out.println("roomNo {TEST} :" + roomNo);
+		
 		HttpSession session = request.getSession();
-		roomVo.setUserno((Integer) session.getAttribute("session_userno"));
-		reserveService.save(roomVo);
+		int userno=  (int)session.getAttribute("session_userno");
+		
+		ReserveVo.setUserno(userno);
+		ReserveVo.setRoomno(roomNo);
+		
+		System.out.println("ReserveVo {TEST} :" + ReserveVo);
+		
+		reserveService.save(ReserveVo);
 	   
-		System.out.println("roomVo {TEST} :" + roomVo);
-	   roomVo.setCode("SUCCESS");
+		
+		ReserveVo.setCode("SUCCESS");
 	   
-		return roomVo; 
+		return ReserveVo; 
 	}
 	
 	

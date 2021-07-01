@@ -37,7 +37,8 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		System.out.println("# user logout success #");
-		return "redirect:/";
+		String referer = request.getHeader("Referer");
+		return "redirect:"+referer;
 	}
 
 	@RequestMapping("/login")
@@ -53,6 +54,7 @@ public class UserController {
 		Map<String,Object> map=new HashMap<String, Object>();
 		HttpSession session = request.getSession();
 		UserVo uVo = userService.login(userVo); //전체리스트 가져오기
+		String referer = request.getHeader("Referer");
 		
 		map.put("uVo",uVo);
 		if(uVo==null) {

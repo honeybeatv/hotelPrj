@@ -17,6 +17,6 @@ public interface ReserveService {
 
 	void roomReserve(int roomNo, int userno, String startday, String endday);
 
-	void save(ReserveVo roomVo);
+	void save(ReserveVo ReserveVo);
 
 }
