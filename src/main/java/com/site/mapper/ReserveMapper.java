@@ -17,7 +17,7 @@ public interface ReserveMapper {
 
 	List<ReserveVo> findOtherRoom(ReserveVo reserveVo);
 
-	RoomVo roomReserve(RoomVo roomVo);
+	RoomVo roomReserve(int roomNo);
 
 	void insertRoomReserve(int roomNo, int userno, String startday, String endday, String request);
 

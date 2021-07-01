@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.RoomService;
+import com.site.vo.ReviewVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
 
@@ -173,5 +174,16 @@ public class RoomController {
 		model.addAttribute("rcity", rcity);
 		return "rooms";
 	}
+	
+	
+	//테스트
+//	@RequestMapping("/roomReply") //답글페이지 호출
+//	public String roomReply(@RequestParam("review_no") int review_no, Model model) {
+//		ReviewVo revirwVo = roomService.
+//		
+//		
+//		return "/rooms-single";
+//	}
+	
 }
 

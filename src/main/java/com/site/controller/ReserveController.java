@@ -43,11 +43,16 @@ public class ReserveController {
 	
 	//예약 페이지 표시
 	@RequestMapping("/roomReserve")
-	public String roomReserve(RoomVo roomVo,@RequestParam("start") String start, @RequestParam("end") String end, Model model ) {
-		System.out.println("roomreserve"+start);
-		System.out.println(end);
-	   
-	   model.addAttribute("roomVo", reserveService.roomReserve(roomVo));
+
+	public String roomReserve(@RequestParam("roomNo") int roomNo,@RequestParam("start") String start, @RequestParam("end") String end, @RequestParam("userno") int userno, Model model ) {
+	System.out.println("roomreserve"+start);
+	System.out.println(end);
+	System.out.println("userno:" + userno);
+	RoomVo vo = reserveService.roomReserve(roomNo);
+	UserVo userVo = userService.userInfoView(userno);
+	System.out.println(vo);
+	   model.addAttribute("roomVo", vo);
+	   model.addAttribute("userVo", userVo);
 	   model.addAttribute("start", start);
 	   model.addAttribute("end", end);
 		return "/roomReserve";

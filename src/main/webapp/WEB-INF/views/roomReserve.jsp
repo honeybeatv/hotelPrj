@@ -77,13 +77,18 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
-			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
-						<input type="hidden" id="userno" name="userno" value="${session_userno }">
-						<input type="hidden" id="roomNo" name="roomNo" value="${roomVo.roomNo }">
+			<form action="roomsWriteDo" id="searchForm" name="searchForm"
+				class="bg-white p-5 " width="100%" method="post" 
+				enctype="multipart/form-data"><input type="hidden" name="roomNo" value="${roomVo.roomNo}">
+
+
 
 				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">숙소 이름</label> 
-					<b>${roomVo.rname }</b>
+					<%-- <label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">숙소 이름</label> 
+					<b>${roomVo.rname }</b> --%>
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">숙소 명</label> <input type="data"
+						id="userno" name="userno" value="${roomVo.rname } " readonly>
 					<div class="col-sm-7">
 						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
@@ -96,8 +101,11 @@
 					</div>
 				</div>
 				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 전화번호</label> 
-					<b>${userVo.uphone }</b>
+					<%-- <label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">예약자 전화번호</label> 
+					<b>${userVo.uphone }</b> --%>
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">유저 명</label> <input type="text"
+						id="userno" name="userno" value="${userVo.name }" readonly>
 					<div class="col-sm-7">
 					</div>
 				</div>
@@ -106,6 +114,14 @@
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">요구사항</label>
 						<textarea name="request" cols="150" rows="1" id="rinfo"></textarea>
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">유저 전화번호</label> <input type="text"
+						id="userno" name="userno" value="${userVo.uphone }" readonly>
+					<div class="col-sm-7">
+						<input type="hidden" class="form-control" style="width: 100%;"
+							id="rname" name="rname">
+					</div>
+
 				</div>
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label"
@@ -144,7 +160,7 @@
 				<div class="form-inline form-group">
 					 <label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">요구사항</label> 
-					<div class="col-sm-7">
+					<div class="col-sm-2">
 						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
 					</div>
 				</div>
