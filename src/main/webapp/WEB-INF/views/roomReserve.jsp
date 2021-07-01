@@ -66,8 +66,7 @@
 					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2">
-							<span class="mr-2"><a href="index">Home</a></span> <span>숙소
-								예약</span>
+							<span class="mr-2"><a href="index">Home</a></span> <span>숙소예약</span>
 						</p>
 						<h1 class="mb-4 bread">숙소 예약</h1>
 					</div>
@@ -79,8 +78,8 @@
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
 			<form action="roomsWriteDo" id="searchForm" name="searchForm"
-				class="bg-white p-5 " width="100%" method="post"
-				enctype="multipart/form-data">
+				class="bg-white p-5 " width="100%" method="post" 
+				enctype="multipart/form-data"><input type="text" name="roomNo" value="${roomVo.roomNo}" readonly>
 
 
 
@@ -89,7 +88,7 @@
 						style="font-weight: bolder;">방번호</label> <input type="hidden"
 						id="userno" name="userno" value="${session_userno }">
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;"
+						<input type="hidden" class="form-control" style="width: 100%;"
 							id="rname" name="rname">
 					</div>
 
@@ -103,27 +102,23 @@
 						<textarea name="rinfo" cols="65" rows="10" id="rinfo"></textarea>
 					</div>
 				</div>
-				<div class="col-md-3 d-flex">
-					<div class="form-group p-4 align-self-stretch d-flex align-items-end">
-						<div class="wrap">
-							<label for="#">체크인 날짜</label> <input type="text"
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">체크인 날짜</label> <input type="text"
 								class="form-control checkin_date" id="datepicker1"
 								name="startday" placeholder="체크인 날짜" style="cursor: pointer;"
 								readonly>
 						</div>
-					</div>
-				</div>
-				<div class="col-md-3 d-flex">
-					<div
-						class="form-group p-4 align-self-stretch d-flex align-items-end">
-						<div class="wrap">
-							<label for="#">체크아웃 날짜</label> <input type="text"
+					
+				
+				
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label"
+						style="font-weight: bolder;">체크아웃 날짜</label> <input type="text"
 								class="form-control checkout_date" id="datepicker2"
 								name="endday" placeholder="체크아웃 날짜" style="cursor: pointer;"
 								readonly>
 						</div>
-					</div>
-				</div>
 
 
 
@@ -173,10 +168,11 @@
 	<script type="text/javascript">
 	
 		function save(){
+			alert("입장");
 			$.ajax({
 				url:'/reserve/ajax/save',
 				data: $('#searchForm').serialize(),
-				dataType:'JSON',
+				dataType:'json',
 				method:'POST',
 				success: function(resp){
 					if(resp.code == 'SUCCESS'){

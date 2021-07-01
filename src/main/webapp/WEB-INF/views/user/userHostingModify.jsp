@@ -121,7 +121,7 @@
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">방정보</label>
 					<div class="col-sm-7">
-						<textarea name="rinfo" cols="65" rows="10" id="rinfo" value="${roomVo.rinfo }"></textarea>
+						<textarea name="rinfo" cols="65" rows="10" id="rinfo">${roomVo.rinfo }</textarea>
 					</div>
 				</div>
 
@@ -141,15 +141,15 @@
 
 						<select id="rcity" name="rcity">
 							<option value="" selected>지역</option>
-							<option value="서울">서울</option>
-							<option value="인천">인천</option>
-							<option value="세종">세종</option>
-							<option value="대전">대전</option>
-							<option value="대구">대구</option>
-							<option value="울산">울산</option>
-							<option value="부산">부산</option>
-							<option value="광주">광주</option>
-							<option value="제주">제주</option>
+							<option value="서울" ${(roomVo.rcity eq '서울')? 'selected' : '' }>서울</option>
+							<option value="인천" ${(roomVo.rcity eq '인천')? 'selected' : '' }>인천</option>
+							<option value="세종" ${(roomVo.rcity eq '세종')? 'selected' : '' }>세종</option>
+							<option value="대전" ${(roomVo.rcity eq '대전')? 'selected' : '' }>대전</option>
+							<option value="대구" ${(roomVo.rcity eq '대구')? 'selected' : '' }>대구</option>
+							<option value="울산" ${(roomVo.rcity eq '울산')? 'selected' : '' }>울산</option>
+							<option value="부산" ${(roomVo.rcity eq '부산')? 'selected' : '' }>부산</option>
+							<option value="광주" ${(roomVo.rcity eq '광주')? 'selected' : '' }>광주</option>
+							<option value="제주" ${(roomVo.rcity eq '제주')? 'selected' : '' }>제주</option>
 						</select>
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">1박 가격</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width: 100%;" id="rprice" name="rprice">
+						<input type="text" class="form-control" style="width: 100%;" id="rprice" name="rprice" value="${roomVo.rprice }">
 					</div>
 				</div>
 				<div class="form-inline form-group">
@@ -165,13 +165,13 @@
 						style="font-weight: bolder;">침실수</label>
 					<div class="col-sm-7">
 						<select name="rroom" id="rroom">
-							<option value="1"selected>침실 1</option>
-							 <option value="2">침실 2</option>
-		                    <option value="3">침실 3</option>
-		                    <option value="4">침실 4</option>
-		                    <option value="5">침실 5</option>
-		                    <option value="6">침실 6</option>
-	                    	<option value="7">침실 7 이상</option>
+							<option value="1" ${(roomVo.rroom eq '1')? 'selected' : '' }>침실 1</option>
+							<option value="2" ${(roomVo.rroom eq '2')? 'selected' : '' }>침실 2</option>
+		                    <option value="3" ${(roomVo.rroom eq '3')? 'selected' : '' }>침실 3</option>
+		                    <option value="4" ${(roomVo.rroom eq '4')? 'selected' : '' }>침실 4</option>
+		                    <option value="5" ${(roomVo.rroom eq '5')? 'selected' : '' }>침실 5</option>
+		                    <option value="6" ${(roomVo.rroom eq '6')? 'selected' : '' }>침실 6</option>
+	                    	<option value="7" ${(roomVo.rroom eq '7')? 'selected' : '' }>침실 7 이상</option>
 						</select>
 					</div>
 				</div>
@@ -180,26 +180,26 @@
 						style="font-weight: bolder;">침대수</label>
 					<div class="col-sm-7">
 						<select name="rbed" id="rbed">
-							<option value="1"selected>침대 1</option>
-	                      	<option value="2">침대 2</option>
-	                      	<option value="3">침대 3</option>
-	                      	<option value="4">침대 4</option>
-	                      	<option value="5">침대 5</option>
-	                      	<option value="6">침대 6</option>
+							<option value="1" ${(roomVo.rbed eq '1')? 'selected' : '' }>침대 1</option>
+	                      	<option value="2" ${(roomVo.rbed eq '2')? 'selected' : '' }>침대 2</option>
+	                      	<option value="3" ${(roomVo.rbed eq '3')? 'selected' : '' }>침대 3</option>
+	                      	<option value="4" ${(roomVo.rbed eq '4')? 'selected' : '' }>침대 4</option>
+	                      	<option value="5" ${(roomVo.rbed eq '5')? 'selected' : '' }>침대 5</option>
+	                      	<option value="6" ${(roomVo.rbed eq '6')? 'selected' : '' }>침대 6</option>
 						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<input type="checkbox" name="rsmoke" value="smoke"> 흡연실 <input
-						type="checkbox" name="rpet" value="pet"> 반려동물
+						type="checkbox" name="rpet" value="pet" ${(roomVo.rpet eq 'pet')? 'selected' : '' }> 반려동물
 				</div>
 
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">상세 주소</label>
 					<div class="col-sm-7">
-						<textarea name="raddress" cols="65" rows="3" id="raddress"></textarea>
+						<textarea name="raddress" cols="65" rows="3" id="raddress">${roomVo.raddress }</textarea>
 					</div>
 				</div>
 

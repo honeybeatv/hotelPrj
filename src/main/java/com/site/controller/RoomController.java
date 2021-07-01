@@ -38,12 +38,16 @@ public class RoomController {
    @RequestMapping("/rooms-single")
    public String roomSingle(@RequestParam(value="roomNo") int roomNo,
 		   HttpServletRequest request, Model model) {
-	   
+	   int userno = 0;
+	   UserVo userVo = new UserVo();
 	   HttpSession session = request.getSession();
-	   int userno = (int)session.getAttribute("session_userno");
+	   
+	   if(session.getAttribute("session_userno") != null) {
+	   userno = (int)session.getAttribute("session_userno");
+	   userVo = roomService.userInfo(userno);
+	   }
 		
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
-	   UserVo userVo = roomService.userInfo(userno);
 	   
 	   System.out.println("Controller roomVo Test" + roomVo);
 	   System.out.println(" Controller userVo Test " + userVo.getName());

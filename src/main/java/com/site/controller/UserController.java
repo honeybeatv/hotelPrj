@@ -10,17 +10,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
-
 import com.site.service.UserService;
-import com.site.vo.ReserveVo;
 import com.site.vo.UserReservationVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
@@ -41,19 +34,26 @@ public class UserController {
 	}
 
 	@RequestMapping("/login")
-	public String login() {
+	public String login(HttpServletRequest request,Model model) {
 		System.out.println("# user login page #");
+		String referer = request.getHeader("Referer");
+		System.out.println(referer);
+		model.addAttribute("page", referer);
 		return "/user/login";
 	}
 	
 	@RequestMapping(value="/login_check")
 	@ResponseBody
-	public Map<String,Object> login_check(UserVo userVo,HttpServletRequest request,Model model) {
+	public Map<String,Object> login_check(UserVo userVo,HttpServletRequest request,Model model,@RequestParam(value="page",required=false) String page) {
 		
 		Map<String,Object> map=new HashMap<String, Object>();
 		HttpSession session = request.getSession();
 		UserVo uVo = userService.login(userVo); //전체리스트 가져오기
-		
+		if(page.equals("http://localhost:8000/room/search")) {
+			page = "/";
+		} else if (page.equals("http://localhost:8000/room/advancedSearch")) {
+			page = "/";
+		}
 		map.put("uVo",uVo);
 		if(uVo==null) {
 			map.put("flag", "fail");
@@ -65,7 +65,7 @@ public class UserController {
 		}else {
 			map.put("flag", "success");
 			map.put("msg", "로그인 성공!");
-			
+			map.put("page",page);
 			session.setAttribute("session_flag","success");	//nav.jsp 에서 로그인 확인용
 			session.setAttribute("session_userid", uVo.getUserid());	//로그인 확인 및 환영문구 이용
 			session.setAttribute("session_userno", uVo.getUserno());	//정보호출용
