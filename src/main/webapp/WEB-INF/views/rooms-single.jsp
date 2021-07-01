@@ -52,7 +52,6 @@
 <script type="text/javascript">
 	/* function roomReserve_ajax() {
 		alert($("#").val()); //form에 입력한 id값을 받아옴.
-
 		 $.ajax({
 			url : "formOk", //어디로 보내줄꺼냐 : url은 무조건 controller로 감.
 			type : "post", //어떤 형식으로 보내줄꺼냐
@@ -71,10 +70,8 @@
 				alert("실패");
 			} //실패했을때는 여기로
 		}); 
-
 		//ajax기본 형식 : $.ajax({ }); 세미콜론 필수.
 	} */
-
 	function reserveSubmit() {
 		if (${session_flag==null || session_flag=='fail' }) {
 			alert("로그인이 필요합니다.")
@@ -83,7 +80,6 @@
 			document.reserve.submit();
 		}
 	};
-
 </script>
 
 </head>
@@ -214,16 +210,6 @@
 					</div>
 				</div>
 				<!-- .col-md-8 -->
-				<div class="col-lg-4 sidebar ftco-animate">
-					<div class="sidebar-box">
-						<form action="#" class="search-form">
-							<div class="form-group">
-								<span class="icon fa fa-search"></span> <input type="text"
-									class="form-control" placeholder="Type a keyword and hit enter">
-							</div>
-						</form>
-					</div>
-				
 				
 				
 			<!-- 리뷰창  -->	
@@ -325,9 +311,7 @@
                   </div>
                 </form>
               </div>
-            </div>
 				<!-- 리뷰 끝 -->
-			</div>
 		</div>
 	</section>
 	<!-- .section -->
