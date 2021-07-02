@@ -43,7 +43,7 @@ public class AdminServiceImpl implements AdminService {
 	public Map<String, Object> userList(int page) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		
-		int limit = 10; //페이지당 몇개의 게시글을 가져올지 정의(10,20,30...)
+		int limit = 2; //페이지당 몇개의 게시글을 가져올지 정의(10,20,30...)
 		
 		//[[게시글데이터 가져오기 : 1~10까지 게시글 데이터 가져오기 ]]
 		int startrow = (page-1)*limit+1; //처음페이지 계산공식 1,11,21,31,41....

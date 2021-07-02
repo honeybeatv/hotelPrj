@@ -104,41 +104,34 @@
 					</c:forEach>
 
 				</table>
+				</div>
 				<!-- 하단 넘버링 -->
 <!--     <ul class="page-num"> -->
-      <a href="./adminUsersView?page=1"><li class="first"></li></a>
-<!--       이전페이지는 1이상일때 -1을 해줌, 1일때는 링크 삭제시킴 -->
-      <c:if test="${map.page<=1 }">
-        <li class="prev"></li>
-      </c:if>
-      <c:if test="${map.page>1}">
-        <a href="./adminUsersView?page=${map.page-1 }"><li class="prev"></li></a>
-      </c:if>
-      
-<!--       번호넣기 -->
-      <c:forEach var="nowPage" begin="${map.startPage}" end="${map.endPage }">
-        <c:if test="${map.page == nowPage }">
-          <li class="num"><div>${nowPage}</div></li>
-        </c:if>
-        <c:if test="${map.page != nowPage }">
-          <li class="num">
-            <a href="./adminUsersView?page=${nowPage}"><div>${nowPage}</div></a>
-          </li>
-        </c:if>
-      </c:forEach>
-<!--       다음페이지는 max보다 작을때 +1 증가, max보다 크거나 같을때 링크 삭제시킴 -->
-      <c:if test="${map.page>=map.maxPage }">
-        <li class="next"></li>
-      </c:if>
-      <c:if test="${map.page<map.maxPage }">
-        <a href="./adminUsersView?page=${map.page+1 }"><li class="next"></li></a>
-      </c:if>
-<!--       마지막페이지 이동 -->
-      <a href="./adminUsersView?page=${map.maxPage }"><li class="last"></li></a>
-    </ul>
+		<div class="text-center">
+			<div class="block-27">
+				<ul>
+					<c:if test="${map.page > 1 }">
+						<li><a href="./adminUsersView?page=${map.page-1 }">&lt;</a></li>
+					</c:if>
+					<!-- 번호 넣기 -->
+					<c:forEach var="x" begin="${map.startPage}" end="${map.endPage }">
+						<c:if test="${map.page == x }">
+							<span><li class="active"><a>${x}</a></li></span>
+						</c:if>
+						<c:if test="${map.page != x }">
+							<li><a href="./adminUsersView?page=${x}">${x}</a></li>
+						</c:if>
+					</c:forEach>
+					<!-- 번호 넣기 끝 -->
+					<c:if test="${map.page < map.maxPage }">
+						<li><a href="./adminUsersView?page=${map.page+1 }">&gt;</a></li>
+					</c:if>
+				</ul>
+			</div>
+		</div>
     <!-- 하단 넘버링 끝 -->
             </form>
-          </div>
+        
     </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
