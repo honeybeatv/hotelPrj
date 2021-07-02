@@ -4,7 +4,12 @@
 <mapper namespace="com.site.mapper.RoomMapper">
 
 <select id="selectReviewList" resultType="com.site.vo.ReviewVo">
-	    select * from review where roomno=#{roomno} order by review_no desc
+<![CDATA[
+select r.recontent, r.rescore, to_char(v.startday, 'yyyy-MM-dd'), to_char(v.endday, 'yyyy-MM-dd')
+from review r, reserve v
+where r.roomno = v.roomno
+and v.roomno=177;
+]]>
 	</select>
 	
 		<!--  댓글수 -->
