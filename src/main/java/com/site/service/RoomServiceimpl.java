@@ -173,7 +173,6 @@ public class RoomServiceimpl implements RoomService {
 		
 		}
 		roomMapper.insertRoomsWriteDo(roomVo);
-	
 	}
 	
 	//숙소 상세 페이지
