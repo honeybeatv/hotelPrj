@@ -30,7 +30,44 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
-  	 
+		function approve(re_no){
+ 			if(confirm("예약을 승인하시겠습니까?")){
+ 				  $.ajax({
+ 						 url:'./userHostingReservationApprove',     
+ 						 type:'post',
+ 						 data:{
+ 							 "re_no":re_no
+ 						 },
+ 						 success:function(data){
+ 							 alert(data.msg);
+ 							 location.reload();
+ 						 },
+ 						 error:function(){
+ 							 alert("애러");
+ 							 location.reload();
+ 						 }
+ 				  });
+ 			}
+ 		}
+		function reject(re_no){
+ 			if(confirm("예약을 거부하시겠습니까?")){
+ 				  $.ajax({
+ 						 url:'./userHostingReservationReject',     
+ 						 type:'post',
+ 						 data:{
+ 							 "re_no":re_no
+ 						 },
+ 						 success:function(data){
+ 							 alert(data.msg);
+ 							 location.reload();
+ 						 },
+ 						 error:function(){
+ 							 alert("애러");
+ 							 location.reload();
+ 						 }
+ 				  });
+ 			}
+ 		}
   	</script>
   	
   </head>
@@ -61,7 +98,7 @@
 	    	<div class="container">
 	    		<div class="row">
 					<c:forEach var="vo" items="${list}">
-		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
+		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate" id ="${vo.re_no }">
 		    				<div class="room">
 		<!--      				<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-1.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
@@ -70,20 +107,35 @@
 		    					</a>
 		-->  					
 								<div class="text p-3 text-center">
-			    					<h3 class="mb-3">예약번호 :  ${vo.re_no }</h3>
+			    					<h3 class="mb-3">예약번호 : ${vo.re_no }</h3>
 			    						<ul>
 				    						<li style="list-style:none; text-align: left !important;">방문일 : ${vo.startday } ~ ${vo.endday }</li>
 				    						<li style="list-style:none; text-align: left !important;">승인여부 : ${vo.status }</li>
 				    						<li style="list-style:none; text-align: left !important;">예약자 전화번호 : ${vo.uphone	 }</li>
+				    						<c:if test="${vo.status.equals('대기중') }">
+				    						<li style="list-style:none; text-align: left !important;">예약날짜 : ${vo.reservedate }</li>
+				    						</c:if>
 			    						</ul>	
 			    						<hr>
 			    						<p class="pt-1">
+			    						<c:if test="${vo.status.equals('대기중') }">
 			    							<form method = "post">
 			    							<input type="hidden" name="no" value="${vo.re_no }">
-			    							<a><button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="javascript: form.action='userHostingReservation';">승인</button></a>
-			    							<a><button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="javascript: form.action='userHostingReservation';">거부</button></a>
+			    							<a><button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="approve('${vo.re_no }')">승인</button></a>
+			    							<a><button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="reject('${vo.re_no }')">거부</button></a>
 			    							</form>
 			    						</p>
+			    						</c:if>
+			    						<c:if test="${vo.status.equals('승인') }">
+			    							<a>승인 완료</a><br>
+			    							<a>승인 날짜 : ${vo.approvedate }</a>
+			    						</p>
+			    						</c:if>
+			    						<c:if test="${vo.status.equals('거부') }">
+			    							<a>거부 완료</a><br>
+			    							<a>거부 날짜 : ${vo.approvedate }</a>
+			    						</p>
+			    						</c:if>
 		    					</div>
 		    				</div>
 		    			</div>
