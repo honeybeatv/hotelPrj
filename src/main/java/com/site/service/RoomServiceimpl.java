@@ -173,7 +173,6 @@ public class RoomServiceimpl implements RoomService {
 		
 		}
 		roomMapper.insertRoomsWriteDo(roomVo);
-	
 	}
 	
 	//숙소 상세 페이지
@@ -215,6 +214,13 @@ public class RoomServiceimpl implements RoomService {
 		
 		return map;
 	
+	}
+
+	@Override
+	public List<ReviewVo> reviewListAll() {
+		List<ReviewVo> reviewListAll = roomMapper.selectReviewListAll();
+		
+		return reviewListAll;
 	}
 
 	

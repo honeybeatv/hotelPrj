@@ -3,15 +3,16 @@
 
 <mapper namespace="com.site.mapper.RoomMapper">
 
-<select id="selectReviewList" resultType="com.site.vo.ReviewVo">
+	<select id="selectReviewList" resultType="com.site.vo.ReviewVo">
 	    select * from review where roomno=#{roomno} order by review_no desc
 	</select>
 	
-		<!--  댓글수 -->
+		<!-- 댓글수 -->
 	<select id="selectReivewListCount" resultType="int">
 	   select count(*) from review where roomno=#{roomno}
 	</select>
-
+	
+	
 	<!-- index에서 검색시 -->
 	<!-- search 페이징용 게시글 카운트 -->
 	<select id="selectSearchCount" resultType="int">
@@ -150,6 +151,11 @@
 				WHERE rownum<=1
 		]]>
 	</select>
+	<select id="selectReviewListAll" resultType="com.site.vo.ReviewVo">
+
+	select * FROM REview
+	
+</select>
 	
 	
 	

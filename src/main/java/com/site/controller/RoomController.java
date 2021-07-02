@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.RoomService;
+import com.site.service.UserService;
 import com.site.vo.ReserveVo;
 import com.site.vo.ReviewVo;
 import com.site.vo.RoomVo;
@@ -35,6 +36,9 @@ public class RoomController {
 	
 	@Autowired
 	RoomService roomService;
+	
+	@Autowired
+	UserService userService;
    
    //숙소 상세정보 보기
    @RequestMapping("/rooms-single")
@@ -108,15 +112,15 @@ public class RoomController {
 	}
 
 	@RequestMapping("/roomsWriteDo") //쓰기저장 호출
-	public String roomsWriteDo(Model model,RoomVo roomVo,@RequestPart List<MultipartFile> file) {
-
+	public String roomsWriteDo(Model model,RoomVo roomVo, @RequestParam("userno") int userno, @RequestPart List<MultipartFile> file) {
+		System.out.println("roomsWriteDo");
 		System.out.println("1");
 		roomService.roomsWriteDo(roomVo, file);	// 
 
-		model.addAttribute("roomVo",roomVo);
-		System.out.println(roomVo.getRoomNo());
+		Map<String, Object> userHostingViewMap = userService.userHostingViewList(userno);
+		model.addAttribute("userHostingViewMap", userHostingViewMap);
 
-		return "redirect:/user/userHostingView?userno="+roomVo.getUserno();
+		return "/user/userHostingView";
 	}
 
    //index페이지에서 검색
@@ -188,13 +192,14 @@ public class RoomController {
 	
 	
 	//테스트
-//	@RequestMapping("/roomReply") //답글페이지 호출
-//	public String roomReply(@RequestParam("review_no") int review_no, Model model) {
-//		ReviewVo revirwVo = roomService.
-//		
-//		
-//		return "/rooms-single";
-//	}
+	@RequestMapping("/reviewList") 
+	public String reviewList(ReviewVo reviewVo, Model model) {
+		System.out.println("Test reviewVo : {}" +reviewVo);
+		List<ReviewVo> reviewListAll = roomService.reviewListAll();
+		
+		model.addAttribute("reviewListAll", reviewListAll );
+		return "/reviewList";
+	}
 	
 }
 

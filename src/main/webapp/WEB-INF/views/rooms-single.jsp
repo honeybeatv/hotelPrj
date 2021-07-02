@@ -212,8 +212,8 @@
               <ul class="comment-list">
                 <li class="comment">
                   <div class="comment-body">
-                     <b>${userVo.userid }</b>
-                    <div class="meta">${reserveVo.startday } ~ ${reserveVo.endday }</div>
+                    <h3>리뷰자 : ${userVo.userid }</h3>
+                    <div class="meta">리뷰 일 : ${roomVo.rname}</div>
 
                   </div>
                 </li>
