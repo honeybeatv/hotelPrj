@@ -102,7 +102,7 @@
 					</tr>
 	
 					<tr height="1" bgcolor="#8f784b ">
-						<td colspan="12"></td>
+						<td colspan="14"></td>
 					</tr>
 					
 					<c:forEach var="roomVo" items="${userHostingViewMap.userHostingViewList }">

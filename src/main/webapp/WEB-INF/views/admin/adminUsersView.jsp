@@ -105,6 +105,9 @@
 
 				</table>
 				</div>
+
+				
+
 				<!-- 하단 넘버링 -->
 <!--     <ul class="page-num"> -->
 		<div class="text-center">
@@ -128,7 +131,9 @@
 					</c:if>
 				</ul>
 			</div>
-		</div>
+
+				
+			   
     <!-- 하단 넘버링 끝 -->
             </form>
         
