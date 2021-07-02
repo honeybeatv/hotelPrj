@@ -204,6 +204,12 @@ public class RoomServiceimpl implements RoomService {
 		return reserveVo;
 	}
 
+	//리뷰 저장
+	@Override
+	public void reviewWriteDo(ReviewVo reviewVo) {
+		roomMapper.reviewWriteDo(reviewVo);		
+	}
+
 	
 
 

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -116,6 +117,26 @@ public class RoomController {
 
 		return "redirect:/user/userHostingView?userno="+roomVo.getUserno();
 	}
+	
+	//리뷰저장
+	@RequestMapping("/reviewWriteDo")
+	public String reviewWriteDo(@RequestParam("roomNo") int roomNo, ReviewVo reviewVo, HttpServletRequest request ) {
+		reviewVo.setRoomno(roomNo);
+		System.out.println("Controller in " + reviewVo);
+		
+		int userno = 0;
+		HttpSession session = request.getSession();
+		if(session.getAttribute("session_userno") != null) {
+			  userno = (int)session.getAttribute("session_userno");  
+			}
+		
+		reviewVo.setUserno(userno);
+		
+		roomService.reviewWriteDo(reviewVo);
+		System.out.println("controller out " + reviewVo);
+		return "redirect:/room/rooms-single?roomNo="+roomNo;
+	}
+	
 
    //index페이지에서 검색
 	@RequestMapping("/search")

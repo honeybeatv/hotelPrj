@@ -48,6 +48,8 @@ public interface RoomMapper {
 	
 	//리뷰용 최근 예약 날짜 하나 얻기
 	ReserveVo selectReserveDate(int roomNo, int userno);
+	//리뷰 저장
+	void reviewWriteDo(ReviewVo reviewVo);
 	
 
 }
