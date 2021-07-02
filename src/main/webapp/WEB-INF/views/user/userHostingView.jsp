@@ -118,9 +118,9 @@
 								<td>${roomVo.rsmoke}</td>
 								<td>${roomVo.rpet}</td>
 								<td>${roomVo.raddress}</td>
-								<td></td>
+								<td>${roomVo.count } 건</td>
 								<input type="hidden" name="userno" value="${session_userno}">
-								<input type="hidden" name="roomNo" value="${roomVo.roomNo}">
+								<input type="hidden" name="no" value="${roomVo.roomNo}">
 								<td><input type="submit" class=" btn-light" value="예약확인" onclick="javascript: form.action='userHostingReservation';"></td>
 								<td><button type="submit" class=" btn-light">수정</button></td>
 								<td><button type="button" class=" btn-light" onclick="ajax_userHostingDelete('${roomVo.roomNo}')">삭제</button></td>
