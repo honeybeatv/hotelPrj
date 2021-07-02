@@ -55,7 +55,7 @@
 		var rtype = $("#rtype").val();
 		var rpeople = $("#rpeople").val();
 		var rinfo = $("#rinfo").val();
-		//var rpicture = $("#rpicture").val();
+		var rpicture = $("#rpicture").val();
 		var rcity = $("#rcity").val();
 		var rprice = $("#rprice").val();
 		var rroom = $("#rroom").val();
@@ -75,7 +75,7 @@
 		}else if (rinfo == "" || rinfo == null) {
 			alert("방정보를 입력하세요")
 			return false;
-		//}else if (rpicture == "" || rpicture == null) {
+		}else if (rpicture == "" || rpicture == null) {
 			//alert("방사진을 등록하세요")
 			//return false;
 		}else if (rcity == "" || rcity == null) {
