@@ -78,7 +78,7 @@
 
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
-			<table width="100%">
+			<table width="100%">	
 					<tr>
 						<td width="10%">숙소이름</td>
 						<td width="5%">지역</td>
@@ -89,7 +89,9 @@
 						<td width="4%">방갯수</td>
 						<td width="6%">흡연가능 여부</td>
 						<td width="6%">동물가능 여부</td>
-						<td width="40%">주소</td>
+						<td width="28%">주소</td>
+						<td width="5%">승인대기</td>
+						<td width="3%"></td>
 						<td width="3%"></td>
 						<td width="3%">
 							<form action="../room/roomsadd" method="post">
@@ -116,10 +118,10 @@
 								<td>${roomVo.rsmoke}</td>
 								<td>${roomVo.rpet}</td>
 								<td>${roomVo.raddress}</td>
-		
+								<td></td>
 								<input type="hidden" name="userno" value="${session_userno}">
 								<input type="hidden" name="roomNo" value="${roomVo.roomNo}">
-		
+								<td><input type="submit" class=" btn-light" value="예약확인" onclick="javascript: form.action='userHostingReservation';"></td>
 								<td><button type="submit" class=" btn-light">수정</button></td>
 								<td><button type="button" class=" btn-light" onclick="ajax_userHostingDelete('${roomVo.roomNo}')">삭제</button></td>
 							 </tr>
