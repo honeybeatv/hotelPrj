@@ -16,9 +16,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.site.service.UserService;
-import com.site.vo.UserReservationVo;
 import com.site.vo.RoomVo;
+import com.site.vo.UserReservationVo;
 import com.site.vo.UserVo;
 
 @Controller
