@@ -128,10 +128,10 @@
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
 			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
+				<input type="hidden" id="userno" name="userno" value="${session_userno }">
 
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">방이름</label> 
-						<input type="hidden" id="userno" name="userno" value="${session_userno }">
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id="rname" name="rname">
 					</div>
