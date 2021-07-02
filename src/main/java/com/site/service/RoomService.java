@@ -35,7 +35,9 @@ public interface RoomService {
 
 	//리뷰저장
 	void reviewWriteDo(ReviewVo reviewVo);
-	
+	Map<String, Object> reviewList();
+
+	List<ReviewVo> reviewListAll();
 
 	
 	//void roomReserve(int roomNo, int userno, String startday, String endday);

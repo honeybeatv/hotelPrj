@@ -89,6 +89,7 @@
 	 */
 </script>
 
+
 </head>
 <body>
 
@@ -216,15 +217,35 @@
 				</div>
 				<!-- .col-md-8 -->
 				
+	<!-- 			<script type="text/javascript">
+				function reply_ajax(){
+					if($("#reviewContent").val()==null || $("#reviewContent").val()==""){
+						alert("데이터를 입력해주세요");
+						return false;
+					}
+					$.ajax({
+						url:'./replyInsert',
+						type:'post',
+						data:{
+							//등록을 위해서 넘겨줘야 하는 데이터
+							//"bno" : 1,	//임의로 1일뿐, 글 번호를 받아서 가져옴.
+							"userid": "${session_id}",
+							//"replyPw" : $("#replyPw").val(),
+							"reviewContent" : $("#reviewContent").val()	//여기 데이터가 controller로
+						}
 				
+				</script> -->
 			<!-- 리뷰창  -->	
 			<div class="pt-5 mt-5">
               <h3 class="mb-5">6 Comments</h3>
               <ul class="comment-list">
                 <li class="comment">
                   <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
+                    <h3>리뷰자 : ${userVo.userid }</h3>
+                    <h3>날짜 : ${reserveVo.startday } ~ ${reserveVo.endday }</h3>
+                    <h3>리뷰내용 : ${reviewVo.recontent}</h3>
+                
+                    <div class="meta">리뷰내용 : ${reviewVo.recontent}</div>
 
                   </div>
                 </li>
@@ -241,7 +262,7 @@
                 <li class="comment">
                   <div class="comment-body">
                     <h3>리뷰자</h3>
-                    <div class="meta">2021/07/01, 2021 at 2:21pm</div>
+                    <div class="meta"> </div>
                     <p>나쁘지 않는 방이였다.</p>
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>

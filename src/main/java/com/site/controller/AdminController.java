@@ -73,9 +73,9 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminUsersView")	// 관리자 회원정보 페이지 호출
-	public String adminUsersView(Model model ,@RequestParam("uadmin") int uadmin, @RequestParam(value="page", defaultValue="1") int page) {
+	public String adminUsersView(Model model ,@RequestParam(value="page", defaultValue="1") int page) {
 		Map<String,Object> map = null;
-		map = adminService.userList(uadmin,page);
+		map = adminService.userList(page);
 		model.addAttribute("map",map);
 		
 		System.out.println("# admin category_Users adminUsersView View ListAll #");
@@ -118,6 +118,7 @@ public class AdminController {
 	
 	@RequestMapping("/adminUserHostingView")	// 회원 호스팅 상품 페이지 호출
 	public String adminUserHostingView(Model model , @RequestParam("userno") int userno) {
+		System.out.println(userno);
 		Map<String, Object> adminUserHostingViewMap = null;
 		adminUserHostingViewMap = adminService.adminUserHostingViewList(userno);
 		model.addAttribute("adminUserHostingViewMap", adminUserHostingViewMap);

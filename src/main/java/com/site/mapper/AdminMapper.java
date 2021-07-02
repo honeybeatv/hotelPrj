@@ -13,7 +13,7 @@ import com.site.vo.UserVo;
 public interface AdminMapper {
 
 	// 관리자 일반회원 정보 전체 호출
-	List<UserVo> selectUserList(int uadmin, int startrow, int endrow);
+	List<UserVo> selectUserList(int startrow, int endrow);
 
 	int selectUserCount();
 
