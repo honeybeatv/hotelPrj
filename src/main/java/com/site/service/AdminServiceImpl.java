@@ -40,7 +40,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override // 관리자 일반회원 정보 전체 호출
-	public Map<String, Object> userList(int uadmin, int page) {
+	public Map<String, Object> userList(int page) {
 		Map<String,Object> map = new HashMap<String, Object>();
 		
 		int limit = 10; //페이지당 몇개의 게시글을 가져올지 정의(10,20,30...)
@@ -50,7 +50,7 @@ public class AdminServiceImpl implements AdminService {
 		int endrow = startrow+limit-1;   //마지막페이지 계산공식 10,20,30,40.....
 		
 		
-		List<UserVo> list = adminMapper.selectUserList(uadmin, startrow,endrow);
+		List<UserVo> list = adminMapper.selectUserList(startrow,endrow);
 		//[[ 하단 넘버링 계산 : startpage,endpage,maxpage 처리 ]]
 		int listCount=0;  //총게시글 수
 		listCount = adminMapper.selectUserCount();
