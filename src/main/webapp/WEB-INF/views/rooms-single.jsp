@@ -266,21 +266,18 @@
                     <label for="name">예약자 아이디</label>&emsp;
                     <b>${userVo.userid }</b>
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
-                  </div> -->
-                  <div class="form-inline form-group">
-					<label for="userpw" class="col-sm-2 control-label" style="font-weight:bolder;">비밀번호</label>
-					<div class="col-sm-7">
-						<input type="password" class="form-control" style="width:100%;" id="reviewpw" name="reviewpw">
-					</div>
-				</div>
+		
+                  
                   <div class="form-group">
-                    <label for="website">예약기간 </label>
+                    <label for="website">예약기간 </label>&emsp;
                     <b>${reserveVo.startday } ~ ${reserveVo.endday }</b>
                   </div>
 					
+				<!-- <div class="form-group">
+                    <label for="userpw">비밀번호 </label>
+                    <input type="password" class="form-control" style="width:30%;" id="reviewpw" name="reviewpw">
+                  </div> -->
+                  
                   <div class="form-group">
                     <label for="message">리뷰 내용</label>
                     <textarea name="recontent" id="message" cols="30" rows="10" class="form-control"></textarea>
