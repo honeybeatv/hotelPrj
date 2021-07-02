@@ -141,15 +141,7 @@
 		]]>
 	
 	</select>
-	<select id="insertRoomsWriteDo" resultType="com.site.vo.RoomVo">
-		<![CDATA[
-			insert into room values(seq_room.nextval, , '#{rtype}' , '#{rpeople}',
-			 '#{rinfo}', '#{rpicture1}', '#{rpicture2}', '#{rpicture3}', #{rcity}, #{rprice}, 
-			 #{rroom}, #{rbed}, #{rsmoke}, #{rpet}, #{raddress}, #{rname}, 
-			 #{userno})
-		]]>
 	
-	</select>
 	
 	
 
