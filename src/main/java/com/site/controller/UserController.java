@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.service.UserService;
+<<<<<<< HEAD
 import com.site.vo.ReserveVo;
+=======
+>>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 import com.site.vo.RoomVo;
 import com.site.vo.UserReservationVo;
 import com.site.vo.UserVo;
@@ -199,6 +202,12 @@ public class UserController {
 
 	@RequestMapping("/userHostingModifyDo") // 회원 호스팅 상품 수정페이지 실행
 	public String userHostingModifyDo(Model model, RoomVo roomVo, @RequestParam("userno") int userno) {
+		if(roomVo.getRsmoke()==null){
+			roomVo.setRsmoke("nosmoke");
+		}
+		if(roomVo.getRpet()==null){
+			roomVo.setRpet("nopet");
+		}
 		userService.userHostingModifDo(roomVo);
 		
 		System.out.println("userno : " + userno + " | roomVo : " + roomVo);
