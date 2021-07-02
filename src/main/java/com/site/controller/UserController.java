@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.service.UserService;
-<<<<<<< HEAD
 import com.site.vo.ReserveVo;
-=======
->>>>>>> branch 'master' of https://github.com/ddoddu/hotelPrj.git
 import com.site.vo.RoomVo;
 import com.site.vo.UserReservationVo;
 import com.site.vo.UserVo;
