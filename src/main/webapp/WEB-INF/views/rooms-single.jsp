@@ -272,7 +272,7 @@
                   </div> -->
                   <div class="form-group">
                     <label for="website">예약기간 </label>
-                    <input type="url" class="form-control" id="website">
+                    <b>${reserveVo.startday } ~ ${reserveVo.endday }</b>
                   </div>
 
                   <div class="form-group">

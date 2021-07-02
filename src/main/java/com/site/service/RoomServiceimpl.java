@@ -198,9 +198,9 @@ public class RoomServiceimpl implements RoomService {
 
    //리뷰용 최근 예약 날짜 하나 얻기
 	@Override
-	public ReserveVo selectReserveInfo(int roomNo, int userno) {
-		ReserveVo reserveVo = roomMapper.selectReserveInfo(roomNo, userno);
-		
+	public ReserveVo selectReserveDate(int roomNo, int userno) {
+		System.out.println("service" + roomNo + ", " + userno);
+		ReserveVo reserveVo = roomMapper.selectReserveDate(roomNo, userno);
 		return reserveVo;
 	}
 
