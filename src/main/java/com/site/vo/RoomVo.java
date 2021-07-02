@@ -27,7 +27,7 @@ public class RoomVo {
 	private String raddress;
 	private String rname;
 	private int userno;
-	
+	private int count;
 	private String prevyn;
 	
 	private List<RoomVo> roomVoList;

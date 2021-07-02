@@ -118,6 +118,7 @@ public class AdminController {
 	
 	@RequestMapping("/adminUserHostingView")	// 회원 호스팅 상품 페이지 호출
 	public String adminUserHostingView(Model model , @RequestParam("userno") int userno) {
+		System.out.println(userno);
 		Map<String, Object> adminUserHostingViewMap = null;
 		adminUserHostingViewMap = adminService.adminUserHostingViewList(userno);
 		model.addAttribute("adminUserHostingViewMap", adminUserHostingViewMap);

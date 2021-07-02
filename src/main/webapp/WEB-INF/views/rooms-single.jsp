@@ -213,7 +213,10 @@
                 <li class="comment">
                   <div class="comment-body">
                     <h3>리뷰자 : ${userVo.userid }</h3>
-                    <div class="meta">리뷰 일 : ${roomVo.rname}</div>
+                    <h3>날짜 : ${reserveVo.startday } ~ ${reserveVo.endday }</h3>
+                    <h3>리뷰내용 : ${reviewVo.recontent}</h3>
+                
+                    <div class="meta">리뷰내용 : ${reviewVo.recontent}</div>
 
                   </div>
                 </li>

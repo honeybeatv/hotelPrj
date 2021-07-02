@@ -56,7 +56,7 @@
 
 	<section position="relative" width="50%" display="block" align="center" padding="2em">
 		<div  class="col-12" style="display:inline-block;" >
-            <form class="bg-white p-2 " width="100%" method="post">
+            <form action="adminUserHostingView" class="bg-white p-2 " width="100%" method="post">
 				<table width="100%" >
 				
 					<tr>
@@ -73,9 +73,13 @@
 							<td>
 								${roomVo.userno}
 							</td>
-							<td>
-								<a href="adminUserHostingView?userno=${roomVo.userno}">${roomVo.count }</a>
-							</td>
+						    <td>
+<%-- 								<a href="adminUserHostingView?userno=${roomVo.userno}">${roomVo.count }</a> --%>
+								<form action="adminUserHostingView" method="post">
+									<input type="hidden" id = "userno" name = "userno" value="${roomVo.userno}">
+									<button type="submit" style="outline: none; border: 0px; box-sizing: none; background-color: transparent;" >${roomVo.count }</button>
+								</form> 
+							</td> 
 								
 						</tr>
 					</c:forEach>
