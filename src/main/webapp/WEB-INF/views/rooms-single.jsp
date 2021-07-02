@@ -237,19 +237,20 @@
 				</script> -->
 			<!-- 리뷰창  -->	
 			<div class="pt-5 mt-5">
-              <h3 class="mb-5">6 Comments</h3>
+              <h3 class="mb-5">${reviewMap.reviewCount } Comments</h3>
+			<c:forEach var="reviewList" items="${reviewMap.reviewList }">
               <ul class="comment-list">
                 <li class="comment">
                   <div class="comment-body">
                     <h3>리뷰자 : ${userVo.userid }</h3>
                     <h3>날짜 : ${reserveVo.startday } ~ ${reserveVo.endday }</h3>
-                    <h3>리뷰내용 : ${reviewVo.recontent}</h3>
+                    <h3>리뷰내용 : ${reviewList.recontent}</h3>
                 
                     <div class="meta">리뷰내용 : ${reviewVo.recontent}</div>
 
                   </div>
                 </li>
-
+<!-- 
                 <li class="comment">
                   <div class="comment-body">
                     <h3>리뷰자</h3>
@@ -266,8 +267,9 @@
                     <p>나쁘지 않는 방이였다.</p>
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
-                </li>
+                </li> -->
               </ul>
+              </c:forEach>
               </div>
               <!-- END comment-list -->
               
