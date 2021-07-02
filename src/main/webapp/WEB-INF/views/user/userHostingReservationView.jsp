@@ -60,7 +60,7 @@
         <section class="ftco-section bg-light">
 	    	<div class="container">
 	    		<div class="row">
-					<c:forEach var="userReservationList" items="${userReservationList}">
+					<c:forEach var="vo" items="${list}">
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
 		<!--      				<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-1.jpg);">
@@ -70,15 +70,19 @@
 		    					</a>
 		-->  					
 								<div class="text p-3 text-center">
-			    					<h3 class="mb-3">${userReservationList.rname }</h3>
-			    						<p><span class="price mr-2">${userReservationList.rprice }</span> <span class="per">/ 일</span></p>
+			    					<h3 class="mb-3">예약번호 :  ${vo.re_no }</h3>
 			    						<ul>
-				    						<li style="list-style:none; text-align: left !important;">방문일 : ${userReservationList.startday } ~ ${userReservationList.endday }</li>
-				    						<li style="list-style:none; text-align: left !important;">상세주소 : ${userReservationList.raddress }</li>
-			    						</ul>
+				    						<li style="list-style:none; text-align: left !important;">방문일 : ${vo.startday } ~ ${vo.endday }</li>
+				    						<li style="list-style:none; text-align: left !important;">승인여부 : ${vo.status }</li>
+				    						<li style="list-style:none; text-align: left !important;">예약자 전화번호 : ${vo.uphone	 }</li>
+			    						</ul>	
 			    						<hr>
 			    						<p class="pt-1">
-			    							<a href="/room/rooms-single?roomNo=${userReservationList.roomNo} " class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a>
+			    							<form method = "post">
+			    							<input type="hidden" name="no" value="${vo.re_no }">
+			    							<a><button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="javascript: form.action='userHostingReservation';">승인</button></a>
+			    							<a><button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="javascript: form.action='userHostingReservation';">거부</button></a>
+			    							</form>
 			    						</p>
 		    					</div>
 		    				</div>
