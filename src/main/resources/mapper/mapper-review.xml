@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.site.mapper.ReviewMapper">
+  
+  <!-- 댓글전체리스트 가져오기 -->
+	<select id="selectReviewList" resultType="com.site.vo.ReviewVo">
+	    select * from review where review_no=1 order by review_no desc
+	</select>
+	
+	<!-- 댓글수 -->
+	<select id="selectReviewListCount" resultType="int">
+	   select count(*) from review where review_no=1
+	</select>
+	
+	<!-- 댓글 저장후 1개 가져오기 -->
+	<insert id="insertReview">
+	   <selectKey resultType="int" keyProperty="review_no" order="BEFORE">
+	     select seq_review.nextval from dual
+	   </selectKey>
+	   insert into review values
+	   (#{reviewNo},#{roomno},#{userno},#{redate},#{recontent},#{rescore},#{reviewpw})
+	</insert>
+	
+	
+	<!-- 댓글1개 가져오기 -->
+	<select id="selectReplyOne" resultType="com.site.vo.ReviewVo">
+	   select * from review where review_no=#{review_no}
+	</select>
+	
+	<!-- 댓글수정 -->
+	<update id="updateReview" >
+	   <![CDATA[
+		   update review set recontent=#{reContent}, redate = sysdate
+		   where review_no=#{review_no}
+	   ]]>
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReview">
+			delete review where review_no=#{review_no}
+	</delete>
+	
+  
+  </mapper>
