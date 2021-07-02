@@ -29,6 +29,8 @@ public interface RoomService {
 	//숙소 상세페이지
 	RoomVo roomSingle(int roomNo);
 	UserVo userInfo(int userno);
+
+	ReserveVo selectReserveInfo(int roomNo, int userno);
 	
 	
 

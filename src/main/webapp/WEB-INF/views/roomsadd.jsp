@@ -115,7 +115,7 @@
 					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2">
-							<span class="mr-2"><a href="index">Home</a></span> <span>숙소등록</span>
+							<span class="mr-2"><a href="/">Home</a></span> <span>숙소등록</span>
 						</p>
 						<h1 class="mb-4 bread">숙소등록</h1>
 					</div>
@@ -146,7 +146,6 @@
 						style="font-weight: bolder;">방종류</label>
 					<div class="col-sm-7">
 						<select name="rtype" id="rtype">
-
 							<option value="아파트">아파트</option>
 		                     <option value="집">주택</option>
 		                     <option value="공동주택">공동주택</option>
@@ -154,15 +153,6 @@
 		                     <option value="레지던스">레지던스</option>
 		                     <option value="호스텔">호스텔</option>
 	                    	<option value="기타">기타</option>
-
-							<option value="apt">아파트</option>
-		                     <option value="house">주택</option>
-		                     <option value="walkup">공동주택</option>
-		                     <option value="hotel">호텔</option>
-		                     <option value="residence">레지던스</option>
-		                     <option value="hostel">호스텔</option>
-	                    	<option value="etc">기타</option>
-
 						</select>
 					</div>
 				</div>

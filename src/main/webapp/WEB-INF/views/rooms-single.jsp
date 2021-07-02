@@ -50,28 +50,6 @@
 
 
 <script type="text/javascript">
-	/* function roomReserve_ajax() {
-		alert($("#").val()); //form에 입력한 id값을 받아옴.
-		 $.ajax({
-			url : "formOk", //어디로 보내줄꺼냐 : url은 무조건 controller로 감.
-			type : "post", //어떤 형식으로 보내줄꺼냐
-			data : { // data->controller->DB저장->DB정보를 들고와서 다시 data를 화면에 전달해달라.
-				"id" : $("#id").val(),
-				"pw" : $("#pw").val(),
-				"name" : $("#name").val(),
-				"nickName" : $("#nickName").val()
-			}, //데이터값. key-value형태로.
-			success : function(data) {
-				//controller의 return값을 data로 받음.
-				alert("성공" );
-				
-			}, //성공했을때는 여기로
-			error : function() {
-				alert("실패");
-			} //실패했을때는 여기로
-		}); 
-		//ajax기본 형식 : $.ajax({ }); 세미콜론 필수.
-	} */
 	function reserveSubmit() {
 		if (${session_flag==null || session_flag=='fail' }) {
 			alert("로그인이 필요합니다.")
@@ -108,7 +86,6 @@
 			</div>
 		</div>
 	</div>
-	
 	
 	
 	<section class="ftco-section">
@@ -161,11 +138,10 @@
 						<input type="hidden" name="roomNo" value="${roomVo.roomNo }">
 							 <button onclick="reserveSubmit()" class="btn py-3 px-5"
 								style="background-color: #8D703B; color: white; padding-left: 30px; padding-right: 30px;">예약하기</button>
-						</a>
 						</form> 
 
 
-						<div class="col-md-12 room-single ftco-animate mb-5 mt-5">
+						<%-- <div class="col-md-12 room-single ftco-animate mb-5 mt-5">
 							<h4 class="mb-4">이전 / 이후</h4>
 							<div class="row">
 								<c:forEach var="item" items="${roomVo.roomVoList }">
@@ -205,7 +181,7 @@
 
 								</c:forEach>
 							</div>
-						</div>
+						</div> --%>
 
 					</div>
 				</div>
@@ -223,11 +199,6 @@
 
                   </div>
                 </li>
-				</div>
-
-
-
-
 
                 <li class="comment">
                   <div class="comment-body">
@@ -247,10 +218,12 @@
                   </div>
                 </li>
               </ul>
+              </div>
               <!-- END comment-list -->
               
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>
+               <!-- 여기 폼 -->
                 <form action="#" class="p-5 bg-light">
                   <div class="form-group">
                   
@@ -290,24 +263,24 @@
 							  </div>
 	      		</div>
                   <!-- 리뷰등록 -->
-                    <label for="name">Name *</label>
-                    <input type="text" class="form-control" id="name">
+                    <label for="name">예약자 아이디</label>&emsp;
+                    <b>${userVo.userid }</b>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="email">Email *</label>
                     <input type="email" class="form-control" id="email">
-                  </div>
+                  </div> -->
                   <div class="form-group">
-                    <label for="website">Website</label>
+                    <label for="website">예약기간 </label>
                     <input type="url" class="form-control" id="website">
                   </div>
 
                   <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    <label for="message">리뷰 내용</label>
+                    <textarea name="recontent" id="message" cols="30" rows="10" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                    <input type="submit" value="작성 완료" class="btn py-3 px-4 btn-primary">
                   </div>
                 </form>
               </div>

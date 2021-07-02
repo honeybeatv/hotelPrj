@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.RoomService;
+import com.site.vo.ReserveVo;
 import com.site.vo.ReviewVo;
 import com.site.vo.RoomVo;
 import com.site.vo.UserVo;
@@ -39,6 +40,8 @@ public class RoomController {
    @RequestMapping("/rooms-single")
    public String roomSingle(@RequestParam(value="roomNo") int roomNo,@RequestParam(value="start",defaultValue = "1") String start,@RequestParam(value="end",defaultValue = "1") String end,
 		   HttpServletRequest request, Model model) {
+	   
+	   //세션으로 유저 정보 얻기
 	   int userno = 0;
 	   UserVo userVo = new UserVo();
 	   HttpSession session = request.getSession();
@@ -48,7 +51,11 @@ public class RoomController {
 	   userVo = roomService.userInfo(userno);
 	   }
 		
+	   //숙소정보 얻기
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
+	   //리뷰용 최근 예약 날짜 하나 얻기
+//	   ReserveVo reserveVo = roomService.selectReserveInfo(roomNo, userno);
+//	   System.out.println(reserveVo);
 	   
 	   System.out.println("Controller roomVo Test" + roomVo);
 	   System.out.println(" Controller userVo Test " + userVo.getName());

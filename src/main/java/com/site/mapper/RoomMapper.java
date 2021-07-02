@@ -44,8 +44,10 @@ public interface RoomMapper {
 	//예약하기 누를시 user정보 가져오기
 	UserVo userInfo(int userno);
 		
-		
 	void insertRoomReserve(int roomNo);
+	
+	//리뷰용 최근 예약 날짜 하나 얻기
+	ReserveVo selectReserveInfo(int roomNo, int userno);
 	
 
 }

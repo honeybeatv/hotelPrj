@@ -127,7 +127,20 @@
 		
 	</select>
 	
+	<select id="selectReserveDate" resultType="com.site.vo.ReserveVo">
+		<![CDATA[
+			SELECT startday, endday
+				FROM
+					(SELECT v.startday, v.endday, v.roomno 
+					FROM review w, reserve v
+					WHERE w.userno=v.userno
+					AND v.roomno=#{roomNo}
+					AND v.userno=#{userno}
+					ORDER BY v.startday DESC)
+				WHERE rownum<=1
+		]]>
 	
+	</select>
 	
 	
 

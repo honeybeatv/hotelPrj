@@ -94,13 +94,13 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rtype" id="" class="form-control">
-	                    	<option value="apt">아파트</option>
-		                     <option value="house">주택</option>
-		                     <option value="walkup">공동주택</option>
-		                     <option value="hotel">호텔</option>
-		                     <option value="residence">레지던스</option>
-		                     <option value="hostel">호스텔</option>
-	                    	<option value="etc">기타</option>
+	                    	<option value="아파트">아파트</option>
+		                     <option value="집">주택</option>
+		                     <option value="공동주택">공동주택</option>
+		                     <option value="호탤">호텔</option>
+		                     <option value="레지던스">레지던스</option>
+		                     <option value="호스텔">호스텔</option>
+	                    	<option value="기타">기타</option>
 	                    </select>
 	                  </div>
 		              </div>
