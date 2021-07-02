@@ -230,7 +230,7 @@
                 <li class="comment">
                   <div class="comment-body">
                     <h3>리뷰자</h3>
-                    <div class="meta">2021/07/01, 2021 at 2:21pm</div>
+                    <div class="meta"> </div>
                     <p>나쁘지 않는 방이였다.</p>
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>

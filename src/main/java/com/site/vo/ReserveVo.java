@@ -22,6 +22,8 @@ public class ReserveVo {
 	private String request;
 	private String name;
 	private String uphone;
+	private String reservedate;
+	private String approvedate;
 	
 	
 	private List<ReserveVo> reserveVoList;

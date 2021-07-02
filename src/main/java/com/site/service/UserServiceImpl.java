@@ -1,5 +1,6 @@
 package com.site.service;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.site.mapper.UserMapper;
 import com.site.vo.ReserveVo;
@@ -78,7 +80,38 @@ public class UserServiceImpl implements UserService {
 		return userHostingModifyMap;
 	}
 	@Override // 회원 호스팅 상품 수정페이지 실행
-	public void userHostingModifDo (RoomVo roomVo) {
+	public void userHostingModifDo (RoomVo roomVo, List<MultipartFile> files) {
+		if(roomVo.getRsmoke()==null){
+			roomVo.setRsmoke("nosmoke");
+		}
+		if(roomVo.getRpet()==null){
+			roomVo.setRpet("nopet");
+		}
+		
+		int i = 0;
+		
+		String fileUrl = "C:/Users/pom53/git/hotelPrj/src/main/resources/static/upload/";
+		//중복 방지를 위한 파일명 변경
+		for(MultipartFile file : files) {
+			i++;
+			long time = System.currentTimeMillis();
+			String uploadFileName = time+"_"+file.getOriginalFilename();
+			//파일저장
+			File f = new File(fileUrl + uploadFileName);
+			//파일업로드
+			try {
+				file.transferTo(f);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			if (i==1) {
+			roomVo.setRpicture1(uploadFileName);
+			} else if (i==2) {
+			roomVo.setRpicture2(uploadFileName);
+			} else if (i==3) {
+			roomVo.setRpicture3(uploadFileName);
+			}
+		}
 		userMapper.updateUserHostingModifDo(roomVo);
 	}
 	@Override // 호스팅 상품 삭제를 위한 예약 내역 삭제
@@ -122,6 +155,17 @@ public class UserServiceImpl implements UserService {
 	public List<ReserveVo> HostingReservation(int roomNo) {
 		List<ReserveVo> list = userMapper.HostingReservation(roomNo);
 		return list;
+	}
+	@Override
+	public int userHostingReservationApprove(int re_no) {
+		int result = userMapper.userHostingReservationApprove(re_no);
+		
+		return result;
+	}
+	@Override
+	public int userHostingReservationReject(int re_no) {
+		int result = userMapper.userHostingReservationReject(re_no);
+		return result;
 	}
 	
 }
