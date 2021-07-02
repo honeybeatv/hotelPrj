@@ -50,7 +50,9 @@ public class RoomController {
 	   userno = (int)session.getAttribute("session_userno");
 	   userVo = roomService.userInfo(userno);
 	   }
-		
+	   //리뷰저장
+	   Map<String,Object> map = roomService.reviewList();
+	   model.addAttribute("map",map);
 	   //숙소정보 얻기
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
 	   //리뷰용 최근 예약 날짜 하나 얻기

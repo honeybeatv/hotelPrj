@@ -32,6 +32,8 @@ public interface RoomService {
 
 	//최근 예약 날짜 얻기
 	ReserveVo selectReserveDate(int roomNo, int userno);
+
+	Map<String, Object> reviewList();
 	
 
 	

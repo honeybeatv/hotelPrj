@@ -22,7 +22,7 @@
 		      FROM (SELECT rownum as rnum, a.* 
 		              FROM (SELECT * 
 		                      FROM user1 
-		                     WHERE uadmin!=#{uadmin} 
+		                     WHERE uadmin!=1 
 		                  ORDER BY userno asc) 		a )
 			WHERE rnum>=#{startrow} and rnum<=#{endrow}
 	    ]]>

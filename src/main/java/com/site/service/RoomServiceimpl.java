@@ -204,6 +204,19 @@ public class RoomServiceimpl implements RoomService {
 		return reserveVo;
 	}
 
+	@Override
+	public Map<String, Object> reviewList() {
+		Map<String,Object> map = new HashMap<String, Object>();
+		List<ReviewVo> replyList = roomMapper.selectReviewList();
+		int replyCount = roomMapper.selectReivewListCount();
+		
+		map.put("replyList", replyList);
+		map.put("replyCount", replyCount);
+		
+		return map;
+	
+	}
+
 	
 
 
