@@ -57,8 +57,8 @@
   	<!-- 회원 호스팅 상품정보 호출 -->
   	<select id="selectUserHostingViewList" resultType="com.site.vo.RoomVo">
   		<![CDATA[
-	  		SELECT * 
-	  		  FROM room 
+	  		SELECT a.* ,(select count(status) from reserve where roomNo = a.roomNo and status = 'normal') as count
+	  		  FROM room a
 	  		 WHERE userno=#{userno}
 	  	  ORDER BY roomno asc
 		]]>
@@ -150,6 +150,9 @@
 	<select id="HostingReservation" resultType="com.site.vo.ReserveVo">
 	<![CDATA[ select a.name, a.uphone,b.re_no,b.status, to_char(b.startday, 'yyyy/MM/dd')as startday , to_char(b.endday, 'yyyy/MM/dd')as endday,b.request,to_char(b.reservedate, 'yyyy/MM/dd')as reservedate, to_char(b.approvedate, 'yyyy/MM/dd')as approvedate from user1 a,reserve b where a.userno =b.userno
 and b.roomNo = #{roomNo} ]]> 
+	</select>
+	<select id="HostingReservationCount" resultType="int">
+	<![CDATA[ select count(*) from reserve where roomNo = #{roomNo} and status = '대기중'; ]]> 
 	</select>
 
   </mapper>

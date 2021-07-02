@@ -47,7 +47,7 @@
  							 location.reload();
  						 }
  				  });
- 			}
+ 			}else{alert("취소");}
  		}
 		function reject(re_no){
  			if(confirm("예약을 거부하시겠습니까?")){
@@ -66,7 +66,7 @@
  							 location.reload();
  						 }
  				  });
- 			}
+ 			}else{alert("취소");}
  		}
   	</script>
   	
@@ -112,18 +112,13 @@
 				    						<li style="list-style:none; text-align: left !important;">방문일 : ${vo.startday } ~ ${vo.endday }</li>
 				    						<li style="list-style:none; text-align: left !important;">승인여부 : ${vo.status }</li>
 				    						<li style="list-style:none; text-align: left !important;">예약자 전화번호 : ${vo.uphone	 }</li>
-				    						<c:if test="${vo.status.equals('대기중') }">
 				    						<li style="list-style:none; text-align: left !important;">예약날짜 : ${vo.reservedate }</li>
-				    						</c:if>
 			    						</ul>	
 			    						<hr>
 			    						<p class="pt-1">
-			    						<c:if test="${vo.status.equals('대기중') }">
-			    							<form method = "post">
-			    							<input type="hidden" name="no" value="${vo.re_no }">
-			    							<a><button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="approve('${vo.re_no }')">승인</button></a>
-			    							<a><button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="reject('${vo.re_no }')">거부</button></a>
-			    							</form>
+			    						<c:if test="${vo.status.equals('normal') }">
+			    							<a><button type="button" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="approve('${vo.re_no }')">승인</button></a>
+			    							<a><button type="button" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="reject('${vo.re_no }')">거부</button></a>
 			    						</p>
 			    						</c:if>
 			    						<c:if test="${vo.status.equals('승인') }">
