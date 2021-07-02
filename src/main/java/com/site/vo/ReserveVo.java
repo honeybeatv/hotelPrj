@@ -20,6 +20,9 @@ public class ReserveVo {
 	private String endday;
 	private int userno;
 	private String request;
+	private String name;
+	private String uphone;
+	
 	
 	private List<ReserveVo> reserveVoList;
 	

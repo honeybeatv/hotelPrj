@@ -110,6 +110,7 @@ public class RoomController {
 
 		System.out.println("1");
 		roomService.roomsWriteDo(roomVo, file);	// 
+
 		model.addAttribute("roomVo",roomVo);
 		System.out.println(roomVo.getRoomNo());
 

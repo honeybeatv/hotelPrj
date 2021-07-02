@@ -16,9 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.site.service.UserService;
-import com.site.vo.UserReservationVo;
+import com.site.vo.ReserveVo;
 import com.site.vo.RoomVo;
+import com.site.vo.UserReservationVo;
 import com.site.vo.UserVo;
 
 @Controller
@@ -197,6 +199,12 @@ public class UserController {
 
 	@RequestMapping("/userHostingModifyDo") // 회원 호스팅 상품 수정페이지 실행
 	public String userHostingModifyDo(Model model, RoomVo roomVo, @RequestParam("userno") int userno) {
+		if(roomVo.getRsmoke()==null){
+			roomVo.setRsmoke("nosmoke");
+		}
+		if(roomVo.getRpet()==null){
+			roomVo.setRpet("nopet");
+		}
 		userService.userHostingModifDo(roomVo);
 		
 		System.out.println("userno : " + userno + " | roomVo : " + roomVo);
@@ -241,8 +249,12 @@ public class UserController {
 		map.put("key", key);
 		return map;
 	}
-	@RequestMapping("/HostingReservation")
-	public String HostingReservation() {
+	@RequestMapping("/userHostingReservation")
+	public String HostingReservation(@RequestParam("roomNo") int roomNo,Model model) {
+		List<ReserveVo> list = userService.HostingReservation(roomNo);
+		model.addAttribute("list", list);
+		
+		
 		return "/user/userHostingReservationView";
 	}
 	
