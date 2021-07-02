@@ -60,6 +60,7 @@
 	};
 </script>
 
+
 </head>
 <body>
 
@@ -187,7 +188,24 @@
 				</div>
 				<!-- .col-md-8 -->
 				
+	<!-- 			<script type="text/javascript">
+				function reply_ajax(){
+					if($("#reviewContent").val()==null || $("#reviewContent").val()==""){
+						alert("데이터를 입력해주세요");
+						return false;
+					}
+					$.ajax({
+						url:'./replyInsert',
+						type:'post',
+						data:{
+							//등록을 위해서 넘겨줘야 하는 데이터
+							//"bno" : 1,	//임의로 1일뿐, 글 번호를 받아서 가져옴.
+							"userid": "${session_id}",
+							//"replyPw" : $("#replyPw").val(),
+							"reviewContent" : $("#reviewContent").val()	//여기 데이터가 controller로
+						}
 				
+				</script> -->
 			<!-- 리뷰창  -->	
 			<div class="pt-5 mt-5">
               <h3 class="mb-5">6 Comments</h3>
@@ -266,21 +284,18 @@
                     <label for="name">예약자 아이디</label>&emsp;
                     <b>${userVo.userid }</b>
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
-                  </div> -->
-                  <div class="form-inline form-group">
-					<label for="userpw" class="col-sm-2 control-label" style="font-weight:bolder;">비밀번호</label>
-					<div class="col-sm-7">
-						<input type="password" class="form-control" style="width:100%;" id="reviewpw" name="reviewpw">
-					</div>
-				</div>
+		
+                  
                   <div class="form-group">
-                    <label for="website">예약기간 </label>
-                    <input type="url" class="form-control" id="website">
+                    <label for="website">예약기간 </label>&emsp;
+                    <b>${reserveVo.startday } ~ ${reserveVo.endday }</b>
                   </div>
 					
+				<!-- <div class="form-group">
+                    <label for="userpw">비밀번호 </label>
+                    <input type="password" class="form-control" style="width:30%;" id="reviewpw" name="reviewpw">
+                  </div> -->
+                  
                   <div class="form-group">
                     <label for="message">리뷰 내용</label>
                     <textarea name="recontent" id="message" cols="30" rows="10" class="form-control"></textarea>

@@ -129,6 +129,9 @@
 			 WHERE roomno=#{roomNo}
 		]]>  	
   	</select>
-
+	<select id="HostingReservation" resultType="com.site.vo.ReserveVo">
+	<![CDATA[ select a.name, a.uphone ,b.re_no,b.status, to_char(b.startday, 'yyyy/MM/dd')as startday , to_char(b.endday, 'yyyy/MM/dd')as endday,b.request from user1 a,reserve b where a.userno =b.userno
+and b.roomNo = #{roomNo} ]]> 
+	</select>
 
   </mapper>

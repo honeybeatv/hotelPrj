@@ -13,7 +13,7 @@ public interface AdminService {
 	// 관리자 기본정보 수정페이지 실행
 	void adminInfoModifyDo(UserVo adminVo);
 	
-	Map<String, Object> userList(int uadmin, int page);
+	Map<String, Object> userList(int page);
 	
 	// 관리자 회원 삭제
 	Map<String, Object> adminReservationDelete(int userno); // 예약 내역 삭제

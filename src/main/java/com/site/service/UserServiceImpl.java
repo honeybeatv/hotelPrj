@@ -151,5 +151,10 @@ public class UserServiceImpl implements UserService {
 		
 		return uHostingdeleteMap;
 	}
+	@Override
+	public List<ReserveVo> HostingReservation(int roomNo) {
+		List<ReserveVo> list = userMapper.HostingReservation(roomNo);
+		return list;
+	}
 	
 }

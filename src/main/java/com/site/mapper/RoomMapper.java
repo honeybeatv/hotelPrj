@@ -47,7 +47,9 @@ public interface RoomMapper {
 	void insertRoomReserve(int roomNo);
 	
 	//리뷰용 최근 예약 날짜 하나 얻기
-	ReserveVo selectReserveInfo(int roomNo, int userno);
+	ReserveVo selectReserveDate(int roomNo, int userno);
+	List<ReviewVo> selectReviewList();
+	int selectReivewListCount();
 	
 
 }

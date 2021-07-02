@@ -50,18 +50,21 @@ public class RoomController {
 	   userno = (int)session.getAttribute("session_userno");
 	   userVo = roomService.userInfo(userno);
 	   }
-		
+	   //리뷰저장
+	   Map<String,Object> map = roomService.reviewList();
+	   model.addAttribute("map",map);
 	   //숙소정보 얻기
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
 	   //리뷰용 최근 예약 날짜 하나 얻기
-//	   ReserveVo reserveVo = roomService.selectReserveInfo(roomNo, userno);
-//	   System.out.println(reserveVo);
+	   ReserveVo reserveVo = roomService.selectReserveDate(roomNo, userno);
+	   System.out.println("숙소 예약날짜" + reserveVo);
 	   
 	   System.out.println("Controller roomVo Test" + roomVo);
 	   System.out.println(" Controller userVo Test " + userVo.getName());
 	   
 	   model.addAttribute("roomVo", roomVo);
 	   model.addAttribute("userVo", userVo);
+	   model.addAttribute("reserveVo", reserveVo);
 	   if(!start.equals(null) && !end.equals(null)) {
 	   model.addAttribute("start", start);
 	   model.addAttribute("end", end);
@@ -109,6 +112,7 @@ public class RoomController {
 
 		System.out.println("1");
 		roomService.roomsWriteDo(roomVo, file);	// 
+
 		model.addAttribute("roomVo",roomVo);
 		System.out.println(roomVo.getRoomNo());
 

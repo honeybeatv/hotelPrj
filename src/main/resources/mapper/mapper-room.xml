@@ -3,6 +3,9 @@
 
 <mapper namespace="com.site.mapper.RoomMapper">
 
+<select id="selectReviewList" resultType="com.site.vo.ReviewVo">
+	    select * from review where roomno=1 order by review_no desc
+	</select>
 	<!-- index에서 검색시 -->
 	<!-- search 페이징용 게시글 카운트 -->
 	<select id="selectSearchCount" resultType="int">
@@ -127,11 +130,12 @@
 		
 	</select>
 	
+	<!-- 예약 기간 가져오기 -->
 	<select id="selectReserveDate" resultType="com.site.vo.ReserveVo">
 		<![CDATA[
-			SELECT startday, endday
+			SELECT TO_CHAR(startday, 'yyyy-MM-dd') as startday, TO_CHAR(endday, 'yyyy-MM-dd') as endday
 				FROM
-					(SELECT v.startday, v.endday, v.roomno 
+					(SELECT v.startday, v.endday, v.roomno, v.userno 
 					FROM review w, reserve v
 					WHERE w.userno=v.userno
 					AND v.roomno=#{roomNo}
@@ -139,7 +143,6 @@
 					ORDER BY v.startday DESC)
 				WHERE rownum<=1
 		]]>
-	
 	</select>
 	
 	

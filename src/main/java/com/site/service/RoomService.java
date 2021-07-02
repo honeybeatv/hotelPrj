@@ -30,21 +30,16 @@ public interface RoomService {
 	RoomVo roomSingle(int roomNo);
 	UserVo userInfo(int userno);
 
-	ReserveVo selectReserveInfo(int roomNo, int userno);
-	
+	//최근 예약 날짜 얻기
+	ReserveVo selectReserveDate(int roomNo, int userno);
+
+	Map<String, Object> reviewList();
 	
 
-	
-	
-	
 	
 	//void roomReserve(int roomNo, int userno, String startday, String endday);
 
 
-
-
-	
-	
 
 
 }
