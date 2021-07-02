@@ -188,13 +188,14 @@ public class RoomController {
 	
 	
 	//테스트
-//	@RequestMapping("/roomReply") //답글페이지 호출
-//	public String roomReply(@RequestParam("review_no") int review_no, Model model) {
-//		ReviewVo revirwVo = roomService.
-//		
-//		
-//		return "/rooms-single";
-//	}
+	@RequestMapping("/reviewList") 
+	public String reviewList(ReviewVo reviewVo, Model model) {
+		System.out.println("Test reviewVo : {}" +reviewVo);
+		List<ReviewVo> reviewListAll = roomService.reviewListAll();
+		
+		model.addAttribute("reviewListAll", reviewListAll );
+		return "/reviewList";
+	}
 	
 }
 

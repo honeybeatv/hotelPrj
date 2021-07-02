@@ -213,7 +213,7 @@
                 <li class="comment">
                   <div class="comment-body">
                     <h3>리뷰자 : ${userVo.userid }</h3>
-                    <div class="meta">리뷰 일 ${reviewVo.redate}</div>
+                    <div class="meta">리뷰 일 : ${roomVo.rname}</div>
 
                   </div>
                 </li>

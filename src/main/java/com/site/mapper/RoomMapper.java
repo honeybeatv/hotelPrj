@@ -51,5 +51,9 @@ public interface RoomMapper {
 	List<ReviewVo> selectReviewList();
 	int selectReivewListCount();
 	
+	
+	
+	List<ReviewVo> selectReviewListAll();
+	
 
 }

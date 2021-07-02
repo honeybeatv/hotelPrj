@@ -217,6 +217,13 @@ public class RoomServiceimpl implements RoomService {
 	
 	}
 
+	@Override
+	public List<ReviewVo> reviewListAll() {
+		List<ReviewVo> reviewListAll = roomMapper.selectReviewListAll();
+		
+		return reviewListAll;
+	}
+
 	
 
 

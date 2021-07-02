@@ -151,6 +151,11 @@
 				WHERE rownum<=1
 		]]>
 	</select>
+	<select id="selectReviewListAll" resultType="com.site.vo.ReviewVo">
+
+	select * FROM REview
+	
+</select>
 	
 	
 	

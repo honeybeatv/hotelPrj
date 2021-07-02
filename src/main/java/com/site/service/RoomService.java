@@ -34,6 +34,8 @@ public interface RoomService {
 	ReserveVo selectReserveDate(int roomNo, int userno);
 
 	Map<String, Object> reviewList();
+
+	List<ReviewVo> reviewListAll();
 	
 
 	
