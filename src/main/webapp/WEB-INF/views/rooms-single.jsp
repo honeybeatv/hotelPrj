@@ -212,8 +212,8 @@
               <ul class="comment-list">
                 <li class="comment">
                   <div class="comment-body">
-                    <h3>John Doe</h3>
-                    <div class="meta">Decmener 7, 2018 at 2:21pm</div>
+                    <h3>리뷰자 : ${userVo.userid }</h3>
+                    <div class="meta">리뷰 일 ${reviewVo.redate}</div>
 
                   </div>
                 </li>

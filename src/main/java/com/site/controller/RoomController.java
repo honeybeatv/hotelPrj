@@ -116,7 +116,7 @@ public class RoomController {
 		model.addAttribute("roomVo",roomVo);
 		System.out.println(roomVo.getRoomNo());
 
-		return "redirect:/user/userHostingView?userno="+roomVo.getUserno();
+		return "/user/userHostingView";
 	}
 
    //index페이지에서 검색
