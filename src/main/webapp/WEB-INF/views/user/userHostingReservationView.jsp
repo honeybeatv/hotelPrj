@@ -95,10 +95,14 @@
     
     
         <section class="ftco-section bg-light">
+        <c:if test="${list.size() == 0 }">
+        <h2 style=" text-align: center !important;">예약이 없습니다.</h2>
+        </c:if>
 	    	<div class="container">
 	    		<div class="row">
 					<c:forEach var="vo" items="${list}">
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate" id ="${vo.re_no }">
+
 		    				<div class="room">
 		<!--      				<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-1.jpg);">
 		    						<div class="icon d-flex justify-content-center align-items-center">
