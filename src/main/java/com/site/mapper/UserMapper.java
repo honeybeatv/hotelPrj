@@ -44,5 +44,7 @@ public interface UserMapper {
 	
 	void insertRoomReserve(int userno);
 	List<ReserveVo> HostingReservation(int roomNo);
+	int userHostingReservationApprove(int re_no);
+	int userHostingReservationReject(int re_no);
 
 }

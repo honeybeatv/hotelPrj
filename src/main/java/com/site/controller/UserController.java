@@ -257,5 +257,27 @@ public class UserController {
 		
 		return "/user/userHostingReservationView";
 	}
+	@RequestMapping("/userHostingReservationApprove")
+	@ResponseBody
+	public Map<String, Object> userHostingReservationApprove(int re_no) {
+		Map<String, Object> map = new HashMap<>();
+		int result = userService.userHostingReservationApprove(re_no);
+		System.out.println(result);
+		if(result == 1) {
+			map.put("msg", "승인처리되었습니다.");
+		}
+		return map;
+	}
+	@RequestMapping("/userHostingReservationReject")
+	@ResponseBody
+	public Map<String, Object> userHostingReservationReject(int re_no) {
+		Map<String, Object> map = new HashMap<>();
+		int result = userService.userHostingReservationReject(re_no);
+		System.out.println(result);
+		if(result == 1) {
+			map.put("msg", "거부처리되었습니다.");
+		}
+		return map;
+	}
 	
 }

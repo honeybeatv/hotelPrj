@@ -92,6 +92,24 @@
 		  	   and userno=#{userno}
 	  	 ]]>
   	</update>
+	<!-- 예약 승인 처리 -->
+  	<update id="userHostingReservationApprove" >
+  		<![CDATA[
+		  	UPDATE reserve 
+		  	   SET status= '승인',
+					approvedate= sysdate
+		  	 WHERE re_no=#{re_no}
+	  	 ]]>
+  	</update>
+	<!-- 예약 거부 처리 -->
+  	<update id="userHostingReservationReject" >
+  		<![CDATA[
+		  	UPDATE reserve 
+		  	   SET status= '거부',
+					approvedate= sysdate
+		  	 WHERE re_no=#{re_no}
+	  	 ]]>
+  	</update>
 
   	<!-- 회원 호스팅 상품 삭제를 위한 예약내역 삭제 -->
   	<delete id="deleteUserReservationDeleteList">
@@ -127,7 +145,7 @@
 		]]>  	
   	</select>
 	<select id="HostingReservation" resultType="com.site.vo.ReserveVo">
-	<![CDATA[ select a.name, a.uphone ,b.re_no,b.status, to_char(b.startday, 'yyyy/MM/dd')as startday , to_char(b.endday, 'yyyy/MM/dd')as endday,b.request from user1 a,reserve b where a.userno =b.userno
+	<![CDATA[ select a.name, a.uphone,b.re_no,b.status, to_char(b.startday, 'yyyy/MM/dd')as startday , to_char(b.endday, 'yyyy/MM/dd')as endday,b.request,to_char(b.reservedate, 'yyyy/MM/dd')as reservedate, to_char(b.approvedate, 'yyyy/MM/dd')as approvedate from user1 a,reserve b where a.userno =b.userno
 and b.roomNo = #{roomNo} ]]> 
 	</select>
 

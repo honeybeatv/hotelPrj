@@ -37,5 +37,7 @@ public interface UserService {
 	Map<String, Object> userReservationDelete(int roomNo);	// 상품 삭제를 위한 예약 기록 삭제
 	Map<String, Object> userHostingDelete(RoomVo roomVo);	// 상품 삭제
 	List<ReserveVo> HostingReservation(int roomNo);
+	int userHostingReservationApprove(int re_no);
+	int userHostingReservationReject(int re_no);
 
 }

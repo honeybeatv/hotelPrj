@@ -123,5 +123,16 @@ public class UserServiceImpl implements UserService {
 		List<ReserveVo> list = userMapper.HostingReservation(roomNo);
 		return list;
 	}
+	@Override
+	public int userHostingReservationApprove(int re_no) {
+		int result = userMapper.userHostingReservationApprove(re_no);
+		
+		return result;
+	}
+	@Override
+	public int userHostingReservationReject(int re_no) {
+		int result = userMapper.userHostingReservationReject(re_no);
+		return result;
+	}
 	
 }
