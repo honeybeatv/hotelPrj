@@ -255,7 +255,6 @@
 						<textarea name="raddress" cols="65" rows="3" id="raddress"></textarea>
 					</div>
 				</div>
-
 				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
 					onclick="searchSubmit();">
 				<input type="button" value="취소"
