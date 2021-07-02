@@ -197,6 +197,12 @@ public class UserController {
 
 	@RequestMapping("/userHostingModifyDo") // 회원 호스팅 상품 수정페이지 실행
 	public String userHostingModifyDo(Model model, RoomVo roomVo, @RequestParam("userno") int userno) {
+		if(roomVo.getRsmoke()==null){
+			roomVo.setRsmoke("nosmoke");
+		}
+		if(roomVo.getRpet()==null){
+			roomVo.setRpet("nopet");
+		}
 		userService.userHostingModifDo(roomVo);
 		
 		System.out.println("userno : " + userno + " | roomVo : " + roomVo);
