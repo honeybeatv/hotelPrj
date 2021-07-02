@@ -3,6 +3,8 @@ package com.site.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.site.vo.ReserveVo;
 import com.site.vo.UserReservationVo;
 import com.site.vo.RoomVo;
@@ -32,7 +34,7 @@ public interface UserService {
 	// 회원 호스팅 상품 수정페이지 호출
 	Map<String, Object> userHostingModifyList(int userno, int roomNo);
 	// 회원 호스팅 상품 수정페이지 실행
-	void userHostingModifDo(RoomVo roomVo);
+	void userHostingModifDo(RoomVo roomVo, List<MultipartFile> file);
 	// 회원 호스팅 상품 삭제
 	Map<String, Object> userReservationDelete(int roomNo);	// 상품 삭제를 위한 예약 기록 삭제
 	Map<String, Object> userHostingDelete(RoomVo roomVo);	// 상품 삭제

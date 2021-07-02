@@ -128,6 +128,9 @@
 
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">사진</label>
+					<img src="http://localhost:8000/upload/${roomVo.rpicture1 }">
+					<img src="http://localhost:8000/upload/${roomVo.rpicture2 }">
+					<img src="http://localhost:8000/upload/${roomVo.rpicture3 }">
 					<input multiple="multiple" type="file" class="" style="padding-left: 15px; width: 15%; text-align: left;" id="file" name="file" accept=".gif, .jpg, .png" onchange="loadFile(event)">
 					<span style="font-size:10px; color: gray;">※사진은 최대 3개까지 등록이 가능합니다.</span>	
 				</div>

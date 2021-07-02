@@ -87,7 +87,10 @@
 		  	   	   rroom=#{rroom}		,
 		  	   	   rsmoke=#{rsmoke}		,
 		  	   	   rpet=#{rpet}			,
-		  	   	   raddress=#{raddress}
+		  	   	   raddress=#{raddress}	,
+		  	   	   rpicture1=#{rpicture1}	,
+		  	   	   rpicture2=#{rpicture2}	,
+		  	   	   rpicture3=#{rpicture3}	
 		  	 WHERE roomno=#{roomNo}
 		  	   and userno=#{userno}
 	  	 ]]>

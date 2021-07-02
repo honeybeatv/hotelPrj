@@ -15,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.site.service.UserService;
 import com.site.vo.RoomVo;
@@ -192,19 +194,17 @@ public class UserController {
 		model.addAttribute("userHostingModifyMap", userHostingModifyMap);
 		
 		System.out.println("# mypage category_Hosting Modify #");
+		System.out.println(userHostingModifyMap);
 		
 		return "/user/userHostingModify";
 	}
 
 	@RequestMapping("/userHostingModifyDo") // 회원 호스팅 상품 수정페이지 실행
-	public String userHostingModifyDo(Model model, RoomVo roomVo, @RequestParam("userno") int userno) {
-		if(roomVo.getRsmoke()==null){
-			roomVo.setRsmoke("nosmoke");
-		}
-		if(roomVo.getRpet()==null){
-			roomVo.setRpet("nopet");
-		}
-		userService.userHostingModifDo(roomVo);
+	public String userHostingModifyDo(Model model, RoomVo roomVo, 
+									  @RequestParam("userno") int userno,
+									  @RequestPart List<MultipartFile> file) {
+		
+		userService.userHostingModifDo(roomVo, file);
 		
 		System.out.println("userno : " + userno + " | roomVo : " + roomVo);
 		System.out.println("# mypage category_Hosting ModifyDo #");
