@@ -247,7 +247,7 @@ public class UserController {
 		map.put("key", key);
 		return map;
 	}
-	@RequestMapping("/HostingReservation")
+	@RequestMapping("/userHostingReservation")
 	public String HostingReservation() {
 		return "/user/userHostingReservationView";
 	}
