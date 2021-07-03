@@ -219,6 +219,7 @@
                     <div class="meta">리뷰내용 : ${reviewVo.recontent}</div>
 
                   </div>
+                  
                 </li>
 
                 <li class="comment">
@@ -237,9 +238,12 @@
                     <p>나쁘지 않는 방이였다.</p>
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
+                  
                 </li>
               </ul>
+              
               </div>
+              
               <!-- END comment-list -->
               
               <div class="comment-form-wrap pt-5">
@@ -247,6 +251,7 @@
                <!-- 여기 폼 -->
                 <form action="#" class="p-5 bg-light">
                   <div class="form-group">
+                  
                   
                   
                   <!-- 별점 등록 -->
@@ -284,7 +289,7 @@
 							  </div>
 	      		</div>
                   <!-- 리뷰등록 -->
-                    <label for="name">예약자 아이디</label>&emsp;
+                    <label for="name">예약자 아이디 : </label>&emsp;
                     <b>${userVo.userid }</b>
                   </div>
 		
@@ -304,7 +309,7 @@
                     <textarea name="recontent" id="message" cols="30" rows="10" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
-                    <input type="submit" value="작성 완료" class="btn py-3 px-4 btn-primary">
+                    <input type="submit" value="작성 완료" class="btn py-3 px-4 btn-primary" >
                   </div>
                 </form>
               </div>
