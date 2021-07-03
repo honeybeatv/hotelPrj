@@ -58,6 +58,35 @@
 			document.reserve.submit();
 		}
 	};
+	
+	
+/* 	function reviewWriteDo(){
+		alert("js in");
+		$.ajax({
+			url:"./reviewWriteDo",
+			type : "POST",
+			data:{$('#asd').serialize();
+				
+			},
+			success : function(data){
+				alert("가넝한");
+				
+				/* var source = "";
+				source += "<li class='comment'><div class='comment-body'>";
+                source += "<h3>"+John Doe+"</h3>";
+                source += "<div class='meta>" + Decmener 7, 2018 at 2:21pm+"</div>";
+				source += "<p>" + data.recontent + "</p></div></li>"
+				
+				$(".comment-list").prepend();
+				$("#recontent").text("");	//리뷰 내용 빈칸으로 */
+				
+			},
+			error : function(){
+				alert("삑!");
+			}
+		});
+	}
+	 */
 </script>
 
 
@@ -208,20 +237,21 @@
 				</script> -->
 			<!-- 리뷰창  -->	
 			<div class="pt-5 mt-5">
-              <h3 class="mb-5">6 Comments</h3>
+              <h3 class="mb-5">${reviewMap.reviewCount } Comments</h3>
+			<c:forEach var="reviewList" items="${reviewMap.reviewList }">
               <ul class="comment-list">
                 <li class="comment">
                   <div class="comment-body">
                     <h3>리뷰자 : ${userVo.userid }</h3>
                     <h3>날짜 : ${reserveVo.startday } ~ ${reserveVo.endday }</h3>
-                    <h3>리뷰내용 : ${reviewVo.recontent}</h3>
+                    <h3>리뷰내용 : ${reviewList.recontent}</h3>
                 
                     <div class="meta">리뷰내용 : ${reviewVo.recontent}</div>
 
                   </div>
                   
                 </li>
-
+<!-- 
                 <li class="comment">
                   <div class="comment-body">
                     <h3>리뷰자</h3>
@@ -239,7 +269,7 @@
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
                   
-                </li>
+                </li> -->
               </ul>
               
               </div>
@@ -249,40 +279,40 @@
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>
                <!-- 여기 폼 -->
-                <form action="#" class="p-5 bg-light">
-                  <div class="form-group">
-                  
+                <form action="../room/reviewWriteDo" class="p-5 bg-light">
+                <div class="form-group">
+                  	<input type="hidden" name="roomNo" id="roomNo" value="${roomVo.roomNo }">
                   
                   
                   <!-- 별점 등록 -->
                   	      <div class="sidebar-wrap bg-light ftco-animate">
 	      					<h3 class="heading mb-4">Star Rating</h3>
 							  <div class="form-check">
-									<input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+									<input type="radio" class="form-check-input" id="exampleCheck1" name="rescore" value="5">&emsp;
 									<label class="form-check-label" for="exampleCheck1">
 										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
 									</label>
 							  </div>
 							  <div class="form-check">
-						      <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <input type="radio" class="form-check-input" id="exampleCheck1" name="rescore" value="4">&emsp;
 						      <label class="form-check-label" for="exampleCheck1">
 						    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
 						      </label>
 							  </div>
 							  <div class="form-check">
-						      <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <input type="radio" class="form-check-input" id="exampleCheck1" name="rescore" value="3">&emsp;
 						      <label class="form-check-label" for="exampleCheck1">
 						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
 						     </label>
 							  </div>
 							  <div class="form-check">
-							    <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+							    <input type="radio" class="form-check-input" id="exampleCheck1" name="rescore" value="2">&emsp;
 						      <label class="form-check-label" for="exampleCheck1">
 						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
 						      </label>
 							  </div>
 							  <div class="form-check">
-						      <input type="radio" class="form-check-input" id="exampleCheck1">&emsp;
+						      <input type="radio" class="form-check-input" id="exampleCheck1" name="rescore" value="1">&emsp;
 						      <label class="form-check-label" for="exampleCheck1">
 						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
 							    </label>

@@ -3,11 +3,13 @@ package com.site.controller;
 import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -54,18 +56,22 @@ public class RoomController {
 	   userno = (int)session.getAttribute("session_userno");
 	   userVo = roomService.userInfo(userno);
 	   }
-	   //리뷰저장
-	   Map<String,Object> map = roomService.reviewList();
-	   model.addAttribute("map",map);
 	   //숙소정보 얻기
 	   RoomVo roomVo = roomService.roomSingle(roomNo);
 	   //리뷰용 최근 예약 날짜 하나 얻기
 	   ReserveVo reserveVo = roomService.selectReserveDate(roomNo, userno);
 	   System.out.println("숙소 예약날짜" + reserveVo);
 	   
+	   //댓글
+	   Map<String, Object> reviewMap = new HashMap<String, Object>();
+	   reviewMap = roomService.reviewList(roomNo);
+	   System.out.println(reviewMap);
+	   
 	   System.out.println("Controller roomVo Test" + roomVo);
 	   System.out.println(" Controller userVo Test " + userVo.getName());
 	   
+	   //리뷰저장
+	   model.addAttribute("reviewMap",reviewMap);
 	   model.addAttribute("roomVo", roomVo);
 	   model.addAttribute("userVo", userVo);
 	   model.addAttribute("reserveVo", reserveVo);
@@ -122,6 +128,26 @@ public class RoomController {
 
 		return "/user/userHostingView";
 	}
+	
+	//리뷰저장
+	@RequestMapping("/reviewWriteDo")
+	public String reviewWriteDo(@RequestParam("roomNo") int roomNo, ReviewVo reviewVo, HttpServletRequest request ) {
+		reviewVo.setRoomno(roomNo);
+		System.out.println("Controller in " + reviewVo);
+		
+		int userno = 0;
+		HttpSession session = request.getSession();
+		if(session.getAttribute("session_userno") != null) {
+			  userno = (int)session.getAttribute("session_userno");  
+			}
+		
+		reviewVo.setUserno(userno);
+		
+		roomService.reviewWriteDo(reviewVo);
+		System.out.println("controller out " + reviewVo);
+		return "redirect:/room/rooms-single?roomNo="+roomNo;
+	}
+	
 
    //index페이지에서 검색
 	@RequestMapping("/search")

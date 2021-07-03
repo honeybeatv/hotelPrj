@@ -33,10 +33,11 @@ public interface RoomService {
 	//최근 예약 날짜 얻기
 	ReserveVo selectReserveDate(int roomNo, int userno);
 
-	Map<String, Object> reviewList();
+	//리뷰저장
+	void reviewWriteDo(ReviewVo reviewVo);
+	Map<String, Object> reviewList(int roomNo);
 
 	List<ReviewVo> reviewListAll();
-	
 
 	
 	//void roomReserve(int roomNo, int userno, String startday, String endday);

@@ -203,14 +203,20 @@ public class RoomServiceimpl implements RoomService {
 		return reserveVo;
 	}
 
+	//리뷰 저장
 	@Override
-	public Map<String, Object> reviewList() {
+	public void reviewWriteDo(ReviewVo reviewVo) {
+		roomMapper.reviewWriteDo(reviewVo);	
+	}
+
+	@Override
+	public Map<String, Object> reviewList(int roomNo) {
 		Map<String,Object> map = new HashMap<String, Object>();
-		List<ReviewVo> replyList = roomMapper.selectReviewList();
-		int replyCount = roomMapper.selectReivewListCount();
+		List<ReviewVo> reviewList = roomMapper.selectReviewList(roomNo);
+		int reviewCount = roomMapper.selectReivewListCount(roomNo);
 		
-		map.put("replyList", replyList);
-		map.put("replyCount", replyCount);
+		map.put("reviewList", reviewList);
+		map.put("reviewCount", reviewCount);
 		
 		return map;
 	
