@@ -242,11 +242,10 @@
               <ul class="comment-list">
                 <li class="comment">
                   <div class="comment-body">
-                    <h3>리뷰자 : ${userVo.userid }</h3>
-                    <h3>날짜 : ${reserveVo.startday } ~ ${reserveVo.endday }</h3>
-                    <h3>리뷰내용 : ${reviewList.recontent}</h3>
-                
-                    <div class="meta">리뷰내용 : ${reviewVo.recontent}</div>
+                    <p>리뷰자 : ${userVo.userid }</p>
+                    <div class="meta">숙박기간 : ${reserveVo.startday } ~ ${reserveVo.endday }</div>
+                    <p>${reviewList.recontent}</p>
+                    <div class="meta" >별점 평가 : ${reviewList.rescore}/5점</div>
 
                   </div>
                 </li>
@@ -321,7 +320,7 @@
 		
                   
                   <div class="form-group">
-                    <label for="website">예약기간 </label>&emsp;
+                    <label for="website">숙박기간 </label>&emsp;
                     <b>${reserveVo.startday } ~ ${reserveVo.endday }</b>
                   </div>
 					
