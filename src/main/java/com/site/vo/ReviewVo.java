@@ -18,5 +18,6 @@ public class ReviewVo {
 	private String recontent;
 	private int rescore; //자동입력
 	private String reviewpw; 
-
+	
+	private List<ReviewVo> reviewVoList;
 }

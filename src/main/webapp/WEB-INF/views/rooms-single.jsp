@@ -248,6 +248,7 @@
                     <div class="meta" >별점 평가 : ${reviewList.rescore}/5점</div>
 
                   </div>
+                  
                 </li>
 <!-- 
                 <li class="comment">
@@ -266,10 +267,12 @@
                     <p>나쁘지 않는 방이였다.</p>
                     <p><a href="#" class="reply">Reply</a></p>
                   </div>
+                  
                 </li> -->
               </ul>
-              </c:forEach>
+              
               </div>
+              
               <!-- END comment-list -->
               
               <div class="comment-form-wrap pt-5">
@@ -278,6 +281,7 @@
                 <form action="../room/reviewWriteDo" class="p-5 bg-light">
                 <div class="form-group">
                   	<input type="hidden" name="roomNo" id="roomNo" value="${roomVo.roomNo }">
+                  
                   
                   <!-- 별점 등록 -->
                   	      <div class="sidebar-wrap bg-light ftco-animate">
@@ -314,7 +318,7 @@
 							  </div>
 	      		</div>
                   <!-- 리뷰등록 -->
-                    <label for="name">예약자 아이디</label>&emsp;
+                    <label for="name">예약자 아이디 : </label>&emsp;
                     <b>${userVo.userid }</b>
                   </div>
 		
