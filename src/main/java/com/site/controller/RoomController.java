@@ -133,6 +133,7 @@ public class RoomController {
 	@RequestMapping("/reviewWriteDo")
 	public String reviewWriteDo(@RequestParam("roomNo") int roomNo, ReviewVo reviewVo, HttpServletRequest request ) {
 		reviewVo.setRoomno(roomNo);
+		
 		System.out.println("Controller in " + reviewVo);
 		
 		int userno = 0;
@@ -143,9 +144,14 @@ public class RoomController {
 		
 		reviewVo.setUserno(userno);
 		
+		ReserveVo reserveVo = roomService.selectReserveDate(roomNo, userno);
+		String start = reserveVo.getStartday();
+		String end = reserveVo.getEndday();
+		reviewVo.setRedate(start + " ~ " + end);
+		
 		roomService.reviewWriteDo(reviewVo);
 		System.out.println("controller out " + reviewVo);
-		return "redirect:/room/rooms-single?roomNo="+roomNo;
+		return "redirect:/room/rooms-single?roomNo="+roomNo+"#review";
 	}
 	
 

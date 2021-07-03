@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class PageUtil {
 
-	// 현재 페이지, 한 페이지에 들어갈 갯수, 총 게시글 수를 파라미터로
+	// 현재 페이지, 한 페이지에 표시할 갯수, 총 게시글 수를 파라미터로
 	public Map<String, Object> getPageNum(int page, int limit, int listCount) {
 
 		Map<String, Object> resultMap = new HashMap<String, Object>();

@@ -85,10 +85,6 @@ public class RoomServiceimpl implements RoomService {
 	   
 	   System.out.println("paging list " + list);
 	   
-//	   listAndNums.put("startrow", startrow);
-//	   listAndNums.put("endrow", endrow);
-//	   listAndNums.put("startPage", pageNums.get("startPage"));
-//	   listAndNums.put("endPage", pageNums.get("endPage"));
 	   listAndNums.put("page", page);
 	   listAndNums.put("listCount", listCount);		
 	   listAndNums.put("list", list);

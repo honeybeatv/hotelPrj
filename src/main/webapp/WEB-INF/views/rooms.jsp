@@ -29,8 +29,7 @@
     <link rel="stylesheet" href="../static/css/style.css">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript">
-
+    <script type="text/javascript">    
      </script>
      
   	</head>
@@ -65,7 +64,7 @@
 		    					</a>
 		    					<div class="text p-3 text-center">
 		    						<h3 class="mb-3"><a href="rooms-single?roomNo=${list.roomNo }&start=${start }&end=${end }">${list.rname }</a></h3>
-		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
+		    						<p><span class="price mr-2">${list.rprice }원</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
 		    							<li><span>권장인원:</span> ${list.rpeople }</li>
 		    							<li><span>위치:</span> ${list.raddress }</li>
@@ -94,13 +93,13 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rtype" id="" class="form-control">
-	                    	<option value="아파트">아파트</option>
-		                     <option value="집">주택</option>
-		                     <option value="공동주택">공동주택</option>
-		                     <option value="호탤">호텔</option>
-		                     <option value="레지던스">레지던스</option>
-		                     <option value="호스텔">호스텔</option>
-	                    	<option value="기타">기타</option>
+	                    	<option value="아파트" ${(rtype eq '아파트')? 'selected' : '' }>아파트</option>
+		                     <option value="집" ${(rtype eq '집')? 'selected' : '' }>주택</option>
+		                     <option value="공동주택" ${(rtype eq '공동주택')? 'selected' : '' }>공동주택</option>
+		                     <option value="호텔" ${(rtype eq '호텔')? 'selected' : '' }>호텔</option>
+		                     <option value="레지던스" ${(rtype eq '레지던스')? 'selected' : '' }>레지던스</option>
+		                     <option value="호스텔" ${(rtype eq '호스텔')? 'selected' : '' }>호스텔</option>
+	                    	<option value="기타" ${(rtype eq '기타')? 'selected' : '' }>기타</option>
 	                    </select>
 	                  </div>
 		              </div>
@@ -108,13 +107,13 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rroom" id="" class="form-control">
-	                    	<option value="1">침실 1</option>
-		                    <option value="2">침실 2</option>
-		                    <option value="3">침실 3</option>
-		                    <option value="4">침실 4</option>
-		                    <option value="5">침실 5</option>
-		                    <option value="6">침실 6</option>
-	                    	<option value="7">침실 7 이상</option>
+	                    	<option value="1" ${(rroom eq '1')? 'selected' : '' }>침실 1</option>
+		                    <option value="2" ${(rroom eq '2')? 'selected' : '' }>침실 2</option>
+		                    <option value="3" ${(rroom eq '3')? 'selected' : '' }>침실 3</option>
+		                    <option value="4" ${(rroom eq '4')? 'selected' : '' }>침실 4</option>
+		                    <option value="5" ${(rroom eq '5')? 'selected' : '' }>침실 5</option>
+		                    <option value="6" ${(rroom eq '6')? 'selected' : '' }>침실 6</option>
+	                    	<option value="7" ${(rroom eq '7')? 'selected' : '' }>침실 7 이상</option>
 
 	                    </select>
 	                  </div>
@@ -123,32 +122,32 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rbed" id="" class="form-control">
-	                    	<option value="1">침대 1</option>
-	                      	<option value="2">침대 2</option>
-	                      	<option value="3">침대 3</option>
-	                      	<option value="4">침대 4</option>
-	                      	<option value="5">침대 5</option>
-	                      	<option value="6">침대 6</option>
-	                    	<option value="7">침대 7 이상</option>
+	                    	<option value="1" ${(rbed eq '1')? 'selected' : '' }>침대 1</option>
+	                      	<option value="2" ${(rbed eq '2')? 'selected' : '' }>침대 2</option>
+	                      	<option value="3" ${(rbed eq '3')? 'selected' : '' }>침대 3</option>
+	                      	<option value="4" ${(rbed eq '4')? 'selected' : '' }>침대 4</option>
+	                      	<option value="5" ${(rbed eq '5')? 'selected' : '' }>침대 5</option>
+	                      	<option value="6" ${(rbed eq '6')? 'selected' : '' }>침대 6</option>
+	                    	<option value="7" ${(rbed eq '7')? 'selected' : '' }>침대 7 이상</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              
 		               <div class="form-group">
-		              <input type="checkbox" name="rsmoke" value="smoke"> 흡연실&emsp;
-		              <input type="checkbox" name="rpet" value="pet"> 반려동물
+		              <input type="checkbox" name="rsmoke" id="rsmoke" value="smoke"  ${(rsmoke eq 'smoke')? 'checked' : ''}> 흡연실&emsp;
+		              <input type="checkbox" name="rpet" id="rpet" value="pet" ${(rpet eq 'pet')? 'checked' : ''}> 반려동물
 		              </div>
 		              
 		              <div class="form-group">
 		              	<div class="range-slider">
 		              		<span>
-										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>	-
-										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
+										    <input type="number" name="minPrice" id="minPrice" value="${(minPrice!=null)? minPrice : 25000 }" min=0 max="999999" style="width: 73px"/>원	-
+										    <input type="number" name="maxPrice" id="maxPrice" value="${(maxPrice!=null)? maxPrice : 50000 }" min="0" max="999999"/>원
 										  </span>
 										</div>
 		              </div>
 		              <div class="form-group">
-		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5"">
 		              </div>
 		            </div>
 	            </form>

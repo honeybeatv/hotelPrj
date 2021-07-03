@@ -160,7 +160,7 @@
 	<!-- 리뷰 저장하기 -->
 	<insert id="reviewWriteDo" parameterType="com.site.vo.ReviewVo">
 		<![CDATA[
-			INSERT INTO review VALUES (seq_review.nextval, #{roomno}, #{userno}, sysdate, #{recontent}, #{rescore}, #{reviewpw})
+			INSERT INTO review VALUES (seq_review.nextval, #{roomno}, #{userno}, #{redate}, #{recontent}, #{rescore}, #{reviewpw})
 		]]>
 		
 	

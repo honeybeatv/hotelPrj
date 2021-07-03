@@ -59,34 +59,6 @@
 		}
 	};
 	
-	
-/* 	function reviewWriteDo(){
-		alert("js in");
-		$.ajax({
-			url:"./reviewWriteDo",
-			type : "POST",
-			data:{$('#asd').serialize();
-				
-			},
-			success : function(data){
-				alert("가넝한");
-				
-				/* var source = "";
-				source += "<li class='comment'><div class='comment-body'>";
-                source += "<h3>"+John Doe+"</h3>";
-                source += "<div class='meta>" + Decmener 7, 2018 at 2:21pm+"</div>";
-				source += "<p>" + data.recontent + "</p></div></li>"
-				
-				$(".comment-list").prepend();
-				$("#recontent").text("");	//리뷰 내용 빈칸으로 */
-				
-			},
-			error : function(){
-				alert("삑!");
-			}
-		});
-	}
-	 */
 </script>
 
 
@@ -236,17 +208,20 @@
 				
 				</script> -->
 			<!-- 리뷰창  -->	
-			<div class="pt-5 mt-5">
+			<div class="pt-5 mt-5" id="review">
               <h3 class="mb-5">${reviewMap.reviewCount } Comments</h3>
 			<c:forEach var="reviewList" items="${reviewMap.reviewList }">
               <ul class="comment-list">
                 <li class="comment">
                   <div class="comment-body">
-                    <p>리뷰자 : ${userVo.userid }</p>
-                    <div class="meta">숙박기간 : ${reserveVo.startday } ~ ${reserveVo.endday }</div>
+                    <h3>리뷰자 : ${userVo.userid }</h3>
+                    <div class="meta">숙박기간 : ${reviewList.redate}</div>
                     <p>${reviewList.recontent}</p>
-                    <div class="meta" >별점 평가 : ${reviewList.rescore}/5점</div>
-
+                    <div class="meta" >별점 평가 :
+                    <c:forEach begin="1" end="${reviewList.rescore }">
+						<i class="icon-star"></i>
+                    </c:forEach>
+					</div>
                   </div>
                   
                 </li>
@@ -270,7 +245,7 @@
                   
                 </li> -->
               </ul>
-              
+              </c:forEach>
               </div>
               
               <!-- END comment-list -->
@@ -287,7 +262,7 @@
                   	      <div class="sidebar-wrap bg-light ftco-animate">
 	      					<h3 class="heading mb-4">Star Rating</h3>
 							  <div class="form-check">
-									<input type="radio" class="form-check-input" id="exampleCheck1" name="rescore" value="5">&emsp;
+									<input type="radio" class="form-check-input" id="exampleCheck1" name="rescore" value="5" checked="checked">&emsp;
 									<label class="form-check-label" for="exampleCheck1">
 										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
 									</label>
