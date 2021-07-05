@@ -250,7 +250,7 @@ public class UserController {
 		return map;
 	}
 	@RequestMapping("/userHostingReservation")
-	public String HostingReservation(@RequestParam("no") int roomNo,Model model) {
+	public String HostingReservation(@RequestParam("roomNo") int roomNo,Model model) {
 		System.out.println(roomNo);
 		List<ReserveVo> list = userService.HostingReservation(roomNo);
 		System.out.println(list);

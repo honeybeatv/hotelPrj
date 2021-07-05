@@ -81,7 +81,7 @@
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label" style="font-weight:bolder;">아이디</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid" value="${userVo.userid}" >
+						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid" value="${userVo.userid}" readonly>
 					</div>
 				</div>
 				

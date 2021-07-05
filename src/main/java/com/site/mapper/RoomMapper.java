@@ -53,7 +53,7 @@ public interface RoomMapper {
 	void reviewWriteDo(ReviewVo reviewVo);
 	
 	//리뷰 리스트
-	List<ReviewVo> selectReviewList(int roomNo);
+	List<ReviewVo> selectReviewList(int roomNo, int startrow, int endrow);
 	//리뷰 카운트
 	int selectReivewListCount(int roomNo);
 	
