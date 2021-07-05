@@ -142,6 +142,7 @@ public class RoomServiceimpl implements RoomService {
 		
 		System.out.println("roomVo ==> " + roomVo);	//
 		
+		//String fileUrl = "http://localhost:8080/upload/";
 		String fileUrl = "C:/Users/pom53/git/hotelPrj/src/main/resources/static/upload/";
 		//중복 방지를 위한 파일명 변경
 		for(MultipartFile file : files) {
@@ -205,14 +206,25 @@ public class RoomServiceimpl implements RoomService {
 		roomMapper.reviewWriteDo(reviewVo);	
 	}
 
+	//리뷰 목록 불러오기
 	@Override
-	public Map<String, Object> reviewList(int roomNo) {
+	public Map<String, Object> reviewList(int page ,int roomNo) {
 		Map<String,Object> map = new HashMap<String, Object>();
-		List<ReviewVo> reviewList = roomMapper.selectReviewList(roomNo);
 		int reviewCount = roomMapper.selectReivewListCount(roomNo);
 		
+		
+		PageUtil paging = new PageUtil();
+		map = paging.getPageNum(page, 20, reviewCount);
+		
+		int startrow = (int)map.get("startrow");
+		int endrow = (int)map.get("endrow");
+		
+		List<ReviewVo> reviewList = roomMapper.selectReviewList(roomNo, startrow, endrow);
+		map.put("page", page);
 		map.put("reviewList", reviewList);
 		map.put("reviewCount", reviewCount);
+		
+		System.out.println(map);
 		
 		return map;
 	

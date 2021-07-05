@@ -4,10 +4,15 @@
 <mapper namespace="com.site.mapper.RoomMapper">
 
 	<select id="selectReviewList" resultType="com.site.vo.ReviewVo">
-	     select w.*, u.userid as userid from review w, user1 u 
-			 where w.userno = u.userno
-			 AND roomno=#{roomno}
-			 order by review_no desc
+	     <![CDATA[
+	     SELECT * FROM
+			(SELECT rownum AS rnum, a.*
+			FROM (select w.*, u.userid as userid from review w, user1 u 
+					 where w.userno = u.userno
+					 AND roomno=#{roomNo}
+					 order by review_no desc) a)
+		WHERE rnum>=#{startrow} AND rnum<=#{endrow}
+		]]>
 	</select>
 	
 		<!-- 댓글수 -->

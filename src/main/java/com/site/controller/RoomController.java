@@ -44,8 +44,8 @@ public class RoomController {
    
    //숙소 상세정보 보기
    @RequestMapping("/rooms-single")
-   public String roomSingle(@RequestParam(value="roomNo") int roomNo,@RequestParam(value="start",defaultValue = "1") String start,@RequestParam(value="end",defaultValue = "1") String end,
-		   HttpServletRequest request, Model model) {
+   public String roomSingle(@RequestParam(value = "page", defaultValue = "1") int page,  @RequestParam(value="roomNo") int roomNo,
+		   @RequestParam(value="start",defaultValue = "1") String start,@RequestParam(value="end",defaultValue = "1") String end, HttpServletRequest request, Model model) {
 	   
 	   //세션으로 유저 정보 얻기
 	   int userno = 0;
@@ -64,11 +64,15 @@ public class RoomController {
 	   
 	   //댓글
 	   Map<String, Object> reviewMap = new HashMap<String, Object>();
-	   reviewMap = roomService.reviewList(roomNo);
+	   reviewMap = roomService.reviewList(page, roomNo);
 	   System.out.println(reviewMap);
 	   
 	   System.out.println("Controller roomVo Test" + roomVo);
 	   System.out.println(" Controller userVo Test " + userVo.getName());
+	   
+	   //페이징
+	   
+	   
 	   
 	   //리뷰저장
 	   model.addAttribute("reviewMap",reviewMap);
