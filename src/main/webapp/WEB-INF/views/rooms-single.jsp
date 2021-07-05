@@ -17,8 +17,7 @@
 	href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
 	rel="stylesheet">
 
-<link rel="stylesheet"
-	href="../static/css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../static/css/animate.css">
 
 <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
@@ -35,15 +34,11 @@
 <link rel="stylesheet" href="../static/css/flaticon.css">
 <link rel="stylesheet" href="../static/css/icomoon.css">
 <link rel="stylesheet" href="../static/css/style.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../static/js/contact.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -67,27 +62,29 @@
 
 	<!-- END nav -->
 
-	<div class="hero-wrap"
-		style="background-image: url('../static/images/bg_1.jpg');">
+	<div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
 		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 		<div class="overlay"></div>
 		<div class="container">
-			<div
-				class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
-				<div
-					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+			<div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+				<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2"
 							data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-							<span class="mr-2"><a href="/">Home</a></span> <span>Room
-								Details</span>
+							<span class="mr-2"><a href="/">Home</a></span> <span>Room Details</span>
 						</p>
-						<h1 class="mb-4 bread">${roomVo.rname }</h1>
+						<h2 class="mb-4 bread">숙소 상세페이지</h2>
+						<br>
+						<br>
+						<br>
+						<br>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		</div>
+	
+	
 	
 	
 	<section class="ftco-section">
