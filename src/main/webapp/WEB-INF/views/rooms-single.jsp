@@ -61,28 +61,24 @@
 <body>
 
 	<!-- END nav -->
+	   <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
-	<div class="hero-wrap" style="background-image: url('../static/images/bg_1.jpg');">
-		<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
-				<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
-					<div class="text">
-						<p class="breadcrumbs mb-2"
-							data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-							<span class="mr-2"><a href="/">Home</a></span> <span>Room Details</span>
-						</p>
-						<h2 class="mb-4 bread">숙소 상세페이지</h2>
-						<br>
-						<br>
-						<br>
-						<br>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
+    <div class="hero-wrap" style="background-image: url('/static/images/bg_1.jpg');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>Room Details</span></p>
+	            <h1 class="mb-4 bread">Room Details</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+
+	
 	
 	
 	
