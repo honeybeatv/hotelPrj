@@ -214,7 +214,7 @@
               <ul class="comment-list">
                 <li class="comment">
                   <div class="comment-body">
-                    <h3>리뷰자 : ${userVo.userid }</h3>
+                    <h3>리뷰자 : ${reviewList.userid }</h3>
                     <div class="meta">숙박기간 : ${reviewList.redate}</div>
                     <p>${reviewList.recontent}</p>
                     <div class="meta" >별점 평가 :
@@ -223,8 +223,8 @@
                     </c:forEach>
 					</div>
                   </div>
-                  
-                </li>
+                </li>                
+                
 <!-- 
                 <li class="comment">
                   <div class="comment-body">
@@ -250,6 +250,9 @@
               
               <!-- END comment-list -->
               
+              <!-- 예약한 이력이 있는 사람만 리뷰창이 뜸 -->
+              <c:if test="${reserveVo.userno == userVo.userno }">
+         
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>
                <!-- 여기 폼 -->
@@ -317,6 +320,7 @@
                   </div>
                 </form>
               </div>
+              </c:if>
 				<!-- 리뷰 끝 -->
 		</div>
 	</section>
