@@ -43,14 +43,7 @@ public class RoomServiceimpl implements RoomService {
 				
 	    List<RoomVo> list = roomMapper.selectSearchList(startday,endday,rcity,rpeople, startrow, endrow);
 		System.out.println(list);
-	    //Map<String, Object> listAndNums = new HashMap<String, Object>();
 		
-	    //페이징용 숫자들
-	    //listAndNums.put("startrow", pageNums.get("startrow"));
-	    //listAndNums.put("endrow", pageNums.get("endrow"));
-	    //listAndNums.put("startPage", pageNums.get("startPage"));
-	    //listAndNums.put("endPage", pageNums.get("endPage"));
-	    //listAndNums.put("maxPage", pageNums.get("maxPage"));
 		listAndNums.put("page", listPage);
 		listAndNums.put("listCount", listCount);
 		listAndNums.put("list", list);
@@ -72,8 +65,6 @@ public class RoomServiceimpl implements RoomService {
 	   Map<String, Object> listAndNums = new HashMap<String, Object>();
 	   listAndNums= paging.getPageNum(page, 9, listCount);	//현재 페이지, 한 페이지에 표시될 갯수, 전체 갯수
 	   
-	   //pageNums.put("page", page);
-	   //pageNums.put("listCount", listCount);
 	   System.out.println(listAndNums);
 	   
 	   int startrow = (int)listAndNums.get("startrow");
@@ -128,9 +119,7 @@ public class RoomServiceimpl implements RoomService {
 	@Override
 	public void roomsWriteDo(RoomVo roomVo,List<MultipartFile> files) {
 		int i = 0;
-//		int userNo = userVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 
 		int userNo = roomVo.getUserno();	// userNo 가져온다?  이게 왜 null이나옴? 이게 6이 뽑혀야하는데 0이나오네?
-//		roomVo.setUserno(userNo);			// 받아온 userNo를 roomVo의 userNo에 대입?
 		if( roomVo.getRsmoke()==null) {
 			roomVo.setRsmoke("nosmoke");
 		}
@@ -142,8 +131,8 @@ public class RoomServiceimpl implements RoomService {
 		
 		System.out.println("roomVo ==> " + roomVo);	//
 		
-		String fileUrl = "C:/";
-		//String fileUrl = "C:/Users/pom53/git/hotelPrj/src/main/resources/static/upload/";
+		//String fileUrl = "C:/";
+		String fileUrl = "C:/Users/pom53/git/hotelPrj/src/main/resources/static/upload/";
 		//중복 방지를 위한 파일명 변경
 		for(MultipartFile file : files) {
 			i++;
@@ -236,9 +225,5 @@ public class RoomServiceimpl implements RoomService {
 		
 		return reviewListAll;
 	}
-
-	
-
-
    
 }
