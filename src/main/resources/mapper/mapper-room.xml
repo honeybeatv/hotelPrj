@@ -148,11 +148,11 @@
 	<!-- 예약 기간 가져오기 -->
 	<select id="selectReserveDate" resultType="com.site.vo.ReserveVo">
 		<![CDATA[
-			SELECT TO_CHAR(startday, 'yyyy-MM-dd') as startday, TO_CHAR(endday, 'yyyy-MM-dd') as endday, roomno, userno
+			SELECT TO_CHAR(startday, 'yyyy-MM-dd') as startday, TO_CHAR(endday, 'yyyy-MM-dd') as endday, roomno as roomno, userno as userno
 				FROM
 					(SELECT v.startday, v.endday, v.roomno, v.userno 
-					FROM review w, reserve v
-					WHERE w.userno=v.userno
+					FROM reserve v, user1 u
+					WHERE v.userno = u.userno
 					AND v.roomno=#{roomNo}
 					AND v.userno=#{userno}
 					ORDER BY v.startday DESC)
