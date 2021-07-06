@@ -144,9 +144,14 @@
 					<div class="col-sm-7">
 						<select name="rtype" id="rtype">
 							<option value="아파트">아파트</option>
-		                     <option value="공동주택">공동주택</option>
 		                     <option value="빌라">빌라</option>
-		                     <option value="호탤">호텔</option>
+		                     <option value="오피스텔">오피스텔</option>
+		                     <option value="전원주택">전원주택</option>
+		                     <option value="공동주택">공동주택</option>
+		                     <option value="호텔">호텔</option>
+		                     <option value="리조트">리조트</option>
+		                     <option value="펜션">펜션</option>
+	                    	<option value="기타">기타</option>
 						</select>
 					</div>
 				</div>

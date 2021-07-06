@@ -62,7 +62,7 @@ public class RoomController {
 	   ReserveVo reserveVo = roomService.selectReserveDate(roomNo, userno);
 	   System.out.println("숙소 예약날짜" + reserveVo);
 	   
-	   //댓글
+	   //리뷰
 	   Map<String, Object> reviewMap = new HashMap<String, Object>();
 	   reviewMap = roomService.reviewList(page, roomNo);
 	   System.out.println(reviewMap);
