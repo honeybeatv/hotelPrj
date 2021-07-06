@@ -68,7 +68,9 @@ public class RoomController {
 	   System.out.println(reviewMap);
 	   
 	   System.out.println("Controller roomVo Test" + roomVo);
-	   System.out.println(" Controller userVo Test " + userVo.getName());
+	   System.out.println(" Controller userVo Test " + userVo);
+	   System.out.println(" Controller ReserveVo Test " + reserveVo);
+	   
 	   	   
 	   //리뷰저장
 	   model.addAttribute("reviewMap",reviewMap);

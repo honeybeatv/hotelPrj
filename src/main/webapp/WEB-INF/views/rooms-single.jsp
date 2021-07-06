@@ -241,7 +241,7 @@
               <!-- END comment-list -->
               
               <!-- 예약한 이력이 있는 사람만 리뷰창이 뜸 -->
-              <c:if test="${reserveVo.userno == userVo.userno }">
+              <c:if test="${reserveVo.userno == session_userno && session_userno!=null}">
          
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>

@@ -3,6 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
+  <c:if test="${session_flag==null || session_flag=='fail' }">
+	<script type="text/javascript">
+		alert("로그인을 하셔야 예약이 가능합니다.")
+	</script>
+	<c:redirect url="../user/login" />
+</c:if>
+  
     <title>MyPage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

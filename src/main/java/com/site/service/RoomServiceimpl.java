@@ -186,6 +186,7 @@ public class RoomServiceimpl implements RoomService {
 	public ReserveVo selectReserveDate(int roomNo, int userno) {
 		System.out.println("service" + roomNo + ", " + userno);
 		ReserveVo reserveVo = roomMapper.selectReserveDate(roomNo, userno);
+		System.out.println("service out : " +  reserveVo);
 		return reserveVo;
 	}
 
