@@ -7,15 +7,10 @@
 <title>Deluxe</title>
 
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
-	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
 
 <link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../static/css/animate.css">
@@ -34,8 +29,6 @@
 <link rel="stylesheet" href="../static/css/flaticon.css">
 <link rel="stylesheet" href="../static/css/icomoon.css">
 <link rel="stylesheet" href="../static/css/style.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -114,12 +107,15 @@
 								<ul class="list">
 									<li><span>방 타입: </span> ${roomVo.rtype }</li>
 									<li><span>가용인원: </span>${roomVo.rpeople }명</li>
-									<li><span>주소: </span>${roomVo.raddress }</li>
+									<li><span>1박 가격: </span>${roomVo.rprice }원</li>
 								</ul>
 								<ul class="list ml-md-5">
-									<li><span>편의 시설: </span> <c:if
-											test="${roomVo.rsmoke ne null }">흡연실</c:if> <c:if
-											test="${roomVo.rpet ne null }">, 반려동물</c:if></li>
+									<li><span>편의 시설: </span> 
+										<c:if test="${roomVo.rsmoke ne 'nosmoke' }"> 흡연실, </c:if>
+										<c:if test="${roomVo.rsmoke ne 'smoke' }"> 금연실, </c:if>
+										<c:if test="${roomVo.rpet ne 'nopet' }"> 반려동물 동반 가능</c:if>
+										<c:if test="${roomVo.rpet ne 'pet' }"> 반려동물 동반 불가</c:if>
+									</li>
 									<li><span>침대 갯수: </span>${roomVo.rbed }개</li>
 									<li><span>도시: </span>${roomVo.rcity }</li>
 								</ul>

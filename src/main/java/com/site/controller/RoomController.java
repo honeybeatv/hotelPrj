@@ -69,11 +69,7 @@ public class RoomController {
 	   
 	   System.out.println("Controller roomVo Test" + roomVo);
 	   System.out.println(" Controller userVo Test " + userVo.getName());
-	   
-	   //페이징
-	   
-	   
-	   
+	   	   
 	   //리뷰저장
 	   model.addAttribute("reviewMap",reviewMap);
 	   model.addAttribute("roomVo", roomVo);

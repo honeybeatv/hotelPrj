@@ -66,6 +66,22 @@ public class UserServiceImpl implements UserService {
 		Map<String, Object> userHostingViewMap = new HashMap<String, Object>();
 		
 		List<RoomVo> userHostingViewList = userMapper.selectUserHostingViewList(userno);
+		
+		for(RoomVo vo : userHostingViewList) {
+			if(vo.getRsmoke().equals("smoke")) {
+				vo.setRsmoke("흡연실");
+			}else {
+				vo.setRsmoke("금연실");
+			}
+			
+			if(vo.getRpet().equals("pet")) {
+				vo.setRpet("반려동물 가능");
+			}else {
+				vo.setRpet("반려동물 불가");
+			}
+		}
+		
+		
 		userHostingViewMap.put("userHostingViewList", userHostingViewList);
 
 		return userHostingViewMap;
