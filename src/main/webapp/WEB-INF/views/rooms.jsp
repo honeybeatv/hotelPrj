@@ -57,7 +57,7 @@
 		    			<c:forEach var="list" items="${listAndNums.list }" > 
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
-		    					<a href="rooms-single?roomNo=${list.roomNo }&start=${start }&end=${end }" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
+		    					<a href="rooms-single?roomNo=${list.roomNo }&start=${start }&end=${end }" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/upload/${list.rpicture1});">
 		    						<div class="icon d-flex justify-content-center align-items-center">
 		    							<span class="icon-search2"></span>
 		    						</div>
@@ -211,7 +211,7 @@
 			       <!-- 번호 넣기 -->
 			      <c:forEach var="nowPage" begin="${listAndNums.startPage }" end="${listAndNums.endPage }">
 			      	<c:if test="${listAndNums.page == nowPage }">
-			      	  <li><a>${nowPage }</a></li>
+			      	  <span><li class="active"><a>${nowPage }</a></li></span>
 				    </c:if>
 				    <c:if test="${listAndNums.page != nowPage }">
 			      	  <li>
@@ -245,7 +245,7 @@
 			       <!-- 번호 넣기 -->
 			      <c:forEach var="nowPage" begin="${listAndNums.startPage }" end="${listAndNums.endPage }">
 			      	<c:if test="${listAndNums.page == nowPage }">
-			      	  <li><a>${nowPage }</a></li>
+			      	  <li class="active"><a>${nowPage }</a></li>
 				    </c:if>
 				    <c:if test="${listAndNums.page != nowPage }">
 			      	  <li>
