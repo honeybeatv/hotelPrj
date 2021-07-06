@@ -120,7 +120,7 @@
 			    						</ul>	
 			    						<hr>
 			    						<p class="pt-1">
-			    						<c:if test="${vo.status.equals('normal') }">
+			    						<c:if test="${vo.status.equals('대기중') }">
 			    							<a><button type="button" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="approve('${vo.re_no }')">승인</button></a>
 			    							<a><button type="button" class="btn py-3 px-5" style="background-color:#8D703B; color:white;" onclick="reject('${vo.re_no }')">거부</button></a>
 			    						</p>

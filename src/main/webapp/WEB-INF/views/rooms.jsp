@@ -177,7 +177,7 @@
 			       <!-- 번호 넣기 -->
 			      <c:forEach var="nowPage" begin="${listAndNums.startPage }" end="${listAndNums.endPage }">
 			      	<c:if test="${listAndNums.page == nowPage }">
-			      	  <li><a>${nowPage }</a></li>
+			      	  <span><li class="active"><a>${nowPage }</a></li></span>
 				    </c:if>
 				    <c:if test="${listAndNums.page != nowPage }">
 			      	  <li>
@@ -211,7 +211,7 @@
 			       <!-- 번호 넣기 -->
 			      <c:forEach var="nowPage" begin="${listAndNums.startPage }" end="${listAndNums.endPage }">
 			      	<c:if test="${listAndNums.page == nowPage }">
-			      	  <li><a>${nowPage }</a></li>
+			      	  <li class="active"><a>${nowPage }</a></li>
 				    </c:if>
 				    <c:if test="${listAndNums.page != nowPage }">
 			      	  <li>
