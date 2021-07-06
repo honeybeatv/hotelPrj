@@ -324,7 +324,7 @@
 							<!-- 번호 넣기 -->
 							<c:forEach var="x" begin="${reviewMap.startPage}" end="${reviewMap.endPage }">
 								<c:if test="${reviewMap.page == x }">
-									<li><a>${x}</a></li>
+									<span><li class="active"><a>${x}</a></li></span>
 								</c:if>
 								<c:if test="${reviewMap.page != x }">
 									<li><a href="/room/rooms-single?page=${x}&roomNo=${roomVo.roomNo }&start=${start }&end=${end }#review">${x}</a></li>
