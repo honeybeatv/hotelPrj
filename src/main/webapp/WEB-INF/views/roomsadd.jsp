@@ -144,11 +144,11 @@
 					<div class="col-sm-7">
 						<select name="rtype" id="rtype">
 							<option value="아파트">아파트</option>
-		                     <option value="집">주택</option>
+		                    <!--  <option value="집">주택</option> -->
 		                     <option value="공동주택">공동주택</option>
-		                     <option value="호탤">호텔</option>
-		                     <option value="레지던스">레지던스</option>
-		                     <option value="호스텔">호스텔</option>
+		                     <option value="호텔">호텔</option>
+		                    <!--  <option value="레지던스">레지던스</option>
+		                     <option value="호스텔">호스텔</option> -->
 	                    	<option value="기타">기타</option>
 						</select>
 					</div>

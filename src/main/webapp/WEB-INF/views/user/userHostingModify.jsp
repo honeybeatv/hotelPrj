@@ -87,8 +87,8 @@
 		                     <option value="집" ${(roomVo.rtype eq '집')? 'selected' : '' }>주택</option>
 		                     <option value="공동주택" ${(roomVo.rtype eq '공동주택')? 'selected' : '' }>공동주택</option>
 		                     <option value="호텔" ${(roomVo.rtype eq '호텔')? 'selected' : '' }>호텔</option>
-		                     <option value="레지던스" ${(roomVo.rtype eq '레지던스')? 'selected' : '' }>레지던스</option>
-		                     <option value="호스텔" ${(roomVo.rtype eq '호스텔')? 'selected' : '' }>호스텔</option>
+		                    <%--  <option value="레지던스" ${(roomVo.rtype eq '레지던스')? 'selected' : '' }>레지던스</option>
+		                     <option value="호스텔" ${(roomVo.rtype eq '호스텔')? 'selected' : '' }>호스텔</option> --%>
 	                    	<option value="기타" ${(roomVo.rtype eq '기타')? 'selected' : '' }>기타</option>
 <%-- 
 							<option value="apt" ${(roomVo.rtype eq 'apt')? 'selected' : '' }>아파트</option>
