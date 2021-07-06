@@ -3,38 +3,84 @@
 
 <mapper namespace="com.site.mapper.RoomMapper">
 
+	<select id="selectReviewList" resultType="com.site.vo.ReviewVo">
+	     <![CDATA[
+	     SELECT * FROM
+			(SELECT rownum AS rnum, a.*
+			FROM (select w.*, u.userid as userid from review w, user1 u 
+					 where w.userno = u.userno
+					 AND roomno=#{roomNo}
+					 order by review_no desc) a)
+		WHERE rnum>=#{startrow} AND rnum<=#{endrow}
+		]]>
+	</select>
+	
+		<!-- 댓글수 -->
+	<select id="selectReivewListCount" resultType="int">
+	   select count(*) from review where roomno=#{roomno}
+	</select>
+	
+	
 	<!-- index에서 검색시 -->
-	<select id="getlist" resultType="com.site.vo.RoomVo">
+	<!-- search 페이징용 게시글 카운트 -->
+	<select id="selectSearchCount" resultType="int">
 		<![CDATA[
-			SELECT * FROM room 
+			SELECT COUNT(*) FROM room 
    				WHERE roomno NOT IN(SELECT distinct ro.roomno 
 			    FROM reserve re RIGHT JOIN room ro
 				ON re.roomno = ro.roomno
-			    WHERE (TO_DATE(#{start}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
-			    AND (TO_DATE(#{end}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
-				and rcity = #{city}
-				and rpeople >= #{people}
+			    WHERE (TO_DATE(#{startday}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+			    AND (TO_DATE(#{endday}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+				and rcity = #{rcity}
+				and rpeople >= #{rpeople}
 	]]>
 	</select>
+	
+	<!-- search메소드 페이징용 게시글 리스트 -->
+	<select id="selectSearchList" resultType="com.site.vo.RoomVo">
+		<![CDATA[
+    	SELECT * FROM
+			(SELECT rownum AS rnum, a.*
+				FROM (SELECT * FROM room 
+   				WHERE roomno NOT IN(SELECT distinct ro.roomno 
+			    FROM reserve re RIGHT JOIN room ro
+				ON re.roomno = ro.roomno
+			    WHERE (TO_DATE(#{startday}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+			    AND (TO_DATE(#{endday}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+				and rcity = #{rcity}
+				and rpeople >= #{rpeople}) a)
+		WHERE rnum>=#{startrow} AND rnum<=#{endrow}
+		]]>
+	</select>
+	
 
 	<!-- 전체 room 정보 가져오기 -->
 	<select id="selectroomsListAll" resultType="com.site.vo.RoomVo">
-   		 select * from room order by roomNo desc
+   		 <![CDATA[
+	 select * from
+	(select rownum as rnum, a.* from
+	(select * from room order by roomno desc) a) where rnum >=#{startrow} and rnum <=#{endrow}
+	]]>
+	</select>
+	
+	<!-- 전체 room 정보 가져오기 -->
+	<select id="selectRoomCount" resultType="int">
+   		 select count(*) from room
 	</select>
 
 	<!-- 글쓰기 저장 -->
-	<insert id="insertRoomsWriteDo" parameterType="com.site.vo.RoomVo">
+	 <insert id="insertRoomsWriteDo" parameterType="com.site.vo.RoomVo">
 	  <![CDATA[
 	  INSERT INTO ROOM VALUES
-	  (seq_room.nextval, #{rtype}, #{rpeople}, #{rinfo}, #{rpicture}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet}, #{raddress}, #{rname}, #{userno})
+	  (seq_room.nextval, #{rtype}, #{rpeople}, #{rinfo}, #{rcity}, #{rprice}, #{rroom}, #{rbed}, #{rsmoke}, #{rpet}, #{raddress}, #{rname}, #{userno},#{rpicture1},#{rpicture2},#{rpicture3})
 	  ]]>
-	</insert>
+	</insert> 
+	
 
-
-	<!-- 상세 조건 검색 -->
-	<select id="selectAdvancedRoomList" resultType="com.site.vo.RoomVo">
+	<!-- AdvancedSearch 페이징용 글 개수 구하기 -->
+	<select id="selectAdvancedSearchCount" resultType="int">
 		<![CDATA[
-	    		SELECT * FROM room 
+	    		SELECT COUNT(*) FROM room 
    					WHERE roomno NOT IN(SELECT distinct ro.roomno 
 			            FROM reserve re RIGHT JOIN room ro
 						ON re.roomno = ro.roomno
@@ -49,7 +95,85 @@
 				    AND rsmoke = #{rsmoke}
 				    AND #{minPrice}<=rprice AND rprice<=#{maxPrice}
   		]]>
-
 	</select>
+		
+	<!-- AdvancedSearch 페이징용 상세 검색 쿼리 -->
+	<select id="selectAdvancedRoomListPage" resultType="com.site.vo.RoomVo">
+		<![CDATA[
+    	SELECT * FROM
+			(SELECT rownum AS rnum, a.*
+				FROM (SELECT * FROM room 
+   					WHERE roomno NOT IN(SELECT distinct ro.roomno 
+			            FROM reserve re RIGHT JOIN room ro
+						ON re.roomno = ro.roomno
+			            WHERE (TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
+			            AND (TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
+				    AND rcity = #{rcity}
+				    AND rpeople >= #{rpeople}
+				    AND rtype = #{rtype}
+				    AND rroom >= #{rroom}
+				    AND rbed >= #{rbed}
+				    AND rpet = #{rpet}
+				    AND rsmoke = #{rsmoke}
+				    AND #{minPrice}<=rprice AND rprice<=#{maxPrice}) a)
+		WHERE rnum>=#{startRow} AND rnum<=#{endrow}
+		]]>
+	</select>
+	
+	<!-- 숙소 상세정보 -->
+	<select id="roomSingle" resultType="com.site.vo.RoomVo">
+	select * from room where roomno=#{roomno}
+	</select>
+	
+	<select id="findOtherRoom" resultType="com.site.vo.RoomVo">
+	SELECT 	roomno,
+			rname,
+			rprice,
+			rtype,
+			CASE
+				WHEN #{roomNo} > roomno THEN 'N'
+				WHEN #{roomNo} <![CDATA[<]]> roomno THEN 'Y'
+			END PREVYN
+	FROM 	room
+	WHERE 	roomno IN (#{roomNo} + 1, #{roomNo} - 1)
+	</select>
+	
+	<!-- 예약버튼 누를시 유저정보 가져오기 -->
+	<select id="userInfo" resultType="com.site.vo.UserVo">
+	
+	SELECT * FROM USER1 WHERE userno=#{userno}
+		
+	</select>
+	
+	<!-- 예약 기간 가져오기 -->
+	<select id="selectReserveDate" resultType="com.site.vo.ReserveVo">
+		<![CDATA[
+			SELECT TO_CHAR(startday, 'yyyy-MM-dd') as startday, TO_CHAR(endday, 'yyyy-MM-dd') as endday, roomno as roomno, userno as userno
+				FROM
+					(SELECT v.startday, v.endday, v.roomno, v.userno 
+					FROM reserve v, user1 u
+					WHERE v.userno = u.userno
+					AND v.roomno=#{roomNo}
+					AND v.userno=#{userno}
+					ORDER BY v.startday DESC)
+				WHERE rownum<=1
+		]]>
+	</select>
+	<select id="selectReviewListAll" resultType="com.site.vo.ReviewVo">
+
+	select * FROM Review
+	
+</select>
+	
+	<!-- 리뷰 저장하기 -->
+	<insert id="reviewWriteDo" parameterType="com.site.vo.ReviewVo">
+		<![CDATA[
+			INSERT INTO review VALUES (seq_review.nextval, #{roomno}, #{userno}, #{redate}, #{recontent}, #{rescore}, #{reviewpw})
+		]]>
+		
+	
+	</insert>
+	
+	
 
 </mapper>

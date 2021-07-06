@@ -106,7 +106,7 @@
 					</tr>
 					
 					<c:forEach var="roomVo" items="${userHostingViewMap.userHostingViewList }">
-						<form action="userHostingModify" method="post">
+						<form action="../user/userHostingModify" method="post">
 							<tr id="${roomVo.roomNo}">
 								<td><a href="/room/rooms-single?roomNo=${roomVo.roomNo}">${roomVo.rname}</a></td>
 								<td>${roomVo.rcity}</td>

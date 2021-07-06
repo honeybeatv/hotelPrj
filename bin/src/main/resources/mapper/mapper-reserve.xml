@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.site.mapper.ReserveMapper">
+
+<select id="selectReserveListAll" resultType="com.site.vo.ReserveVo">
+
+	select * FROM RESERVE
+	
+</select>
+
+	<select id="roomReserve" resultType="com.site.vo.RoomVo">
+		
+	SELECT * FROM room WHERE ROOMNO=#{roomNo}
+	
+			
+	</select>
+	
+	
+	<select id="findOtherRoom" resultType="com.site.vo.ReserveVo">
+		
+		SELECT * 
+	  		  FROM reserve 
+	  		 WHERE re_no=#{re_no}
+			
+	</select>
+
+	<select id="insertRoomReserve" resultType="com.site.vo.ReserveVo">
+		
+		<![CDATA[
+		insert into reserve values(seq_reserve.nextval, #{roomNo}, '대기중', #{startday}, #{endday}, #{userno}, #{request}, sysdate, '')
+			]]>
+			
+		</select>
+
+
+</mapper>

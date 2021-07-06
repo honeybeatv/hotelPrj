@@ -3,6 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  
+  <c:if test="${session_flag==null || session_flag=='fail' }">
+	<script type="text/javascript">
+		alert("로그인을 하셔야 예약이 가능합니다.")
+	</script>
+	<c:redirect url="../user/login" />
+</c:if>
+  
     <title>MyPage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,8 +64,8 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
-            <form action="userInfoModify" class="bg-white p-5 " width="100%">
-			<input type="hidden" id="userno" name="userno" value="${userVo.userno}" >            
+            <form action="userInfoModify" class="bg-white p-5 " width="100%" method="post">
+			<input type="hidden" id="userno" name="userno" value="${session_userno}" >            
             
             	<div class="form-inline form-group">
 					<label for="name" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>

@@ -30,8 +30,26 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
  	<script type="text/javascript">
- 	
-  	</script>
+ 		function ajax_adminUsersDelete(userno){
+ 			if(confirm("회원을 삭제하시겠습니까?")){
+ 				  $.ajax({
+ 						 url:'./adminUsersDelete',     
+ 						 type:'post',
+ 						 data:{
+ 							 "userno":userno
+ 						 },
+ 						 success:function(data){
+ 							 alert(data.msg);
+ 							 var html="";
+ 							 $('#'+userno).remove();
+ 						 },
+ 						 error:function(){
+ 							 alert("에러");
+ 						 }
+ 				  });
+ 			  }else{return false;}
+ 		}
+	</script>
   	
   </head>
   <body>
@@ -44,7 +62,7 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>Administration</span></p>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home</a></span> <span>Administration</span></p>
 	            <h1 class="mb-4 bread"></h1>
             </div>
           </div>
@@ -55,8 +73,8 @@
 	<c:import url="/WEB-INF/views/admin/administrationCategory.jsp"></c:import>
 
 	<section position="relative" width="100%" display="block" align="center" padding="2em">
-		<div  class="col-12" style="display:inline-block;" >
-            <form class="bg-white p-2 " width="100%">
+		<div  class="col-11" style="display:inline-block;" >
+            <form class="bg-white p-2 " width="80%" method="post">
 				<table width="100%" >
 				
 					<tr>
@@ -65,10 +83,8 @@
 						<td width="16%">아이디</td>
 						<td width="16%">비밀번호</td>
 						<td width="16%">핸드폰번호</td>
-						
 						<td width="20%">이메일</td>
-						<td width="3%">   </td>
-						<td width="3%">	  </td>
+						<td width="6%">   </td>
 					</tr>
 
 					<tr height="1" bgcolor="#8f784b ">
@@ -77,55 +93,50 @@
 
 					<c:forEach var="userVo" items="${map.list }">
 						<tr id="${userVo.userno}">
-							<td>
-								<a href="adminInfoView?userno=${userVo.userno}">${userVo.userno}</a>
-							</td>
-							<td>${userVo.name}</td>							
-							<td>${userVo.userid}</td>							
-							<td>${userVo.userpw}</td>							
-							<td>${userVo.uphone}</td>							
-									
-							<td>${userVo.uemail}</td>		
-								
+							<td>${userVo.userno}</td>
+							<td>${userVo.name}</td>
+							<td>${userVo.userid}</td>
+							<td>${userVo.userpw}</td>
+							<td>${userVo.uphone}</td>
+							<td>${userVo.uemail}</td>
+							<td><button type="button" class=" btn-light" onclick="ajax_adminUsersDelete('${userVo.userno}')">삭제</button></td>
 						</tr>
 					</c:forEach>
 
 				</table>
+				</div>
+
+				
+
 				<!-- 하단 넘버링 -->
-    <ul class="page-num">
-      <a href="./administrationUsersView?page=1"><li class="first"></li></a>
-      <!-- 이전페이지는 1이상일때 -1을 해줌, 1일때는 링크 삭제시킴 -->
-      <c:if test="${map.page<=1 }">
-        <li class="prev"></li>
-      </c:if>
-      <c:if test="${map.page>1}">
-        <a href="./administrationUsersView?page=${map.page-1 }"><li class="prev"></li></a>
-      </c:if>
-      
-      <!-- 번호넣기 -->
-      <c:forEach var="nowPage" begin="${map.startPage}" end="${map.endPage }">
-        <c:if test="${map.page == nowPage }">
-          <li class="num"><div>${nowPage}</div></li>
-        </c:if>
-        <c:if test="${map.page != nowPage }">
-          <li class="num">
-            <a href="./administrationUsersView?page=${nowPage}"><div>${nowPage}</div></a>
-          </li>
-        </c:if>
-      </c:forEach>
-      <!-- 다음페이지는 max보다 작을때 +1 증가, max보다 크거나 같을때 링크 삭제시킴 -->
-      <c:if test="${map.page>=map.maxPage }">
-        <li class="next"></li>
-      </c:if>
-      <c:if test="${map.page<map.maxPage }">
-        <a href="./administrationUsersView?page=${map.page+1 }"><li class="next"></li></a>
-      </c:if>
-      <!-- 마지막페이지 이동 -->
-      <a href="./administrationUsersView?page=${map.maxPage }"><li class="last"></li></a>
-    </ul>
+<!--     <ul class="page-num"> -->
+		<div class="text-center">
+			<div class="block-27">
+				<ul>
+					<c:if test="${map.page > 1 }">
+						<li><a href="./adminUsersView?page=${map.page-1 }">&lt;</a></li>
+					</c:if>
+					<!-- 번호 넣기 -->
+					<c:forEach var="x" begin="${map.startPage}" end="${map.endPage }">
+						<c:if test="${map.page == x }">
+							<span><li class="active"><a>${x}</a></li></span>
+						</c:if>
+						<c:if test="${map.page != x }">
+							<li><a href="./adminUsersView?page=${x}">${x}</a></li>
+						</c:if>
+					</c:forEach>
+					<!-- 번호 넣기 끝 -->
+					<c:if test="${map.page < map.maxPage }">
+						<li><a href="./adminUsersView?page=${map.page+1 }">&gt;</a></li>
+					</c:if>
+				</ul>
+			</div>
+
+				
+			   
     <!-- 하단 넘버링 끝 -->
             </form>
-          </div>
+        
     </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>

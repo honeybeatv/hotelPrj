@@ -42,91 +42,172 @@
 
    <c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
-    <div class="hero-wrap" style="background-image: url('/static/images/bg_1.jpg');">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
-          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
-          	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="../main/index">Home</a></span> <span>mypage</span></p>
-	            <h1 class="mb-4 bread">Hosting</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+	<div class="hero-wrap"
+		style="background-image: url('/static/images/bg_1.jpg');">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+				<div
+					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+					<div class="text">
+						<p class="breadcrumbs mb-2">
+							<span class="mr-2"><a href="index">Home</a></span> <span>숙소 수정</span>
+						</p>
+						<h1 class="mb-4 bread">숙소 수정</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<c:import url="/WEB-INF/views/user/mypageCategory.jsp"></c:import>
 
-	<section position="relative" width="100%" display="block" align="center" padding="2em">
-		<div  class="col-12" style="display:inline-block;" >
-			
-            <form action="userHostingModifyDo" class="bg-white p-2 " width="100%">
-				<table width="100%" >
+	<section class="ftco-section contact-section bg-light" align="center">
+		<div class="col-10" style="display: inline-block;">
+			<c:forEach var="roomVo" items="${userHostingModifyMap.userHostingModifyList }">
+			<form action="userHostingModifyDo" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
+
+				<div class="form-inline form-group">
+					<label for="userid" class="col-sm-2 control-label"style="font-weight: bolder;">방이름</label> 
+					<div class="col-sm-7">
+						<input type="text" class="form-control" style="width: 100%;" id="rname" name="rname" value="${roomVo.rname }">
+					</div>
+					<input type="hidden"id="userno" name="userno" value="${session_userno }">
+					<input type="hidden"id="roomNo" name="roomNo" value="${roomVo.roomNo }">
+				</div>
+
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label"
+						style="font-weight: bolder;">방종류</label>
+					<div class="col-sm-7">
+						<select name="rtype" id="rtype">
+
+							<option value="아파트" ${(roomVo.rtype eq '아파트')? 'selected' : '' }>아파트</option>
+		                     <option value="빌라" ${(roomVo.rtype eq '빌라')? 'selected' : '' }>빌라</option>
+		                     <option value="오피스텔" ${(roomVo.rtype eq '오피스텔')? 'selected' : '' }>오피스텔</option>
+		                     <option value="전원주택" ${(roomVo.rtype eq '전원주택')? 'selected' : '' }>전원주택</option>
+		                     <option value="공동주택" ${(roomVo.rtype eq '공동주택')? 'selected' : '' }>공동주택</option>
+		                     <option value="호텔" ${(roomVo.rtype eq '호텔')? 'selected' : '' }>호텔</option>
+		                     <option value="리조트" ${(roomVo.rtype eq '리조트')? 'selected' : '' }>리조트</option>
+		                     <option value="펜션" ${(roomVo.rtype eq '펜션')? 'selected' : '' }>펜션</option>
+	                    	<option value="기타" ${(roomVo.rtype eq '기타')? 'selected' : '' }>기타</option>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label"
+						style="font-weight: bolder;">인원수</label>
+					<div class="col-sm-7">
+						<select name="rpeople" id="rpeople">
+						<option value="" selected>인원수</option>
+							<option value="1" ${(roomVo.rpeople eq '1')? 'selected' : '' }>1명</option>
+							<option value="2" ${(roomVo.rpeople eq '2')? 'selected' : '' }>2명</option>
+							<option value="3" ${(roomVo.rpeople eq '3')? 'selected' : '' }>3명</option>
+							<option value="4" ${(roomVo.rpeople eq '4')? 'selected' : '' }>4명</option>
+							<option value="5" ${(roomVo.rpeople eq '5')? 'selected' : '' }>5명</option>
+							<option value="6" ${(roomVo.rpeople eq '6')? 'selected' : '' }>6명 이상</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">방정보</label>
+					<div class="col-sm-7">
+						<textarea name="rinfo" cols="65" rows="10" id="rinfo">${roomVo.rinfo }</textarea>
+					</div>
+				</div>
+
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">사진</label>
+					<img src="http://localhost:8000/upload/${roomVo.rpicture1 }">
+					<img src="http://localhost:8000/upload/${roomVo.rpicture2 }">
+					<img src="http://localhost:8000/upload/${roomVo.rpicture3 }">
+					<input multiple="multiple" type="file" class="" style="padding-left: 15px; width: 15%; text-align: left;" id="file" name="file" accept=".gif, .jpg, .png" onchange="loadFile(event)">
+					<span style="font-size:10px; color: gray;">※사진은 최대 3개까지 등록이 가능합니다.</span>	
+				</div>
+
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label"
+						style="font-weight: bolder;">도시</label>
+					<div class="col-sm-7">
+
+						<select id="rcity" name="rcity">
+							<option value="" selected>지역</option>
+							<option value="서울" ${(roomVo.rcity eq '서울')? 'selected' : '' }>서울</option>
+							<option value="인천" ${(roomVo.rcity eq '인천')? 'selected' : '' }>인천</option>
+							<option value="세종" ${(roomVo.rcity eq '세종')? 'selected' : '' }>세종</option>
+							<option value="대전" ${(roomVo.rcity eq '대전')? 'selected' : '' }>대전</option>
+							<option value="대구" ${(roomVo.rcity eq '대구')? 'selected' : '' }>대구</option>
+							<option value="울산" ${(roomVo.rcity eq '울산')? 'selected' : '' }>울산</option>
+							<option value="부산" ${(roomVo.rcity eq '부산')? 'selected' : '' }>부산</option>
+							<option value="광주" ${(roomVo.rcity eq '광주')? 'selected' : '' }>광주</option>
+							<option value="제주" ${(roomVo.rcity eq '제주')? 'selected' : '' }>제주</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label"
+						style="font-weight: bolder;">1박 가격</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" style="width: 100%;" id="rprice" name="rprice" value="${roomVo.rprice }">
+					</div>
+				</div>
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label"
+						style="font-weight: bolder;">침실수</label>
+					<div class="col-sm-7">
+						<select name="rroom" id="rroom">
+							<option value="1" ${(roomVo.rroom eq '1')? 'selected' : '' }>침실 1</option>
+							<option value="2" ${(roomVo.rroom eq '2')? 'selected' : '' }>침실 2</option>
+		                    <option value="3" ${(roomVo.rroom eq '3')? 'selected' : '' }>침실 3</option>
+		                    <option value="4" ${(roomVo.rroom eq '4')? 'selected' : '' }>침실 4</option>
+		                    <option value="5" ${(roomVo.rroom eq '5')? 'selected' : '' }>침실 5</option>
+		                    <option value="6" ${(roomVo.rroom eq '6')? 'selected' : '' }>침실 6</option>
+	                    	<option value="7" ${(roomVo.rroom eq '7')? 'selected' : '' }>침실 7 이상</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label"
+						style="font-weight: bolder;">침대수</label>
+					<div class="col-sm-7">
+						<select name="rbed" id="rbed">
+							<option value="1" ${(roomVo.rbed eq '1')? 'selected' : '' }>침대 1</option>
+	                      	<option value="2" ${(roomVo.rbed eq '2')? 'selected' : '' }>침대 2</option>
+	                      	<option value="3" ${(roomVo.rbed eq '3')? 'selected' : '' }>침대 3</option>
+	                      	<option value="4" ${(roomVo.rbed eq '4')? 'selected' : '' }>침대 4</option>
+	                      	<option value="5" ${(roomVo.rbed eq '5')? 'selected' : '' }>침대 5</option>
+	                      	<option value="6" ${(roomVo.rbed eq '6')? 'selected' : '' }>침대 6</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
 				
-					<tr>
-						<td width="10%">숙소이름</td>
-						<td width="5%">지역</td>
-						<td width="6%">종류</td>
-						<td width="6%">수용 가능 인원</td>
-						<td width="6%">가격</td>
-						<td width="4%">침대갯수</td>
-						<td width="4%">방갯수</td>
-						<td width="6%">흡연가능 여부</td>
-						<td width="6%">동물가능 여부</td>
-						<td width="40%">주소</td>
-						<td width="3%">   </td>
-						<td width="3%"><button type="button" class=" btn-light" onclick="javascript:location.href='../room/roomsadd?userno='+${session_userno}">숙소추가</button></td>
-					</tr>
+					<input type="checkbox" name="rsmoke" value="smoke" ${(roomVo.rsmoke eq 'smoke')? 'checked' : ''}> 흡연실 
+					<input type="checkbox" name="rpet" value="pet" ${(roomVo.rpet eq 'pet')? 'checked' : ''} > 반려동물
+					
+				</div>
 
-					<tr height="1" bgcolor="#8f784b ">
-						<td colspan="12"></td>
-					</tr>
+				<div class="form-inline form-group">
+					<label for="" class="col-sm-2 control-label" style="font-weight: bolder;">상세 주소</label>
+					<div class="col-sm-7">
+						<textarea name="raddress" cols="65" rows="3" id="raddress">${roomVo.raddress }</textarea>
+					</div>
+				</div>
 
-					<c:forEach var="roomVo" items="${userHostingModifyMap.userHostingModifyList }">
-						<c:choose>
-							<c:when test="${roomVo.roomNo == userHostingModifyMap.roomNo}">
-								<tr id="${roomVo.roomNo}">
-									<td style="width:10%;"><input type="text" name="rname" value="${roomVo.rname}"></td>
-									<td style="width:5%;"><input type="text" name="rcity"  value="${roomVo.rcity}"></td>							
-									<td style="width:6%;"><input type="text" name="rtype"  value="${roomVo.rtype}"></td>							
-									<td style="width:6%;"><input type="text" name="rpeople"  value="${roomVo.rpeople}"></td>						
-									<td style="width:6%;"><input type="text" name="rprice"  value="${roomVo.rprice}"></td>					
-									<td style="width:4%;"><input type="text" name="rbed"  value="${roomVo.rbed}"></td>		
-									<td style="width:4%;"><input type="text" name="rroom"  value="${roomVo.rroom}"></td>		
-									<td style="width:6%;"><input type="text" name="rsmoke"  value="${roomVo.rsmoke}"></td>		
-									<td style="width:6%;"><input type="text" name="rpet"  value="${roomVo.rpet}"></td>	
-									<td style="width:40%;"><input type="text" name="raddress"  value="${roomVo.raddress}"></td>		
-									<td><button type="submit" class=" btn-light" >저장</button></td>		
-									<td><button type="button" class=" btn-light" id="goto_userHostingView">취소</button></td>		
-								</tr>
-							</c:when>
-							<c:otherwise>
-								<tr id="${roomVo.roomNo}">
-									<td>
-										<a href="*숙소링크*bno=${roomVo.roomNo}">${roomVo.rname}</a>
-									</td>
-									<td>${roomVo.rcity}</td>							
-									<td>${roomVo.rtype}</td>							
-									<td>${roomVo.rpeople}</td>							
-									<td>${roomVo.rprice}</td>							
-									<td>${roomVo.rbed}</td>		
-									<td>${roomVo.rroom}</td>		
-									<td>${roomVo.rsmoke}</td>		
-									<td>${roomVo.rpet}</td>		
-									<td>${roomVo.raddress}</td>		
-								</tr>
-							</c:otherwise>
-						</c:choose>
-						<input type="hidden" name="userno" value="${session_userno}" >
-						<input type="hidden" name="roomNo" value="${roomVo.roomNo}" >
-					</c:forEach>
-				</table>
-            </form>
-          </div>
-    </section>
+				<input type="submit" value="저장" class="btn btn-primary py-3 px-5">
+				<input type="button" value="취소" class="btn btn-primary py-3 px-5" onclick="history.back()">
 
-    <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+			</form>
+			</c:forEach>
+		</div>
+	</section>
+
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
     
   <!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

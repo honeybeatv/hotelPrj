@@ -54,33 +54,39 @@
 
 	<c:import url="/WEB-INF/views/user/mypageCategory.jsp"></c:import>
 
-	<section class="ftco-section contact-section bg-light" align="center">
-		<div  class="col-12" >
-			<table>
-
-				<colgroup>
-					<col width="20%">
-					<col width="40%">
-					<col width="30%">
-				</colgroup>
-				<!-- 제목부분 -->
-
-				<tr>
-					<th>숙소</th>
-					<th>방문일</th>
-					<th>주소</th>
-				</tr>
-				<!-- 내용부분 시작-->
-				<c:forEach var="userReservationList" items="${userReservationList}">
-					<tr>
-						<td>${userReservationList.rname }</td>
-						<td>${userReservationList.startday } ~ ${userReservationList.endday }</td>
-						<td>${userReservationList.rcity }</td>
-					</tr>
-				</c:forEach>
-				
-			</table>
-		</div>
+    
+    
+    
+        <section class="ftco-section bg-light">
+	    	<div class="container">
+	    		<div class="row">
+					<c:forEach var="userReservationList" items="${userReservationList}">
+		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
+		    				<div class="room">
+		<!--      				<a href="rooms" class="img d-flex justify-content-center align-items-center" style="background-image: url(/static/images/room-1.jpg);">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		-->  					
+								<div class="text p-3 text-center">
+			    					<h3 class="mb-3">${userReservationList.rname }</h3>
+			    						<p><span class="price mr-2">${userReservationList.rprice }</span> <span class="per">/ 일</span></p>
+			    						<ul>
+				    						<li style="list-style:none; text-align: left !important;">방문일 : ${userReservationList.startday } ~ ${userReservationList.endday }</li>
+				    						<li style="list-style:none; text-align: left !important;">상세주소 : ${userReservationList.raddress }</li>
+				    						<li style="list-style:none; text-align: left !important;">승인여부 : ${userReservationList.status }</li>
+			    						</ul>
+			    						<hr>
+			    						<p class="pt-1">
+			    							<a href="/room/rooms-single?roomNo=${userReservationList.roomNo} " class="btn-custom">View Room Details <span class="icon-long-arrow-right"></span></a>
+			    						</p>
+		    					</div>
+		    				</div>
+		    			</div>
+		    		</c:forEach>
+	    		</div>
+	    	</div>
     </section>
 
     <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>

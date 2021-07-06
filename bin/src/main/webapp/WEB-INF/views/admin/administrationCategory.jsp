@@ -6,22 +6,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="col-12 d-inline-flex" style="padding-top:10px;">
-		<div class="col-md-1"></div>
-		<button type="button" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" 
-				onclick="javascript:location.href='./adminInfoView?userno='+${session_userno}" class="nav-link">Information</button>
-		<div class="col-md-1"></div>
-		<button type="button" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" 
-				onclick="javascript:location.href='./user'" class="nav-link">Users</button>
-		<div class="col-md-1"></div>
-		<button type="button" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" 
-				onclick="javascript:location.href='./user'" class="nav-link">Reservations</button>
-		<div class="col-md-1"></div>
-		<button type="button" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" 
-				onclick="javascript:location.href='./user'" class="nav-link">Hostings</button>
-		<div class="col-md-1"></div>
+	<div class="col-12 d-flex justify-content-around" style="padding-top:10px;">
+		<form action="../admin/adminInfoView"  method="post">
+			<input type="hidden" id = "userno" name = "userno" value="${session_userno }">
+			<button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" >Information</button>
+		</form>
+		<form action="../admin/adminUsersView"  method="post">
+			<input type="hidden" id = "uadmin" name = "uadmin" value="${session_uadmin }">
+			<button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" >Users</button>
+		</form>
+		<form action="../admin/adminReservationView"  method="post">
+			<input type="hidden" id = "uadmin" name = "uadmin" value="${session_uadmin }">
+			<button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" >Reservations</button>
+		</form>
+		<form action="../admin/adminUsersHosting"  method="post">
+			<input type="hidden" id = "userno" name = "userno" value="${session_userno }">
+			<button type="submit" class="btn py-3 px-5" style="background-color:#8D703B; color:white; padding-left:30px; padding-right:30px;" >Hostings</button>
+		</form>
 	</div>
-
 </body>
 </html>
 

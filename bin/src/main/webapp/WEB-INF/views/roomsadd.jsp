@@ -55,7 +55,7 @@
 		var rtype = $("#rtype").val();
 		var rpeople = $("#rpeople").val();
 		var rinfo = $("#rinfo").val();
-		//var rpicture = $("#rpicture").val();
+		var rpicture = $("#rpicture").val();
 		var rcity = $("#rcity").val();
 		var rprice = $("#rprice").val();
 		var rroom = $("#rroom").val();
@@ -75,9 +75,9 @@
 		}else if (rinfo == "" || rinfo == null) {
 			alert("방정보를 입력하세요")
 			return false;
-		//}else if (rpicture == "" || rpicture == null) {
-			//alert("방사진을 등록하세요")
-			//return false;
+		}else if (file == "" || file == null) {
+			alert("방사진을 등록하세요")
+			return false;
 		}else if (rcity == "" || rcity == null) {
 			alert("지역을 선택하세요")
 			return false;
@@ -115,7 +115,7 @@
 					class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
 					<div class="text">
 						<p class="breadcrumbs mb-2">
-							<span class="mr-2"><a href="index">Home</a></span> <span>숙소등록</span>
+							<span class="mr-2"><a href="/">Home</a></span> <span>숙소등록</span>
 						</p>
 						<h1 class="mb-4 bread">숙소등록</h1>
 					</div>
@@ -127,14 +127,11 @@
 
 	<section class="ftco-section contact-section bg-light" align="center">
 		<div class="col-10" style="display: inline-block;">
-			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post">
-
-
+			<form action="roomsWriteDo" id="searchForm" name="searchForm" class="bg-white p-5 " width="100%" method="post" enctype="multipart/form-data">
+				<input type="hidden" id="userno" name="userno" value="${session_userno }">
 
 				<div class="form-inline form-group">
-					<label for="userid" class="col-sm-2 control-label"
-						style="font-weight: bolder;">방이름</label> <input type="hidden"
-						id="userno" name="userno" value="${session_userno }">
+					<label for="userid" class="col-sm-2 control-label" style="font-weight: bolder;">방이름</label> 
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width: 100%;" id="rname" name="rname">
 					</div>
@@ -145,14 +142,16 @@
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">방종류</label>
 					<div class="col-sm-7">
-						<select name="rtype">
-							<option value="apt">아파트</option>
-		                     <option value="house">주택</option>
-		                     <option value="walkup">공동주택</option>
-		                     <option value="hotel">호텔</option>
-		                     <option value="residence">레지던스</option>
-		                     <option value="hostel">호스텔</option>
-	                    	<option value="etc">기타</option>
+						<select name="rtype" id="rtype">
+							<option value="아파트">아파트</option>
+		                     <option value="빌라">빌라</option>
+		                     <option value="오피스텔">오피스텔</option>
+		                     <option value="전원주택">전원주택</option>
+		                     <option value="공동주택">공동주택</option>
+		                     <option value="호텔">호텔</option>
+		                     <option value="리조트">리조트</option>
+		                     <option value="펜션">펜션</option>
+	                    	<option value="기타">기타</option>
 						</select>
 					</div>
 				</div>
@@ -184,11 +183,8 @@
 				<div class="form-inline form-group">
 					<label for="" class="col-sm-2 control-label"
 						style="font-weight: bolder;">사진</label>
-					<div class="col-sm-7">
-						<input type="file" class="" style="width: 100%;" id="file"	name="rpicture1">
-						<input type="file" class="" style="width: 100%;" id="file1"	name="rpicture2">
-						<input type="file" class="" style="width: 100%;" id="file2"	name="rpicture3">
-					</div>
+						<input multiple="multiple" type="file" class="" style="padding-left: 15px; width: 15%; text-align: left;" id="file" name="file" accept=".gif, .jpg, .png" onchange="loadFile(event)">
+						<span style="font-size:10px; color: gray;">※사진은 최대 3개까지 등록이 가능합니다.</span>	
 
 
 				</div>
@@ -250,8 +246,8 @@
 				</div>
 
 				<div class="form-group">
-					<input type="checkbox" name="rsmoke" value="smoke"> 흡연실 <input
-						type="checkbox" name="rpet" value="pet"> 반려동물
+					<input type="checkbox" name="rsmoke" value="smoke"> 흡연실
+					 <input type="checkbox" name="rpet" value="pet"> 반려동물
 				</div>
 
 				<div class="form-inline form-group">
@@ -261,7 +257,6 @@
 						<textarea name="raddress" cols="65" rows="3" id="raddress"></textarea>
 					</div>
 				</div>
-
 				<input type="button" value="등록" class="btn btn-primary py-3 px-5"
 					onclick="searchSubmit();">
 				<input type="button" value="취소"

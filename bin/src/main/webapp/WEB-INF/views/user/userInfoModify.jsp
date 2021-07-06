@@ -70,9 +70,7 @@
 	
     <section class="ftco-section contact-section bg-light" align="center">
 		<div  class="col-6" style="display:inline-block;" >
-            <form action="userInfoModifyDo" class="bg-white p-5 " method="post" width="100%">
-            	<input type="hidden" id="userno" name="userno" value="${userVo.userno}" >
-            	 
+            <form action="userInfoModifyDo" method="post" class="bg-white p-5 "width="100%">
             	<div class="form-inline form-group">
 					<label for="name" class="col-sm-2 control-label" style="font-weight:bolder;">이름</label>
 					<div class="col-sm-10">
@@ -83,7 +81,7 @@
 				<div class="form-inline form-group">
 					<label for="userid" class="col-sm-2 control-label" style="font-weight:bolder;">아이디</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid" value="${userVo.userid}" >
+						<input type="text" class="form-control" style="width:100%;" id="userid" name="userid" value="${userVo.userid}" readonly>
 					</div>
 				</div>
 				
@@ -107,9 +105,10 @@
 						<input type="text" class="form-control" style="width:100%;" id="uphone" name="uphone" value="${userVo.uphone}" >
 					</div>
 				</div>
-				
-				<button type="submit" class="btn btn-primary py-3 px-5">수정</button>
-				<button type="button" id="goto_userInfoView" class="btn btn-primary py-3 px-5">취소</button>
+					<input type="hidden" id = "userno" name = "userno" value="${session_userno }">
+					<input type="hidden" id = "uadmin" name = "uadmin" value="${userVo.uadmin }">
+					<button type="submit" class="btn btn-primary py-3 px-5">수정</button>
+					<button type="button" id="goto_userInfoView" class="btn btn-primary py-3 px-5">취소</button>
             </form>
           </div>
     </section>

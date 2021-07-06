@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Deluxe - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Deluxe</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -29,8 +29,7 @@
     <link rel="stylesheet" href="../static/css/style.css">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript">
-
+    <script type="text/javascript">    
      </script>
      
   	</head>
@@ -44,7 +43,7 @@
       <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
-             <div class="text">>
+             <div class="text">
             </div>
           </div>
         </div>
@@ -55,17 +54,17 @@
     		<div class="row">
 	        <div class="col-lg-9">
 		    		<div class="row">
-		    			<c:forEach var="list" items="${list }" > 
+		    			<c:forEach var="list" items="${listAndNums.list }" > 
 		    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
 		    				<div class="room">
-		    					<a href="rooms-single" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/images/room-1.jpg);">
+		    					<a href="rooms-single?roomNo=${list.roomNo }&start=${start }&end=${end }" class="img d-flex justify-content-center align-items-center" style="background-image: url(../static/upload/${list.rpicture1});">
 		    						<div class="icon d-flex justify-content-center align-items-center">
 		    							<span class="icon-search2"></span>
 		    						</div>
 		    					</a>
 		    					<div class="text p-3 text-center">
-		    						<h3 class="mb-3"><a href="rooms-single">${list.rname }</a></h3>
-		    						<p><span class="price mr-2">${list.rprice }</span> <span class="per">/ 일</span></p>
+		    						<h3 class="mb-3"><a href="rooms-single?roomNo=${list.roomNo }&start=${start }&end=${end }">${list.rname }</a></h3>
+		    						<p><span class="price mr-2">${list.rprice }원</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
 		    							<li><span>권장인원:</span> ${list.rpeople }</li>
 		    							<li><span>위치:</span> ${list.raddress }</li>
@@ -94,13 +93,15 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rtype" id="" class="form-control">
-	                    	<option value="apt">아파트</option>
-		                     <option value="house">주택</option>
-		                     <option value="walkup">공동주택</option>
-		                     <option value="hotel">호텔</option>
-		                     <option value="residence">레지던스</option>
-		                     <option value="hostel">호스텔</option>
-	                    	<option value="etc">기타</option>
+	                    	<option value="아파트" ${(roomVo.rtype eq '아파트')? 'selected' : '' }>아파트</option>
+		                     <option value="빌라" ${(roomVo.rtype eq '빌라')? 'selected' : '' }>빌라</option>
+		                     <option value="오피스텔" ${(roomVo.rtype eq '오피스텔')? 'selected' : '' }>오피스텔</option>
+		                     <option value="전원주택" ${(roomVo.rtype eq '전원주택')? 'selected' : '' }>전원주택</option>
+		                     <option value="공동주택" ${(roomVo.rtype eq '공동주택')? 'selected' : '' }>공동주택</option>
+		                     <option value="호텔" ${(roomVo.rtype eq '호텔')? 'selected' : '' }>호텔</option>
+		                     <option value="리조트" ${(roomVo.rtype eq '리조트')? 'selected' : '' }>리조트</option>
+		                     <option value="펜션" ${(roomVo.rtype eq '펜션')? 'selected' : '' }>펜션</option>
+	                    	<option value="기타" ${(roomVo.rtype eq '기타')? 'selected' : '' }>기타</option>
 	                    </select>
 	                  </div>
 		              </div>
@@ -108,13 +109,13 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rroom" id="" class="form-control">
-	                    	<option value="1">침실 1</option>
-		                    <option value="2">침실 2</option>
-		                    <option value="3">침실 3</option>
-		                    <option value="4">침실 4</option>
-		                    <option value="5">침실 5</option>
-		                    <option value="6">침실 6</option>
-	                    	<option value="7">침실 7 이상</option>
+	                    	<option value="1" ${(rroom eq '1')? 'selected' : '' }>침실 1</option>
+		                    <option value="2" ${(rroom eq '2')? 'selected' : '' }>침실 2</option>
+		                    <option value="3" ${(rroom eq '3')? 'selected' : '' }>침실 3</option>
+		                    <option value="4" ${(rroom eq '4')? 'selected' : '' }>침실 4</option>
+		                    <option value="5" ${(rroom eq '5')? 'selected' : '' }>침실 5</option>
+		                    <option value="6" ${(rroom eq '6')? 'selected' : '' }>침실 6</option>
+	                    	<option value="7" ${(rroom eq '7')? 'selected' : '' }>침실 7 이상</option>
 
 	                    </select>
 	                  </div>
@@ -123,96 +124,117 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rbed" id="" class="form-control">
-	                    	<option value="1">침대 1</option>
-	                      	<option value="2">침대 2</option>
-	                      	<option value="3">침대 3</option>
-	                      	<option value="4">침대 4</option>
-	                      	<option value="5">침대 5</option>
-	                      	<option value="6">침대 6</option>
-	                    	<option value="7">침대 7 이상</option>
+	                    	<option value="1" ${(rbed eq '1')? 'selected' : '' }>침대 1</option>
+	                      	<option value="2" ${(rbed eq '2')? 'selected' : '' }>침대 2</option>
+	                      	<option value="3" ${(rbed eq '3')? 'selected' : '' }>침대 3</option>
+	                      	<option value="4" ${(rbed eq '4')? 'selected' : '' }>침대 4</option>
+	                      	<option value="5" ${(rbed eq '5')? 'selected' : '' }>침대 5</option>
+	                      	<option value="6" ${(rbed eq '6')? 'selected' : '' }>침대 6</option>
+	                    	<option value="7" ${(rbed eq '7')? 'selected' : '' }>침대 7 이상</option>
 	                    </select>
 	                  </div>
 		              </div>
 		              
 		               <div class="form-group">
-		              <input type="checkbox" name="rsmoke" value="smoke"> 흡연실&emsp;
-		              <input type="checkbox" name="rpet" value="pet"> 반려동물
+		              <input type="checkbox" name="rsmoke" id="rsmoke" value="smoke"  ${(rsmoke eq 'smoke')? 'checked' : ''}> 흡연실&emsp;
+		              <input type="checkbox" name="rpet" id="rpet" value="pet" ${(rpet eq 'pet')? 'checked' : ''}> 반려동물
 		              </div>
 		              
 		              <div class="form-group">
 		              	<div class="range-slider">
 		              		<span>
-										    <input type="number" name="minPrice" value="25000" min="0" max="120000"/>	-
-										    <input type="number" name="maxPrice" value="50000" min="0" max="120000"/>
+										    <input type="number" name="minPrice" id="minPrice" value="${(minPrice!=null)? minPrice : 25000 }" min=0 max="999999" style="width: 73px"/>원	-
+										    <input type="number" name="maxPrice" id="maxPrice" value="${(maxPrice!=null)? maxPrice : 50000 }" min="0" max="999999"/>원
 										  </span>
 										</div>
 		              </div>
 		              <div class="form-group">
-		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5"">
 		              </div>
 		            </div>
 	            </form>
 	      		</div>
-	      		<div class="sidebar-wrap bg-light ftco-animate">
-	      			<h3 class="heading mb-4">Star Rating</h3>
-	      			<form method="post" class="star-rating">
-							  <div class="form-check">
-									<input type="checkbox" class="form-check-input" id="exampleCheck1">
-									<label class="form-check-label" for="exampleCheck1">
-										<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
-									</label>
-							  </div>
-							  <div class="form-check">
-						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						    	   <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
-						      </label>
-							  </div>
-							  <div class="form-check">
-						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-						     </label>
-							  </div>
-							  <div class="form-check">
-							    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-						      </label>
-							  </div>
-							  <div class="form-check">
-						      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-						      <label class="form-check-label" for="exampleCheck1">
-						      	<p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-							    </label>
-							  </div>
-							</form>
-	      		</div>
+
 	        </div>
 		    </div>
 		    
 														  	 
-							  
-
 		    
+		    <!-- c태그 if문으로 rbed나 rroom같이 AdvancedSearch에서 쓰는 파라미터가 0이면 Search조건으로 뜨도록 하고  
+		    1이상이면 링크를 AdvancedSearch로 연결되어서 뜨도록..........우웩 토한다-->
+		    <!-- AdvancedSearch의 경우 start-->
 		    
-		    
-		    
-		    <div class="row mt-5">
+		     <!-- <div class="row mt-5"> -->
           <div class="col text-center">
             <div class="block-27">
+		    <c:if test= "${rroom>=1}">
               <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
+              
+              
+              	<!-- 이전 페이지는 1이상일 때 표시, 링크 -->
+			      <c:if test="${listAndNums.page>1 }">
+			      	<li><a href="./advancedSearch?page=${listAndNums.page-1 }&inDate=${start}&outDate=${end}&rtype=${rtype }&rroom=${rroom }&rbed=${rbed }&minPrice=${minPrice }&maxPrice=${maxPrice }&rpet=${rpet }&rsmoke=${rsmoke }&rcity=${rcity }&rpeople=${rpeople }">&lt;</a></li>
+			      </c:if>
+			      			      
+			       <!-- 번호 넣기 -->
+			      <c:forEach var="nowPage" begin="${listAndNums.startPage }" end="${listAndNums.endPage }">
+			      	<c:if test="${listAndNums.page == nowPage }">
+			      	  <span><li class="active"><a>${nowPage }</a></li></span>
+				    </c:if>
+				    <c:if test="${listAndNums.page != nowPage }">
+			      	  <li>
+			      		<a href="./advancedSearch?page=${nowPage }&inDate=${start}&outDate=${end}&rtype=${rtype }&rroom=${rroom }&rbed=${rbed }&minPrice=${minPrice }&maxPrice=${maxPrice }&rpet=${rpet }&rsmoke=${rsmoke }&rcity=${rcity }&rpeople=${rpeople }">${nowPage}</a>
+			      	  </li>
+				    </c:if>
+			      </c:forEach>
+			      
+			      <!-- 다음 페이지는 max보다 작을 때 +1 증가, max이상일 때 링크삭제 -->		      			      
+			      <c:if test="${listAndNums.page<listAndNums.maxPage }">
+			      	<li>
+			      		<a href="./advancedSearch?page=${listAndNums.page+1 }&inDate=${start}&outDate=${end}&rtype=${rtype }&rroom=${rroom }&rbed=${rbed }&minPrice=${minPrice }&maxPrice=${maxPrice }&rpet=${rpet }&rsmoke=${rsmoke }&rcity=${rcity }&rpeople=${rpeople }">&gt;</a>
+			      	</li>
+			      </c:if>
+
               </ul>
+		    </c:if>
+		    
+
+		    
+		    <!-- search의 경우 -->
+		    <c:if test= "${rtype==null}">
+              <ul>              
+              
+              	<!-- 이전 페이지는 1이상일 때 표시, 링크 -->
+			      <c:if test="${listAndNums.page>1 }">
+			      	<li><a href="./search?page=${listAndNums.page-1 }&startDate=${start}&endDate=${end}&rpeople=${rpeople }&rcity=${rcity }">&lt;</a></li>
+			      </c:if>
+			      
+			      
+			       <!-- 번호 넣기 -->
+			      <c:forEach var="nowPage" begin="${listAndNums.startPage }" end="${listAndNums.endPage }">
+			      	<c:if test="${listAndNums.page == nowPage }">
+			      	  <li class="active"><a>${nowPage }</a></li>
+				    </c:if>
+				    <c:if test="${listAndNums.page != nowPage }">
+			      	  <li>
+			      		<a href="./search?page=${nowPage  }&startDate=${start}&endDate=${end}&rpeople=${rpeople }&rcity=${rcity }">${nowPage }</a>
+			      	  </li>
+				    </c:if>
+			      </c:forEach>
+			      
+			      <!-- 다음 페이지는 max보다 작을 때 +1 증가, max이상일 때 링크삭제 -->
+			      <c:if test="${listAndNums.page<listAndNums.maxPage }">
+			      	<li>	
+			      		<a href="./search?page=${listAndNums.page+1  }&startDate=${start}&endDate=${end}&rpeople=${rpeople }&rcity=${rcity }">&gt;</a>
+			      	</li>
+			      </c:if>
+			    <!-- search의 경우 end -->  
+
+              </ul>
+		    </c:if>
             </div>
           </div>
-        </div>
+		  
         
     	</div>
     </section>

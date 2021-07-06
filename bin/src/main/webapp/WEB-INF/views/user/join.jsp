@@ -61,7 +61,44 @@
   	
 $(document).ready(function(){
 	
-	
+	$(".sendMail").click(function() {// 메일 입력 유효성 검사
+		var mail = $("#uemail").val(); //사용자의 이메일 입력값. 
+		
+		if (mail == "") {
+			alert("메일 주소가 입력되지 않았습니다.");
+		} else {
+			// mail = mail+"@"+$(".domain").val(); //셀렉트 박스에 @뒤 값들을 더함.
+				mail = $("#uemail").val();
+			$.ajax({
+				type : 'post',
+				url : './CheckMail',
+				data : {
+					mail:mail
+					},
+				dataType :'json',
+				success:function(data){
+					$('#certify').val(data.key);
+				}
+			});
+			alert("인증번호가 전송되었습니다.") 
+			isCertification=true; //추후 인증 여부를 알기위한 값
+		}
+	});
+	$("#compare").on("propertychange change keyup paste input", function() {
+		
+		var key=$('#certify').val();
+		if ("" == key) {
+			$(".compare-text").text("불일치!").css("color", "red");
+			isCertification = false;
+		}else if ($("#compare").val() == key) {   //인증 키 값을 비교를 위해 텍스트인풋과 벨류를 비교
+			$(".compare-text").text("인증 성공!").css("color", "black");
+			isCertification = true;  //인증 성공여부 check
+		} else {
+			$(".compare-text").text("불일치!").css("color", "red");
+			isCertification = false; //인증 실패
+		}
+		
+	});
 	
 	$("#joinBtn").click(function(){
 		
@@ -69,10 +106,10 @@ $(document).ready(function(){
         // 태크.val("값") : 태그의 값을 변경 
         var userid = $("#userid").val();
         var userpw = $("#userpw").val();
-        
         var uemail = $("#uemail").val();
         var name = $("#name").val();
         var uphone = $("#uphone").val();
+        var code = $("#compare").val();
         
         
         if(name == ""){
@@ -99,11 +136,19 @@ $(document).ready(function(){
             $("#uemail").focus();
             return;
         }
+        if(code == ""){
+            alert("인증번호를 입력하세요.");
+            $("#compare").focus();
+            return;
+        }
         if(uphone == ""){
             alert("전화번호를 입력하세요.");
             $("#uphone").focus();
             return;
-        }
+        }if(isCertification==false){
+			alert("메일 인증이 완료되지 않았습니다.");
+			return;
+		}
         
         join_check()
        
@@ -125,7 +170,7 @@ $(document).ready(function(){
 	 			 success:function(data){
 	 				 alert(data.msg);
 	 				 if(data.flag=="success"){
-	 				    location.href="../main/index";
+	 				    location.href="/";
 	 				 }else{
 	 					 $("#userpw").val("");//공백처리
 	 					return false;
@@ -259,7 +304,17 @@ $(document).ready(function(){
 					<div class="col-sm-7">
 						<input type="text" class="form-control" style="width:100%;" id="uemail" name="uemail">
 					</div>
+						<input type="button" value="인증" class="sendMail">
 					<div id="email_check"  class="col-sm-3">ex)ya63kr@nate.com</div>
+				</div>
+				
+				<div class="form-inline form-group">
+				<input type='hidden' id='certify'>
+					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">인증번호</label>
+					<div class="col-sm-7">
+						<input type="text" id="compare" style="width:100%;" name="num">
+					</div>
+					<div class="compare-text"></div>
 				</div>
 				
 				<div class="form-inline form-group">
@@ -268,14 +323,6 @@ $(document).ready(function(){
 						<input type="text" class="form-control" style="width:100%;" id="uphone" name="uphone">
 					</div>
 					<div class="col-sm-3">ex) -없이 작성하세요</div>
-				</div>
-
-				<div class="form-inline form-group">
-					<label for="" class="col-sm-2 control-label" style="font-weight:bolder;">닉네임</label>
-					<div class="col-sm-7">
-						<input type="text" class="form-control" style="width:100%;" id="" name="">
-					</div>
-					<div class="col-sm-3">ex)19920913</div>
 				</div>
 				
 				<input type="button" value="회원가입" id="joinBtn" class="btn btn-primary py-3 px-5" >
