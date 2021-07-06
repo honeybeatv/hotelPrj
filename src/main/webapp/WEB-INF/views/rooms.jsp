@@ -93,13 +93,15 @@
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
 	                    <select name="rtype" id="" class="form-control">
-	                    	<option value="아파트" ${(rtype eq '아파트')? 'selected' : '' }>아파트</option>
-		                     <option value="집" ${(rtype eq '집')? 'selected' : '' }>주택</option>
-		                     <option value="공동주택" ${(rtype eq '공동주택')? 'selected' : '' }>공동주택</option>
-		                     <option value="호텔" ${(rtype eq '호텔')? 'selected' : '' }>호텔</option>
-		                     <%-- <option value="레지던스" ${(rtype eq '레지던스')? 'selected' : '' }>레지던스</option>
-		                     <option value="호스텔" ${(rtype eq '호스텔')? 'selected' : '' }>호스텔</option> --%>
-	                    	<option value="기타" ${(rtype eq '기타')? 'selected' : '' }>기타</option>
+	                    	<option value="아파트" ${(roomVo.rtype eq '아파트')? 'selected' : '' }>아파트</option>
+		                     <option value="빌라" ${(roomVo.rtype eq '빌라')? 'selected' : '' }>빌라</option>
+		                     <option value="오피스텔" ${(roomVo.rtype eq '오피스텔')? 'selected' : '' }>오피스텔</option>
+		                     <option value="전원주택" ${(roomVo.rtype eq '전원주택')? 'selected' : '' }>전원주택</option>
+		                     <option value="공동주택" ${(roomVo.rtype eq '공동주택')? 'selected' : '' }>공동주택</option>
+		                     <option value="호텔" ${(roomVo.rtype eq '호텔')? 'selected' : '' }>호텔</option>
+		                     <option value="리조트" ${(roomVo.rtype eq '리조트')? 'selected' : '' }>리조트</option>
+		                     <option value="펜션" ${(roomVo.rtype eq '펜션')? 'selected' : '' }>펜션</option>
+	                    	<option value="기타" ${(roomVo.rtype eq '기타')? 'selected' : '' }>기타</option>
 	                    </select>
 	                  </div>
 		              </div>
