@@ -205,7 +205,7 @@
                   <div class="comment-body">
                     <h3>리뷰자 : ${reviewList.userid }</h3>
                     <div class="meta">숙박기간 : ${reviewList.redate}</div>
-                    <p>${reviewList.recontent}</p>
+                    <pre><p>${reviewList.recontent}</p></pre>
                     <div class="meta" >별점 평가 :
                     <c:forEach begin="1" end="${reviewList.rescore }">
 						<i class="icon-star"></i>
