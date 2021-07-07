@@ -204,7 +204,7 @@ public class RoomServiceimpl implements RoomService {
 		
 		
 		PageUtil paging = new PageUtil();
-		map = paging.getPageNum(page, 20, reviewCount);
+		map = paging.getPageNum(page, 5, reviewCount);
 		
 		int startrow = (int)map.get("startrow");
 		int endrow = (int)map.get("endrow");
