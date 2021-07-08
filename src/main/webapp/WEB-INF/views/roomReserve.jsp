@@ -206,8 +206,8 @@
 						location.href='/user/userReservationView?userno=' + resp.userno; 
 					}else{
 						alert('예약에 실패했습니다.');
-					}
-				},
+					
+				}
 				error: function(){
 					alert('에러가 발생했습니다.');
 				}
