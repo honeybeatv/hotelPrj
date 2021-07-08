@@ -104,8 +104,8 @@
 			(SELECT rownum AS rnum, a.*
 				FROM (SELECT * FROM room 
    					WHERE roomno NOT IN(SELECT distinct ro.roomno 
-			            FROM reserve re RIGHT JOIN room ro
-						ON re.roomno = ro.roomno
+			            FROM reserve re, room ro
+						ON re.roomno = ro.roomno(+)
 			            WHERE (TO_DATE(#{checkIn}, 'YYYYMMDD') BETWEEN re.startday AND re.endday) 
 			            AND (TO_DATE(#{checkOut}, 'YYYYMMDD') BETWEEN re.startday AND re.endday))
 				    AND rcity = #{rcity}
