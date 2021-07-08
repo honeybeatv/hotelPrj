@@ -67,7 +67,7 @@
 		    						<p><span class="price mr-2">${list.rprice }원</span> <span class="per">/ 일</span></p>
 		    						<ul class="list">
 		    							<li><span>권장인원:</span> ${list.rpeople }</li>
-		    							<li><span>위치:</span> ${list.raddress }</li>
+		    							<li><span>지역:</span> ${list.rcity }</li>
 		    							<li><span>침대갯수:</span> ${list.rbed	 }</li>
 		    						</ul>
 		    					</div>

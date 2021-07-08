@@ -228,7 +228,7 @@ ul {
 								</p>
 								<ul>
 									<li>방 종류 : ${list.rtype }</li>
-									<li>위치 : ${list.rcity }</li>
+									<li>지역 : ${list.rcity }</li>
 									<li>권장인원수 : ${list.rpeople }</li>
 								</ul>
 							</div>

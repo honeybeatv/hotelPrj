@@ -117,7 +117,7 @@
 										<c:if test="${roomVo.rpet ne 'pet' }"> 반려동물 동반 불가</c:if>
 									</li>
 									<li><span>침대 갯수: </span>${roomVo.rbed }개</li>
-									<li><span>도시: </span>${roomVo.rcity }</li>
+									<li><span>지역: </span>${roomVo.rcity }</li>
 								</ul>
 
 							</div>
@@ -236,6 +236,33 @@
                 </li> -->
               </ul>
               </c:forEach>
+              
+              	
+				<!-- 페이징 시작 -->
+				<div class="text-center">
+					<div class="block-27">
+						<ul>
+						<c:if test="${reviewMap.page > 1 }">
+								<li><a href="/room/rooms-single?page=${reviewMap.page-1 }&roomNo=${roomVo.roomNo }&start=${start }&end=${end }#review">&lt;</a></li>
+							</c:if>
+							<!-- 번호 넣기 -->
+							<c:forEach var="x" begin="${reviewMap.startPage}" end="${reviewMap.endPage }">
+								<c:if test="${reviewMap.page == x }">
+									<span><li class="active"><a>${x}</a></li></span>
+								</c:if>
+								<c:if test="${reviewMap.page != x }">
+									<li><a href="/room/rooms-single?page=${x}&roomNo=${roomVo.roomNo }&start=${start }&end=${end }#review">${x}</a></li>
+								</c:if>
+							</c:forEach>
+							<!-- 번호 넣기 끝 -->
+							<c:if test="${reviewMap.page < reviewMap.maxPage }">
+								<li><a href="/room/rooms-single?page=${reviewMap.page+1 }&roomNo=${roomVo.roomNo }&start=${start }&end=${end }#review">&gt;</a></li>
+							</c:if>
+						</ul>
+					</div>
+				</div>
+				
+				<!-- 페이징 끝 -->
 			</div>
               
               <!-- END comment-list -->
@@ -312,33 +339,6 @@
               </div>
               </c:if>
 				<!-- 리뷰 끝 -->
-				
-				
-				<!-- 페이징 시작 -->
-				<div class="text-center">
-					<div class="block-27">
-						<ul>
-						<c:if test="${reviewMap.page > 1 }">
-								<li><a href="/room/rooms-single?page=${reviewMap.page-1 }&roomNo=${roomVo.roomNo }&start=${start }&end=${end }#review">&lt;</a></li>
-							</c:if>
-							<!-- 번호 넣기 -->
-							<c:forEach var="x" begin="${reviewMap.startPage}" end="${reviewMap.endPage }">
-								<c:if test="${reviewMap.page == x }">
-									<span><li class="active"><a>${x}</a></li></span>
-								</c:if>
-								<c:if test="${reviewMap.page != x }">
-									<li><a href="/room/rooms-single?page=${x}&roomNo=${roomVo.roomNo }&start=${start }&end=${end }#review">${x}</a></li>
-								</c:if>
-							</c:forEach>
-							<!-- 번호 넣기 끝 -->
-							<c:if test="${reviewMap.page < reviewMap.maxPage }">
-								<li><a href="/room/rooms-single?page=${reviewMap.page+1 }&roomNo=${roomVo.roomNo }&start=${start }&end=${end }#review">&gt;</a></li>
-							</c:if>
-						</ul>
-					</div>
-				</div>
-				
-				<!-- 페이징 끝 -->
 				
 		</div>
 	</section>
