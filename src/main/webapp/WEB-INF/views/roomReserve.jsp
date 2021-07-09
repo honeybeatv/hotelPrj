@@ -53,7 +53,9 @@
 
 </head>
 <body>
-
+		<form action ="/user/userReservationView" name = "view" method="post">
+			<input type="hidden" id="userno" name="userno" value="${session_userno }">
+		</form>
 	<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 
 	<div class="hero-wrap"
@@ -203,7 +205,7 @@
 				success: function(resp){
 					if(resp.code == 'SUCCESS'){
 						alert('예약 완료');
-						location.href='/user/userReservationView?userno=' + resp.userno; 
+						document.view.submit();
 					}else{
 						alert('예약에 실패했습니다.');
 					
